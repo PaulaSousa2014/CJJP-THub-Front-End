@@ -1,5 +1,9 @@
-# T-Systems T-Hub App
-<img width="242" alt="image" src="https://user-images.githubusercontent.com/110301198/235094492-5f97a10b-88ba-4c51-bc58-6cc583cca8dd.png">
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/89463715/235101307-15c79695-86ae-4e2c-9740-57d165e11fae.png" width="200">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+</p>
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/89463715/235101324-59f79778-0a1c-4329-bfc8-7ea5e361271a.png" width="401">
+</p>
 
 Front-end Repository for the Final Work of the FullStack Java T-Systems Bootcamp developed by the team 4GatoSoft.
  
