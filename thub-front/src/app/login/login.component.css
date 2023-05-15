@@ -1,0 +1,15 @@
+.bg-image{
+    background-image: url('../../assets/login.png');
+    background-size: cover;
+    height: 100vh;
+}
+.container{
+    padding: 3%;
+    border-radius: 3%;
+    height: 60%;
+}
+.btn-custom {
+    background-color: #E20074;
+    color: #ffffff;
+
+  }
