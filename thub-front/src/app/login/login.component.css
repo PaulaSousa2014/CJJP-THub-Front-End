@@ -1,15 +1,38 @@
 .bg-image{
-    background-image: url('../../assets/login.png');
+    background-image: url('../../assets/login.jpg');
     background-size: cover;
     height: 100vh;
+    display: flex;
+  
 }
 .container{
     padding: 3%;
     border-radius: 3%;
     height: 60%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+
+}
+h2{
+    margin-top: 10%;
 }
 .btn-custom {
     background-color: #E20074;
     color: #ffffff;
 
   }
+  #logo{
+    padding: 5%;
+  }
+  .row{
+    align-items: center;
+  }
+  form{
+    margin-top: 20%;
+  }
+  .custom-button{
+margin-top: 15%;
+
+  }
+  
