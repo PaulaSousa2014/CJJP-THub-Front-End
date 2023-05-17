@@ -1,0 +1,8 @@
+.selected {
+  background-color: rgb(233, 233, 233);
+}
+
+tr.row:hover > td > h5 {
+  color: #E20074 !important;
+  cursor: pointer;
+}

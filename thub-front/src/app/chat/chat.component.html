@@ -1,27 +1,77 @@
-<div class="container mt-5 bg-light">
+<div class="container bg-light">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link" [class.active]="activeTab === 'tab1'" (click)="changeTab('tab1')">Pestaña 1</a>
+      <a class="nav-link text-secondary" (click)="selectedTab = 'parties'" [class.active]="selectedTab === 'parties'"><h4>Private message</h4></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [class.active]="activeTab === 'tab2'" (click)="changeTab('tab2')">Pestaña 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [class.active]="activeTab === 'tab3'" (click)="changeTab('tab3')">Pestaña 3</a>
+      <a class="nav-link text-secondary" (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'"><h4>Parties</h4></a>
     </li>
   </ul>
-  <div class="tab-content">
-    <div class="tab-pane" [class.show]="activeTab === 'tab1'" id="tab1" role="tabpanel">
-      <h3>Contenido de la Pestaña 1</h3>
-      <p>Este es el contenido de la primera pestaña.</p>
-    </div>
-    <div class="tab-pane" [class.show]="activeTab === 'tab2'" id="tab2" role="tabpanel">
-      <h3>Contenido de la Pestaña 2</h3>
-      <p>Este es el contenido de la segunda pestaña.</p>
-    </div>
-    <div class="tab-pane" [class.show]="activeTab === 'tab3'" id="tab3" role="tabpanel">
-      <h3>Contenido de la Pestaña 3</h3>
-      <p>Este es el contenido de la tercera pestaña.</p>
+
+  <div *ngIf="selectedTab === 'parties'">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Panel de contactos -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Contacts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row" *ngFor="let contact of contactos" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
+                <td class="align-middle">
+                  <h5 class="text-secondary d-flex align-items-center">
+                    <i class="bi bi-person-fill me-2"></i>
+                    {{ contact.nombre }}
+                  </h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-8">
+          <!-- Chat abierto -->
+          <div class="h-100" *ngIf="usuarioSeleccionado; else noChatOpen">
+            <div class="card-body">
+              <h3 class="border-bottom">{{ usuarioSeleccionado }}</h3>
+              <div class="messages">
+                <!-- Mensajes del chat -->
+                <div class="message">
+                  <p>Mensaje 1</p>
+                </div>
+                <div class="message">
+                  <p>Mensaje 2</p>
+                </div>
+                <!-- Agrega más mensajes aquí -->
+              </div>
+            </div>
+            <div class="card-footer">
+              <!-- Formulario para enviar mensajes -->
+              <form>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Escribe un mensaje">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <ng-template #noChatOpen>
+            <div class="text-center mt-3">
+              <p>No tienes ningún chat abierto</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
     </div>
   </div>
+  <div *ngIf="selectedTab === 'private'">
+    <!-- Contenido para la pestaña 'Private message' -->
+    <h3>Contenido de la pestaña Private message</h3>
+    <p>Este es el contenido para la pestaña Private message.</p>
+  </div>
 </div>
+
