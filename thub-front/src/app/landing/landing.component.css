@@ -1,60 +1,95 @@
 .carousel-caption {
-    position: absolute;
-    background-color: #E20074;
-    height: 100%;
-    left: 0;
-    top: 0;
-    display: flex;
-    justify-content:space-around;
-    flex-direction: column;
-    padding: 10px;
-    width: 50%;
-    text-align:justify;
-    color: black;
-    font-weight: bolder;
-    font-size: larger;
-    margin-left: 3%;
-  }
- .carousel-caption h5{
-    font-size:xx-large;
- }
-  
-  #carouselExampleSlidesOnly {
-    background-color: #E20074;
-  }
-  
-  #landing {
-    display: flex;
-    flex-direction: column;
-    padding: 3%;
-  }
-  
-  #card-custom {
-    display: flex;
-  }
-  
-  #text-custom {
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    font-weight: bolder;
-    font-size: x-large;
-    width: 50%;
-    align-self: center;
-    color: black;
-  }
-  
-  .carousel-item {
-    position: relative;
-    right: 0;
-  }
-  
-  .carousel-item img {
-    height: 400px;
-    width: 500px;
-    object-fit: contain;
-    margin-left: 31%;
-  }
+  position: absolute;
+  background-color: #e20074;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  width: 50%;
+  text-align: justify;
+  color: black;
+  font-weight: bolder;
+  font-size: larger;
+  margin-left: 3%;
+}
+.carousel-caption h5 {
+  font-size: xx-large;
+}
 
+#carouselExampleSlidesOnly {
+  background-color: #e20074;
+}
+
+#landing {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+}
+
+#card-custom {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.card-item{
+   
+}
+.card img{
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+
+}
+.card-body{
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    background-color: #d9d9d958; 
+    margin: 10%;
+
+}
+
+#text-custom {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-weight: bolder;
+  font-size: x-large;
+  width: 50%;
+  align-self: center;
+  color: black;
+}
+
+.carousel-item {
+  position: relative;
+  right: 0;
+}
+
+.carousel-item img {
+  height: 400px;
+  width: 500px;
+  object-fit: contain;
+  margin-left: 31%;
+}
+
+@media (max-width: 900px) {
+  #card-custom {
+    flex-direction: column;
+    align-items: center; 
+  }
+  .card-item{
+    margin: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .carousel-item img {
+    visibility: hidden;
+    margin-left: 0%;
+  }
+  .carousel-caption {
+    width: 90%;
+  }
+}
