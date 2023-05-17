@@ -1,0 +1,27 @@
+<div class="container mt-5 bg-light">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'tab1'" (click)="changeTab('tab1')">Pestaña 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'tab2'" (click)="changeTab('tab2')">Pestaña 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="activeTab === 'tab3'" (click)="changeTab('tab3')">Pestaña 3</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" [class.show]="activeTab === 'tab1'" id="tab1" role="tabpanel">
+      <h3>Contenido de la Pestaña 1</h3>
+      <p>Este es el contenido de la primera pestaña.</p>
+    </div>
+    <div class="tab-pane" [class.show]="activeTab === 'tab2'" id="tab2" role="tabpanel">
+      <h3>Contenido de la Pestaña 2</h3>
+      <p>Este es el contenido de la segunda pestaña.</p>
+    </div>
+    <div class="tab-pane" [class.show]="activeTab === 'tab3'" id="tab3" role="tabpanel">
+      <h3>Contenido de la Pestaña 3</h3>
+      <p>Este es el contenido de la tercera pestaña.</p>
+    </div>
+  </div>
+</div>
