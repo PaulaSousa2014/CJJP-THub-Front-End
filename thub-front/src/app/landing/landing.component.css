@@ -35,9 +35,6 @@
   
 }
 
-.card-item{
-   
-}
 .card img{
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 
@@ -60,6 +57,7 @@
   width: 50%;
   align-self: center;
   color: black;
+  margin-top: 10%;
 }
 
 .carousel-item {
