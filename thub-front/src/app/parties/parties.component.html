@@ -1,38 +1,52 @@
-<div class="container-fluid vh-100  d-flex " style="display: flex; flex-direction: row; padding: 0; justify-content: space-between;">
-  <div class="menulateralizq" style="display: flex; flex-direction: column;">
-    <button type="button" class="btn" style="background-color: pink;">Primary</button>
-    <button type="button" class="btn" style="background-color: pink;">Primary</button>
-    <button type="button" class="btn" style="background-color: pink;">Primary</button>
-    <button type="button" class="btn" style="background-color: pink;">Primary</button>
+<div class="content container-fluid vh-100  d-flex ">
+
+  <div class="menulateralizq" >
+    <div class="menulateralizq1">
+      <button type="button" class="btn btn1 ">  <i class="fas fa-gamepad"></i> Games
+      </button>
+    <button type="button" class="btn btn1" > <i class="fas fa-person-biking"></i>
+      Activities
+    </button>
+    </div>
+
+
+    <div class="menulateralizq2">
+      <button type="button" class="btn btn2" > <i class="far fa-comments"></i> Social</button>
+    <button type="button" class="btn btn2" > <i class="far fa-user"></i>
+      My Parties</button>
+    </div>
   </div>
+
   <div class="centercomponent">
-    <div class="buscar">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+    <div class="searchdiv">
+      <form class="search d-flex">
+        <input class="form-control me-2 inputsearch" type="search"  aria-label="Buscar">
+        <button class="btn searchbtn" type="submit">Search</button>
       </form>
     </div>
+
+
     <div class="listaparties">
       <div class="card">
-        <div class="d-flex" style="display: flex; flex-direction: row;">
+        <div class="componentcard d-flex">
 
-          <div class="card-inside" style="width: 18rem;">
-
-            <img class="card-img-top" src="/assets/login.jpg">
-
-          </div>
           <div class="card-body">
-            <h5 class="card-title">Partynombre</h5>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Weekend at Molina</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
+          </div>
+
+          <div class="card-inside">
+            <img class="card-img-top" src="/assets/login.jpg">
           </div>
         </div>
       </div>
 
     </div>
 
+
   </div>
 
-  <div class="d-flex justify-content-top align-items-start">
-    <button type="button" class="btn" style="background-color: #E20074; color: white;">Create party</button>
+  <div class="divbutton d-flex justify-content-top align-items-start " >
+    <button  type="button" class="btn createparty">Create party</button>
   </div>
 </div>
