@@ -18,7 +18,7 @@ import { LandingComponent } from './landing/landing.component';
     MemecompComponent,
     LoginComponent,
 
-    PartiesComponent
+    PartiesComponent,
 
     SignupComponent,
     LandingComponent
