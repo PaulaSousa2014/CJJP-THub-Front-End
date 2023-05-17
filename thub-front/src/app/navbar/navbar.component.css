@@ -1,0 +1,23 @@
+.mini-header {
+  background-color: #262626;
+  color: white;
+}
+
+nav {
+  background-color: #E20074;
+  color: white;
+}
+
+nav a {
+  color: white;
+}
+
+nav i {
+  font-size: 1.25rem;
+  color: white;
+}
+
+nav img {
+  max-width: 150px;
+}
+
