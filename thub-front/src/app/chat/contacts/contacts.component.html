@@ -1,0 +1,40 @@
+<!-- Private message contacts -->
+<ng-container *ngIf="selectedTab === 'private'">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Contacts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row" *ngFor="let contact of contactos" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
+        <td class="align-middle">
+          <h5 class="text-secondary d-flex align-items-center">
+            <i class="bi bi-person-fill me-2"></i>
+            {{ contact.nombre }}
+          </h5>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+<!-- Parties chats -->
+<ng-container *ngIf="selectedTab === 'parties'">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Parties</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row" *ngFor="let party of parties" style="cursor: pointer">
+        <td class="align-middle">
+          <h5 class="text-secondary d-flex align-items-center">
+            <i class="bi bi-people-fill me-2"></i>
+            {{ party.title }}
+          </h5>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

@@ -1,54 +1,39 @@
 <div class="container bg-light">
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link text-secondary" (click)="selectedTab = 'parties'" [class.active]="selectedTab === 'parties'"><h4>Private message</h4></a>
+      <a class="nav-link text-secondary" (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'" style="cursor: pointer"><h4>Private message</h4></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-secondary" (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'"><h4>Parties</h4></a>
+      <a class="nav-link text-secondary" (click)="selectedTab = 'parties'" [class.active]="selectedTab === 'parties'" style="cursor: pointer"><h4>Parties</h4></a>
     </li>
   </ul>
 
-  <div *ngIf="selectedTab === 'parties'">
+  <div>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <!-- Panel de contactos -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Contacts</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="row" *ngFor="let contact of contactos" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
-                <td class="align-middle">
-                  <h5 class="text-secondary d-flex align-items-center">
-                    <i class="bi bi-person-fill me-2"></i>
-                    {{ contact.nombre }}
-                  </h5>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
         </div>
         <div class="col-md-8">
           <!-- Chat abierto -->
+          <!--
           <div class="h-100" *ngIf="usuarioSeleccionado; else noChatOpen">
             <div class="card-body">
               <h3 class="border-bottom">{{ usuarioSeleccionado }}</h3>
               <div class="messages">
-                <!-- Mensajes del chat -->
+                 Mensajes del chat
                 <div class="message">
                   <p>Mensaje 1</p>
                 </div>
                 <div class="message">
                   <p>Mensaje 2</p>
                 </div>
-                <!-- Agrega más mensajes aquí -->
+                 Agrega más mensajes aquí
               </div>
             </div>
             <div class="card-footer">
-              <!-- Formulario para enviar mensajes -->
+               Formulario para enviar mensajes
               <form>
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Escribe un mensaje">
@@ -59,6 +44,7 @@
               </form>
             </div>
           </div>
+          -->
           <ng-template #noChatOpen>
             <div class="text-center mt-3">
               <p>No tienes ningún chat abierto</p>
@@ -67,11 +53,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div *ngIf="selectedTab === 'private'">
-    <!-- Contenido para la pestaña 'Private message' -->
-    <h3>Contenido de la pestaña Private message</h3>
-    <p>Este es el contenido para la pestaña Private message.</p>
   </div>
 </div>
 

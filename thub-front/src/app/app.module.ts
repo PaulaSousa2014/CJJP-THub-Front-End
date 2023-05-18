@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MemecompComponent } from './memecomp/memecomp.component';
 import { ChatComponent } from './chat/chat.component';
+import { ContactsComponent } from './chat/contacts/contacts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MemecompComponent,
-    ChatComponent
+    ChatComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
