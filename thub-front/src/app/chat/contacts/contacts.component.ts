@@ -16,9 +16,7 @@ export class ContactsComponent {
   @Input()
   set selectedTab(value: string) {
     this._selectedTab = value;
-    console.log('selectedTab ha cambiado:', this._selectedTab);
   }
-
   get selectedTab(): string {
     return this._selectedTab;
   }
@@ -26,5 +24,10 @@ export class ContactsComponent {
   usuarioSeleccionado!: string;
   seleccionarUsuario(usuario: string) {
     this.usuarioSeleccionado = usuario;
+  }
+
+  partySeleccionada!: string;
+  sleccionarParty(party: string) {
+    this.partySeleccionada = party;
   }
 }

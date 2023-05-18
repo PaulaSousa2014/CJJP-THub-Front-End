@@ -1,4 +1,4 @@
-<div class="container bg-light">
+<div class="container bg-light mt-5 rounded">
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link text-secondary" (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'" style="cursor: pointer"><h4>Private message</h4></a>
@@ -16,6 +16,7 @@
           <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
         </div>
         <div class="col-md-8">
+          <p class="text-center mt-5">No tienes ningún chat abierto.</p>
           <!-- Chat abierto -->
           <!--
           <div class="h-100" *ngIf="usuarioSeleccionado; else noChatOpen">

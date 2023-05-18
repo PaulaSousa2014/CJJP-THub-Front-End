@@ -26,7 +26,17 @@ export class ChatComponent {
       { id: 7, nombre: 'Carlos González' },
       { id: 8, nombre: 'Sofía Ramírez' },
       { id: 9, nombre: 'Miguel Torres' },
-      { id: 10, nombre: 'Isabel Sánchez' }
+      { id: 10, nombre: 'Isabel Sánchez' },
+      { id: 11, nombre: 'Mario Gómez' },
+      { id: 12, nombre: 'Lucía Silva' },
+      { id: 13, nombre: 'Andrés Castro' },
+      { id: 14, nombre: 'Carolina Peralta' },
+      { id: 15, nombre: 'Fernando Molina' },
+      { id: 16, nombre: 'Julieta Ramírez' },
+      { id: 17, nombre: 'Ricardo Ortega' },
+      { id: 18, nombre: 'Beatriz Morales' },
+      { id: 19, nombre: 'Gustavo Herrera' },
+      { id: 20, nombre: 'Valentina Rojas' }
     ];
 
     this.parties = [

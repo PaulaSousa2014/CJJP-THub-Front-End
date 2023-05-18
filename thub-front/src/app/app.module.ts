@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MemecompComponent } from './memecomp/memecomp.component';
 import { ChatComponent } from './chat/chat.component';
 import { ContactsComponent } from './chat/contacts/contacts.component';
+import { OpenChatComponent } from './chat/contacts/open-chat/open-chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MemecompComponent,
     ChatComponent,
-    ContactsComponent
+    ContactsComponent,
+    OpenChatComponent
   ],
   imports: [
     BrowserModule,

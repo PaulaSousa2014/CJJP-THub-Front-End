@@ -6,3 +6,13 @@ tr.row:hover > td > h5 {
   color: #E20074 !important;
   cursor: pointer;
 }
+
+.contact-list {
+  height: 600px; /* Establece la altura máxima deseada para el contenedor */
+  overflow-x: hidden !important; /* Oculta el desplazamiento horizontal */
+}
+
+.overflow-auto {
+  overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
+}
+
