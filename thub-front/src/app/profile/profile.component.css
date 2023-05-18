@@ -1,0 +1,41 @@
+.logoimg {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+.imagediv{
+margin: 0;
+padding: 0;
+}
+.imagebck{
+  height: 420px;
+  margin: 0;
+  padding: 9;
+  width: 80rem;
+}
+
+.contentbox{
+ width: 80rem;
+  border: solid black;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  min-height: 35rem;
+
+  /*centrar*/
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container1 {
+  width: 300px;
+  text-align: center;
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
