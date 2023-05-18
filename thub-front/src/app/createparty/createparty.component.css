@@ -1,100 +1,62 @@
-.logoimg {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  margin-top: -110px;
-}
-
 .imagediv {
   width: 100%;
-  height: 200px;
+  height: 150px;
   margin: 0;
   padding: 0;
   background-position-y: center;
   background-position-x: center;
   background-size: cover;
+  background-image: url("/assets/backgroundprofile.jpg");
 }
 
-.imagencat{
-  display: flex;
-  flex-direction: row;
-}
 
-.textdiv{
-  margin-top: 25px;
-  display: flex;
-  flex-direction: row;
-
-}
 .contentbox {
-  width: 60rem;
-  height: 35rem;
+  max-width: 70rem;
   border: solid black;
   display: flex;
   flex-direction: column;
-  min-height: 35rem;
+
   /*centrar*/
-  position: fixed;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
- /*revisar*/
-.container1 {
-  width: 300px;
-  text-align: center;
+
+.formdiv{
+  justify-content: center; /* Centrar verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  margin-left: 20%;
 }
 
-.imagediv {
-  background-image: url("/assets/backgroundprofile.jpg");
-  margin: 0;
+.divbutton {
+  top: 0;
+  right: 0;
+  margin: 10px;
+  text-align: end;
+
 }
 
-.text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  text-align: left;
-}
 
-.namediv{
-  margin-left: 12rem;
-  margin-right: 9rem;
-}
 
-.addfriend {
+
+.form {
+  max-width: 40rem;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: -20px;
+}
+.Create{
   background-color: #E20074;
-  color: white;
-  margin-top: 4%;
-  width: 50px;
-  padding: 0;
-  height: 45px;
+color: white;
+margin-right: 10px;
+height: 35px;
+width: 120px;
+font-size:15px;
+text-transform: none;
+padding: 0;
 }
-.chat {
-  background-color: #E20074;
-  color: white;
-  margin-top: 4%;
-  width: 50px;
-  padding: 0;
-  height: 45px;
-}
-
-.chat i,
-.addfriend i {
-  font-size: 18px;
-  color: white;
-}
-.divbutton{
-  margin-top: 70px;
-  margin-left: 7rem;
-}
-
-.divbutton2{
-  margin-top: 70px;
-  margin-left: 1rem;
-}
-
-.steam{
-size: 40px;
+.form-label{
+  font-size: 20px;
+  margin-bottom: 1px;
 }
