@@ -10,3 +10,14 @@ textarea {
 #new-post-button:active {
   background-color: #262626;
 }
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #E20074;
+}
+
+.user-post {
+  background-color: #D9D9D9;
+  border-radius: 15px;
+}
