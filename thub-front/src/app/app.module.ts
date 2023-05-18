@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { CreatepartyComponent } from './createparty/createparty.component';
 import { ProfileComponent } from './profile/profile.component';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProfileComponent } from './profile/profile.component';
     SignupComponent,
     LandingComponent,
     CreatepartyComponent,
-    ProfileComponent
+    ProfileComponent,
+    OtherprofileComponent
 
   ],
   imports: [
