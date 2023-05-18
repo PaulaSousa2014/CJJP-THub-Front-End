@@ -15,8 +15,13 @@
   background-size: cover;
 }
 
+.imagencat{
+  display: flex;
+  flex-direction: row;
+}
+
 .textdiv{
-  margin-top: 40px;
+  margin-top: 25px;
   display: flex;
   flex-direction: row;
 
@@ -56,4 +61,36 @@
 .namediv{
   margin-left: 12rem;
   margin-right: 9rem;
+}
+
+.addfriend {
+  background-color: #E20074;
+  color: white;
+  margin-top: 4%;
+  width: 50px;
+  padding: 0;
+  height: 45px;
+}
+.chat {
+  background-color: #E20074;
+  color: white;
+  margin-top: 4%;
+  width: 50px;
+  padding: 0;
+  height: 45px;
+}
+
+.chat i,
+.addfriend i {
+  font-size: 18px;
+  color: white;
+}
+.divbutton{
+  margin-top: 70px;
+  margin-left: 7rem;
+}
+
+.divbutton2{
+  margin-top: 70px;
+  margin-left: 1rem;
 }
