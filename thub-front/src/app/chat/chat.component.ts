@@ -13,7 +13,7 @@ export class ChatComponent {
   }
 
   contactos: { id: number, nombre: string }[] = [];
-  parties: {id: number, title: string }[] = [];
+  parties: {id: number, title: string, participantes: number}[] = [];
 
   constructor() {
     this.contactos = [
@@ -40,16 +40,16 @@ export class ChatComponent {
     ];
 
     this.parties = [
-      { id: 1, title: 'Fall Guys: Ultimate Knockout' },
-      { id: 2, title: 'Among Us' },
-      { id: 3, title: 'Phasmophobia' },
-      { id: 4, title: 'Dead by Daylight' },
-      { id: 5, title: 'Sea of Thieves' },
-      { id: 6, title: 'Overcooked 2' },
-      { id: 7, title: 'Genshin Impact' },
-      { id: 8, title: 'Raft' },
-      { id: 9, title: 'Minecraft' },
-      { id: 10, title: 'Terraria' }
+      { id: 1, title: 'Fall Guys: Ultimate Knockout', participantes: 5 },
+      { id: 2, title: 'Among Us', participantes: 8 },
+      { id: 3, title: 'Phasmophobia', participantes: 3 },
+      { id: 4, title: 'Dead by Daylight', participantes: 6 },
+      { id: 5, title: 'Sea of Thieves', participantes: 2 },
+      { id: 6, title: 'Overcooked 2', participantes: 7 },
+      { id: 7, title: 'Genshin Impact', participantes: 9 },
+      { id: 8, title: 'Raft', participantes: 4 },
+      { id: 9, title: 'Minecraft', participantes: 1 },
+      { id: 10, title: 'Terraria', participantes: 10 }
     ];
   }
 }
