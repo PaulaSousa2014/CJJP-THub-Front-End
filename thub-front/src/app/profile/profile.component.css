@@ -2,6 +2,7 @@
   width: 200px;
   height: 200px;
   border-radius: 100%;
+  margin-top: -110px;
 }
 
 .imagediv {
@@ -12,13 +13,17 @@
   background-position-y: center;
   background-position-x: center;
   background-size: cover;
-
 }
 
+.textdiv{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
 
+}
 .contentbox {
-  width: 80rem;
-  height: 40rem;
+  width: 60rem;
+  height: 35rem;
   border: solid black;
   display: flex;
   flex-direction: column;
@@ -45,4 +50,10 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  text-align: left;
+}
+
+.namediv{
+  margin-left: 12rem;
+  margin-right: 9rem;
 }
