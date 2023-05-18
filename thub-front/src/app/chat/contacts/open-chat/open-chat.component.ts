@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-open-chat',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./open-chat.component.css']
 })
 export class OpenChatComponent {
+
+  private _usuarioSeleccionado: string = "";
+  @Input()
+  set usuarioSeleccionado(value: string) {
+    this._usuarioSeleccionado = value;
+  }
+  get usuarioSeleccionado(): string {
+    return this._usuarioSeleccionado;
+  }
 
 }

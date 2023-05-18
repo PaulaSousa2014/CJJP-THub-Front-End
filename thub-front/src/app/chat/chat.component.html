@@ -10,49 +10,8 @@
 
   <div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <!-- Panel de contactos -->
-          <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
-        </div>
-        <div class="col-md-8">
-          <p class="text-center mt-5">No tienes ningún chat abierto.</p>
-          <!-- Chat abierto -->
-          <!--
-          <div class="h-100" *ngIf="usuarioSeleccionado; else noChatOpen">
-            <div class="card-body">
-              <h3 class="border-bottom">{{ usuarioSeleccionado }}</h3>
-              <div class="messages">
-                 Mensajes del chat
-                <div class="message">
-                  <p>Mensaje 1</p>
-                </div>
-                <div class="message">
-                  <p>Mensaje 2</p>
-                </div>
-                 Agrega más mensajes aquí
-              </div>
-            </div>
-            <div class="card-footer">
-               Formulario para enviar mensajes
-              <form>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Escribe un mensaje">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Enviar</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          -->
-          <ng-template #noChatOpen>
-            <div class="text-center mt-3">
-              <p>No tienes ningún chat abierto</p>
-            </div>
-          </ng-template>
-        </div>
-      </div>
+      <!-- Contact Panel and chat -->
+      <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
     </div>
   </div>
 </div>
