@@ -26,7 +26,7 @@ Front-end Repository for the Final Work of the FullStack Java T-Systems Bootcamp
 
 ## Objectives of the Project
 
-T-Hub is an LFG-type application directed only to T-Systems employees with the aim of encouraging internal networking, which can help build stronger relationships between employees and increase team cohesion
+T-Hub is an LFG-type application directed only to T-Systems employees with the aim of encouraging internal networking, which can help build stronger relationships between employees and increase team cohesion.
 
 
 ## Class Diagram
