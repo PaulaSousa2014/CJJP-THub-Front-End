@@ -21,8 +21,6 @@ import { OtherprofileComponent } from './components/otherprofile/otherprofile.co
 import { Error404Component } from './components/error404/error404.component';
 import { ClickPartyComponent } from './components/click-party/click-party.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
-
-import { MemecompComponent } from './memecomp/memecomp.component';
 import { ChatComponent } from './chat/chat.component';
 import { ContactsComponent } from './chat/contacts/contacts.component';
 import { OpenChatComponent } from './chat/contacts/open-chat/open-chat.component';
