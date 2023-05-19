@@ -52,7 +52,7 @@ nav img {
 .dropdown-menu a.dropdown-item:focus {
   background-color: #f1add06e;
   color: white;
-
+}
 #user-picture {
   max-width: 35px;
 
