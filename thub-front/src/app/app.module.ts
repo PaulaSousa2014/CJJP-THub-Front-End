@@ -17,6 +17,7 @@ import { LoginNavbarComponent } from './components/navbars/login-navbar/login-na
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OtherprofileComponent } from './components/otherprofile/otherprofile.component';
+import { EditprofileComponent } from './components/editprofile/editprofile.component';
 
 
 @NgModule({
@@ -34,7 +35,12 @@ import { OtherprofileComponent } from './components/otherprofile/otherprofile.co
     LoginNavbarComponent,
     CreatepartyComponent,
     ProfileComponent,
-    OtherprofileComponent
+    OtherprofileComponent,
+    PartiesComponent,
+    SignupComponent,
+    LandingComponent,
+    EditprofileComponent
+
   ],
   imports: [
     BrowserModule,
