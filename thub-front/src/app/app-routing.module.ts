@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PartiesComponent } from './components/parties/parties.component';
-
 
 const routes: Routes = [];
 
