@@ -36,4 +36,37 @@ export class OpenChatComponent {
       this._usuarioSeleccionado = "";
     }
   }
+
+  messages: {id: number, sender: string, receiver:string, message: string, hour: string}[] = [];
+  constructor() {
+    this.messages = [
+      { id: 1, sender: 'Juan Pérez', receiver: 'me', message: "Hola!", hour: "11:00" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
+      { id: 3, sender: 'me', receiver: 'María García', message: "TEST.", hour: "05:00"},
+    ];
+  }
+
+  public tieneMensajesDelUsuario(): boolean {
+    return this.messages.some(message => message.sender === this.usuarioSeleccionado || message.receiver === this.usuarioSeleccionado);
+  }
+
+  newMessage: string = '';
+  sendMessage() {
+    if (this.newMessage.trim() !== '') {
+      const newMsg = {
+        id: this.messages.length + 1,
+        sender: "ne",
+        receiver: this.usuarioSeleccionado,
+        message: this.newMessage,
+        hour: "12:00"
+      };
+      this.messages.push(newMsg);
+      this.newMessage = '';
+    }
+  }
 }

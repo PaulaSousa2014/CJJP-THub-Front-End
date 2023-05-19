@@ -10,16 +10,38 @@
       <!-- Agrega aquí cualquier información adicional del usuario -->
     </div>
 
-    <div class="chat" style="height: 455px;">
-      <!-- Aquí iría el contenido del chat -->
-      <p class="text-center">El chat esta vacío.</p>
+    <div class="chat" id="chatContainer">
+      <div *ngIf="tieneMensajesDelUsuario()" style="padding-bottom: 16px;">
+        <ng-container *ngFor="let msg of messages">
+          <div *ngIf="msg.sender === usuarioSeleccionado || msg.receiver === usuarioSeleccionado">
+            <div *ngIf="msg.sender === usuarioSeleccionado">
+              <div class="w-100">
+                <div class="recive alert alert-dark d-inline-block">
+                  <div class="msg">{{ msg.message }}</div>
+                  <span class="hour-r font-weight-light d-block mt-1"><small>{{ msg.hour }}</small></span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="msg.receiver === usuarioSeleccionado">
+              <div class="w-100 d-flex flex-row-reverse">
+                <div class="send alert d-inline-block text-light">
+                  {{ msg.message }}
+                  <span class="hour-s font-weight-light d-block mt-1"><small>{{ msg.hour }}</small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <p class="text-center" *ngIf="!tieneMensajesDelUsuario()">El chat está vacío.</p>
     </div>
 
+
     <div class="input-group message-input">
-    <input type="text" class="form-control" placeholder="Type message" aria-label="Recipient's username" aria-describedby="button-addon2" />
-    <button class="btn" type="button" id="button-addon2" style="padding-top: .55rem;">
-      <span class="text-light">Send</span>
-    </button>
+      <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder="Type message" aria-label="Recipient's username" aria-describedby="button-addon2" />
+      <button class="btn" type="button" id="button-addon2" style="padding-top: .55rem;" (click)="sendMessage()">
+        <span class="text-light">Send</span>
+      </button>
     </div>
   </div>
 </ng-container>

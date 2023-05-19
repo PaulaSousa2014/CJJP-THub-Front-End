@@ -1,4 +1,4 @@
-<div class="container bg-light mt-5 rounded">
+<div class="container bg-light mt-5 rounded p-0">
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link text-secondary" (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'" style="cursor: pointer"><h4>Private message</h4></a>
@@ -9,10 +9,8 @@
   </ul>
 
   <div>
-    <div class="container">
-      <!-- Contact Panel and chat -->
-      <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
-    </div>
+    <!-- Contact Panel and chat -->
+    <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
   </div>
 </div>
 

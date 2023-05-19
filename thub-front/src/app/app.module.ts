@@ -7,6 +7,7 @@ import { MemecompComponent } from './memecomp/memecomp.component';
 import { ChatComponent } from './chat/chat.component';
 import { ContactsComponent } from './chat/contacts/contacts.component';
 import { OpenChatComponent } from './chat/contacts/open-chat/open-chat.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OpenChatComponent } from './chat/contacts/open-chat/open-chat.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

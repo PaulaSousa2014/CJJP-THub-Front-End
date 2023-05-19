@@ -16,3 +16,8 @@ tr.row:hover > td > h5 {
   overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
 }
 
+i.bi {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
