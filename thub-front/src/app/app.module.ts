@@ -18,12 +18,8 @@ import { CreatepartyComponent } from './components/createparty/createparty.compo
 import { ProfileComponent } from './components/profile/profile.component';
 import { OtherprofileComponent } from './components/otherprofile/otherprofile.component';
 import { Error404Component } from './components/error404/error404.component';
-
 import { ClickPartyComponent } from './components/click-party/click-party.component';
-
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
-
-
 
 @NgModule({
   declarations: [
@@ -41,7 +37,9 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     CreatepartyComponent,
     ProfileComponent,
     OtherprofileComponent,
-    Error404Component
+    Error404Component,
+    ClickPartyComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,
