@@ -32,17 +32,24 @@
 #card-custom {
   display: flex;
   justify-content: space-around;
+  border: none !important;
+  box-shadow: none !important;
+
 }
 
-.card img {
+
+.card-img-top {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 .card-body {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   background-color: #d9d9d958;
   margin: 10%;
-  margin-top: 5%;
+  padding: 10px;
+ 
+  
 }
+
 
 #text-custom {
   height: 300px;
