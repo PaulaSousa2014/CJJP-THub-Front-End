@@ -7,15 +7,17 @@
   background-position-x: center;
   background-size: cover;
   background-image: url("/assets/backgroundprofile.jpg");
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
 }
 
 
 .contentbox {
   max-width: 70rem;
-  border: solid black;
   display: flex;
   flex-direction: column;
-
+  border-radius: 5px;
   /*centrar*/
   position: relative;
   top: 50%;
@@ -43,6 +45,7 @@
   margin-bottom: 25px;
   margin-top: -20px;
 }
+
 .Create{
   background-color: #E20074;
 color: white;
@@ -50,7 +53,6 @@ margin-right: 10px;
 height: 35px;
 width: 120px;
 font-size:15px;
-text-transform: none;
 padding: 0;
 }
 .form-label{
