@@ -28,7 +28,9 @@ nav img {
 .dropdown-menu {
   display: none;
   background-color: #E20074;
-  transition: opacity 20s ease; /* Add transition property */
+  transition: opacity 0.3s ease;
+  margin-top: 0; /* Adjust the margin to reduce the gap */
+  padding: 10px 0; /* Adjust the padding for vertical spacing */
 }
 
 .dropdown:hover > .dropdown-menu {
@@ -40,13 +42,13 @@ nav img {
 }
 
 .dropdown-menu a.dropdown-item {
-  color: white; /* Default text color */
-  padding: 10px 20px; /* Adjust the padding to increase the height */
-  line-height: 1.5; /* Adjust the line-height to increase the height */
+  color: white;
+  padding: 10px 20px;
+  line-height: 1.5;
 }
 
 .dropdown-menu a.dropdown-item:hover,
 .dropdown-menu a.dropdown-item:focus {
-  background-color: #f1add06e; /* Background color on hover/focus */
-  color: white; /* Text color on hover/focus */
+  background-color: #f1add06e;
+  color: white;
 }
