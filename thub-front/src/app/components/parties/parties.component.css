@@ -70,9 +70,12 @@
   margin-right: 2px;
   padding: 8px;
 }
-
+.componentcard{
+margin-bottom: 5px;
+}
 .card {
   background-color: #D9D9D9;
+  margin-bottom: 2px;
 }
 
 .people {
