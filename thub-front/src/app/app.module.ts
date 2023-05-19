@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { PartiesComponent } from './parties/parties.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
+import { CreatepartyComponent } from './createparty/createparty.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OtherprofileComponent } from './otherprofile/otherprofile.component';
 
 
 
@@ -26,9 +29,17 @@ import { LandingComponent } from './landing/landing.component';
     MainFeedComponent,
     MininavbarComponent,
     LoginComponent,
+
+    PartiesComponent,
+    SignupComponent,
+    LandingComponent,
+    CreatepartyComponent,
+    ProfileComponent,
+    OtherprofileComponent
     PartiesComponent,
     SignupComponent,
     LandingComponent
+
   ],
   imports: [
     BrowserModule,
