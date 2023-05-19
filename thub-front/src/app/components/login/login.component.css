@@ -1,5 +1,7 @@
 .bg-image{
-    background-image: url('/assets/login.jpg');
+
+    background-image: url('../../../assets/login.jpg');
+
     background-size: cover;
     height: 100vh;
     display: flex;

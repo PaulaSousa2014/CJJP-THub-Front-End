@@ -17,7 +17,11 @@ import { LoginNavbarComponent } from './components/navbars/login-navbar/login-na
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OtherprofileComponent } from './components/otherprofile/otherprofile.component';
+
+import { ClickPartyComponent } from './components/click-party/click-party.component';
+
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
+
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     PartiesComponent,
     SignupComponent,
     LandingComponent,
+
+    ClickPartyComponent
+
     EditprofileComponent
+
 
   ],
   imports: [
