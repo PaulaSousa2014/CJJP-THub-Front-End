@@ -23,13 +23,13 @@
 }
 .contentbox {
   width: 60rem;
-  height: 35rem;
-  border: solid black;
+  height: 37rem;
+
   display: flex;
   flex-direction: column;
   min-height: 35rem;
   /*centrar*/
-  position: fixed;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

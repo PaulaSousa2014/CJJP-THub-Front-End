@@ -1,0 +1,30 @@
+nav {
+  background-color: #E20074;
+  color: white;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn {
+  color:white;
+  --mdb-btn-box-shadow: 0;
+  font-weight: 1000;
+  text-transform: none;
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+
+nav img {
+  max-width: 125px;
+}
+

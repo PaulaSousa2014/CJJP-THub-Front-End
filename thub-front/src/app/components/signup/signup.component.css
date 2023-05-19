@@ -1,9 +1,11 @@
 .bg-image{
+
     background-image: url('../../../assets/login.jpg');
+
     background-size: cover;
     height: 100vh;
     display: flex;
-  
+
 }
 .container{
     padding: 3%;
@@ -55,6 +57,6 @@ margin-bottom: 5%;
     }
     .container{
         width: fit-content;
-     
+
     }
   }
