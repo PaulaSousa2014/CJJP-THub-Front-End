@@ -17,6 +17,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { OtherprofileComponent } from './components/otherprofile/otherprofile.component';
+import { ClickPartyComponent } from './components/click-party/click-party.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { OtherprofileComponent } from './components/otherprofile/otherprofile.co
     PartiesComponent,
 
     SignupComponent,
-    LandingComponent
+    LandingComponent,
+    ClickPartyComponent
 
   ],
   imports: [
