@@ -15,7 +15,7 @@ nav i {
 }
 
 nav img {
-  max-width: 150px;
+  max-width: 125px;
 }
 .container-fluid{
   margin-left: 20px; margin-right: 20px;
@@ -37,6 +37,7 @@ nav img {
   display: block;
 }
 
+
 .navbar-expand .navbar-nav .dropdown-menu {
   position: absolute;
 }
@@ -51,4 +52,8 @@ nav img {
 .dropdown-menu a.dropdown-item:focus {
   background-color: #f1add06e;
   color: white;
+
+#user-picture {
+  max-width: 35px;
+
 }
