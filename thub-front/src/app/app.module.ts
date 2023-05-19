@@ -9,7 +9,6 @@ import { NavbarComponent } from './components/navbars/navbar/navbar.component';
 import { MininavbarComponent } from './components/navbars/mininavbar/mininavbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
-import { MemecompComponent } from './memecomp/memecomp.component';
 import { LoginComponent } from './login/login.component';
 import { PartiesComponent } from './parties/parties.component';
 import { SignupComponent } from './signup/signup.component';
@@ -35,7 +34,7 @@ import { OtherprofileComponent } from './otherprofile/otherprofile.component';
     LandingComponent,
     CreatepartyComponent,
     ProfileComponent,
-    OtherprofileComponent
+    OtherprofileComponent,
     PartiesComponent,
     SignupComponent,
     LandingComponent
