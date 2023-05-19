@@ -17,4 +17,19 @@ nav i {
 nav img {
   max-width: 150px;
 }
+.container-fluid{
+  margin-left: 20px; margin-right: 20px;
+}
+.dropdown-menu-end {
+  left: auto;
+  right: 0;
+}
 
+.dropdown-menu {
+  display: none;
+  background-color: #E20074;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}

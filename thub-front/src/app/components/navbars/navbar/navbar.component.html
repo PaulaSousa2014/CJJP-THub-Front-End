@@ -1,6 +1,6 @@
 <!-- Header -->
 <nav class="navbar navbar-expand mb-3">
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="col-8 d-flex">
       <a class="navbar-brand me-0 my-auto" href="#"><img class="img-fluid" src="../../assets/img/logos/THubLogo200pxWWhite.png"></a>
       <ul class="navbar-nav">
@@ -15,10 +15,19 @@
         </li>
       </ul>
     </div>
-    <div class="d-flex col-4">
-      <a href="#" class="my-auto ms-auto"><img class="img-fluid" src="../../../../assets/img/placeholders/user-picture-50x50.png" alt=""
-          srcset=""></a>
-      <a href="#" class="my-auto ms-2">Username</a>
+
+    <div class="d-flex col-4 justify-content-end align-items-center">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">
+            <img class="img-fluid" src="../../../../assets/img/placeholders/user-picture-50x50.png" alt="User Picture">
+            Username
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end list-unstyled">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
