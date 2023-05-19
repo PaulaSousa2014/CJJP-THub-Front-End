@@ -17,7 +17,43 @@ nav i {
 nav img {
   max-width: 125px;
 }
+.container-fluid{
+  margin-left: 20px; margin-right: 20px;
+}
+.dropdown-menu-end {
+  left: auto;
+  right: 0;
+}
 
+.dropdown-menu {
+  display: none;
+  background-color: #E20074;
+  transition: opacity 0.3s ease;
+  margin-top: 0; /* Adjust the margin to reduce the gap */
+  padding: 10px 0; /* Adjust the padding for vertical spacing */
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+
+.navbar-expand .navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
+.dropdown-menu a.dropdown-item {
+  color: white;
+  padding: 10px 20px;
+  line-height: 1.5;
+}
+
+.dropdown-menu a.dropdown-item:hover,
+.dropdown-menu a.dropdown-item:focus {
+  background-color: #f1add06e;
+  color: white;
+}
 #user-picture {
   max-width: 35px;
+
 }
