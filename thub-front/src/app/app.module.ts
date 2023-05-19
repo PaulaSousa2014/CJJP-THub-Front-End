@@ -44,7 +44,7 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
     SignupComponent,
     LandingComponent,
 
-    ClickPartyComponent
+    ClickPartyComponent,
 
     EditprofileComponent
 
