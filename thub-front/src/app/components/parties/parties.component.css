@@ -72,11 +72,12 @@
 }
 .componentcard{
 margin-bottom: 5px;
+background-color: #D9D9D9;
+margin-bottom: 15px;
+border-radius: 10px;
 }
-.card {
-  background-color: #D9D9D9;
-  margin-bottom: 2px;
-}
+
+
 
 .people {
   margin-right: 20px;
@@ -85,7 +86,7 @@ margin-bottom: 5px;
 .card-inside img {
   width: 190px;
   height: 100%;
-  border-radius: 6%;
+  border-radius: 10px;
 }
 
 /*Button on de right side*/
