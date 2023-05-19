@@ -31,7 +31,7 @@ import { OtherprofileComponent } from './components/otherprofile/otherprofile.co
     PartiesComponent,
     SignupComponent,
     LandingComponent,
-    LoginNavbarComponent
+    LoginNavbarComponent,
     CreatepartyComponent,
     ProfileComponent,
     OtherprofileComponent
