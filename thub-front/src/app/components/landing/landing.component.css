@@ -1,3 +1,21 @@
+/* Landing paddings */
+#landing {
+  margin-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Carousel arrows */
+.carousel-control-prev {
+  left: 0;
+  right: auto;
+}
+.carousel-control-next {
+  right: 0;
+  left: auto;
+}
+
+
 .carousel-caption {
   position: absolute;
   height: 100%;
@@ -20,12 +38,6 @@
 
 #carouselExampleSlidesOnly {
   background-color: var(--color-pink);
-}
-
-#landing {
-  display: flex;
-  flex-direction: column;
-  padding: 3%;
 }
 
 #card-custom {
