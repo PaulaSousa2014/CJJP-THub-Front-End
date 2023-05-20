@@ -55,6 +55,7 @@ nav a:not(.dropdown-item) {
   background-color: var(--color-white);
 }
 
+/* Icon profile */
 .profile {
   font-size: 20px;
   margin-right: 5%;
