@@ -10,16 +10,21 @@
   left: 0;
   right: auto;
   transform: translateX(-40%);
-  color: var(--color-dark-grey);
 }
-
 .carousel-control-next {
   right: 0;
   left: auto;
   transform: translateX(40%);
-  color: var(--color-dark-grey);
 }
 
+/* Item carousel container size */
+.item-container {
+  height: 400px;
+}
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
 
 .carousel-caption {
   position: absolute;
@@ -29,10 +34,10 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 10px;
+  padding: 2%;
   width: 50%;
-  text-align: justify;
-  color: black;
+  text-align: left;
+  color: var(--color-white);
   font-weight: bolder;
   font-size: larger;
   margin-left: 3%;
