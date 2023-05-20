@@ -1,37 +1,31 @@
-<!-- Header -->
-<nav class="navbar navbar-expand">
-  <div class="container-fluid" >
-    <div class="col-8 d-flex">
-      <a class="navbar-brand me-0 my-auto" href="#"><img class="img-fluid" src="../../assets/img/logos/THubLogo200pxWWhite.png"></a>
-      <ul class="navbar-nav">
-        <li class="nav-item ps-2 my-auto">
-          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-fill"></i></a>
-        </li>
-        <li class="nav-item ps-2 my-auto">
-          <a class="nav-link" href="#"><i class="bi bi-people-fill"></i></a>
-        </li>
-        <li class="nav-item px-2 my-auto">
-          <a class="nav-link" href="#"><i class="bi bi-chat-text-fill"></i></a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="d-flex col-4 justify-content-end align-items-center">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">
-            <img class="img-fluid" src="../../../../assets/img/placeholders/user-picture-50x50.png" alt="User Picture">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/img/logos/THubLogo200pxWWhite.png" alt="Logo">
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <i class="bi bi-list fa-lg text-light"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
+        <a href="#" class="nav-link mx-2"><i class="bi bi-house-fill"></i></a>
+        <a href="#" class="nav-link mx-2"><i class="bi bi-people-fill"></i></a>
+        <a href="#" class="nav-link mx-2"><i class="bi bi-chat-text-fill"></i></a>
+      </div>
+      <div class="navbar-nav ms-auto align-items-center">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="profile bi bi-person-circle fa-x5"></i>
             Username
           </a>
-          <ul class="dropdown-menu dropdown-menu-end list-unstyled">
-            <li><a class="dropdown-item" href="#">Your parties</a></li>
-            <li><a class="dropdown-item" href="#">View profle</a></li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
-
-
-          </ul>
-        </li>
-      </ul>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i>Your parties</a>
+            <a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i>View profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="bi bi-door-open-fill"></i>Log out</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
