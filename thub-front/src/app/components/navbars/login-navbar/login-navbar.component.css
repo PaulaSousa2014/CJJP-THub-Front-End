@@ -12,21 +12,21 @@ nav > div {
 
 /* Log in / Sign in text */
 nav a {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
   font-weight: bold;
 }
 
 /* Button styles */
 .btn {
-  color:white;
+  color: var(--color-white);
   --mdb-btn-box-shadow: 0;
   text-transform: none;
   font-size: 1rem;
 }
 .btn:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
 }
 
 /* T-Hub image */
