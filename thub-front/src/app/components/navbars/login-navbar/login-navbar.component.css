@@ -1,32 +1,36 @@
+/* Navbar colors */
 nav {
   background-color: var(--color-pink);
   color: var(--color-white);
 }
 
+/* Navbar content */
 nav > div {
   padding-left: 10%;
   padding-right: 10%;
 }
 
+/* Log in / Sign in text */
 nav a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: bold;
 }
 
+/* Button styles */
 .btn {
   color:white;
   --mdb-btn-box-shadow: 0;
   text-transform: none;
   font-size: 1rem;
 }
-
 .btn:hover {
   background-color: white;
   color: black;
 }
 
+/* T-Hub image */
 nav img {
-  max-width: 125px;
+  max-width: 50%;
 }
 
