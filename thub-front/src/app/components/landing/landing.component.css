@@ -26,6 +26,12 @@
   height: auto;
 }
 
+/* Button */
+.btn {
+  color: var(--color-dark-grey);
+  font-weight: bold !important;
+}
+
 .carousel-caption {
   position: absolute;
   height: 100%;
