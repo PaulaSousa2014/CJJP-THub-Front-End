@@ -1,5 +1,12 @@
-/* Color variables */
+/* Roboto font import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+/* Viariables */
 :root {
+  /* Roboto font */
+  --font-roboto: 'Roboto', sans-serif;
+
+  /* Colors */
   --color-pink: #E20074;  /* T-Systems pink */
   --color-grey: #D9D9D9;  /* Background grey */
 }
