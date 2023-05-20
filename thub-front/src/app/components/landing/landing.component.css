@@ -9,10 +9,13 @@
 .carousel-control-prev {
   left: 0;
   right: auto;
+  transform: translateX(-40%);
 }
+
 .carousel-control-next {
   right: 0;
   left: auto;
+  transform: translateX(40%);
 }
 
 
