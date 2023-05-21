@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 
 import { FaqComponent } from './components/faq/faq.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 import { RouterModule } from '@angular/router';
 
@@ -58,7 +59,8 @@ import { RouterModule } from '@angular/router';
     ContactsComponent,
     OpenChatComponent,
     AboutUsComponent,
-    FaqComponent
+    FaqComponent,
+    PrivacyPolicyComponent
 
   ],
   imports: [
