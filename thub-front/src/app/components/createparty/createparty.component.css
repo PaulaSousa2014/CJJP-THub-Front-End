@@ -79,16 +79,19 @@
 }
 
 @media (max-width: 650px) {
-  .formdiv{
+  .formdiv {
     margin-left: 0;
   }
-  .form{
+
+  .form {
     max-width: 20rem;
     margin-bottom: 25px;
     margin-left: 15px;
     margin-top: 20px;
   }
-  .divbutton{
+
+  .divbutton {
     margin-top: 25px;
-text-align: center;  }
+    text-align: center;
+  }
 }
