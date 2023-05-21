@@ -26,6 +26,7 @@ import { ContactsComponent } from './components/chat/contacts/contacts.component
 import { OpenChatComponent } from './components/chat/contacts/open-chat/open-chat.component';
 import { FormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     ChatComponent,
     ContactsComponent,
     OpenChatComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    FaqComponent
 
   ],
   imports: [
