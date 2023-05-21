@@ -11,6 +11,7 @@ import { CreatepartyComponent } from './components/createparty/createparty.compo
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path:'faq',
     component: FaqComponent
+  },
+  {
+    path:'privacy',
+    component: PrivacyPolicyComponent
   }
 ];
 
