@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path:'about',
     component: AboutUsComponent
+  },
+  {
+    path:'faq',
+    component: FaqComponent
   }
 ];
 
