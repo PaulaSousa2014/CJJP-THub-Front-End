@@ -9,5 +9,6 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   title = 'thub-front';
+  isLoggedIn = false; // Suponiendo que inicialmente el usuario no ha iniciado sesión
 
 }
