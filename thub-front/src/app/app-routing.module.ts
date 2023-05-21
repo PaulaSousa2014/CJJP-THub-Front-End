@@ -12,6 +12,7 @@ import { EditprofileComponent } from './components/editprofile/editprofile.compo
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path:'privacy',
     component: PrivacyPolicyComponent
+  },
+  {
+    path:'service',
+    component: TermsServiceComponent
   }
 ];
 
