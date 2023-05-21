@@ -1,30 +1,36 @@
+/* Navbar colors */
 nav {
-  background-color: #E20074;
-  color: white;
+  background-color: var(--color-pink);
+  color: var(--color-white);
 }
 
+/* Navbar content */
+nav > div {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* Log in / Sign in text */
 nav a {
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: bold;
 }
 
+/* Button styles */
 .btn {
-  color:white;
+  color: var(--color-white);
   --mdb-btn-box-shadow: 0;
-  font-weight: 1000;
   text-transform: none;
   font-size: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.4rem;
 }
-
 .btn:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
 }
 
+/* T-Hub image */
 nav img {
-  max-width: 125px;
+  max-width: 50%;
 }
 

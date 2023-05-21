@@ -2,6 +2,18 @@
   background-color: #E20074;
 }
 
+.button-send{
+  border-color: #E20074;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.message-input{
+  margin-top: 1%;
+}
 .recive {
   margin-left: 2%;
   background-color: white;

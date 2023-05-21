@@ -38,9 +38,9 @@
 
 
     <div class="input-group message-input">
-      <input type="text" class="form-control" [(ngModel)]="newMessage" placeholder="Type message" aria-label="Recipient's username" aria-describedby="button-addon2" />
-      <button class="btn" type="button" id="button-addon2" style="padding-top: .55rem;" (click)="sendMessage()">
-        <span class="text-light">Send</span>
+      <input type="text" class="form-control button-send" [(ngModel)]="newMessage" placeholder="Type message" aria-label="Recipient's username" aria-describedby="button-addon2" />
+      <button class="btn" type="button"  style="padding-top: .55rem;" (click)="sendMessage()">
+        <i class="fa-regular fa-paper-plane" style="color: #f9fafa;"></i>
       </button>
     </div>
   </div>
