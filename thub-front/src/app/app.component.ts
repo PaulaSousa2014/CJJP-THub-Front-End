@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-
 
 @Component({
   selector: 'app-root',
@@ -9,6 +7,15 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   title = 'thub-front';
-  isLoggedIn = false; // Suponiendo que inicialmente el usuario no ha iniciado sesión
+  isLoggedIn = false;
 
+  constructor() {
+    // Inicializar como no autenticado
+  }
+
+  // Lógica para iniciar sesión
+  login() {
+    // Realizar el proceso de inicio de sesión y luego establecer isLoggedIn como true
+    this.isLoggedIn = true;
+  }
 }
