@@ -1,10 +1,10 @@
 <app-mininavbar></app-mininavbar>
-<app-navbar *ngIf="!isLoggedIn"></app-navbar>
-<app-login-navbar *ngIf="isLoggedIn"></app-login-navbar>
-
+<ng-container *ngIf="!isLogged">
+  <app-login-navbar></app-login-navbar>
+</ng-container>
+<ng-container *ngIf="isLogged">
+  <app-navbar></app-navbar>
+</ng-container>
 <!-- Contenido principal de la aplicación -->
-<router-outlet></router-outlet>
-
-
 <router-outlet></router-outlet>
 <app-footer></app-footer>

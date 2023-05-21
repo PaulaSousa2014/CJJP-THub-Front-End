@@ -7,15 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'thub-front';
-  isLoggedIn = false;
+  /* Boolean is logged */
+  isLogged: boolean = true;
 
-  constructor() {
-    // Inicializar como no autenticado
-  }
-
-  // Lógica para iniciar sesión
-  login() {
-    // Realizar el proceso de inicio de sesión y luego establecer isLoggedIn como true
-    this.isLoggedIn = true;
-  }
+  constructor() {}
 }
