@@ -32,6 +32,42 @@
   font-weight: bold !important;
 }
 
+/* Carousel responsive */
+@media (max-width: 576px) {
+  .carousel {
+    margin-top: 5%;
+    padding: 5%;
+    max-width: 100%;
+  }
+  .carousel-control-prev {
+    left: 0;
+    right: auto;
+    transform: translateX(-30%);
+  }
+  .carousel-control-next {
+    right: 0;
+    left: auto;
+    transform: translateX(30%);
+  }
+  .item-container {
+    height: auto;
+  }
+  .carousel-item img {
+    display: none;
+  }
+  .carousel-caption {
+    text-align: center;
+    padding: 20px; /* Ajustar el padding para ampliar la zona del texto */
+  }
+  .carousel-caption .btn {
+    display: none;
+  }
+}
+
+
+
+
+
 .carousel-caption {
   position: absolute;
   height: 100%;
