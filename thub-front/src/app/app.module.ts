@@ -31,6 +31,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 import { RouterModule } from '@angular/router';
+import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 
 
 
@@ -60,7 +61,8 @@ import { RouterModule } from '@angular/router';
     OpenChatComponent,
     AboutUsComponent,
     FaqComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    TermsServiceComponent
 
   ],
   imports: [
