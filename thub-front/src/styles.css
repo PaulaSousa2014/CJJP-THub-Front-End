@@ -11,6 +11,8 @@
   --color-light-grey: #D9D9D9;  /* Background grey */
   --color-dark-grey: #262626; /* Dark grey */
   --color-white: #ffffff; /* White */
+
+  --color-login-icon: #8d8e91; /* Icon login (light grey) */
 }
 
 /* Apply font to all elements */

@@ -26,7 +26,13 @@ import { ContactsComponent } from './components/chat/contacts/contacts.component
 import { OpenChatComponent } from './components/chat/contacts/open-chat/open-chat.component';
 import { FormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+
+import { FaqComponent } from './components/faq/faq.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+
 import { RouterModule } from '@angular/router';
+import { TermsServiceComponent } from './components/terms-service/terms-service.component';
+
 
 
 @NgModule({
@@ -53,7 +59,10 @@ import { RouterModule } from '@angular/router';
     ChatComponent,
     ContactsComponent,
     OpenChatComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    FaqComponent,
+    PrivacyPolicyComponent,
+    TermsServiceComponent
 
   ],
   imports: [
