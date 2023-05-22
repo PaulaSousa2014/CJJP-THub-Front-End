@@ -1,0 +1,11 @@
+/* Mini footer colors */
+.mini-footer {
+  background-color: var(--color-dark-grey);
+  padding-right: 10%;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}

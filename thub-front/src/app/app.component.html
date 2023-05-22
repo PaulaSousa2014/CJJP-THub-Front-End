@@ -16,6 +16,14 @@
   <div class="flex-grow-1">
     <router-outlet></router-outlet>
   </div>
-  <!-- Footer -->
-  <app-footer></app-footer>
+  <!-- Show the footer if it is not /login or /signup -->
+  <ng-container *ngIf="showNavbar">
+    <!-- Footer -->
+    <app-footer></app-footer>
+  </ng-container>
+  <ng-container *ngIf="!showNavbar">
+    <app-minifooter></app-minifooter>
+  </ng-container>
+
+
 </div>
