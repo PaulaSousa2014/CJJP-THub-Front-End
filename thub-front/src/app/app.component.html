@@ -1,18 +1,21 @@
-<!-- Black navbar -->
-<app-mininavbar></app-mininavbar>
-<!-- Show the navbar if it is not /login or /signup -->
-<ng-container *ngIf="showNavbar">
-  <!-- Show the navbar of not logged user -->
-  <ng-container *ngIf="!isLogged">
-    <app-login-navbar></app-login-navbar>
+<div class="d-flex flex-column min-vh-100">
+  <!-- Black navbar -->
+  <app-mininavbar></app-mininavbar>
+  <!-- Show the navbar if it is not /login or /signup -->
+  <ng-container *ngIf="showNavbar">
+    <!-- Show the navbar of not logged user -->
+    <ng-container *ngIf="!isLogged">
+      <app-login-navbar></app-login-navbar>
+    </ng-container>
+    <!-- Show the navbar of logged user -->
+    <ng-container *ngIf="isLogged">
+      <app-navbar></app-navbar>
+    </ng-container>
   </ng-container>
-  <!-- Show the navbar of logged user -->
-  <ng-container *ngIf="isLogged">
-    <app-navbar></app-navbar>
-  </ng-container>
-</ng-container>
-<!-- Main content of the application -->
-
-<router-outlet></router-outlet>
-<!-- Footer -->
-<app-footer></app-footer>
+  <!-- Main content of the application -->
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- Footer -->
+  <app-footer></app-footer>
+</div>
