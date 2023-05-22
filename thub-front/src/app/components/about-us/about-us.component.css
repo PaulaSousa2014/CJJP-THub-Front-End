@@ -1,5 +1,9 @@
-body{margin-top:20px;
-    background:#eee;
+.container{
+    margin-top:20px;
+
+    }
+    .section_heading{
+        margin-bottom: 20px;
     }
 
     .single_advisor_profile {
@@ -21,6 +25,11 @@ body{margin-top:20px;
        
         overflow: hidden;
     }
+    .single_advisor_profile .advisor_thumb img {
+        width: 100%;
+        height: auto;
+      
+      }
     .single_advisor_profile .advisor_thumb::after {
         -webkit-transition-duration: 500ms;
         transition-duration: 500ms;

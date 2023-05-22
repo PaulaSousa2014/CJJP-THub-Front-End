@@ -1,56 +1,57 @@
 /*Page div*/
-
-.container-fluid {
-  flex-direction: row;
-  padding: 0;
-  justify-content: space-between;
-  margin-top: 5%;
-
+.container-custom {
+  display: flex;
+  justify-items: baseline;
 }
 
 /*Buttons on de left side*/
-.menulateralizq {
+.column-left {
   display: flex;
   flex-direction: column;
   margin-left: 5%;
   margin-top: 1%;
   width: 150px;
+  height: 100vh;
 
+  align-items: baseline;
 }
 
-.menulateralizq1,
-.menulateralizq2 {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5%;
-  margin-top: 1%;
-}
-
-.btn1,
-.btn2 {
+.btn1 {
   color: black;
-}
-
-.btn1,
-.btn2 {
   font-size: 19px;
 }
+
 /*icons size*/
-.btn1 i,
-.btn2 i {
+.btn1 i {
   font-size: 18px;
 }
 
-.menulateralizq button {
-  text-align: left;
-}
-
 /*Components on the middle*/
-.searchdiv {
+.column-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.search {
   margin-bottom: 8px;
-  border: #D9D9D9 inset 2px;
+  margin-left: 5%;
   padding: 5px;
   border-radius: 8px;
+  width: 80%;
+}
+.search button {
+  background-color: var(--color-pink) !important;
+  color: white;
+}
+.search input {
+  border: var(--color-pink) inset 1px;
+}
+.inside-btn {
+  position: relative;
+  left: -35px;
+  margin-left: -40px;
+  z-index: 1;
 }
 
 .form-control {
@@ -70,14 +71,12 @@
   margin-right: 2px;
   padding: 8px;
 }
-.componentcard{
-margin-bottom: 5px;
-background-color: #D9D9D9;
-margin-bottom: 15px;
-border-radius: 10px;
+.componentcard {
+  margin-bottom: 5px;
+  background-color: #d9d9d9;
+  margin-bottom: 15px;
+  border-radius: 10px;
 }
-
-
 
 .people {
   margin-right: 20px;
@@ -91,7 +90,7 @@ border-radius: 10px;
 
 /*Button on de right side*/
 .createparty {
-  background-color: #E20074;
+  background-color: var(--color-pink);
   color: white;
   margin-top: 4%;
   padding: 0;
@@ -101,65 +100,83 @@ border-radius: 10px;
 
 .btn {
   min-width: 150px;
-
-}
-
-.divbutton {
-  margin-right: 5%;
-
 }
 
 .card-inside {
   display: flex;
   justify-content: flex-end;
-
 }
 
+/*Responsive tablet*/
+
+@media (max-width: 850px) {
+  .column-left {
+    height: 130vh;
+  }
+  .column-right {
+    align-items: center;
+    height: fit-content;
+  }
+  .componentcard {
+    display: flex;
+    flex-direction: column;
+  }
+  .centercomponent {
+    margin-left: 0;
+    margin-right: 0;
+    width: 370px;
+  }
 
 
+  .card-inside {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+  }
 
+  .card-inside img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+  }
+
+  .card-body {
+    width: 350px;
+    text-align: center;
+    margin-top: 5%;
+    padding: 0;
+    margin-left: 3%;
+  }
+}
+
+/*Responsive mobil*/
 @media (max-width: 576px) {
-
-  .content {
+  .container-custom {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
   }
 
-  .menulateralizq {
+  .column-left {
     margin-bottom: 4%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-left: 0;
 
-
+    height: fit-content;
   }
 
-  .btn1,
-  .btn2 {
-    width: 100px;
+  .btn1 {
+    width: 150px;
   }
 
-  .menulateralizq1 {
-    margin-bottom: 10px;
-    flex-direction: row;
-
-  }
-
-  .menulateralizq2 {
-    margin-bottom: 10px;
-    flex-direction: row;
-  }
-
-  .searchdiv {
+  .search {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 0;
+    width: 100%;
   }
 
   .componentcard {
@@ -170,14 +187,6 @@ border-radius: 10px;
   .centercomponent {
     margin-left: 0;
     margin-right: 0;
-    width: 370px;
-  }
-
-  .searchdiv {
-    margin-bottom: 8px;
-    border: #D9D9D9 inset 2px;
-    padding: 5px;
-    border-radius: 8px;
     width: 370px;
   }
 
