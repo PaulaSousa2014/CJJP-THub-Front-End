@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-
-
 import { MemecompComponent } from './components/memecomp/memecomp.component';
 import { NavbarComponent } from './components/navbars/navbar/navbar.component';
 import { MininavbarComponent } from './components/navbars/mininavbar/mininavbar.component';
@@ -26,22 +26,16 @@ import { ContactsComponent } from './components/chat/contacts/contacts.component
 import { OpenChatComponent } from './components/chat/contacts/open-chat/open-chat.component';
 import { FormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
-
-import { RouterModule } from '@angular/router';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
 import { AvatarsComponent } from './components/avatars/avatars.component';
-
-
 
 @NgModule({
   declarations: [
     AppComponent,
     MemecompComponent,
-
     NavbarComponent,
     FooterComponent,
     MainFeedComponent,
@@ -57,7 +51,6 @@ import { AvatarsComponent } from './components/avatars/avatars.component';
     Error404Component,
     ClickPartyComponent,
     EditprofileComponent,
-
     ChatComponent,
     ContactsComponent,
     OpenChatComponent,
@@ -67,13 +60,13 @@ import { AvatarsComponent } from './components/avatars/avatars.component';
     TermsServiceComponent,
     MinifooterComponent,
     AvatarsComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
