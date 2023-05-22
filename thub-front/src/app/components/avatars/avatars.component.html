@@ -1,9 +1,20 @@
 <div class="container my-2">
-  <div class="row d-flex justify-content-center">
-    <div class="col-4 col-md-3 text-center p-0 m-0" *ngFor="let image of avatars">
-      <img class="img-fluid" src="../../../assets/img/avatars/{{ image }}" alt="Cat avatar">
+  <h3 class="title text-center">Choose your profile picture</h3>
+  <div class="row justify-content-center">
+    <div class="col-3 col-md-2 mb-4" *ngFor="let image of avatars">
+      <div class="card" [ngClass]="{'selected-avatar': image === selectedAvatar}" (click)="selectAvatar(image)">
+        <img class="card-img-top img-fluid" src="../../../assets/img/avatars/{{ image }}" alt="Cat avatar">
+      </div>
+    </div>
+    <div class="col-12 text-right">
+      <button type="button" class="btn" routerLink="/editprofile">Save</button>
     </div>
   </div>
 </div>
+
+
+
+
+
 
 
