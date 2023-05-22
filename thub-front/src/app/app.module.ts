@@ -32,6 +32,7 @@ import { TermsServiceComponent } from './components/terms-service/terms-service.
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
 import { AvatarsComponent } from './components/avatars/avatars.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
