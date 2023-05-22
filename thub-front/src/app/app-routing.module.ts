@@ -16,6 +16,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
+import { ClickPartyComponent } from './components/click-party/click-party.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,6 @@ const routes: Routes = [
     path: 'parties',
     component: PartiesComponent
   },
-
   {
     path: 'chat',
     component: ChatComponent
@@ -76,6 +76,10 @@ const routes: Routes = [
   {
     path:'service',
     component: TermsServiceComponent
+  },
+  {
+    path: 'clickparty',
+    component: ClickPartyComponent
   },
   { path: '**',
   component: Error404Component}

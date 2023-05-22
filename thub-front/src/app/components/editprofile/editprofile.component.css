@@ -10,7 +10,8 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 }
-.content{
+
+.content {
   margin-bottom: 5rem;
   margin-top: 5rem;
 }
@@ -36,9 +37,11 @@
   transform: translate(-50%, -50%);
 }
 
-.formdiv{
-  justify-content: center; /* Centrar verticalmente */
-  align-items: center; /* Centrar horizontalmente */
+.formdiv {
+  justify-content: center;
+  /* Centrar verticalmente */
+  align-items: center;
+  /* Centrar horizontalmente */
   margin-left: 15%;
   margin-top: 60px;
   padding-bottom: 20px;
@@ -59,18 +62,163 @@
   margin-top: -20px;
 }
 
-.Create{
-  background-color: #E20074;
-color: white;
-margin-right: 10px;
-height: 35px;
-width: 120px;
-font-size:15px;
-text-transform: none;
-padding: 0;
+.logodiv {
+  margin-left: 6rem;
 }
 
-.form-label{
+.Create {
+  background-color: #E20074;
+  color: white;
+  margin-right: 10px;
+  height: 35px;
+  width: 120px;
+  font-size: 15px;
+  text-transform: none;
+  padding: 0;
+}
+
+.cancel {
+  color: black;
+  font-size: 20px;
+  margin-right: 25px;
+}
+
+.form-label {
   font-size: 20px;
   margin-bottom: 1px;
+}
+
+@media (max-width: 1024px) {
+  .content{
+    max-width: 55rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-height: 62rem;
+  }
+
+  .logodiv {
+    margin-left: 7rem;
+    margin-top: 1rem;
+
+  }
+
+
+.formdiv {
+  margin-left: 13%;
+  margin-top: 30px;
+}
+.form {
+  max-width: 40rem;
+  margin-bottom: 5px;
+  margin-top: 0;
+
+}
+.imagencat{
+  height: 8rem;
+}
+.contentbox {
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  /*centrar*/
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+.imagediv {
+  padding: 2rem;
+}
+
+.Create {
+  background-color: #E20074;
+  color: white;
+  margin-right: 10px;
+  height: 35px;
+  width: 70px;
+  font-size: 15px;
+  text-transform: none;
+
+}
+}
+
+
+@media (max-width: 650px) {
+
+
+  .logodiv {
+    margin-left: 7rem;
+    margin-top: 1rem;
+
+  }
+ .divbutton{
+  position: inherit;
+  margin-top: 1rem;
+  margin-left: 0.3rem;
+
+ }
+ .cancel {
+  color: black;
+  font-size: 17px;
+  margin-right: 25px;
+}
+.formdiv {
+  justify-content: center;
+  /* Centrar verticalmente */
+  align-items: center;
+  /* Centrar horizontalmente */
+  margin-left: 5%;
+  margin-top: 45px;
+  padding-bottom: 20px;
+
+}
+.form {
+  max-width: 40rem;
+  margin-bottom: 25px;
+  margin-top: 0;
+padding-right: 10px;
+
+}
+.imagencat{
+  height: 8rem;
+}
+.contentbox {
+  max-width: 70rem;
+  height: 200rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  /*centrar*/
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  margin-bottom: 2rem;
+}
+.imagediv {
+  padding: 3rem;
+}
+.content {
+ height: 100rem;
+}
+.logoimg {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-top: -110px;
+}
+.Create {
+  background-color: #E20074;
+  color: white;
+  margin-right: 10px;
+  height: 35px;
+  width: 70px;
+  font-size: 15px;
+  text-transform: none;
+
+}
 }
