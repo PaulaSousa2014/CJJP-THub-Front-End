@@ -17,6 +17,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { ClickPartyComponent } from './components/click-party/click-party.component';
+import { AvatarsComponent } from './components/avatars/avatars.component';
 
 
 const routes: Routes = [
@@ -58,7 +59,7 @@ const routes: Routes = [
     component: CreatepartyComponent
   },
   {
-    path:'editeprofile',
+    path:'editprofile',
     component: EditprofileComponent
   },
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'clickparty',
     component: ClickPartyComponent
+  },
+  {
+    path: 'avatars',
+    component: AvatarsComponent
   },
   { path: '**',
   component: Error404Component}

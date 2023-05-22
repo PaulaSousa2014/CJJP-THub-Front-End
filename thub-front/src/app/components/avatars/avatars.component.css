@@ -1,0 +1,11 @@
+.selected-avatar {
+    border: 2px solid var(--color-pink); 
+  }
+  .btn{
+    background-color: var(--color-pink);
+    color: var(--color-white);
+  }
+  .title{
+    color: var(--color-pink);
+    margin: 5%;
+  }
