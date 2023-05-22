@@ -24,9 +24,6 @@ const routes: Routes = [
     redirectTo: '/landingpage',
     pathMatch: 'full'
   },
-  { path: '**',
-  component: Error404Component}
-  ,
   {
     path: 'landingpage',
     component: LandingComponent
@@ -79,7 +76,9 @@ const routes: Routes = [
   {
     path:'service',
     component: TermsServiceComponent
-  }
+  },
+  { path: '**',
+  component: Error404Component}
 ];
 
 @NgModule({
