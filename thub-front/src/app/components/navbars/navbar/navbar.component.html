@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="/home">
       <img src="../../assets/img/logos/THubLogo200pxWWhite.png" alt="Logo">
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -8,9 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
-        <a href="#" class="nav-link mx-2"><i class="bi bi-house-fill"></i></a>
-        <a href="#" class="nav-link mx-2"><i class="bi bi-people-fill"></i></a>
-        <a href="#" class="nav-link mx-2"><i class="bi bi-chat-text-fill"></i></a>
+        <a href="#" class="nav-link mx-2" routerLink="/home"><i class="bi bi-house-fill"></i></a>
+        <a href="#" class="nav-link mx-2" routerLink="/parties"><i class="bi bi-people-fill"></i></a>
+        <a href="#" class="nav-link mx-2" routerLink="/chat"><i class="bi bi-chat-text-fill"></i></a>
       </div>
       <div class="navbar-nav ms-auto align-items-center">
         <div class="dropdown">
@@ -19,10 +19,10 @@
             Username
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i>Your parties</a>
-            <a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i>View profile</a>
+            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill" ></i>Your parties</a>
+            <a class="dropdown-item" routerLink="profile"><i class="bi bi-person-fill"></i>View profile</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="bi bi-door-open-fill"></i>Log out</a>
+            <a class="dropdown-item" routerLink="landingpage"><i class="bi bi-door-open-fill"></i>Log out</a>
           </div>
         </div>
       </div>
