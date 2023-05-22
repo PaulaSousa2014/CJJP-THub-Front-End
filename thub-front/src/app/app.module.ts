@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MemecompComponent } from './components/memecomp/memecomp.component';
 import { NavbarComponent } from './components/navbars/navbar/navbar.component';
 import { MininavbarComponent } from './components/navbars/mininavbar/mininavbar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { FooterComponent } from './components/footers/footer/footer.component';
 import { MainFeedComponent } from './components/main-feed/main-feed.component';
 import { LoginComponent } from './components/login/login.component';
 import { PartiesComponent } from './components/parties/parties.component';
@@ -32,6 +32,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 
 import { RouterModule } from '@angular/router';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
+import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
+import { AvatarsComponent } from './components/avatars/avatars.component';
 
 
 
@@ -62,7 +64,9 @@ import { TermsServiceComponent } from './components/terms-service/terms-service.
     AboutUsComponent,
     FaqComponent,
     PrivacyPolicyComponent,
-    TermsServiceComponent
+    TermsServiceComponent,
+    MinifooterComponent,
+    AvatarsComponent
 
   ],
   imports: [

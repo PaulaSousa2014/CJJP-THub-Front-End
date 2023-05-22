@@ -17,6 +17,7 @@
   max-width: 70rem;
   display: flex;
   flex-direction: column;
+  padding-bottom:2% ;
   border-radius: 5px;
   /*centrar*/
   position: relative;
@@ -59,3 +60,20 @@ padding: 0;
   font-size: 20px;
   margin-bottom: 1px;
 }
+
+/*pixel5*/
+@media (max-width: 650px) {
+  .divbutton {
+    top: 0;
+    right: 0;
+    margin-top: 2rem;
+    text-align: end;
+  }
+
+.formdiv{
+  justify-content: center; /* Centrar verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  margin-left: 8%;
+  margin-top: 4%;
+  margin-right: 3%;
+}}
