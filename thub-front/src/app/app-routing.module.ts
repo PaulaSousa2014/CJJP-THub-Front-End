@@ -10,9 +10,13 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+
+import { Error404Component } from './components/error404/error404.component';
+
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
+
 
 const routes: Routes = [
   {
@@ -20,6 +24,9 @@ const routes: Routes = [
     redirectTo: '/landingpage',
     pathMatch: 'full'
   },
+  { path: '**',
+  component: Error404Component}
+  ,
   {
     path: 'landingpage',
     component: LandingComponent
@@ -40,6 +47,7 @@ const routes: Routes = [
     path: 'parties',
     component: PartiesComponent
   },
+
   {
     path: 'chat',
     component: ChatComponent
