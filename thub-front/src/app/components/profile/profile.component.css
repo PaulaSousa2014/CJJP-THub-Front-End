@@ -1,0 +1,12 @@
+#profile-header {
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(226,0,116,1) 100%);
+  border: 1px black groove;
+  height: 150px;
+}
+
+.logoimg {
+  max-width: 90%;
+  border-radius: 100%;
+  margin-top: -75px;
+}
+

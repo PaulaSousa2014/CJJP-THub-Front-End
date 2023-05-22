@@ -1,3 +1,25 @@
+<!-- Black navbar -->
+<app-mininavbar></app-mininavbar>
+
+<!-- Show the navbar if it is not /login or /signup -->
+<ng-container *ngIf="showNavbar">
+  <!-- Show the navbar of not logged user -->
+  <ng-container *ngIf="!isLogged">
+    <app-login-navbar></app-login-navbar>
+  </ng-container>
+  <!-- Show the navbar of logged user -->
+  <ng-container *ngIf="isLogged">
+    <app-navbar></app-navbar>
+  </ng-container>
+</ng-container>
+<!-- Main content of the application -->
+
+<app-login-navbar></app-login-navbar>
+
+
 
 <app-signup></app-signup>
+
 <router-outlet></router-outlet>
+<!-- Footer -->
+<app-footer></app-footer>

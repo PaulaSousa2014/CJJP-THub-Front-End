@@ -1,0 +1,61 @@
+.imagediv {
+  width: 100%;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  background-position-y: center;
+  background-position-x: center;
+  background-size: cover;
+  background-image: url("/assets/backgroundprofile.png");
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+}
+
+
+.contentbox {
+  max-width: 70rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  /*centrar*/
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.formdiv{
+  justify-content: center; /* Centrar verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  margin-left: 20%;
+}
+
+.divbutton {
+  top: 0;
+  right: 0;
+  margin: 10px;
+  text-align: end;
+}
+
+
+.form {
+  max-width: 40rem;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: -20px;
+}
+
+.Create{
+  background-color: #E20074;
+color: white;
+margin-right: 10px;
+height: 35px;
+width: 120px;
+font-size:15px;
+padding: 0;
+}
+.form-label{
+  font-size: 20px;
+  margin-bottom: 1px;
+}

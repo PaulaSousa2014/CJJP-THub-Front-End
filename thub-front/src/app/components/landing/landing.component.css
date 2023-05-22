@@ -1,0 +1,161 @@
+/* Landing paddings */
+#landing {
+  margin-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Carousel arrows */
+.carousel-control-prev {
+  left: 0;
+  right: auto;
+  transform: translateX(-40%);
+}
+.carousel-control-next {
+  right: 0;
+  left: auto;
+  transform: translateX(40%);
+}
+
+/* Item carousel container size */
+.item-container {
+  height: 400px;
+}
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Button */
+.btn {
+  color: var(--color-dark-grey);
+  font-weight: bold !important;
+}
+
+/* Carousel responsive */
+@media (max-width: 576px) {
+  .carousel {
+    margin-top: 5%;
+    padding: 5%;
+    max-width: 100%;
+  }
+  .carousel-control-prev {
+    left: 0;
+    right: auto;
+    transform: translateX(-30%);
+  }
+  .carousel-control-next {
+    right: 0;
+    left: auto;
+    transform: translateX(30%);
+  }
+  .item-container {
+    height: auto;
+  }
+  .carousel-item img {
+    display: none;
+  }
+  .carousel-caption {
+    text-align: center;
+    padding: 20px; /* Ajustar el padding para ampliar la zona del texto */
+  }
+  .carousel-caption .btn {
+    display: none;
+  }
+}
+
+
+
+
+
+.carousel-caption {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 2%;
+  width: 50%;
+  text-align: left;
+  color: var(--color-white);
+  font-weight: bolder;
+  font-size: larger;
+  margin-left: 3%;
+}
+.carousel-caption h5 {
+  font-size: xx-large;
+}
+
+#carouselExampleSlidesOnly {
+  background-color: var(--color-pink);
+}
+
+#card-custom {
+  display: flex;
+  justify-content: space-around;
+  border: none !important;
+  box-shadow: none !important;
+
+}
+
+
+.card-img-top {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+.card-body {
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: #d9d9d958;
+  margin: 10%;
+  padding: 10px;
+
+
+}
+
+
+#text-custom {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-weight: bolder;
+  font-size: x-large;
+  width: 50%;
+  align-self: center;
+  color: black;
+  margin-top: 10%;
+}
+
+.carousel-item {
+  position: relative;
+  right: 0;
+}
+
+.carousel-item img {
+  height: 400px;
+  width: 500px;
+  object-fit: contain;
+  margin-left: 31%;
+}
+
+@media (max-width: 900px) {
+  #card-custom {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-item {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .carousel-item img {
+    visibility: hidden;
+    margin-left: 0%;
+  }
+  .carousel-caption {
+    width: 90%;
+  }
+}

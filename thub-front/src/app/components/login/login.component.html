@@ -1,0 +1,39 @@
+<div class="bg-image">
+  <div id="logo">
+    <img src="../../../assets/logo.png" alt="" />
+  </div>
+  <div class="container bg-white form-login col-md-3 position-relative">
+    <div class="row justify-content-center">
+      <div>
+        <h2 class="fw-bold text-center mt-1">LOGIN</h2>
+      </div>
+      <div class="col-md-16">
+        <form>
+          <div class="input-group flex-nowrap mb-4">
+            <span class="input-group-text bg-secondary-subtle" id="addon-wrapping">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="email" class="form-control bg-secondary-subtle" placeholder="Email" aria-label="Email"
+              aria-describedby="addon-wrapping" id="exampleFormControlInput1" />
+          </div>
+          <div class="input-group flex-nowrap mb-4">
+            <span class="input-group-text bg-secondary-subtle" id="addon-wrapping">
+              <i class="bi bi-lock-fill"></i>
+            </span>
+            <input type="password" id="inputPassword5" class="form-control bg-secondary-subtle"
+              aria-labelledby="passwordHelpBlock" placeholder="Password" />
+          </div>
+          <div id="passwordHelpBlock" class="form-text"></div>
+        </form>
+      </div>
+    </div>
+    <div class="text-end mb-3">
+      <a class="text-decoration-none text-dark" [routerLink]="['/forgot-password']">forgot password</a>
+    </div>
+    <div class="custom-button text-center">
+      <button type="button" class="btn btn-custom btn-lg fw-bold" [routerLink]="['/home']">LOG IN</button>
+    </div>
+    <div class="signUp mt-auto mb-3 text-center">Not a member yet? <a class="text-dark" [routerLink]="['/signup']">Sign
+        Up</a></div>
+  </div>
+</div>
