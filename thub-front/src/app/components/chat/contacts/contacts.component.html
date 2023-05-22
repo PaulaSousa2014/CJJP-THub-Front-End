@@ -6,13 +6,13 @@
         <table class="table table-responsive">
             <thead>
               <tr>
-                <th scope="col">Contacts</th>
+                <th class="fw-bold" scope="col">Contacts</th>
               </tr>
             </thead>
             <tbody>
               <tr class="row" *ngFor="let contact of contactos" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
                 <td class="align-middle">
-                  <h5 class="text-secondary d-flex align-items-center">
+                  <h5 class="text-custom d-flex align-items-center">
                     <i class="bi bi-person-fill"></i>
                     {{ contact.nombre }}
                   </h5>
@@ -28,13 +28,13 @@
         <table class="table table-responsive">
         <thead>
           <tr>
-            <th scope="col">Parties</th>
+            <th class="fw-bold" scope="col">Parties</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row" *ngFor="let party of parties" (click)="sleccionarParty(party.title)" [class.selected]="party.title === partySeleccionada" style="cursor: pointer">
             <td class="align-middle">
-              <h5 class="text-secondary d-flex align-items-center">
+              <h5 class="text-custom d-flex align-items-center">
                 <i class="bi bi-people-fill me-2"></i>
                 {{ party.title }}
               </h5>
