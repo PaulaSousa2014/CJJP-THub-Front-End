@@ -33,6 +33,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { RouterModule } from '@angular/router';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
+import { EditprofilepruebaComponent } from './editprofileprueba/editprofileprueba.component';
 
 
 
@@ -64,7 +65,8 @@ import { MinifooterComponent } from './components/footers/minifooter/minifooter.
     FaqComponent,
     PrivacyPolicyComponent,
     TermsServiceComponent,
-    MinifooterComponent
+    MinifooterComponent,
+    EditprofilepruebaComponent
 
   ],
   imports: [
