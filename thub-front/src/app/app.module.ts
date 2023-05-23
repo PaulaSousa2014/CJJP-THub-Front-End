@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MemecompComponent } from './components/memecomp/memecomp.component';
@@ -31,6 +31,8 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
 import { AvatarsComponent } from './components/avatars/avatars.component';
+
+import { AuthInterceptor } from './_helpers/auth.interceptor';
 
 
 @NgModule({
@@ -69,7 +71,13 @@ import { AvatarsComponent } from './components/avatars/avatars.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
