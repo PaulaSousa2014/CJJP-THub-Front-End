@@ -1,0 +1,28 @@
+.selected {
+  background-color: rgba(105, 103, 104, 0.2); ;
+}
+
+tr.row:hover > td > h5 {
+  color: var(--color-pink) !important;
+  cursor: pointer;
+}
+
+.contact-list {
+  height: 600px; /* Establece la altura máxima deseada para el contenedor */
+  overflow-x: hidden !important; /* Oculta el desplazamiento horizontal */
+}
+
+.overflow-auto {
+  overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
+}
+
+i.bi {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.text-custom{
+  color: var(--color-dark-grey);
+  font-size: medium;
+}
+

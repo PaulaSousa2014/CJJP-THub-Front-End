@@ -1,0 +1,80 @@
+.btn1 {
+  background-color: var(--color-pink) !important;
+  color: white;
+  font-size: 12px;
+  width: 140px;
+  /* Ajusta el ancho según tus necesidades */
+  margin-bottom: 5px;
+}
+
+.createparty {
+  background-color: var(--color-pink) !important;
+}
+
+/*icons size*/
+.btn1 i {
+  font-size: 15px;
+}
+
+.search button {
+  background-color: var(--color-pink) !important;
+  color: white;
+}
+
+.search input {
+  border: var(--color-pink) inset 1px;
+}
+
+.card-body {
+  text-align: center;
+  /*añair padding*/
+}
+
+.componentcard {
+  margin-bottom: 5px;
+  background-color: #d9d9d9;
+  border-radius: 6px;
+}
+
+.people {
+  margin-right: 10px;
+}
+
+.card-inside img {
+  width: 160px;
+  height: 100%;
+  border-radius: 6px;
+}
+
+@media (max-width: 576px) {
+  .container-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .componentcard {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    margin-left: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-inside {
+    width: 100%;
+    height: 100%;
+  }
+  .card-inside img {
+    width: 100%;
+    height: 100%;
+    border-radius: 2%;
+  }
+  .card-body {
+    width: 300px;
+    text-align: center;
+    margin-top: 5%;
+    margin-left: 3%;
+  }
+}
