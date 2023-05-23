@@ -8,10 +8,11 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class MainFeedComponent {
 
+  posts: any;
+
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    console.log("Hello world");
     this.getAllPosts();
   }
 
@@ -19,7 +20,8 @@ export class MainFeedComponent {
   getAllPosts() {
     this.postService.getPosts().subscribe({
       next: (data: any) => {
-        console.log(data);
+        this.posts = data;
+        console.log (this.posts[0].creator);
       },
       error: (error: any) => {
         console.log("Cannot get posts", error);

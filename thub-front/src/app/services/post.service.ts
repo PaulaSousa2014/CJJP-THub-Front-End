@@ -17,8 +17,7 @@ export class PostService {
   constructor(private httpClient: HttpClient) { }
 
   getPosts(): Observable<any> {
-    console.log("aaaaaaaaaa");
-    return this.httpClient.get(POST_API);
+    return this.httpClient.get(POST_API, httpOptions);
   }
 
 
