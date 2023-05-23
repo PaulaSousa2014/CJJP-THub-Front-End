@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { MemecompComponent } from './components/memecomp/memecomp.component';
 import { NavbarComponent } from './components/navbars/navbar/navbar.component';
@@ -26,17 +28,15 @@ import { FormsModule } from '@angular/forms';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
-import { RouterModule } from '@angular/router';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
-
+import { AvatarsComponent } from './components/avatars/avatars.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MemecompComponent,
-
     NavbarComponent,
     FooterComponent,
     MainFeedComponent,
@@ -52,7 +52,6 @@ import { MinifooterComponent } from './components/footers/minifooter/minifooter.
     Error404Component,
     ClickPartyComponent,
     EditprofileComponent,
-
     ChatComponent,
     ContactsComponent,
     OpenChatComponent,
@@ -60,13 +59,16 @@ import { MinifooterComponent } from './components/footers/minifooter/minifooter.
     FaqComponent,
     PrivacyPolicyComponent,
     TermsServiceComponent,
-    MinifooterComponent
+    MinifooterComponent,
+    AvatarsComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

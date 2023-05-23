@@ -1,9 +1,9 @@
 .selected {
-  background-color: rgb(233, 233, 233);
+  background-color: rgba(105, 103, 104, 0.2); ;
 }
 
 tr.row:hover > td > h5 {
-  color: #E20074 !important;
+  color: var(--color-pink) !important;
   cursor: pointer;
 }
 
@@ -19,5 +19,10 @@ tr.row:hover > td > h5 {
 i.bi {
   margin-left: 3%;
   margin-right: 3%;
+}
+
+.text-custom{
+  color: var(--color-dark-grey);
+  font-size: medium;
 }
 
