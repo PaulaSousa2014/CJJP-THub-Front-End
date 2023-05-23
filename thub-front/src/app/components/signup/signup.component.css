@@ -38,6 +38,8 @@ margin-top: 5%;
 margin-bottom: 5%;
 
   }
+
+  
   @media (max-width: 900px) {
 #logo img{
     width: 300px;

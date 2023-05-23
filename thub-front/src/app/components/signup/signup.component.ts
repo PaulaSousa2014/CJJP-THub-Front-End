@@ -24,6 +24,10 @@ export class SignupComponent implements OnInit{
     console.log("Welcome to T-Hub");
   }
 
+  isPasswordMatch(): boolean {
+    return this.form.passwordConfirmation === this.form.password;
+  }
+
   onSubmit(): void{
     if (this.form.valid && this.form.passwordConfirmation === this.form.password) {
 
@@ -47,5 +51,7 @@ export class SignupComponent implements OnInit{
   refreshPage(): void {
     this.router.navigate(["login"]);
   }
+
+
 
 }
