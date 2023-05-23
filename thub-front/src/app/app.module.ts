@@ -61,6 +61,7 @@ import { AvatarsComponent } from './components/avatars/avatars.component';
     TermsServiceComponent,
     MinifooterComponent,
     AvatarsComponent
+
   ],
   imports: [
     BrowserModule,
