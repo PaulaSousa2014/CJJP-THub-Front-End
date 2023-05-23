@@ -22,3 +22,7 @@ h5 {
 .username {
   color: var(--color-white);
 }
+
+.post-user-pic {
+  border-radius: 100%;
+}
