@@ -29,7 +29,6 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { RouterModule } from '@angular/router';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { MinifooterComponent } from './components/footers/minifooter/minifooter.component';
-import { EditprofilepruebaComponent } from './editprofileprueba/editprofileprueba.component';
 
 
 
@@ -61,9 +60,7 @@ import { EditprofilepruebaComponent } from './editprofileprueba/editprofileprueb
     FaqComponent,
     PrivacyPolicyComponent,
     TermsServiceComponent,
-    MinifooterComponent,
-    EditprofilepruebaComponent
-
+    MinifooterComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,6 @@ import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { ClickPartyComponent } from './components/click-party/click-party.component';
-import { EditprofilepruebaComponent } from './editprofileprueba/editprofileprueba.component';
 
 
 const routes: Routes = [
@@ -61,10 +60,6 @@ const routes: Routes = [
   {
     path:'editprofile',
     component: EditprofileComponent
-  },
-  {
-    path:'editprofilee',
-    component: EditprofilepruebaComponent
   },
   {
     path:'about',
