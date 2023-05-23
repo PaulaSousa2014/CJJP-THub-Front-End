@@ -28,110 +28,33 @@
       </div>
       <div class="dropdown-divider m-3"></div>
       <!-- Columna central -->
-      <div class="card mb-3">
+      <div class="card mb-3" *ngFor="let post of posts">
         <div class="card-body">
           <!-- Contenido del feed -->
           <div class="media">
             <div class="row">
               <div class="col-md-1">
                 <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
-                    src="../../../assets/img/placeholders/user-picture-50x50.png" alt=""></a>
+                  [src]="post.creator.profile_img" alt=""></a>
               </div>
               <div class="col-md-11">
                 <div class="col-12 d-flex">
-                  <h5>Javier</h5><strong><span class="m-1"> · </span></strong><span class="username">username</span>
+                  <h5>{{post.creator.nameSurn}}</h5><strong><span class="m-1"> · </span></strong><span class="username">{{post.creator.username}}</span>
                   <p class="ms-auto my-auto">10:03</p>
                 </div>
                 <div class="col-12 pt-3">
-                  <p>Hola!!!</p>
+                  <p>{{post.content}}</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <p><i class="bi bi-heart-fill"></i> 4</p>
-            <p><i class="bi bi-chat-left-text-fill"></i> 5</p>
+            <p><i class="bi bi-heart-fill"></i> {{ post.likes }}</p>
+            <p><i class="bi bi-chat-left-text-fill"></i> {{ post.comments }}</p>
           </div>
         </div>
       </div>
-      <div class="card mb-3">
-        <div class="card-body">
-          <!-- Contenido del feed -->
-          <div class="media">
-            <div class="row">
-              <div class="col-md-1">
-                <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
-                    src="../../../assets/img/placeholders/user-picture-50x50.png" alt=""></a>
-              </div>
-              <div class="col-md-11">
-                <div class="col-12 d-flex">
-                  <h5>Camila</h5><strong><span class="m-1"> · </span></strong><span class="username">username</span>
-                  <p class="ms-auto my-auto">09:50</p>
-                </div>
-                <div class="col-12 pt-3">
-                  <p>Hola!!!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <p><i class="bi bi-heart-fill"></i> 2</p>
-            <p><i class="bi bi-chat-left-text-fill"></i> 1</p>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="card-body">
-          <!-- Contenido del feed -->
-          <div class="media">
-            <div class="row">
-              <div class="col-md-1">
-                <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
-                    src="../../../assets/img/placeholders/user-picture-50x50.png" alt=""></a>
-              </div>
-              <div class="col-md-11">
-                <div class="col-12 d-flex">
-                  <h5>Paula</h5><strong><span class="m-1"> · </span></strong><span class="username">username</span>
-                  <p class="ms-auto my-auto">09:00</p>
-                </div>
-                <div class="col-12 pt-3">
-                  <p>Hola!!!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <p><i class="bi bi-heart-fill"></i> 8</p>
-            <p><i class="bi bi-chat-left-text-fill"></i> 2</p>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="card-body">
-          <!-- Contenido del feed -->
-          <div class="media">
-            <div class="row">
-              <div class="col-md-1">
-                <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
-                    src="../../../assets/img/placeholders/user-picture-50x50.png" alt=""></a>
-              </div>
-              <div class="col-md-11">
-                <div class="col-12 d-flex">
-                  <h5>Josep</h5><strong><span class="m-1"> · </span></strong><span class="username">username</span>
-                  <p class="ms-auto my-auto">07:00</p>
-                </div>
-                <div class="col-12 pt-3">
-                  <p>Me vuelvo al Back</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <p><i class="bi bi-heart-fill"></i> 10</p>
-            <p><i class="bi bi-chat-left-text-fill"></i> 55</p>
-          </div>
-        </div>
-      </div>
+
       <div class="col-md-2">
         <!-- Columna derecha (opcional) -->
         <div class="card mb-3">

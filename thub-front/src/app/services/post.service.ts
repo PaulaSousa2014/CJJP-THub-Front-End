@@ -14,10 +14,22 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PostService {
+  // Http client
   constructor(private httpClient: HttpClient) { }
 
+  // Get all posts
   getPosts(): Observable<any> {
     return this.httpClient.get(POST_API, httpOptions);
+  }
+
+  // Get like number
+  getPostLikes(id: number): Observable<any> {
+    return this.httpClient.get(POST_API+"/"+id+"/likes/ammount", httpOptions);
+  }
+
+  // Get number of comments of post
+  getPostCommentsNumber(id: number): Observable<any> {
+    return this.httpClient.get(POST_API+"/"+id+"/comments/ammount", httpOptions);
   }
 
 
