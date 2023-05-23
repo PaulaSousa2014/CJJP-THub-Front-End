@@ -63,6 +63,7 @@ import { AuthInterceptor } from './_helpers/auth.interceptor';
     TermsServiceComponent,
     MinifooterComponent,
     AvatarsComponent
+
   ],
   imports: [
     BrowserModule,

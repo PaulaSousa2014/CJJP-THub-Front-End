@@ -4,8 +4,12 @@
   </div>
   <div class="container bg-white form-login col-md-3 position-relative">
     <div class="row justify-content-center">
-      <div>
+      <div *ngIf="!isLoggedIn">
         <h2 class="fw-bold text-center mt-1">LOGIN</h2>
+      </div>
+      <!-- Already logged In Message -->
+      <div *ngIf="isLoggedIn">
+        <h2 class="fw-bold text-center mt-1">You are already logged in!</h2>
       </div>
       <div class="col-md-16">
         <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
@@ -35,13 +39,24 @@
         </form>
       </div>
     </div>
-    <div class="text-end mb-3">
+    <div *ngIf="!isLoggedIn" class="text-end mb-3">
       <a class="text-decoration-none text-dark" [routerLink]="['/forgot-password']">forgot password</a>
     </div>
-    <div class="custom-button text-center">
-      <button type="button" class="btn btn-custom btn-lg fw-bold" (click)="onSubmit()">LOG IN</button>
+    <div *ngIf="!isLoggedIn" class="custom-button text-center">
+      <button  type="button" class="btn btn-custom btn-lg fw-bold" (click)="onSubmit()">LOG IN</button>
     </div>
-    <div class="signUp mt-auto mb-3 text-center">Not a member yet? <a class="text-dark" [routerLink]="['/signup']">Sign
+
+    <!-- Already logged In Options -->
+    <div class="loggedIn">
+    <div *ngIf="isLoggedIn" class="custom-button text-center">
+      <button  type="button" class="btn btn-custom btn-lg fw-bold" (click)="reloadPage()">Go Home</button>
+    </div>
+    <div *ngIf="isLoggedIn" class="custom-button text-center">
+      <button  type="button" class="btn btn-custom btn-lg fw-bold" (click)="logOut()">LOG OUT</button>
+    </div>
+  </div>
+
+    <div *ngIf="!isLoggedIn" class="signUp mt-auto mb-3 text-center">Not a member yet? <a class="text-dark" [routerLink]="['/signup']">Sign
         Up</a>
     </div>
   </div>

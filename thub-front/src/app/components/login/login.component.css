@@ -40,6 +40,14 @@ form {
   margin-top: 20%;
 }
 
+/*Already logged in options style*/
+
+.loggedIn{
+  display: flex;
+  justify-content: space-around;
+  }
+
+
 /* Responsive */
 @media (max-width: 900px) {
   #logo img {
