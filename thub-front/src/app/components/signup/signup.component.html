@@ -10,13 +10,7 @@
       </div>
       <div class="col-md-16">
         <!-- Validable form -->
-        <form
-          name="form"
-          (ngSubmit)="f.form.valid && onSubmit()"
-          #f="ngForm"
-          needs-validation
-          class="was-validated"
-        >
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate needs-validation class="was-validated">
           <div class="input-group flex-nowrap mb-3">
             <!-- Username -->
             <span
