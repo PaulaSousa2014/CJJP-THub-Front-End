@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { User} from '../models/UserModels';
 
 // API user location
 const USER_API = "https://t-hub.up.railway.app/api/users/"

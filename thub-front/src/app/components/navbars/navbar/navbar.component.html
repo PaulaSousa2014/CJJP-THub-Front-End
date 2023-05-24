@@ -41,6 +41,22 @@
       </div>
       <div class="modal-body">
         <!-- Modal Body Content -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"><h2><i class="bi bi-person-heart"></i> List friends</h2></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let friend of friends">
+            <tr>
+              <td (click)="goToOtherProfile(friend.userReciever.id)"><a style="cursor: pointer;">{{friend.userReciever.username}}</a></td>
+              <td>
+                <button type="button" class="btn btn-success">Message</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
       </div>

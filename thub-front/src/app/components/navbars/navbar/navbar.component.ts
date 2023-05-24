@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { FriendsService } from 'src/app/services/friends.service';
+import { error } from 'jquery';
 
-declare var $: any; // Agrega esta declaración para utilizar jQuery
+declare var $: any;
 
 @Component({
   selector: 'app-navbar',
@@ -13,28 +15,36 @@ declare var $: any; // Agrega esta declaración para utilizar jQuery
 export class NavbarComponent implements OnInit {
   isLoggedIn = true;
   user: any;
+  friends: any[] = [];
 
   constructor(
     private userService: UserService,
     private router: Router,
     private tokenStorage: TokenStorageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private friendsService: FriendsService
   ) {}
 
   ngOnInit() {
     this.user = this.tokenStorage.getUser();
     this.getUserById(this.user.id);
 
-    $(document).ready(() => { // Ejecuta el código después de que el DOM esté listo
+    $(document).ready(() => {
       $('#myModal').on('shown.bs.modal', () => {
         $('#myInput').trigger('focus');
       });
     });
+
+    this.getFriends();
   }
 
   goToYourProfile() {
     const showData = this.tokenStorage.getUser().id;
     this.router.navigate(['/profile', showData]);
+  }
+
+  goToOtherProfile(id: number) {
+    this.router.navigate(['/profile', id]);
   }
 
   getUserById(id: number) {
@@ -69,5 +79,17 @@ export class NavbarComponent implements OnInit {
 
   openModal(): void {
     $('#exampleModal').modal('show');
+  }
+
+  getFriends() {
+    this.friendsService.getFriends().subscribe({
+      next: (data: any) => {
+        this.friends = data;
+        console.log(this.friends);
+      },
+      error: (error: any) => {
+        console.log("Cannot get friend", error);
+      }
+    });
   }
 }
