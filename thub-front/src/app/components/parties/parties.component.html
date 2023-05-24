@@ -15,6 +15,7 @@
       </div>
     </div>
 
+
     <div class="col-md-7 col-12 ">
       <form class="search d-flex mb-4">
         <div class="input-group">
@@ -22,64 +23,29 @@
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
-      <div class="centercomponent">
-        <div class="listaparties " >
-          <div class="componentcard d-flex" >
+
+
+          <div class="componentcard d-flex" *ngFor="let party of parties">
             <a href="/clickparty" style="color: black;">
 
-            <div class="card-body">
+              <div class="card-body">
 
-              <div class="superiorcomponents d-flex justify-content-between">
-                <div class="activitytype" style="margin-left: 2%;">
-                  <p>Activity_type</p>
+                <div class="superiorcomponents d-flex justify-content-between">
+                  <div class="activitytype" style="margin-left: 2%;">
+                    <p>Activity_type</p>
+                  </div>
+                  <div class="people d-flex justify-content-end align-items-center">
+                    <i class="bi bi-people-fill"></i> 23
+                  </div>
                 </div>
-                <div class="people d-flex justify-content-end align-items-center">
-                  <i class="bi bi-people-fill"></i> 23
-                </div>
+                <h5 class="card-title">{{party.title}}</h5>
+                <p>{{party.description}}.</p>
               </div>
-              <h5 class="card-title">Weekend at Molina</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
-            </div>
-          </a>
+            </a>
             <div class="card-inside">
               <img class="card-img-top" src="/assets/login.jpg">
             </div>
-          </div>
-          <div class="componentcard d-flex">
-            <div class="card-body">
-              <div class="superiorcomponents d-flex justify-content-between">
-                <div class="activitytype" style="margin-left: 2%;">
-                  <p>Activity_type</p>
-                </div>
-                <div class="people d-flex justify-content-end align-items-center">
-                  <i class="bi bi-people-fill"></i> 23
-                </div>
-              </div>
-              <h5 class="card-title">Weekend at Molina</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
-            </div>
-            <div class="card-inside">
-              <img class="card-img-top" src="/assets/login.jpg">
-            </div>
-          </div>
-          <div class="componentcard d-flex">
-            <div class="card-body">
-              <div class="superiorcomponents d-flex justify-content-between">
-                <div class="activitytype" style="margin-left: 2%;">
-                  <p>Activity_type</p>
-                </div>
-                <div class="people d-flex justify-content-end align-items-center">
-                  <i class="bi bi-people-fill"></i> 23
-                </div>
-              </div>
-              <h5 class="card-title">Weekend at Molina</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
-            </div>
-            <div class="card-inside">
-              <img class="card-img-top" src="/assets/login.jpg">
-            </div>
-          </div>
-        </div>
+
       </div>
       <div class="divbutton d-flex flex-column align-items-center mt-3">
         <a class="btn btn-primary createparty" href="/createparty" role="button">Create party</a>
