@@ -1,4 +1,4 @@
-import { Activity, Game, Social } from './../../models/CreatePartyModels';
+import { Game,  } from './../../models/CreatePartyModels';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Party, Creator } from 'src/app/models/CreatePartyModels';
@@ -15,10 +15,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class CreatepartyComponent {
   formulario: FormGroup;
   creator: Creator = {} as Creator;
-  activity: Activity = {} as Activity;
   game: Game = {} as Game;
   games: any [] = [];
-  social: Social = {} as Social;
   party: Party = {} as Party;
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
@@ -35,32 +33,28 @@ export class CreatepartyComponent {
     this.user = this.tokenStorageService.getUser();
     this.userId = this.user.id;
     this.getGames();
+
     //funcion que coja los juegos de la base de datos
     //crear servicio como en parties.
   }
 
 
   submitForm() {
+
     if (this.formulario.valid) {
       this.party.title = this.formulario.value.title;
       this.party.description = this.formulario.value.description;
       const partyType = this.formulario.value.partyType;
 
       if (partyType === 'Game') {
-        this.game = this.formulario.value.id;
-        this.party.game = this.game;
-      } else if (partyType === 'Activity') {
-        this.party.activity = this.formulario.value.activity.id;
-      } else if (partyType === 'Social') {
-        console.log(partyType);
-        console.log(this.party.social);
-        this.party.social = this.formulario.value.social.id;
+        const selectedGameId = this.formulario.value.game; // Obtener el ID del juego seleccionado
+        this.party.game = { id: selectedGameId }; // Asignar el juego al campo 'game' de la fiesta
+        console.log(selectedGameId); // Mostrar el ID del juego seleccionado en la consola
       }
 
       console.log(this.party);
-      this.submitParty();
     } else {
-      console.log("error envio")
+      console.log("Error en el envío del formulario");
     }
   }
 
@@ -82,7 +76,7 @@ export class CreatepartyComponent {
 
 
   // Function to submit post
-  submitParty() {
+  /*submitParty() {
     this.party.creator = this.creator;
     this.creator.id = this.userId;
     console.log("button pressed");
@@ -96,6 +90,6 @@ export class CreatepartyComponent {
         console.log("No se puede enviar la fiesta", error);
       }
     });
-  }
+  }*/
 
 }

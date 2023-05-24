@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Party } from '../models/CreatePartyModels';
+import { Game, Party } from '../models/CreatePartyModels';
 
 
 // API auth location
@@ -25,8 +25,7 @@ export class CreatepartyService {
   }
 
   // Get all games
-  getGames(): Observable<any> {
-    return this.httpClient.get(GET_API, httpOptions);
-  }
-  
+  getGames(): Observable<Game[]> {
+    return this.httpClient.get<Game[]>(GET_API, httpOptions);  }
+
 }
