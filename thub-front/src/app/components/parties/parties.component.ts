@@ -23,9 +23,7 @@ export class PartiesComponent {
     this.getAllParties();
  
   }
-  /*  if (filterByUser) {
-          this.filteredParties = this.parties.filter(party => party.creator && party.creator.id === this.userId);
-        } */
+
 
   getAllParties(filterByUser: boolean = false) {
     this.partiesService.getParties().subscribe({
