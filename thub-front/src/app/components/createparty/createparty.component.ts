@@ -25,7 +25,7 @@ export class CreatepartyComponent {
       partyType: new FormControl('', Validators.required)
     });
   }
-  
+
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
     this.userId = this.user.id;  }
