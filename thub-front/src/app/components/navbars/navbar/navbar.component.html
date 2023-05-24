@@ -50,12 +50,12 @@
             </tr>
           </thead>
           <tbody *ngFor="let friend of friends">
-            <tr class="user-friend" (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">
-              <td>{{friend.userSender.nameSurn}}</td>
+            <tr class="user-friend">
+              <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
               <td>
                 <div class="d-flex justify-content-end">
-                  <i class="chat-friend bi bi-chat-dots-fill"></i>
-                  <i class="delete-friend bi bi-x-lg ms-3"></i>
+                  <i class="chat-friend bi bi-chat-dots-fill" routerLink="/chat" data-bs-dismiss="modal"></i>
+                  <i class="delete-friend bi bi-x-lg ms-3" data-bs-dismiss="modal"></i>
                 </div>
               </td>
             </tr>
