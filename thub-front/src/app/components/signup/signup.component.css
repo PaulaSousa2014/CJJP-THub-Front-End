@@ -1,62 +1,58 @@
-.bg-image{
-
-    background-image: url('../../../assets/login.jpg');
-
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-
+.bg-image {
+  background-image: url("../../../assets/login.jpg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
 }
-.container{
-    padding: 3%;
-    border-radius: 3%;
-    height: 60%;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-
+.container {
+  padding: 3%;
+  border-radius: 3%;
+  height: auto;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
 }
-h2{
-    margin-top: 10%;
+h2 {
+  margin-top: 10%;
 }
 .btn-custom {
-    background-color: #E20074;
-    color: #ffffff;
-
-  }
-  #logo{
-    padding: 5%;
-  }
-  .row{
-    align-items: center;
-  }
-  form{
-    margin-top: 20%;
-  }
-  .custom-button{
-margin-top: 5%;
-margin-bottom: 5%;
-
-  }
-  @media (max-width: 900px) {
-#logo img{
+  background-color: #e20074;
+  color: #ffffff;
+}
+#logo {
+  padding: 5%;
+}
+.row {
+  align-items: center;
+}
+form {
+  margin-top: 20%;
+}
+.close {
+  margin-left: 170%;
+  color: var(--color-darkgrey);
+}
+.custom-button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+@media (max-width: 900px) {
+  #logo img {
     width: 300px;
-}
-.bg-image{
+  }
+  .bg-image {
     flex-direction: column;
-}
-.container{
+  }
+  .container {
     width: fit-content;
-
+  }
 }
-  }
 
-  @media(max-width: 600px){
-    #logo img{
-        width: 100px;
-    }
-    .container{
-        width: fit-content;
-
-    }
+@media (max-width: 600px) {
+  #logo img {
+    width: 100px;
   }
+  .container {
+    width: fit-content;
+  }
+}
