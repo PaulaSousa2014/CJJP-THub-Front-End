@@ -19,7 +19,7 @@ export class PartiesComponent {
 
   ngOnInit() {
     this.getAllParties();
- 
+
   }
   /*  if (filterByUser) {
           this.filteredParties = this.parties.filter(party => party.creator && party.creator.id === this.userId);
@@ -53,4 +53,7 @@ export class PartiesComponent {
     this.filteredParties = this.parties.filter(party => party.creator.id === this.userId);
   }
 
+  allParties() {
+    this.filteredParties = this.parties;
+  }
 }
