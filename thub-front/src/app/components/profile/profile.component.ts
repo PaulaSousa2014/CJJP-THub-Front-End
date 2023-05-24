@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
+import { FriendsService } from 'src/app/services/friends.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,8 +18,16 @@ export class ProfileComponent {
   // User array
   user: any;
 
-  constructor(private userService: UserService, private tokenStorage: TokenStorageService, private route: ActivatedRoute) {}
+  constructor(
+    private userService: UserService,
+    private tokenStorage: TokenStorageService,
+    private route: ActivatedRoute,
+    private friendsService: FriendsService
+    ) {}
+
   id: number = 3;
+  friends: any[] = [];
+  isFriendSenderMatchUser: boolean | undefined;
 
   ngOnInit() {
 
@@ -38,6 +47,8 @@ export class ProfileComponent {
     this.getUserById(this.showData);
     console.log(this.myProfile);
 
+    this.getFriends();
+
   }
 
   //Function on get user by id
@@ -52,4 +63,36 @@ export class ProfileComponent {
       }
     });
   }
+
+  // Import friends
+  getFriends() {
+    this.friendsService.getFriends().subscribe({
+      next: (data: any) => {
+        this.friends = data.filter((friend: any) => friend.userSender.id === this.tokenStorage.getUser().id || friend.userReciever.id === this.tokenStorage.getUser().id);
+        this.getMyFriends();
+      },
+      error: (error: any) => {
+        console.log("Cannot get friend", error);
+      }
+    });
+  }
+
+  getMyFriends() {
+    this.friends = this.friends.map((friend: any) => {
+      if (friend.userSender.id === this.tokenStorage.getUser().id) {
+        const tempReceiver = { ...friend.userReciever };
+
+        return {
+          ...friend,
+          userSender: { ...tempReceiver },
+          userReciever: { ...friend.userSender }
+        };
+      } else {
+        return friend;
+      }
+    });
+    this.isFriendSenderMatchUser = this.friends.some(friend => friend.userSender.id === this.showData);
+
+  }
+
 }

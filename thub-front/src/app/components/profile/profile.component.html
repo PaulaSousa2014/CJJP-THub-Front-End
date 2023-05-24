@@ -17,7 +17,10 @@
             <div class="text-end mb-4">
               <div class="row justify-content-end">
                 <div class="col-12 col-md-auto mb-3 mb-md-0 text-md-end">
-                  <button *ngIf="!myProfile" class="btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                  <ng-container *ngIf="!myProfile">
+                    <button *ngIf="!isFriendSenderMatchUser" class="btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                    <button *ngIf="isFriendSenderMatchUser" class="btn btn-success" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
+                  </ng-container>
                 </div>
                 <div class="col-12 col-md-auto text-md-end">
                   <button *ngIf="!myProfile" class="btn ms-3"><i class="bi bi-chat-dots-fill"></i> Send Message</button>

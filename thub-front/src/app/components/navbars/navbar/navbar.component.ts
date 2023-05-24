@@ -99,8 +99,7 @@ export class NavbarComponent implements OnInit {
     console.log("mi id es " + this.user.id);
     this.friendsService.getFriends().subscribe({
       next: (data: any) => {
-        this.friends = data.filter((friend: any) => ((friend.userSender.id === this.user.id || friend.userReciever.id === this.user.id)));
-        console.log(this.friends);
+        this.friends = data.filter((friend: any) => friend.userSender.id === this.user.id || friend.userReciever.id === this.user.id);
         this.getMyFriends();
       },
       error: (error: any) => {
