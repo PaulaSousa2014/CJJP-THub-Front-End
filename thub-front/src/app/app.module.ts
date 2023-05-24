@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MemecompComponent } from './components/memecomp/memecomp.component';
 import { NavbarComponent } from './components/navbars/navbar/navbar.component';
@@ -70,7 +72,9 @@ import { AuthInterceptor } from './_helpers/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
