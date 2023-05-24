@@ -55,8 +55,15 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["home"]);
   }
 
-  logOut(): void{
+  logOut(): void {
+    this.tokenStorage.signOut();
     this.isLoggedIn = false;
+    this.roles = [];
   }
 
+  onEnterKey(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onSubmit();
+    }
+  }
 }

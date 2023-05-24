@@ -36,6 +36,10 @@
   border-radius: 6px;
 }
 
+.text-component{
+  width: 100vh;
+}
+
 .people {
   margin-right: 10px;
 }

@@ -56,9 +56,10 @@ nav a:not(.dropdown-item) {
 }
 
 /* Icon profile */
-.profile {
-  font-size: 20px;
-  margin-right: 5%;
+.profile-img {
+  border-radius: 50%;
+  width: 40px !important;
+  height: auto !important;
 }
 
 /* Responsive Styles */

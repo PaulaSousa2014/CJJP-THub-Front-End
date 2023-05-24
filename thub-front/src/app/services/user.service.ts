@@ -40,4 +40,9 @@ export class UserService {
     return throwError(
       'Something bad happened; please try again later.');
   };
+
+  // Get user by id
+  getUser(id: number): Observable<any> {
+    return this.httpClient.get(USER_API + id, httpOptions);
+  }
 }

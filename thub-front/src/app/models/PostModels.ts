@@ -5,6 +5,7 @@ export interface Creator {
 export interface Post {
   content: string;
   creator: Creator;
+  time_submitted: string;
 }
 
 
