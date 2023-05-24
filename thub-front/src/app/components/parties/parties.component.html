@@ -2,6 +2,12 @@
   <div class="row my-2">
     <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
       <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"(click)="allParties()"  > All Parties</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"(click)="filterMyParties()"  > My Parties</a>
+      </div>
+      <div class="row">
         <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('game')"><i class="bi bi-controller"></i> Games</a>
       </div>
       <div class="row">
@@ -10,9 +16,7 @@
       <div class="row">
         <a type="button" class="btn btn-primary btn1 me-md-5"  (click)="filterPartiesByType('social')"><i class="bi bi-chat"></i> Social</a>
       </div>
-      <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5"(click)="filterMyParties()"  ><i class="bi bi-people-fill"></i> My Parties</a>
-      </div>
+
     </div>
 
 
