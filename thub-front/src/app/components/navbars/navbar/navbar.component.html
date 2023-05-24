@@ -50,7 +50,7 @@
             </tr>
           </thead>
           <tbody *ngFor="let friend of friends">
-            <tr class="user-friend" (click)="goToOtherProfile(friend.userSender.id)" data-bs-dismiss="modal">
+            <tr class="user-friend" (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">
               <td>{{friend.userSender.nameSurn}}</td>
               <td>
                 <div class="d-flex justify-content-end">

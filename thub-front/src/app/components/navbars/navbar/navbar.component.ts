@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { FriendsService } from 'src/app/services/friends.service';
-import { error } from 'jquery';
 
 declare var $: any;
 
@@ -38,10 +37,19 @@ export class NavbarComponent implements OnInit {
     this.getFriends();
   }
 
-  goToYourProfile() {
-    const showData = this.tokenStorage.getUser().id;
-    this.router.navigate(['/profile', showData]);
+  goToYourProfile(): void {
+    const currentUserId = this.tokenStorage.getUser().id;
+    const userProfileUrl = `/profile/${currentUserId}`;
+
+    if (this.router.url === userProfileUrl) {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([userProfileUrl]);
+      });
+    } else {
+      this.router.navigate([userProfileUrl]);
+    }
   }
+
 
   goToOtherProfile(id: number) {
     this.router.navigate(['/profile', id]);
@@ -75,6 +83,12 @@ export class NavbarComponent implements OnInit {
 
   reloadPage(): void {
     this.router.navigate(['landingpage']);
+  }
+
+  handleProfileClick(userId: number): void {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/profile', userId]);
+    });
   }
 
   openModal(): void {

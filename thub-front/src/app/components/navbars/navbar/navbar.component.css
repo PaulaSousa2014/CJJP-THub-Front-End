@@ -81,4 +81,8 @@ nav a:not(.dropdown-item) {
 }
 .user-friend:hover {
   background-color: var(--color-light-grey);
+  cursor: pointer;
+}
+.dropdown-item {
+  cursor: pointer;
 }
