@@ -20,6 +20,7 @@ export class MainFeedComponent {
 
   // On page load, get all posts
   ngOnInit() {
+    console.log("init");
     this.getAllPosts();
   }
 
@@ -27,7 +28,9 @@ export class MainFeedComponent {
   getAllPosts() {
     this.postService.getPosts().subscribe({
       next: (data: any) => {
+        console.log("getting posts")
         this.posts = data;
+        this.sortPostsByTimestamp(); // Sort the posts by timestamp
         this.fetchPostDetails();
         console.log(this.posts);
       },
@@ -40,6 +43,11 @@ export class MainFeedComponent {
   // Function that gets likes and comments and adds them to each post
   fetchPostDetails() {
     for (const post of this.posts) {
+
+      console.log(this.post.time_submitted)
+      post.time_submitted = this.formatTimestamp(post.time_submitted);
+      console.log(this.post.time_submitted);
+
       this.getLikes(post.id).subscribe({
         next: (likes: any) => {
           post.likes = likes;
@@ -88,11 +96,11 @@ export class MainFeedComponent {
     this.getAllPosts();
   }
 
-  // Function to format timestamp to be more user friendly
-  formatTimestamp(timestamp: string): string {
-    const currentTime = new Date();
-    const submittedTime = new Date(timestamp);
-    const timeDiff = Math.floor((currentTime.getTime() - submittedTime.getTime()) / 1000); // Time difference in seconds
+  formatTimestamp(serverTimestamp: string): string {
+    const serverTime = new Date(serverTimestamp + 'Z'); // Add 'Z' for UTC time zone offset
+    const localTime = new Date(); // Local datetime
+
+    const timeDiff = Math.floor((localTime.getTime() - serverTime.getTime()) / 1000); // Time difference in seconds
 
     if (timeDiff < 60) {
       return `${timeDiff} seconds ago`;
@@ -103,10 +111,18 @@ export class MainFeedComponent {
       const hours = Math.floor(timeDiff / 3600);
       return `${hours} hours ago`;
     } else {
-      // Use Angular's DatePipe to format the date in a desired format
-      const formattedDate = this.datePipe.transform(submittedTime, 'yyyy-MM-dd HH:mm');
-      return formattedDate || ''; // Handle null formattedDate
+      // Format the date and time in the user's local time
+      const formattedDate = serverTime.toLocaleString();
+      return formattedDate;
     }
+  }
+
+  sortPostsByTimestamp() {
+    this.posts.sort((a, b) => {
+      const timestampA = new Date(a.time_submitted);
+      const timestampB = new Date(b.time_submitted);
+      return timestampB.getTime() - timestampA.getTime();
+    });
   }
 
 }
