@@ -13,14 +13,14 @@
         <a href="#" class="nav-link mx-2" routerLink="/chat"><i class="bi bi-chat-text-fill"></i></a>
       </div>
       <div class="navbar-nav ms-auto align-items-center">
-        <div class="dropdown">
+        <div class="dropdown" *ngIf="user">
           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="profile bi bi-person-circle fa-x5"></i>
-            Username
+            <img class="profile-img me-2" src="{{user.profile_img}}">
+            {{user.username}}
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
             <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill" ></i>Your parties</a>
-            <a class="dropdown-item" routerLink="profile"><i class="bi bi-person-fill"></i>View profile</a>
+            <a class="dropdown-item" (click)="goToYourProfile()"><i class="bi bi-person-fill"></i>View profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="landingpage"><i class="bi bi-door-open-fill"></i>Log out</a>
           </div>

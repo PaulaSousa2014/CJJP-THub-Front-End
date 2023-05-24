@@ -51,7 +51,7 @@ const routes: Routes = [
     component: ChatComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:showData',
     component: ProfileComponent
   },
   {
