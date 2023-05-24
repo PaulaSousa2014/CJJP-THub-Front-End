@@ -1,65 +1,89 @@
-<div class="content container-fluid vh-100  d-flex ">
-
-  <div class="menulateralizq d-flex">
-    <div class="menulateralizq1 d-flex">
-      <a type="button" class="btn1 "> <i class="fas fa-gamepad"></i> Games
-      </a>
-      <a type="button" class="btn1 "> <i class="fas fa-person-biking"></i>
-        Activities
-      </a>
+<div class="container">
+  <div class="row my-2">
+    <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-controller"></i> Games</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-bicycle"></i> Activities</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-chat"></i> Social</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-people-fill"></i> My Parties</a>
+      </div>
     </div>
 
-
-    <div class="menulateralizq2">
-      <a type="button" class=" btn2 "> <i class="far fa-comments"></i> Social</a>
-      <a type="button" class=" btn2"> <i class="far fa-user"></i>
-        My Parties</a>
-    </div>
-  </div>
-
-  <div class="centercomponent">
-    <div class="searchdiv">
-      <form class="search d-flex">
-        <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar">
-        <button class="btn searchbtn" type="submit">Search</button>
+    <div class="col-md-7 col-12 ">
+      <form class="search d-flex mb-4">
+        <div class="input-group">
+          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar">
+          <button class="btn btn-primary inside-btn" type="submit">Search</button>
+        </div>
       </form>
-    </div>
+      <div class="centercomponent">
+        <div class="listaparties " >
+          <div class="componentcard d-flex" >
+            <a href="/clickparty" style="color: black;">
 
+            <div class="card-body">
 
-    <div class="listaparties">
-      <div class="card">
-        <div class="componentcard d-flex">
-
-          <div class="card-body">
-
-            <div class="superiorcomponents" style="display: flex; flex-direction: row; justify-content: space-between;">
-              <div class="activitytype" style="margin-left: 2%;">
-                <p>Activity_type</p>
+              <div class="superiorcomponents d-flex justify-content-between">
+                <div class="activitytype" style="margin-left: 2%;">
+                  <p>Activity_type</p>
+                </div>
+                <div class="people d-flex justify-content-end align-items-center">
+                  <i class="bi bi-people-fill"></i> 23
+                </div>
               </div>
-              <div class="people d-flex justify-content-end align-items-center " style="margin-bottom: 20px;">
-
-                <i class="fas fa-user-group"></i> 23
-              </div>
-
+              <h5 class="card-title">Weekend at Molina</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
             </div>
-
-            <h5 class="card-title">Weekend at Molina</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.
-            </p>
+          </a>
+            <div class="card-inside">
+              <img class="card-img-top" src="/assets/login.jpg">
+            </div>
           </div>
-
-          <div class="card-inside">
-            <img class="card-img-top" src="/assets/login.jpg">
+          <div class="componentcard d-flex">
+            <div class="card-body">
+              <div class="superiorcomponents d-flex justify-content-between">
+                <div class="activitytype" style="margin-left: 2%;">
+                  <p>Activity_type</p>
+                </div>
+                <div class="people d-flex justify-content-end align-items-center">
+                  <i class="bi bi-people-fill"></i> 23
+                </div>
+              </div>
+              <h5 class="card-title">Weekend at Molina</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
+            </div>
+            <div class="card-inside">
+              <img class="card-img-top" src="/assets/login.jpg">
+            </div>
+          </div>
+          <div class="componentcard d-flex">
+            <div class="card-body">
+              <div class="superiorcomponents d-flex justify-content-between">
+                <div class="activitytype" style="margin-left: 2%;">
+                  <p>Activity_type</p>
+                </div>
+                <div class="people d-flex justify-content-end align-items-center">
+                  <i class="bi bi-people-fill"></i> 23
+                </div>
+              </div>
+              <h5 class="card-title">Weekend at Molina</h5>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.</p>
+            </div>
+            <div class="card-inside">
+              <img class="card-img-top" src="/assets/login.jpg">
+            </div>
           </div>
         </div>
       </div>
-
+      <div class="divbutton d-flex flex-column align-items-center mt-3">
+        <a class="btn btn-primary createparty" href="/createparty" role="button">Create party</a>
+      </div>
     </div>
-
-
-  </div>
-
-  <div class="divbutton justify-content-top align-items-start ">
-    <button type="button" class="btn createparty" >Create party</button>
   </div>
 </div>
