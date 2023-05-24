@@ -18,9 +18,9 @@ export interface Party{
   title: string;
   description: string;
   creator: Creator;
-  activity: Activity;
-  game: Game;
-  social:Social;
+  activity: Activity | null;
+  game: Game | null;
+  social:Social | null;
 }
 
 
