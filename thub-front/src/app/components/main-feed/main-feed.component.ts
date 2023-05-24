@@ -103,7 +103,7 @@ export class MainFeedComponent {
     const timeDiff = Math.floor((localTime.getTime() - serverTime.getTime()) / 1000); // Time difference in seconds
 
     if (timeDiff < 60) {
-      return `${timeDiff} seconds ago`;
+      return `< 1 minute ago`;
     } else if (timeDiff < 3600) {
       const minutes = Math.floor(timeDiff / 60);
       return `${minutes} minutes ago`;
