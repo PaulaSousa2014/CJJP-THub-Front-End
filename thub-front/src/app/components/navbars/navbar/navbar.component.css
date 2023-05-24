@@ -79,3 +79,6 @@ nav a:not(.dropdown-item) {
 .delete-friend:hover {
   color: red;
 }
+.user-friend:hover {
+  background-color: var(--color-light-grey);
+}
