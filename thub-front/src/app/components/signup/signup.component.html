@@ -1,121 +1,136 @@
 <div class="bg-image">
-    <div id="logo">
-      <img src="../../../assets/logo.png" alt="" />
-    </div>
-
-    <div class="container bg-white form-login col-md-3 position-relative">
-      <div class="row justify-content-center">
-        <a class="bi close bi-x-lg" [routerLink]="['/landingpage']"></a>
-        <div>
-          <h2 class="fw-bold text-center">REGISTER</h2>
-        </div>
-        <div class="col-md-16">
-          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate needs-validation class="was-validated">
-            <div class="input-group flex-nowrap mb-3">
-                <span
-                  class="input-group-text bg-secondary-subtle"
-                  id="addon-wrapping"
-                 
-                  ><i class="bi bi-person" style="color: #8d8e91"></i></span>
-                <input
-                  type="text"
-                  name="username" [(ngModel)]="form.username" required #username="ngModel"
-                  class="form-control bg-secondary-subtle"
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="addon-wrapping"
-                  id="exampleFormControlInput1" />
-                  <div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted">Username is required!</div>
-
-                
-              </div>
-            <div class="input-group flex-nowrap mb-3">
-              <span
-                class="input-group-text bg-secondary-subtle form-label"
-                id="addon-wrapping"
-                for="validationCustom01" 
-                ><i class="bi bi-envelope" style="color: #8d8e91"></i
-              ></span>
-   
-              <input
-                type="email"
-                name="email" [(ngModel)]="form.email" required
-                #email="ngModel"
-                class="form-control bg-secondary-subtle"
-                placeholder="Email"
-                aria-label="Email"
-                aria-describedby="addon-wrapping"
-                id="validationCustom01"
-                value="Email"
-              />
-
-              <div class="alert alert-danger" role="alert" *ngIf="email.errors && f.submitted">
-                <div *ngIf="email.errors?.['required']">Email is required</div>
-              </div>
-
-            </div>
-            <div class="input-group flex-nowrap mb-3">
-              <span
-                class="input-group-text bg-secondary-subtle"
-                id="addon-wrapping"
-                ><i class="bi bi-lock" style="color: #8d8e91"></i
-              ></span>
-              <input
-                type="password" name="password" [(ngModel)]="form.password" required minlength="6"
-                #password="ngModel"
-                id="inputPassword5"
-                class="form-control bg-secondary-subtle"
-                aria-labelledby="passwordHelpBlock"
-                placeholder="Password"
-              />
-              <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">ç
-                <div *ngIf="password.errors?.['required']">Password is required</div>
-                <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
-              </div>
-            </div>
-            <div class="input-group flex-nowrap mb-3">
-                <span
-                  class="input-group-text bg-secondary-subtle"
-                  id="addon-wrapping"
-                  ><i class="bi bi-lock" style="color: #8d8e91"></i
-                ></span>
-                <input
-                type="password"
-                name="passwordConfirmation"
-                [(ngModel)]="form.passwordConfirmation"
-                required
-                #passwordConfirmation="ngModel"
-                id="inputPasswordConfirmation"
-                class="form-control bg-secondary-subtle"
-                aria-labelledby="passwordHelpBlock"
-                placeholder="Confirm password"
-                />
-                <div
-    class="alert alert-danger"
-    role="alert"
-    *ngIf="passwordConfirmation.errors && f.submitted"
-  >
-  <div *ngIf="passwordConfirmation.errors?.['required']">
-    Password confirmation is required
-  </div>
-  
-    <div *ngIf="form.passwordConfirmation !== form.password">
-      Passwords do not match
-    </div>
+  <div id="logo">
+    <img src="../../../assets/logo.png" alt="" />
   </div>
 
-              </div>
-            <div id="passwordHelpBlock" class="form-text"></div>
-          </form>
-        </div>
+
+  <div class="container bg-white form-login col-md-3 position-relative">
+    <div class="row justify-content-center">
+      <div>
+        <h2 class="fw-bold text-center">REGISTER</h2>
       </div>
+      <div class="col-md-16">
+        <!-- Validable form -->
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate needs-validation class="was-validated">
+          <div class="input-group flex-nowrap mb-3">
+            <!-- Username -->
+            <span
+              class="input-group-text bg-secondary-subtle"
+              id="addon-wrapping"
+              ><i class="bi bi-person" style="color: #8d8e91"></i
+            ></span>
+            <input
+              type="text"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              #username="ngModel"
+              class="form-control bg-secondary-subtle"
+              placeholder="Username"
+              aria-label="Username"
+              aria-describedby="addon-wrapping"
+              id="exampleFormControlInput1"
+            />
+          </div>
 
-      <div class="custom-button text-center">
 
+          <!-- Email -->
+          <div class="input-group flex-nowrap mb-3">
+            <span
+              class="input-group-text bg-secondary-subtle form-label"
+              id="addon-wrapping"
+              for="validationCustom01"
+              ><i class="bi bi-envelope" style="color: #8d8e91"></i
+            ></span>
 
-        <button type="button" class="btn btn-custom btn-lg  fw-bold" (click)="onSubmit()">SIGN UP</button>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="form.email"
+              required
+              #email="ngModel"
+              class="form-control bg-secondary-subtle"
+              placeholder="Email"
+              aria-label="Email"
+              aria-describedby="addon-wrapping"
+              id="validationCustom01"
+              value="Email"
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="input-group flex-nowrap mb-3">
+            <span
+              class="input-group-text bg-secondary-subtle"
+              id="addon-wrapping"
+              ><i class="bi bi-lock" style="color: #8d8e91"></i
+            ></span>
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel"
+              id="inputPassword5"
+              class="form-control bg-secondary-subtle"
+              aria-labelledby="passwordHelpBlock"
+              placeholder="Password"
+            />
+          </div>
+
+        
+
+          <!-- Password Confirmation -->
+          <div class="input-group flex-nowrap mb-3">
+            <span
+              class="input-group-text bg-secondary-subtle"
+              id="addon-wrapping"
+            >
+              <i class="bi bi-lock" style="color: #8d8e91"></i>
+            </span>
+            <input
+              type="password"
+              name="passwordConfirmation"
+              [(ngModel)]="form.passwordConfirmation"
+              required
+              minlength="6"
+              #passwordConfirmation="ngModel"
+              id="inputPasswordConfirmation"
+              class="form-control bg-secondary-subtle"
+              [class.is-invalid]="
+                passwordConfirmation.touched && !isPasswordMatch()
+              "
+              [class.is-valid]="
+                isPasswordMatch() && passwordConfirmation.touched
+              "
+              aria-labelledby="passwordHelpBlock"
+              placeholder="Confirm password"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="!isPasswordMatch() && passwordConfirmation.touched"
+            >
+              Passwords do not match
+            </div>
+          </div>
+
+          <div id="passwordHelpBlock" class="form-text"></div>
+        </form>
       </div>
-      <div class="signUp mt-auto mb-3 text-center">Already a member? <a class="text-dark" routerLink="/login">Log In</a></div>
+    </div>
+
+    <div class="custom-button text-center">
+      <button
+        type="button"
+        class="btn btn-custom btn-lg fw-bold"
+        (click)="onSubmit()"
+      >
+        SIGN UP
+      </button>
+    </div>
+    <div class="signUp mt-auto mb-3 text-center">
+      Already a member? <a class="text-dark" routerLink="/login">Log In</a>
     </div>
   </div>
-
+</div>

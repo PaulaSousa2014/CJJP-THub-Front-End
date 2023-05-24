@@ -46,6 +46,16 @@ form {
   .container {
     width: fit-content;
   }
+
+
+  
+  @media (max-width: 900px) {
+#logo img{
+    width: 300px;
+}
+.bg-image{
+    flex-direction: column;
+
 }
 
 @media (max-width: 600px) {
