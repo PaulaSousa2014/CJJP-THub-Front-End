@@ -30,6 +30,7 @@
 
 
           <div class="componentcard d-flex" *ngFor="let party of filteredParties">
+            <div class="text-component">
             <a href="/clickparty" style="color: black;">
 
               <div class="card-body">
@@ -47,6 +48,7 @@
                 <p>{{party.description}}.</p>
               </div>
             </a>
+          </div>
             <div class="card-inside">
               <img class="card-img-top" src="/assets/login.jpg">
             </div>
