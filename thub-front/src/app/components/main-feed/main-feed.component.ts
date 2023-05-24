@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
+import { DatePipe } from '@angular/common';
+import { Creator, Post } from 'src/app/models/PostModels';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-main-feed',
@@ -9,8 +12,11 @@ import { PostService } from 'src/app/services/post.service';
 export class MainFeedComponent {
   // Posts array
   posts: any[] = [];
+  creator: Creator = { } as Creator;
+  post: Post = { } as Post;
+  currentUser = this.tokenStorage.getUser();
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService) {}
 
   // On page load, get all posts
   ngOnInit() {
@@ -63,4 +69,44 @@ export class MainFeedComponent {
   getCommentsNumber(id: number) {
     return this.postService.getPostCommentsNumber(id);
   }
+
+  // Function to submit post
+  submitPost() {
+    this.creator.id = this.currentUser.id;
+    this.post.creator = this.creator;
+    console.log("button pressed");
+    console.log(this.post);
+
+    this.postService.postNewPost(this.post).subscribe({
+      next: (data: any) => {
+        console.log(data);
+      },
+      error: (error: any) => {
+        console.log("Cannot post Post", error);
+      }
+    });
+    this.getAllPosts();
+  }
+
+  // Function to format timestamp to be more user friendly
+  formatTimestamp(timestamp: string): string {
+    const currentTime = new Date();
+    const submittedTime = new Date(timestamp);
+    const timeDiff = Math.floor((currentTime.getTime() - submittedTime.getTime()) / 1000); // Time difference in seconds
+
+    if (timeDiff < 60) {
+      return `${timeDiff} seconds ago`;
+    } else if (timeDiff < 3600) {
+      const minutes = Math.floor(timeDiff / 60);
+      return `${minutes} minutes ago`;
+    } else if (timeDiff < 86400) {
+      const hours = Math.floor(timeDiff / 3600);
+      return `${hours} hours ago`;
+    } else {
+      // Use Angular's DatePipe to format the date in a desired format
+      const formattedDate = this.datePipe.transform(submittedTime, 'yyyy-MM-dd HH:mm');
+      return formattedDate || ''; // Handle null formattedDate
+    }
+  }
+
 }

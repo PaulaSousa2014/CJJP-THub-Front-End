@@ -3,14 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-
+  isLoggedIn = true;
   user: any;
 
   constructor(private userService: UserService, private router: Router, private tokenStorage: TokenStorageService, private route: ActivatedRoute) {}
@@ -37,4 +36,21 @@ export class NavbarComponent {
     });
   }
 
+  logOut(): void {
+    this.tokenStorage.signOut();
+    this.isLoggedIn=false;
+    this.reloadPage();
+  }
+  yourParties(): void {
+    if(this.tokenStorage.getToken()){
+      this.router.navigate(['parties']);
+    }else{
+      this.router.navigate(['login']);
+    }
+
+  }
+
+  reloadPage(): void {
+    this.router.navigate(['landingpage']);
+  }
 }
