@@ -24,28 +24,33 @@ export class SignupComponent implements OnInit{
     console.log("Welcome to T-Hub");
   }
 
-  onSubmit(): void{
-    if (this.form.valid && this.form.passwordConfirmation === this.form.password) {
-
-    const { username, email, password} = this.form;
-    console.log(this.form);
-
-    this.authService.register(username, email,password).subscribe({
-      next: (data: any) => {
-        
-        this.refreshPage();
-      },
-      error: (err: any) => {
-        this.errorMessage = err.error.message;
-      }
-    });
-  } else {
-    console.log("Las contraseñas no coinciden");
+  isPasswordMatch(): boolean {
+    return this.form.passwordConfirmation === this.form.password;
   }
+
+
+
+  onSubmit(): void {
+    if (this.isPasswordMatch()) {
+      const { username, email, password } = this.form;
+      console.log(this.form);
+  
+      this.authService.register(username, email, password).subscribe({
+        next: (data: any) => {
+          this.refreshPage();
+        },
+        error: (err: any) => {
+          this.errorMessage = err.error.message;
+        }
+      });
+    } else {
+      console.log("Las contraseñas no coinciden");
+    }
   }
+  
 
   refreshPage(): void {
-    this.router.navigate(["login"]);
+    this.router.navigate(["home"]);
   }
 
 }
