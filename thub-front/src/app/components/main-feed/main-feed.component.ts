@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { DatePipe } from '@angular/common';
+import { Creator, Post } from 'src/app/models/PostModels';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-main-feed',
@@ -10,8 +12,11 @@ import { DatePipe } from '@angular/common';
 export class MainFeedComponent {
   // Posts array
   posts: any[] = [];
+  creator: Creator = { } as Creator;
+  post: Post = { } as Post;
+  currentUser = this.tokenStorage.getUser();
 
-  constructor(private postService: PostService, private datePipe: DatePipe) {}
+  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService) {}
 
   // On page load, get all posts
   ngOnInit() {
@@ -63,6 +68,24 @@ export class MainFeedComponent {
   // Function to get comment ammount from service
   getCommentsNumber(id: number) {
     return this.postService.getPostCommentsNumber(id);
+  }
+
+  // Function to submit post
+  submitPost() {
+    this.creator.id = this.currentUser.id;
+    this.post.creator = this.creator;
+    console.log("button pressed");
+    console.log(this.post);
+
+    this.postService.postNewPost(this.post).subscribe({
+      next: (data: any) => {
+        console.log(data);
+      },
+      error: (error: any) => {
+        console.log("Cannot post Post", error);
+      }
+    });
+    this.getAllPosts();
   }
 
   // Function to format timestamp to be more user friendly
