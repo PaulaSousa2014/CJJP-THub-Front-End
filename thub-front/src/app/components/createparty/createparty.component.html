@@ -44,11 +44,12 @@
           </select>
         </div>
 
+        
 
 <!--        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
  -->
 
-        <button type="submit" class="btn Create"
+        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
           [disabled]="formulario.invalid">Create</button>
         <a href="" style="color: black; font-size: 20px; margin-right: 10px;" routerLink="/parties">Cancel</a>
       </form>

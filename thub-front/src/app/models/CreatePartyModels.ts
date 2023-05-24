@@ -6,6 +6,7 @@ export interface Game {
   id: number;
 }
 
+
 export interface Party{
 
   title: string;
