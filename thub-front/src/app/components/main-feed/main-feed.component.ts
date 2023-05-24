@@ -125,4 +125,8 @@ export class MainFeedComponent {
     });
   }
 
+  doStuff() {
+    console.log("aaaaaaaaa")
+  }
+
 }
