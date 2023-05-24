@@ -3,8 +3,8 @@
     <div class="col-12" id="profile-header"> </div>
   </div>
   <div class="row mb-4">
-    <div class="col-5 text-center">
-      <img class="logoimg img-fluid" src="/assets/cat.jpg" alt="">
+    <div class="col-5 text-center" *ngIf="user">
+      <img class="logoimg img-fluid" src="{{user.profile_img}}" alt="">
     </div>
 
     <div class="col-7 d-flex justify-content-between align-items-center">
@@ -18,21 +18,15 @@
     </div>
   </div>
 
-  <div class="row mb-3">
+  <div class="row mb-3" *ngIf="user">
     <div class="col-md-5 col-12 text-break text-center">
-      <h4>Username</h4>
-      <h5>Name</h5>
-      <a href=""><i class="bi bi-steam"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-instagram"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-twitter"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-facebook"></i></a>
+      <h4>{{user.nameSurn}}</h4>
+      <h5>{{user.username}}</h5>
+      <a href="https://steamcommunity.com/id/{{user.steam_username}}"><i class="bi bi-steam text-dark"></i></a>
     </div>
     <div class="col-md-7 col-12 px-md-auto px-3 mt-4 mt-md-n3 text-center text-md-start">
-      <h2>Job Title</h2>
-      <p><i class="bi bi-geo-alt-fill"></i> Location</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis condimentum purus, ac suscipit mauris consequat id.</p>
+      <h2>{{user.job.title}}</h2>
+      <p><i class="bi bi-geo-alt-fill"></i> {{user.office.name}}, {{user.office.location}}</p>
     </div>
-
-
   </div>
 </div>
