@@ -1,8 +1,6 @@
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Component } from '@angular/core';
 import { PartiesService } from 'src/app/services/parties.service';
-import { AuthService } from 'src/app/services/auth.service';
-
 
 @Component({
   selector: 'app-parties',
@@ -16,7 +14,7 @@ export class PartiesComponent {
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
 
-  constructor(private partiesService: PartiesService, private authService: AuthService, private tokenStorageService: TokenStorageService) {
+  constructor(private partiesService: PartiesService, private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit() {
@@ -54,6 +52,5 @@ export class PartiesComponent {
   filterMyParties() {
     this.filteredParties = this.parties.filter(party => party.creator.id === this.userId);
   }
-
 
 }

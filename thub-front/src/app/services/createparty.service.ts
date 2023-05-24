@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Party } from '../models/CreatePartyModels';
+
 
 // API auth location
 const POST_API = "https://t-hub.up.railway.app/api/parties";
@@ -8,17 +10,15 @@ const POST_API = "https://t-hub.up.railway.app/api/parties";
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
-
 @Injectable({
   providedIn: 'root'
 })
-export class PartiesService {
- // Http client
- constructor(private httpClient: HttpClient) { }
+export class CreatepartyService {
 
- // Get all parties
- getParties(): Observable<any> {
-   return this.httpClient.get(POST_API, httpOptions);
- }
+  constructor(private httpClient: HttpClient) { }
 
+   // Create new post
+   postNewParty(newParty: Party): Observable<any> {
+    return this.httpClient.post(POST_API, newParty, httpOptions);
+  }
 }
