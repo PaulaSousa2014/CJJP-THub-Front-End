@@ -1,0 +1,28 @@
+.card {
+  background-color: var(--color-light-grey);
+}
+
+.input-group {
+  background-color: var(--color-white);
+  border-radius: 4px;
+}
+.btn {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.smile {
+  margin-right: 2%;
+  color: var(--color-dark-grey);
+}
+
+h5 {
+  color: var(--color-pink);
+}
+.username {
+  color: var(--color-white);
+}
+
+.post-user-pic {
+  border-radius: 100%;
+}

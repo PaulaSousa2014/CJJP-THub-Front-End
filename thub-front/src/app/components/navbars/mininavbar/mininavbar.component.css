@@ -1,0 +1,11 @@
+/* Mini navbar colors */
+.mini-header {
+  background-color: var(--color-dark-grey);
+  padding-right: 10%;
+}
+
+/* About us */
+a {
+  text-decoration: none;
+  color: var(--color-white);
+}

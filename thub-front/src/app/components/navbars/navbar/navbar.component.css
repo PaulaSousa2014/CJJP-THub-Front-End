@@ -1,0 +1,72 @@
+/* Navbar colors */
+nav {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+/* Navbar content */
+nav > div {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* THub icon */
+nav img {
+  width: 100px;
+}
+
+/* Icons */
+.nav-item {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+/* Log in / Sign in text */
+nav a:not(.dropdown-item) {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Button styles */
+.btn {
+  color: var(--color-white);
+  --mdb-btn-box-shadow: 0;
+  text-transform: none;
+  font-size: 1rem;
+}
+.btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
+}
+
+/* Dropdown menu */
+.dropdown-item {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: var(--color-dark-grey);
+  font-weight: bold;
+}
+.dropdown-item > i {
+  margin-right: 5%;
+}
+.dropdown-item:hover {
+  color: var(--color-pink);
+  background-color: var(--color-white);
+}
+
+/* Icon profile */
+.profile {
+  font-size: 20px;
+  margin-right: 5%;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .navbar-nav.me-auto.mb-2.mb-lg-0 {
+    justify-content: center;
+  }
+  .navbar-nav.ms-auto.align-items-center {
+    text-align: center;
+  }
+}

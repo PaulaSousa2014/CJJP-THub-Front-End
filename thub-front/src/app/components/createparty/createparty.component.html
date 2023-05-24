@@ -1,0 +1,56 @@
+<div class="content container-fluid vh-100 d-flex" style="display: flex; flex-direction: column;">
+  <div class="contentbox d-flex" style="background-color: #D9D9D9;">
+    <div class="imagediv"></div>
+
+    <div class="formdiv">
+
+      <form [formGroup]="formulario" (ngSubmit)="submitForm()" class="form mt-4">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input class="form-control" formControlName="title" id="titleInput">
+          <div *ngIf="formulario.get('title')?.invalid && formulario.get('title')?.touched">
+            <div *ngIf="formulario.get('title')?.errors?.['required']">Title is required.</div>
+            <div *ngIf="formulario.get('title')?.errors?.['maxlength']">Title should not exceed 100 characters.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea class="form-control" formControlName="description" id="descriptionInput" rows="3"
+            style="resize: none;"></textarea>
+          <div *ngIf="formulario.get('description')?.invalid && formulario.get('description')?.touched">
+            <div *ngIf="formulario.get('description')?.errors?.['required']">Description is required.</div>
+            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 255
+              characters.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" formControlName="email" id="emailInput" aria-describedby="emailHelp">
+          <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
+            <div *ngIf="formulario.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="formulario.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Party type</label>
+          <select class="form-select" formControlName="partyType" id="partyTypeInput">
+            <option value="">Select party type</option>
+            <option value="Social">Social</option>
+            <option value="Game">Game</option>
+            <option value="Activity">Activity</option>
+          </select>
+          <div *ngIf="formulario.get('partyType')?.invalid && formulario.get('partyType')?.touched">
+            <div *ngIf="formulario.get('partyType')?.errors?.['required']">Party type is required.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Theme</label>
+          <input class="form-control" formControlName="theme" id="themeInput">
+        </div>
+
+        <button type="submit" class="btn Create" [disabled]="formulario.invalid">Create</button>
+        <a href="" style="color: black; font-size: 20px; margin-right: 10px;" routerLink="/parties">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

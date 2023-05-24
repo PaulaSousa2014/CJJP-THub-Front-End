@@ -11,7 +11,7 @@ Front-end Repository for the Final Work of the FullStack Java T-Systems Bootcamp
 ## Table of Contents
 1. [Project Development Team](#project-development-team)
 2. [Objectives of the Project](#objectives-of-the-project)
-3. [Class Diagram](#class-diagram)
+3. [MockUp](#mockup)
 4. [BackEnd Repository](#backend-repository)
 
 
@@ -29,7 +29,9 @@ Front-end Repository for the Final Work of the FullStack Java T-Systems Bootcamp
 T-Hub is an LFG-type application directed only to T-Systems employees with the aim of encouraging internal networking, which can help build stronger relationships between employees and increase team cohesion.
 
 
-## Class Diagram
+## MockUp
+The mockup created for the project is attached to the project or available through this
+[link](https://www.figma.com/file/D28ret0K0KZ8JBMWEUGRcm/THUB?type=design&node-id=0%3A1&t=3wobt8kXZQ7G6ojs-1).
 
 
 ## BackEnd Repository
