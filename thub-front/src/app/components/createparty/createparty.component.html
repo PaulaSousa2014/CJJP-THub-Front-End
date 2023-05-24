@@ -42,7 +42,7 @@
           <label class="form-label">Game</label>
           <select class="form-select" formControlName="game" id="gameInput">
             <option value="">Select a game</option>
-            <option value="The Witcher">The Witcher</option>
+            <option value="1">The Witcher</option>
           </select>
         </div>
 
@@ -50,16 +50,19 @@
           <label class="form-label">Activity</label>
           <select class="form-select" formControlName="activity" id="activityInput">
             <option value="">Select an activity</option>
-            <option value="Yoga Class">Yoga Class</option>
+            <option value="1">Yoga Class</option>
           </select>
         </div>
+
         <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Social'">
           <label class="form-label">Social</label>
-          <select class="form-select" id="socialInput">
-            <option value="">Select an social</option>
-            <option value="Summer BBQ">Summer BBQ</option>
+          <select class="form-select" formControlName="social" id="socialInput">
+            <option value="">Select a social</option>
+            <option value="1">Summer BBQ</option>
           </select>
         </div>
+
+
         <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
           [disabled]="formulario.invalid">Create</button>
         <a href="" style="color: black; font-size: 20px; margin-right: 10px;" routerLink="/parties">Cancel</a>

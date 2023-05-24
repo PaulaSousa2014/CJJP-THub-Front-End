@@ -14,7 +14,6 @@ export interface Activity {
   id: number;
 }
 export interface Party{
-  partyType: any;
 
   title: string;
   description: string;

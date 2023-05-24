@@ -14,7 +14,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class CreatepartyComponent {
   formulario: FormGroup;
   creator: Creator = {} as Creator;
-  party: Party = { title: '', description: '', creator: this.creator, partyType:null, activity: null, game: null, social: null };
+  party: Party = { title: '', description: '', creator: this.creator, activity: null, game: null, social: null };
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
 
@@ -31,32 +31,41 @@ export class CreatepartyComponent {
 
   submitForm() {
     if (this.formulario.valid) {
-      // El formulario es válido, puedes realizar la lógica de envío o procesamiento aquí
       this.party.title = this.formulario.value.title;
       this.party.description = this.formulario.value.description;
-      this.party.partyType = this.formulario.value.partyType;
-      this.party.game = this.formulario.value.game;
-      this.party.activity = this.formulario.value.activity;
-      this.party.social = this.formulario.value.social;
-      console.log(this.formulario.value);
+      const partyType = this.formulario.value.partyType;
+      if (partyType === 'Game') {
+        this.party.game = this.formulario.value.game;
+        this.party.activity = null;
+        this.party.social = null;
+      } else if (partyType === 'Activity') {
+        this.party.game = null;
+        this.party.activity = this.formulario.value.activity;
+        this.party.social = null;
+      } else if (partyType === 'Social') {
+        console.log(partyType);
+        this.party.game = null;
+        this.party.activity = null;
+        console.log(this.party.social);
+        this.party.social = this.formulario.value.social;
+      }
+
+      console.log(this.party);
       this.submitParty();
     } else {
       console.log("error envio")
     }
-
   }
 
   // Function to submit post
   submitParty() {
     this.party.creator.id = this.userId;
-
     console.log("button pressed");
     console.log(this.party);
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
         console.log(data);
         console.log("Funciona");
-        // Realizar las operaciones necesarias después de enviar el formulario
       },
       error: (error: any) => {
         console.log("No se puede enviar la fiesta", error);
