@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-main-feed',
@@ -10,7 +11,7 @@ export class MainFeedComponent {
   // Posts array
   posts: any[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private datePipe: DatePipe) {}
 
   // On page load, get all posts
   ngOnInit() {
@@ -63,4 +64,26 @@ export class MainFeedComponent {
   getCommentsNumber(id: number) {
     return this.postService.getPostCommentsNumber(id);
   }
+
+  // Function to format timestamp to be more user friendly
+  formatTimestamp(timestamp: string): string {
+    const currentTime = new Date();
+    const submittedTime = new Date(timestamp);
+    const timeDiff = Math.floor((currentTime.getTime() - submittedTime.getTime()) / 1000); // Time difference in seconds
+
+    if (timeDiff < 60) {
+      return `${timeDiff} seconds ago`;
+    } else if (timeDiff < 3600) {
+      const minutes = Math.floor(timeDiff / 60);
+      return `${minutes} minutes ago`;
+    } else if (timeDiff < 86400) {
+      const hours = Math.floor(timeDiff / 3600);
+      return `${hours} hours ago`;
+    } else {
+      // Use Angular's DatePipe to format the date in a desired format
+      const formattedDate = this.datePipe.transform(submittedTime, 'yyyy-MM-dd HH:mm');
+      return formattedDate || ''; // Handle null formattedDate
+    }
+  }
+
 }
