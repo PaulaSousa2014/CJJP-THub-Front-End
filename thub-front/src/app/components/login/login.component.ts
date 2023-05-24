@@ -61,4 +61,9 @@ export class LoginComponent implements OnInit {
     this.roles = [];
   }
 
+  onEnterKey(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onSubmit();
+    }
+  }
 }
