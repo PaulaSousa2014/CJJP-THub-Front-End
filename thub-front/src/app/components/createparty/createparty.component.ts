@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Party, Creator} from 'src/app/models/CreatePartyModels';
+import { Party, Creator, Activity, Game, Social} from 'src/app/models/CreatePartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -14,7 +14,10 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class CreatepartyComponent {
   formulario: FormGroup;
   creator: Creator = {} as Creator;
-  party: Party = { title: '', description: '', creator: this.creator, activity: null, game: null, social: null };
+  activity: Activity = {} as Activity;
+  game: Game = {} as Game;
+  social: Social = {} as Social;
+  party: Party = { title: '', description: '', creator: this.creator, activity: this.activity, game: this.game, social: this.social };
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
 
@@ -24,8 +27,12 @@ export class CreatepartyComponent {
       description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
       partyType: new FormControl('', Validators.required)
     });
+
+    this.party.game = {} as Game; // Inicializar como objeto vacío
+    this.party.activity = {} as Activity; // Inicializar como objeto vacío
+    this.party.social = {} as Social; // Inicializar como objeto vacío
   }
-  
+
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
     this.userId = this.user.id;  }
@@ -36,20 +43,18 @@ export class CreatepartyComponent {
       this.party.description = this.formulario.value.description;
       const partyType = this.formulario.value.partyType;
       if (partyType === 'Game') {
-        this.party.game = this.formulario.value.game;
-        this.party.activity = null;
-        this.party.social = null;
+        const selectedGameId = this.formulario.value.game; // Obtener la id seleccionada
+        this.party.game = selectedGameId ? { id: selectedGameId } : {} as Game; // Asignar la id si está seleccionada, de lo contrario, asignar objeto vacío
+
       } else if (partyType === 'Activity') {
-        this.party.game = null;
-        this.party.activity = this.formulario.value.activity;
-        this.party.social = null;
+        const selectedActivityId = this.formulario.value.activity; // Obtener la id seleccionada
+        this.party.activity = selectedActivityId ? { id: selectedActivityId } : {} as Activity; // Asignar la id si está seleccionada, de lo contrario, asignar objeto vacío
+
       } else if (partyType === 'Social') {
-        console.log(partyType);
-        this.party.game = null;
-        this.party.activity = null;
-        console.log(this.party.social);
-        this.party.social = this.formulario.value.social;
+        const selectedSocialId = this.formulario.value.social; // Obtener la id seleccionada
+        this.party.social = selectedSocialId ? { id: selectedSocialId } : {} as Social; // Asignar la id si está seleccionada, de lo contrario, asignar objeto vacío
       }
+
 
       console.log(this.party);
       this.submitParty();
@@ -59,6 +64,7 @@ export class CreatepartyComponent {
   }
 
   // Function to submit post
+  
   submitParty() {
     this.party.creator.id = this.userId;
     console.log("button pressed");
