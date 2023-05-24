@@ -14,13 +14,16 @@ export class EditprofileComponent {
   user: any;
   jobOptions: any[] = [];
   officeOptions: any[] = [];
+  updatedUser: any;
 
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
     private jobService: JobService,
     private officeService: OfficesService
-  ) {}
+  ) {
+    this.updatedUser = {};
+  }
 
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
@@ -34,7 +37,6 @@ export class EditprofileComponent {
         this.getProfileData();
         this.getJobOptions();
         this.getOfficeOptions();
-        console.log(this.userProfile);
       },
       error: (error) => {
         console.log('Something went wrong', error);
@@ -60,10 +62,10 @@ export class EditprofileComponent {
   getJobOptions() {
     this.jobService.getJobs().subscribe({
       next: (jobs: any[]) => {
-        this.jobOptions = jobs.map(job => ({
+        this.jobOptions = jobs.map((job) => ({
           id: job.id,
           title: job.title,
-          selected: job.title === this.userProfile.job?.title 
+          selected: job.title === this.userProfile.job?.title,
         }));
       },
       error: (error) => {
@@ -72,20 +74,64 @@ export class EditprofileComponent {
     });
   }
 
-  getOfficeOptions(){
+  getOfficeOptions() {
     this.officeService.getOffices().subscribe({
       next: (offices: any[]) => {
-        this.officeOptions = offices.map(office => ({
+        this.officeOptions = offices.map((office) => ({
           id: office.id,
           name: office.name,
-          selected: office.name === this.userProfile.office?.name 
+          selected: office.name === this.userProfile.office?.name,
         }));
       },
       error: (error) => {
         console.log('Something went wrong', error);
       },
     });
-
   }
+
+  updateUser() {
+    this.updatedUser.nameSurn = this.user.nameSurn;
+    this.updatedUser.email = this.user.email;
+    this.updatedUser.steam_username = this.user.steam_username;
+    this.updatedUser.username = this.user.username;
+
+    // Obtener el trabajo seleccionado
+    const selectedJob = this.jobOptions.find((option) => option.selected);
+    if (selectedJob) {
+      this.updatedUser.job = {
+        id: selectedJob.id,
+        title: selectedJob.title,
+      };
+    }
+
+    // Obtener la oficina seleccionada
+    const selectedOffice = this.officeOptions.find((option) => option.selected);
+    if (selectedOffice) {
+      this.updatedUser.office = {
+        id: selectedOffice.id,
+        name: selectedOffice.name,
+      };
+    }
+  }
+
+  save(): void {
+    console.log('dentro de save');
+    this.updateUser();
+    console.log(this.updatedUser);
+
+    // Llamar al servicio de actualización de usuario para enviar los cambios al servidor
+    this.userService.updateUser(this.user.id, this.updatedUser).subscribe({
    
+      next: (response) => {
+        // Checks response is valid
+        if (response) {
+          // Notifies it's valid
+          alert('Character updated successfully!');
+        }
+      },
+      error: (error) => {
+        console.log('Something went wrong', error);
+      },
+    });
+  }
 }
