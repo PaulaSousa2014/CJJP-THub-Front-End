@@ -71,3 +71,11 @@ nav a:not(.dropdown-item) {
     text-align: center;
   }
 }
+
+/* Friends styles */
+.chat-friend:hover {
+  color: var(--color-pink);
+}
+.delete-friend:hover {
+  color: red;
+}

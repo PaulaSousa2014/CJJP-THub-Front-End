@@ -82,14 +82,37 @@ export class NavbarComponent implements OnInit {
   }
 
   getFriends() {
+    console.log("mi id es " + this.user.id);
     this.friendsService.getFriends().subscribe({
       next: (data: any) => {
-        this.friends = data;
+        this.friends = data.filter((friend: any) => ((friend.userSender.id === this.user.id || friend.userReciever.id === this.user.id)));
         console.log(this.friends);
+        this.getMyFriends();
       },
       error: (error: any) => {
         console.log("Cannot get friend", error);
       }
     });
   }
+
+  getMyFriends() {
+    this.friends = this.friends.map((friend: any) => {
+      if (friend.userSender.id === this.user.id) {
+        const tempReceiver = { ...friend.userReciever };
+
+        return {
+          ...friend,
+          userSender: { ...tempReceiver },
+          userReciever: { ...friend.userSender }
+        };
+      } else {
+        // Mantener el amigo sin cambios
+        return friend;
+      }
+    });
+  }
+
+
+
+
 }

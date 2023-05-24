@@ -44,15 +44,19 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col"><h2><i class="bi bi-person-heart"></i> List friends</h2></th>
+              <th scope="col" colspan="2">
+                <h2><i class="bi bi-person-heart"></i> Friends List</h2>
+              </th>
             </tr>
           </thead>
           <tbody *ngFor="let friend of friends">
-            <tr>
-              <td (click)="goToOtherProfile(friend.userReciever.id)"><a style="cursor: pointer;">{{friend.userReciever.username}}</a></td>
+            <tr (click)="goToOtherProfile(friend.userSender.id)" style="cursor: pointer;" data-bs-dismiss="modal">
+              <td>{{friend.userSender.nameSurn}}</td>
               <td>
-                <button type="button" class="btn btn-success">Message</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <div class="d-flex justify-content-end">
+                  <i class="chat-friend bi bi-chat-dots-fill"></i>
+                  <i class="delete-friend bi bi-x-lg ms-3"></i>
+                </div>
               </td>
             </tr>
           </tbody>
