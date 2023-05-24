@@ -42,7 +42,7 @@
           <label class="form-label">Game</label>
           <select class="form-select" formControlName="game" id="gameInput">
             <option value="">Select a game</option>
-            <option value="1">The Witcher</option>
+            <option *ngFor = "let game of games" value="1">{{game.title}}</option>
           </select>
         </div>
 

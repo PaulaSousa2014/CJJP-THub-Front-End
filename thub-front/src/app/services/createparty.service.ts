@@ -6,6 +6,8 @@ import { Party } from '../models/CreatePartyModels';
 
 // API auth location
 const POST_API = "https://t-hub.up.railway.app/api/parties";
+const GET_API = "https://t-hub.up.railway.app/api/games";
+
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -21,4 +23,10 @@ export class CreatepartyService {
    postNewParty(newParty: Party): Observable<any> {
     return this.httpClient.post(POST_API, newParty, httpOptions);
   }
+
+  // Get all games
+  getGames(): Observable<any> {
+    return this.httpClient.get(GET_API, httpOptions);
+  }
+  
 }
