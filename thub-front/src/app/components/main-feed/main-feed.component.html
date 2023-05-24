@@ -18,11 +18,11 @@
             </div>
           </div>
           <div class="form-group">
-            <textarea class="form-control" placeholder="Write a post..."></textarea>
+            <textarea class="form-control" placeholder="Write a post..." [(ngModel)]="post.content"></textarea>
           </div>
           <div class="text-end">
             <a class="smile" href="#"><i class="bi bi-emoji-smile"></i></a>
-            <button type="button" class="btn mt-3">Post</button>
+            <button type="button" class="btn mt-3" (click)="submitPost()">Post</button>
           </div>
         </div>
       </div>
@@ -35,14 +35,14 @@
           <!-- Contenido del feed -->
           <div class="media">
             <div class="row">
-              <div class="col-md-1">
+              <div class="col-md-1 col-2">
                 <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
                   [src]="post.creator.profile_img" alt=""></a>
               </div>
-              <div class="col-md-11">
+              <div class="col-md-11 col-10">
                 <div class="col-12 d-flex">
                   <h5>{{post.creator.nameSurn}}</h5><strong><span class="m-1"> · </span></strong><span class="username">{{post.creator.username}}</span>
-                  <p class="ms-auto my-auto">10:03</p>
+                  <p class="ms-auto my-auto">{{ formatTimestamp(post.time_submitted) }}</p>
                 </div>
                 <div class="col-12 pt-3">
                   <p>{{post.content}}</p>
