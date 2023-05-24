@@ -18,6 +18,7 @@ export class CreatepartyComponent {
     });
   }
 
+
   submitForm() {
     if (this.formulario.valid) {
       // El formulario es válido, puedes realizar la lógica de envío o procesamiento aquí
