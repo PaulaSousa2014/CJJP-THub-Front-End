@@ -18,6 +18,7 @@ export class NavbarComponent {
   logOut(): void {
     console.log('logout function');
     this.tokenStorage.signOut();
+    this.isLoggedIn=false;
     this.reloadPage();
   }
 
