@@ -1,12 +1,33 @@
-#profile-header {
-  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(226,0,116,1) 100%);
-  border: 1px black groove;
-  height: 150px;
+.card-body {
+  background-image: url('/assets/backgroundprofile.png');
+  border-top-right-radius: 10px;
+  height: 100px;
 }
-
-.logoimg {
-  max-width: 90%;
-  border-radius: 100%;
-  margin-top: -75px;
+.card-footer {
+  padding-bottom: 10%;
+}
+.icon {
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  height: auto;
+  margin-left: 14%;
+}
+@media (max-width: 767.98px) {
+  .icon {
+    margin-left: 30%;
+  }
+}
+.card-footer {
+  background-color: var(--color-light-grey);
+}
+a {
+  color: var(--color-dark-grey);
+}
+.btn {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+  font-weight: bold;
 }
 

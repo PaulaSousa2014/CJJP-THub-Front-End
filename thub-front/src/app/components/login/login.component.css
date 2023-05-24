@@ -10,10 +10,14 @@
 .container {
   padding: 3%;
   border-radius: 3%;
-  height: 60%;
+  height: auto;
   align-self: center;
   display: flex;
   flex-direction: column;
+}
+.close{
+ margin-left: 170%;
+ color: var(--color-darkgrey);
 }
 
 /* Login button */
@@ -39,6 +43,14 @@ i {
 form {
   margin-top: 20%;
 }
+
+/*Already logged in options style*/
+
+.loggedIn{
+  display: flex;
+  justify-content: space-around;
+  }
+
 
 /* Responsive */
 @media (max-width: 900px) {
