@@ -19,7 +19,8 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill" ></i>Your parties</a>
+            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill"></i>Your parties</a>
+            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-person-heart"></i>Friends</a>
             <a class="dropdown-item" (click)="goToYourProfile()"><i class="bi bi-person-fill"></i>View profile</a>
             <div class="dropdown-divider"></div>
             <a type="button" class="dropdown-item" (click)="logOut()"><i class="bi bi-door-open-fill"></i>Log out</a>
@@ -29,3 +30,20 @@
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Friends</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal Body Content -->
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
