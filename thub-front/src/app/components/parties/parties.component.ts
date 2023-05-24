@@ -21,17 +21,17 @@ export class PartiesComponent {
 
   ngOnInit() {
     this.getAllParties();
+ 
   }
+  /*  if (filterByUser) {
+          this.filteredParties = this.parties.filter(party => party.creator && party.creator.id === this.userId);
+        } */
 
   getAllParties(filterByUser: boolean = false) {
     this.partiesService.getParties().subscribe({
       next: (data: any) => {
         this.parties = data;
-        this.filteredParties = this.parties;
-
-        if (filterByUser) {
-          this.filteredParties = this.parties.filter(party => party.creator && party.creator.id === this.userId);
-        }
+        this.filteredParties = this.parties.filter(party => party.creator.id === this.userId);
 
         console.log(this.parties);
       },
@@ -53,6 +53,10 @@ export class PartiesComponent {
 
   filterMyParties() {
     this.filteredParties = this.parties.filter(party => party.creator.id === this.userId);
+  }
+
+  allParties() {
+    this.filteredParties = this.parties;
   }
 
 

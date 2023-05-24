@@ -19,7 +19,7 @@
             Username
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill" ></i>Your parties</a>
+            <a type="button" class="dropdown-item" (click)="yourParties()"><i class="bi bi-people-fill" ></i>Your parties</a>
             <a class="dropdown-item" routerLink="profile"><i class="bi bi-person-fill"></i>View profile</a>
             <div class="dropdown-divider"></div>
             <a type="button" class="dropdown-item" (click)="logOut()"><i class="bi bi-door-open-fill"></i>Log out</a>

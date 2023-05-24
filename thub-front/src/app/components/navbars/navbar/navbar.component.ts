@@ -16,10 +16,17 @@ export class NavbarComponent {
   ) {}
 
   logOut(): void {
-    console.log('logout function');
     this.tokenStorage.signOut();
     this.isLoggedIn=false;
     this.reloadPage();
+  }
+  yourParties(): void {
+    if(this.tokenStorage.getToken()){
+      this.router.navigate(['parties']);
+    }else{
+      this.router.navigate(['login']);
+    }
+
   }
 
   reloadPage(): void {
