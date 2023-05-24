@@ -4,8 +4,10 @@
   </div>
   <div class="container bg-white form-login col-md-3 position-relative">
     <div class="row justify-content-center">
-      <div *ngIf="!isLoggedIn">
-        <h2 class="fw-bold text-center mt-1">LOGIN</h2>
+      <a class="bi close bi-x-lg" [routerLink]="['/landingpage']"></a>
+      <div  *ngIf="!isLoggedIn">
+        <div><h2 class="fw-bold text-center mt-1">LOGIN</h2></div>
+        
       </div>
       <!-- Already logged In Message -->
       <div *ngIf="isLoggedIn">

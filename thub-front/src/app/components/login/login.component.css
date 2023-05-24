@@ -10,10 +10,14 @@
 .container {
   padding: 3%;
   border-radius: 3%;
-  height: 60%;
+  height: auto;
   align-self: center;
   display: flex;
   flex-direction: column;
+}
+.close{
+ margin-left: 170%;
+ color: var(--color-darkgrey);
 }
 
 /* Login button */
