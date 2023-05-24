@@ -7,21 +7,21 @@ import { PartiesService } from 'src/app/services/parties.service';
   styleUrls: ['./parties.component.css']
 })
 export class PartiesComponent {
-  //array parties
   parties: any[] = [];
+  filteredParties: any[] = []; // Nuevo arreglo para almacenar las parties filtradas
+  selectedPartyType: string = ''; // Variable para almacenar el tipo de party seleccionado
 
   constructor(private partiesService: PartiesService) {}
 
-  // On page load, get all posts
   ngOnInit() {
     this.getAllParties();
   }
 
-  // Function to get posts and get likes/comments
   getAllParties() {
     this.partiesService.getParties().subscribe({
       next: (data: any) => {
         this.parties = data;
+        this.filteredParties = this.parties; // Inicialmente, mostrar todas las parties sin filtrar
         console.log(this.parties);
       },
       error: (error: any) => {
@@ -30,4 +30,13 @@ export class PartiesComponent {
     });
   }
 
+  filterPartiesByType(partyType: string) {
+    this.selectedPartyType = partyType;
+
+    if (partyType === 'all') {
+      this.filteredParties = this.parties; // Mostrar todas las parties sin filtrar
+    } else {
+      this.filteredParties = this.parties.filter(party => party[partyType] !== null); // Filtrar las parties según el tipo seleccionado
+    }
+  }
 }

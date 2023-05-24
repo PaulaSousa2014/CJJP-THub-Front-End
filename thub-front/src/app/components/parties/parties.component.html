@@ -2,16 +2,16 @@
   <div class="row my-2">
     <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-controller"></i> Games</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('game')"><i class="bi bi-controller"></i> Games</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-bicycle"></i> Activities</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('activity')" ><i class="bi bi-bicycle"></i> Activities</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-chat"></i> Social</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5"  (click)="filterPartiesByType('social')"><i class="bi bi-chat"></i> Social</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5"><i class="bi bi-people-fill"></i> My Parties</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5"  ><i class="bi bi-people-fill"></i> My Parties</a>
       </div>
     </div>
 
@@ -25,15 +25,16 @@
       </form>
 
 
-          <div class="componentcard d-flex" *ngFor="let party of parties">
+          <div class="componentcard d-flex" *ngFor="let party of filteredParties">
             <a href="/clickparty" style="color: black;">
 
               <div class="card-body">
 
                 <div class="superiorcomponents d-flex justify-content-between">
                   <div class="activitytype" style="margin-left: 2%;">
-                    <p>Activity_type</p>
-                  </div>
+                    <p *ngIf="party.activity">Activity</p>
+                    <p *ngIf="party.game">Game</p>
+                    <p *ngIf="party.social">Social</p>                  </div>
                   <div class="people d-flex justify-content-end align-items-center">
                     <i class="bi bi-people-fill"></i> 23
                   </div>
