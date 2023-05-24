@@ -16,8 +16,8 @@ h2 {
   margin-top: 10%;
 }
 .btn-custom {
-  background-color: #e20074;
-  color: #ffffff;
+  background-color: var(--color-pink);
+  color: var(--color-white);
 }
 #logo {
   padding: 5%;
@@ -47,15 +47,6 @@ form {
     width: fit-content;
   }
 
-
-  
-  @media (max-width: 900px) {
-#logo img{
-    width: 300px;
-}
-.bg-image{
-    flex-direction: column;
-
 }
 
 @media (max-width: 600px) {
@@ -66,3 +57,4 @@ form {
     width: fit-content;
   }
 }
+  
