@@ -86,3 +86,11 @@ nav a:not(.dropdown-item) {
 .dropdown-item {
   cursor: pointer;
 }
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+}
+.nav-link.active {
+  color: var(--color-pink) !important;
+  border-bottom-color: var(--color-pink) !important;
+}

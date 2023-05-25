@@ -41,26 +41,48 @@
       </div>
       <div class="modal-body">
         <!-- Modal Body Content -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col" colspan="2">
-                <h2><i class="bi bi-person-heart"></i> Friends List</h2>
-              </th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let friend of friends">
-            <tr class="user-friend">
-              <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
-              <td>
-                <div class="d-flex justify-content-end">
-                  <i class="chat-friend bi bi-chat-dots-fill" routerLink="/chat" data-bs-dismiss="modal"></i>
-                  <i class="delete-friend bi bi-x-lg ms-3" data-bs-dismiss="modal"></i>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-person-heart"></i> Friends List</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-person-plus-fill"></i> Friend requests</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Table of friends list -->
+            <table class="table">
+              <tbody *ngFor="let friend of friends">
+                <tr class="user-friend">
+                  <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <i class="chat-friend bi bi-chat-dots-fill" routerLink="/chat" data-bs-dismiss="modal"></i>
+                      <i class="delete-friend bi bi-x-lg ms-3" data-bs-dismiss="modal"></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- Table of friends request -->
+            <table class="table">
+              <tbody *ngFor="let friend of friends">
+                <tr class="user-friend">
+                  <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <i class="bi bi-check-lg text-success"></i>
+                      <i class="delete-friend bi bi-x-lg ms-3" data-bs-dismiss="modal"></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
       </div>
