@@ -3,24 +3,24 @@ export interface Creator {
 }
 
 export interface Game {
-  id: number;
-}
-
-export interface Social {
-  id: number;
+  id: number ;
 }
 
 export interface Activity {
-  id: number;
+  id: number ;
+}
+export interface Social {
+  id: number ;
 }
 export interface Party{
 
   title: string;
   description: string;
   creator: Creator;
-  activity: Activity | null;
   game: Game | null;
-  social:Social | null;
+  activity: Activity | null;
+  social: Social | null;
+
 }
 
 
