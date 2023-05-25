@@ -47,8 +47,15 @@ export class ProfileComponent {
     this.getUserById(this.showData);
     console.log(this.myProfile);
 
-    this.getFriends();
-
+    /* Get fiend list */
+    this.friendsService.getFriendsList(this.tokenStorage.getUser().id).subscribe(
+      (friends: any[]) => {
+        this.friends = friends;
+        this.isFriendSenderMatchUser = this.friends.some(friend => friend.userSender.id === this.showData);
+      (error: any) => {
+        console.log("Error retrieving friends list", error);
+      }
+    });
   }
 
   //Function on get user by id
@@ -63,36 +70,4 @@ export class ProfileComponent {
       }
     });
   }
-
-  // Import friends
-  getFriends() {
-    this.friendsService.getFriends().subscribe({
-      next: (data: any) => {
-        this.friends = data.filter((friend: any) => friend.userSender.id === this.tokenStorage.getUser().id || friend.userReciever.id === this.tokenStorage.getUser().id);
-        this.getMyFriends();
-      },
-      error: (error: any) => {
-        console.log("Cannot get friend", error);
-      }
-    });
-  }
-
-  getMyFriends() {
-    this.friends = this.friends.map((friend: any) => {
-      if (friend.userSender.id === this.tokenStorage.getUser().id) {
-        const tempReceiver = { ...friend.userReciever };
-
-        return {
-          ...friend,
-          userSender: { ...tempReceiver },
-          userReciever: { ...friend.userSender }
-        };
-      } else {
-        return friend;
-      }
-    });
-    this.isFriendSenderMatchUser = this.friends.some(friend => friend.userSender.id === this.showData);
-
-  }
-
 }
