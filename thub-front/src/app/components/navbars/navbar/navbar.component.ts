@@ -42,7 +42,15 @@ export class NavbarComponent implements OnInit {
     });
 
     /* Get fiend list */
-    this.getFriends();
+    this.friendsService.getFriendsList(this.user.id).subscribe(
+      (friends: any[]) => {
+        this.friends = friends;
+      },
+      (error: any) => {
+        console.log("Error retrieving friends list", error);
+      }
+    );
+
   }
 
   /* View my profile button */
@@ -107,39 +115,4 @@ export class NavbarComponent implements OnInit {
   openModal(): void {
     $('#exampleModal').modal('show');
   }
-
-  /* Get fiends list */
-  getFriends() {
-    this.friendsService.getFriends().subscribe({
-      next: (data: any) => {
-        this.friends = data.filter((friend: any) => friend.userSender.id === this.user.id || friend.userReciever.id === this.user.id);
-        this.getMyFriends();
-      },
-      error: (error: any) => {
-        console.log("Cannot get friend", error);
-      }
-    });
-  }
-
-  /* Filter and format my frient list */
-  getMyFriends() {
-    this.friends = this.friends.map((friend: any) => {
-      if (friend.userSender.id === this.user.id) {
-        const tempReceiver = { ...friend.userReciever };
-
-        return {
-          ...friend,
-          userSender: { ...tempReceiver },
-          userReciever: { ...friend.userSender }
-        };
-      } else {
-        // Mantener el amigo sin cambios
-        return friend;
-      }
-    });
-  }
-
-
-
-
 }
