@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
     });
 
     /* Get fiend list */
-    this.friendsService.getFriendsList(this.user.id, true, true).subscribe(
+    this.friendsService.getFriendsList(this.user.id, true, false).subscribe(
       (friends: any[]) => {
         this.friends = friends;
       },

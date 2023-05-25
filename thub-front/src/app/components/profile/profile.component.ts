@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { FriendsService } from 'src/app/services/friends.service';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -25,13 +26,10 @@ export class ProfileComponent {
     private friendsService: FriendsService
     ) {}
 
-  /* Lists */
   id: number = 3;
   friends: any[] = [];                                          // List one
   friendsRequest: any[] = [];                                   // List two
   friendsRequestReceiver: any[] = [];                           // List three
-
-  /* Results */
   isFriendSenderMatchUser: boolean | undefined;                 // List one
   isFriendRequestSenderMatchUser: boolean | undefined;          // List two
   isFriendRequestReceiverMatchUser: boolean | undefined;        // List three

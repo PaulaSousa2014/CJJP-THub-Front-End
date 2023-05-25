@@ -24,16 +24,16 @@ export class FriendsService {
     return this.getFriends().pipe(
       map((data: any) => {
         const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
-        console.log(friends);
-        if(type){
+        if (type) {
           return this.getMyFriends(friends, id);
-        } else {
+        } else if (!type) {
           if (btn) {
             return this.getMyFriendsRequest(friends, id);
           } else {
             return this.getMyFriendsRequestSended(friends, id);
           }
         }
+        return [];
       })
     );
   }
