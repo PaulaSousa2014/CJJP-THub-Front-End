@@ -25,7 +25,7 @@
 a {
   color: var(--color-dark-grey);
 }
-.btn:not(.btn-success) {
+.btn-add {
   background-color: var(--color-pink);
 }
 .btn {
