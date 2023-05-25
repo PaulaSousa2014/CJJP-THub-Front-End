@@ -3,8 +3,9 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { JobService } from 'src/app/services/job.service';
 import { OfficesService } from 'src/app/services/offices.service';
-import { Job, Office } from 'src/app/models/UserModels';
-import { AvatarService } from 'src/app/services/avatar.service';
+import { Route, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-editprofile',
@@ -27,15 +28,21 @@ export class EditprofileComponent {
     private userService: UserService,
     private jobService: JobService,
     private officeService: OfficesService,
-    private avatarService: AvatarService
+    private router: Router
+
   ) {}
 
   //Inicializing with user data and avatar image
   ngOnInit() {
 
     this.user = this.tokenStorageService.getUser();
-    this.image = this.avatarService.getSelectedAvatar();
     this.getUserProfile();
+  }
+
+  //Cancel edit and go back to user profile page
+  goToYourProfile() {
+    const id = this.user.id;
+    this.router.navigate(['/profile', id]);
   }
 
   //Get profile data from user db
