@@ -72,16 +72,17 @@ export class EditprofileComponent {
 
   }
   
-
   getJobOptions() {
     this.jobService.getJobs().subscribe({
       next: (jobs: any[]) => {
         this.jobOptions = jobs.map((job) => ({
           id: job.id,
           title: job.title,
-          description: job.description,
-          selected: job.title === this.userProfile.job?.title,
+          description: job.description
         }));
+
+        // Set the default selected job
+        this.selectedJob = this.jobOptions.find(option => option.title === this.userProfile.job?.title) || 0;
       },
       error: (error) => {
         console.log('Something went wrong', error);
@@ -95,9 +96,11 @@ export class EditprofileComponent {
         this.officeOptions = offices.map((office) => ({
           id: office.id,
           name: office.name,
-          location: office.location,
-          selected: office.name === this.userProfile.office?.name,
+          location: office.location
         }));
+
+        // Set the default selected office
+        this.selectedOffice = this.officeOptions.find(option => option.name === this.userProfile.office?.name) || 0;
       },
       error: (error) => {
         console.log('Something went wrong', error);
