@@ -1,23 +1,28 @@
-textarea {
-  resize: none;
+.card {
+  background-color: var(--color-light-grey);
 }
 
-#new-post-button {
-  background-color: #E20074;
-  font-size: 1.5rem;
+.input-group {
+  background-color: var(--color-white);
+  border-radius: 4px;
+}
+.btn {
+  background-color: var(--color-pink);
+  color: var(--color-white);
 }
 
-#new-post-button:active {
-  background-color: #262626;
+.smile {
+  margin-right: 2%;
+  color: var(--color-dark-grey);
 }
 
-a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #E20074;
+h5 {
+  color: var(--color-pink);
+}
+.username {
+  color: var(--color-white);
 }
 
-.user-post {
-  background-color: #D9D9D9;
-  border-radius: 15px;
+.post-user-pic {
+  border-radius: 100%;
 }
