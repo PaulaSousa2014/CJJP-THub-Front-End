@@ -29,9 +29,9 @@
       </form>
 
 
-          <div class="componentcard d-flex" *ngFor="let party of filteredParties">
+          <div class="componentcard d-flex"(click)="readMore(party.id)" *ngFor="let party of filteredParties">
             <div class="text-component">
-            <a href="/clickparty" style="color: black;">
+            <a  style="color: black;">
 
               <div class="card-body">
 
