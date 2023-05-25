@@ -118,4 +118,9 @@ export class NavbarComponent implements OnInit {
   openModal(): void {
     $('#exampleModal').modal('show');
   }
+
+  /* Delete friend request recieved */
+  deleteFriend(friend: any) {
+    this.friendsService.deleteFriend(friend.id).subscribe();
+  }
 }
