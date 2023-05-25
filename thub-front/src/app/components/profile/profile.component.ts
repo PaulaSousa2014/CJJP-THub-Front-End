@@ -10,10 +10,14 @@ import { FriendsService } from 'src/app/services/friends.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  myProfile = true;
-  showData = 0;
-  user: any;
-  friends: any[] = [];
+
+  // Variables
+  myProfile = true;       // To check if is my profile or other profile
+  showData = 0;           // To GET user id from URL
+  user: any;              // To GET user profile information
+
+  // Lists
+  friends:   any[] = [];  // To GET all my friend interaction
   friendsRS: any[] = [];
   friendsRR: any[] = [];
 
