@@ -67,18 +67,18 @@
             </table>
             <!-- 0 Friends in list -->
             <ng-template #noFriendsMessage>
-              <p class="text-center">Your friends list is empty</p>
+              <p class="text-center mt-3">Your friends list is empty</p>
             </ng-template>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- Table of friends request list -->
             <table class="table">
-              <tbody *ngIf="friends.length > 0; else noFriendsMessage">
-                <tr class="user-friend" *ngFor="let friend of friends">
+              <tbody *ngIf="friendsRequest.length > 0; else noFriendsRequest">
+                <tr class="user-friend" *ngFor="let friend of friendsRequest">
                   <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
                   <td>
                     <div class="d-flex justify-content-end">
-                      <i class="chat-friend bi bi-chat-dots-fill" routerLink="/chat" data-bs-dismiss="modal"></i>
+                      <i class="bi bi-check-lg text-success"></i>
                       <i class="delete-friend bi bi-x-lg ms-3" data-bs-dismiss="modal"></i>
                     </div>
                   </td>
@@ -86,8 +86,8 @@
               </tbody>
             </table>
             <!-- 0 Friends in list -->
-            <ng-template #noFriendsMessage>
-              <p class="text-center">Your friends request list is empty</p>
+            <ng-template #noFriendsRequest>
+              <p class="text-center mt-3">Your friends request list is empty</p>
             </ng-template>
           </div>
         </div>

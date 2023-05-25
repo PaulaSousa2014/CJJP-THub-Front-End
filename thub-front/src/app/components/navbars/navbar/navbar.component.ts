@@ -42,9 +42,19 @@ export class NavbarComponent implements OnInit {
     });
 
     /* Get fiend list */
-    this.friendsService.getFriendsList(this.user.id).subscribe(
+    this.friendsService.getFriendsList(this.user.id, true).subscribe(
       (friends: any[]) => {
         this.friends = friends;
+      },
+      (error: any) => {
+        console.log("Error retrieving friends list", error);
+      }
+    );
+
+     /* Get fiend request list */
+     this.friendsService.getFriendsList(this.user.id, false).subscribe(
+      (friends: any[]) => {
+        this.friendsRequest = friends;
       },
       (error: any) => {
         console.log("Error retrieving friends list", error);

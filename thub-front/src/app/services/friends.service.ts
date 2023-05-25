@@ -20,10 +20,10 @@ export class FriendsService {
   }
 
   /* Get all friends list */
-getFriendsList(id: number): Observable<any[]> {
+getFriendsList(id: number, type: boolean): Observable<any[]> {
   return this.getFriends().pipe(
     map((data: any) => {
-      const friends = data.filter((friend: any) => friend.userSender.id === id || friend.userReciever.id === id);
+      const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
       return this.getMyFriends(friends, id);
     })
   );

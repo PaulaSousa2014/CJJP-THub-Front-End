@@ -27,6 +27,7 @@ export class ProfileComponent {
 
   id: number = 3;
   friends: any[] = [];
+  friendsRequest: any[] = [];
   isFriendSenderMatchUser: boolean | undefined;
 
   ngOnInit() {
@@ -48,7 +49,7 @@ export class ProfileComponent {
     console.log(this.myProfile);
 
     /* Get fiend list */
-    this.friendsService.getFriendsList(this.tokenStorage.getUser().id).subscribe(
+    this.friendsService.getFriendsList(this.tokenStorage.getUser().id, true).subscribe(
       (friends: any[]) => {
         this.friends = friends;
         this.isFriendSenderMatchUser = this.friends.some(friend => friend.userSender.id === this.showData);
@@ -56,6 +57,7 @@ export class ProfileComponent {
         console.log("Error retrieving friends list", error);
       }
     });
+
   }
 
   //Function on get user by id
