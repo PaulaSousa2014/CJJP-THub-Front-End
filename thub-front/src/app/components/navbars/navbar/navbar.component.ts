@@ -41,9 +41,11 @@ export class NavbarComponent implements OnInit {
       });
     });
 
+    /* Get fiend list */
     this.getFriends();
   }
 
+  /* View my profile button */
   goToYourProfile(): void {
     const currentUserId = this.tokenStorage.getUser().id;
     const userProfileUrl = `/profile/${currentUserId}`;
@@ -57,11 +59,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-
+  /* Go to another profile */
   goToOtherProfile(id: number) {
     this.router.navigate(['/profile', id]);
   }
 
+  /* Get one user by id */
   getUserById(id: number) {
     this.userService.getUser(id).subscribe({
       next: (data: any) => {
@@ -74,6 +77,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  /* Log out button */
   logOut(): void {
     this.tokenStorage.signOut();
     this.isLoggedIn = false;
@@ -92,16 +96,19 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['landingpage']);
   }
 
+  /* See other profiles in /profile page */
   handleProfileClick(userId: number): void {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/profile', userId]);
     });
   }
 
+  /* Open fiends modal */
   openModal(): void {
     $('#exampleModal').modal('show');
   }
 
+  /* Get fiends list */
   getFriends() {
     this.friendsService.getFriends().subscribe({
       next: (data: any) => {
@@ -114,6 +121,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  /* Filter and format my frient list */
   getMyFriends() {
     this.friends = this.friends.map((friend: any) => {
       if (friend.userSender.id === this.user.id) {
