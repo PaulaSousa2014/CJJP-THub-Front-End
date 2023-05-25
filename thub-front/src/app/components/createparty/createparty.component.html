@@ -1,46 +1,74 @@
-<div class="content container-fluid vh-100  d-flex" style="display: flex; flex-direction: column;">
+<div class="content container-fluid vh-100 d-flex" style="display: flex; flex-direction: column;">
   <div class="contentbox d-flex" style="background-color: #D9D9D9;">
+    <div class="imagediv"></div>
 
-    <div class="imagediv"> </div>
-
-    <div class="divbutton">
-      <button type="submit" class="btn Create" >Create</button>
-      <a href="" style="color: black; font-size: 20px; margin-right: 10px;">Cancel</a>
-    </div>
     <div class="formdiv">
 
-    <form class="form">
-      <div class="mb-3">
-        <label  class="form-label">Title</label>
-        <input class="form-control" >
-      </div>
-      <div class="mb-3" >
-        <label for="exampleFormControlTextarea1" class="form-label" >Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="resize: none;"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Party type</label>
-        <select class="form-select">
-          <option>Social</option>
-          <option>Game</option>
-          <option>Activity</option>
+      <form [formGroup]="formulario" (ngSubmit)="submitForm()" class="form mt-4">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input class="form-control" formControlName="title" id="titleInput">
+          <div *ngIf="formulario.get('title')?.invalid && formulario.get('title')?.touched">
+            <div *ngIf="formulario.get('title')?.errors?.['required']">Title is required.</div>
+            <div *ngIf="formulario.get('title')?.errors?.['maxlength']">Title should not exceed 100 characters.</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea class="form-control" formControlName="description" id="descriptionInput" rows="3"
+            style="resize: none;"></textarea>
+          <div *ngIf="formulario.get('description')?.invalid && formulario.get('description')?.touched">
+            <div *ngIf="formulario.get('description')?.errors?.['required']">Description is required.</div>
+            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 255
+              characters.</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Party type</label>
+          <select class="form-select" formControlName="partyType" id="partyTypeInput">
+            <option value="">Select party type</option>
+            <option value="Game">Game</option>
+            <option value="Activity">Activity</option>
+            <option value="Social">Social</option>
+
+          </select>
+          <div *ngIf="formulario.get('partyType')?.invalid && formulario.get('partyType')?.touched">
+            <div *ngIf="formulario.get('partyType')?.errors?.['required']">Party type is required.</div>
+          </div>
+        </div>
+
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Game'">
+          <label class="form-label">Game</label>
+          <select class="form-select" formControlName="game" id="gameInput">
+            <option value="">Select a game</option>
+            <option *ngFor="let game of games" [value]="game.id">{{ game.title }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Activity'">
+          <label class="form-label">Activity</label>
+          <select class="form-select" formControlName="activity" id="activityInput">
+            <option value="">Select an activity</option>
+            <option *ngFor="let activity of activities" [value]="activity.id">{{ activity.title }}</option>
+          </select>
+        </div>
 
 
-        </select>
-      </div>
-      <div class="mb-3">
-        <label  class="form-label">Theme</label>
-        <input class="form-control" >
-      </div>
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Social'">
+          <label class="form-label">Social</label>
+          <select class="form-select" formControlName="social" id="socialInput">
+            <option value="">Select an social</option>
+            <option *ngFor="let social of socials" [value]="social.id">{{ social.title }}</option>
+          </select>
+        </div>
+<!--        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
+ -->
 
-
-    </form>
+        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
+        >Create</button>
+        <a href="" style="color: black; font-size: 20px; margin-right: 10px;" routerLink="/parties">Cancel</a>
+      </form>
+    </div>
   </div>
-
-  </div>
-
 </div>

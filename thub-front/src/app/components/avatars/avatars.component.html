@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="card mb-3">
+      </div>
+    </div>
+    <div class="feed col-md-10">
+      <!-- Input post -->
+      <div class="card mt-4 mb-4">
+        <div class="card-body">
+          <div class="col-12 text-center">
+            <div class="title mb-4">
+              <h2>Avatar selector</h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-3 col-md-2 mb-4" *ngFor="let image of avatars">
+              <div class="card-cat" [ngClass]="{'selected-avatar': image === selectedAvatar}" (click)="selectAvatar(image)">
+                <img class="card-img-top img-fluid" src="../../../assets/img/avatars/{{ image }}" alt="Cat avatar">
+              </div>
+            </div>
+          </div>
+          <div class="text-end">
+            <button type="button" class="btn mt-3" (click)="save()">Save</button>
+          </div>
+          <div class="col-md-1">
+            <div class="card mb-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

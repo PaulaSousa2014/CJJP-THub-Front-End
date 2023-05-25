@@ -1,54 +1,29 @@
-
-<app-mininavbar></app-mininavbar>
-<app-login-navbar></app-login-navbar>
-
-<app-landing></app-landing>
-
-
-<app-mininavbar></app-mininavbar>
-
-<app-signup></app-signup>
-<app-mininavbar></app-mininavbar>
-
-<app-login></app-login>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-main-feed></app-main-feed>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-parties></app-parties>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-click-party></app-click-party>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-createparty></app-createparty>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-profile></app-profile>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-editprofile></app-editprofile>
-<app-mininavbar></app-mininavbar>
-
-<app-navbar></app-navbar>
-
-<app-otherprofile></app-otherprofile>
-<app-chat></app-chat>
-
-<app-footer></app-footer>
+<div class="d-flex flex-column min-vh-100">
+  <!-- Black navbar -->
+  <app-mininavbar></app-mininavbar>
+  <!-- Show the navbar if it is not /login or /signup -->
+  <ng-container *ngIf="showNavbar">
+    <!-- Show the navbar of not logged user -->
+    <ng-container *ngIf="isLoggedOut">
+      <app-login-navbar></app-login-navbar>
+    </ng-container>
+    <!-- Show the navbar of logged user -->
+    <ng-container *ngIf="isLoggedIn">
+      <app-navbar></app-navbar>
+    </ng-container>
+  </ng-container>
+  <!-- Main content of the application -->
+  <div class="flex-grow-1">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- Show the footer if it is not /login or /signup -->
+  <ng-container *ngIf="showNavbar">
+    <!-- Footer -->
+    <app-footer></app-footer>
+  </ng-container>
+  <ng-container *ngIf="!showNavbar">
+    <app-minifooter></app-minifooter>
+  </ng-container>
 
 
-<router-outlet></router-outlet>
+</div>

@@ -1,76 +1,27 @@
-.imagediv {
-  width: 100%;
-  height: 190px;
-  margin: 0;
-  padding: 0;
-  background-position-y: center;
-  background-position-x: center;
+#profile-header {
+  background-image: url('/assets/backgroundprofile.png');
+  /* Otras propiedades de estilo opcionales para ajustar la apariencia */
+  background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/assets/backgroundprofile.jpg");
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-}
-.content{
-  margin-bottom: 5rem;
-  margin-top: 5rem;
+  /* Ajusta el tamaño y la posición del fondo según sea necesario */
+  width: 100%;
+  height: 100%;
+  height: 150px;
 }
 
 .logoimg {
-  width: 200px;
-  height: 200px;
+  max-width: 90%;
   border-radius: 100%;
-  margin-top: -110px;
+  margin-top: -75px;
 }
 
-.contentbox {
-  max-width: 55rem;
-  border: solid black;
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-
-  /*centrar*/
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.Create
+{
+  background-color: var(--color-pink);
+  color: white;
+  margin-right: 8px;
 }
-
-.formdiv{
-  justify-content: center; /* Centrar verticalmente */
-  align-items: center; /* Centrar horizontalmente */
-  margin-left: 15%;
-  margin-top: 60px;
-  padding-bottom: 20px;
-}
-
-.divbutton {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 13rem;
-  margin-right: 5px;
-}
-
-.form {
-  max-width: 40rem;
-  justify-content: center;
-  margin-bottom: 25px;
-  margin-top: -20px;
-}
-
-.Create{
-  background-color: #E20074;
-color: white;
-margin-right: 10px;
-height: 35px;
-width: 120px;
-font-size:15px;
-text-transform: none;
-padding: 0;
-}
-
-.form-label{
-  font-size: 20px;
-  margin-bottom: 1px;
+.form-control,.form-select
+{
+  max-width: 35rem;
 }
