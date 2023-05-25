@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 // API friends location
-const USER_API = "https://t-hub.up.railway.app/api/friends"
+const FRIENDS_API = "https://t-hub.up.railway.app/api/friends"
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
@@ -16,7 +16,18 @@ export class FriendsService {
   constructor(private httpClient: HttpClient) { }
 
   getFriends() {
-    return this.httpClient.get(USER_API, httpOptions);
+    return this.httpClient.get(FRIENDS_API, httpOptions);
+  }
+
+  createFriend(userSender: any, userReceiver: any): Observable<any> {
+    const friend = { userSender, userReceiver };
+    return this.httpClient.post<any>(FRIENDS_API, friend, httpOptions);
+  }
+
+  updateFriend(id: number, userSender: any, userReceiver: any, status: boolean): Observable<any> {
+    const friend = { id, userSender, userReceiver, status };
+    const url = `${FRIENDS_API}/${id}`;
+    return this.httpClient.put<any>(url, friend, httpOptions);
   }
 
   /* Get all friends list */
@@ -82,5 +93,4 @@ export class FriendsService {
       })
     );
   }
-
 }
