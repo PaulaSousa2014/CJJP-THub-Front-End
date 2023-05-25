@@ -4,6 +4,7 @@
   </div>
   <div class="row mb-4">
     <div class="col-md-5 text-center mb-3 mb-md-0">
+      <!-- TODO arreglar la imagen actualizada segun avatarSercive -->
       <img type="link" class="logoimg img-fluid" src="/assets/cat.jpg" alt="" [routerLink]="['/avatars']">
     </div>
     <div class="col-md-7 my-auto text-md-end text-center">
@@ -32,22 +33,27 @@
     </div>
 
     <div class="col-md-6">
-      <div class="mb-3">
-        <label class="form-label">Job</label>
-        <select class="form-select" [(ngModel)]="user.job" name="job">
-          <option *ngFor="let option of jobOptions" [value]="option.title" [selected]="option.selected">{{ option.title }}</option>
-        </select>
-        
+
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Job</label>
+          <select class="form-select" [(ngModel)]="selectedJob" name="job">
+            <option *ngFor="let option of jobOptions" [ngValue]="option" [selected]="option.selected">{{ option.title }}</option>
+          </select>
+        </div>
       </div>
       
-      
-      
-      <div class="mb-3">
-        <label class="form-label office">Office</label>
-        <select class="form-select" [(ngModel)]="user.office" name="office">
-          <option *ngFor="let option of officeOptions" [value]="option.name" [selected]="option.selected">{{ option.name }}</option>
-        </select>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label class="form-label">Office</label>
+          <select class="form-select" [(ngModel)]="selectedOffice" name="office">
+            <option *ngFor="let option of officeOptions" [ngValue]="option" [selected]="option.selected">{{ option.name }}</option>
+          </select>
+        </div>
       </div>
-    </div>
+      
+    
   </div>
 </div>
+  </div>
+
