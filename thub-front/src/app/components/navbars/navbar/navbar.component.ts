@@ -120,7 +120,7 @@ export class NavbarComponent implements OnInit {
   }
 
   /* Delete friend request recieved */
-  deleteFriend(friend: any) {
-    this.friendsService.deleteFriend(friend.id).subscribe();
+  deleteFriend(id: number) {
+    this.friendsService.deleteFriend(id).subscribe();
   }
 }

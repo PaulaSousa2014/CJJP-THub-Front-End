@@ -19,7 +19,7 @@
                 <div class="col-12 col-md-auto mb-3 mb-md-0 text-md-end">
                   <ng-container *ngIf="!myProfile">
                     <!-- No friend, no request send -->
-                    <button *ngIf="button == 0" class="btn btn-add"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                    <button *ngIf="button == 0" class="btn btn-add" (click)="sendRequest()"><i class="bi bi-person-fill-add"></i> Add Friend</button>
                     <!-- Request send -->
                     <button *ngIf="button == 3" class="btn btn-primary" disabled><i class="bi bi-person-fill-add"></i> Pending</button>
                     <!-- Request recived -->
