@@ -9,7 +9,9 @@ export interface Game {
 export interface Activity {
   id: number ;
 }
-
+export interface Social {
+  id: number ;
+}
 export interface Party{
 
   title: string;
@@ -17,6 +19,8 @@ export interface Party{
   creator: Creator;
   game: Game | null;
   activity: Activity | null;
+  social: Social | null;
+
 }
 
 

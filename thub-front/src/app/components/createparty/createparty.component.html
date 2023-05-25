@@ -30,6 +30,7 @@
             <option value="">Select party type</option>
             <option value="Game">Game</option>
             <option value="Activity">Activity</option>
+            <option value="Social">Social</option>
 
           </select>
           <div *ngIf="formulario.get('partyType')?.invalid && formulario.get('partyType')?.touched">
@@ -53,6 +54,14 @@
           </select>
         </div>
 
+
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Social'">
+          <label class="form-label">Social</label>
+          <select class="form-select" formControlName="social" id="socialInput">
+            <option value="">Select an social</option>
+            <option *ngFor="let social of socials" [value]="social.id">{{ social.title }}</option>
+          </select>
+        </div>
 <!--        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
  -->
 
