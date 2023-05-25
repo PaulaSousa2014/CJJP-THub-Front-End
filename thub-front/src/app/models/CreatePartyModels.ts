@@ -1,6 +1,5 @@
-export interface Creator {
-  id: number;
-}
+import { User } from "./UserModels";
+
 
 export interface Game {
   id: number ;
@@ -13,26 +12,20 @@ export interface Social {
   id: number ;
 }
 export interface Party{
-
+  id: number;
   title: string;
   description: string;
-  creator: Creator;
+  creator: User;
   game: Game | null;
   activity: Activity | null;
   social: Social | null;
 
 }
 
+export interface PartyMember{
+  id:number;
+  user: User;
+  party: Party;
+}
 
-/*{
-        "title": "Sarah's Graduation Party",
-        "description": "Celebrate Sarah's graduation from college",
-        "creator": {
-            "id": 3
-        },
-        "activity": null,
-        "game": null,
-        "social": {
-            "id": 1
-        }
-    }*/
+

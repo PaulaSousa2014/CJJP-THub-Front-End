@@ -10,7 +10,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="row" *ngFor="let contact of contactos" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
+              <tr class="row" *ngFor="let contact of contacts" (click)="seleccionarUsuario(contact.nombre)" [class.selected]="contact.nombre === usuarioSeleccionado" style="cursor: pointer">
                 <td class="align-middle">
                   <h5 class="text-custom d-flex align-items-center">
                     <i class="bi bi-person-fill"></i>
@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="row" *ngFor="let party of parties" (click)="sleccionarParty(party.title)" [class.selected]="party.title === partySeleccionada" style="cursor: pointer">
+          <tr class="row" *ngFor="let party of parties" (click)="seleccionarParty(party.title)" [class.selected]="party.title === partySeleccionada" style="cursor: pointer">
             <td class="align-middle">
               <h5 class="text-custom d-flex align-items-center">
                 <i class="bi bi-people-fill me-2"></i>

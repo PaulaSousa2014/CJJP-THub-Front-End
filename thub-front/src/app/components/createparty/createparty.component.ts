@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { Party, Creator, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
+import { Party, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
+import { User } from 'src/app/models/UserModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -11,7 +12,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class CreatepartyComponent {
   formulario: FormGroup;
-  creator: Creator = {} as Creator;
+  creator: User = {} as User;
 
   game: Game = {} as Game;
   games: any[] = [];
