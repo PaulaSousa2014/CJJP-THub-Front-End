@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { AvatarService } from 'src/app/services/avatar.service';
 
 @Component({
   selector: 'app-avatars',
@@ -38,20 +37,18 @@ export class AvatarsComponent {
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
-    private router: Router,
-    private avatarService: AvatarService
+    private router: Router
   ) {}
 
   //Update User
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
     this.getUser();
-
+    console.log(this.user);
   }
 
   selectAvatar(image: string): void {
     this.selectedAvatar = image;
-    this.avatarService.setSelectedAvatar(image);
   }
 
   getUser() {

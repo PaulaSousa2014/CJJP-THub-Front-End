@@ -4,12 +4,12 @@
   </div>
   <div class="row mb-4">
     <div class="col-md-5 text-center mb-3 mb-md-0">
-      <!-- TODO arreglar la imagen actualizada segun avatarSercive -->
-      <img type="link" class="logoimg img-fluid" src="/assets/cat.jpg" alt="" [routerLink]="['/avatars']">
+ 
+      <img type="link" class="logoimg img-fluid" src="{{userProfile.profile_img}}" alt="" [routerLink]="['/avatars']">
     </div>
     <div class="col-md-7 my-auto text-md-end text-center">
       <button type="submit"   class="btn Create mr-3" (click)="save()">Save</button>
-      <a  [routerLink]="['/profile']" href="" class="cancel">Cancel</a>
+      <a (click)="goToYourProfile()" href="" class="cancel">Cancel</a>
     </div>
   </div>
 
