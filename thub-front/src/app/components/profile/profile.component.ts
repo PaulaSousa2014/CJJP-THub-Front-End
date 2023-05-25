@@ -33,19 +33,24 @@ export class ProfileComponent implements OnInit {
     private friendsService: FriendsService      // To manage friends
   ) {}
 
+  // OnInit
   ngOnInit() {
+
+    // GET URL user id and save in showData
     this.route.paramMap.subscribe(params => {
       const showDataParam = params.get('showData');
       this.showData = showDataParam !== null ? parseInt(showDataParam) : 0;
     });
-
     this.user = this.tokenStorage.getUser();
     this.myProfile = this.showData === this.user.id;
 
+    // GET all user information from showData id
     this.getUserById(this.showData);
+    // GET all friends lists
     this.getFriendsLists();
   }
 
+  // GET one user information from id
   getUserById(id: number) {
     this.userService.getUser(id).subscribe({
       next: (data: any) => {
@@ -58,6 +63,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  // GET all friends list to compare
   getFriendsLists() {
     this.friendsService.getFriendsListTestFormat(this.tokenStorage.getUser().id, true).subscribe(
       (friends: any[]) => {
@@ -75,7 +81,6 @@ export class ProfileComponent implements OnInit {
         this.friendsRS = friends;
         console.log("RS" + this.showData);
         console.log(this.friendsRS);
-        console.log("La ID del primer registro es: " + (this.friendsRS[0]?.userSender?.id || 'N/A'));
         this.checkFriends();
         this.printButtonStatus();
       },
@@ -97,6 +102,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  // Check lists to change friend button in profile
   checkFriends() {
     if (this.friends.some(friend => friend.userSender.id === this.showData && friend.status === true)) {
       this.button = 1; // Friends
@@ -111,6 +117,7 @@ export class ProfileComponent implements OnInit {
     this.buttonChanged = this.button !== this.button;
   }
 
+  // Check if button change
   printButtonStatus() {
     if (this.buttonChanged) {
       console.log("El botón ha cambiado a " + this.button);
