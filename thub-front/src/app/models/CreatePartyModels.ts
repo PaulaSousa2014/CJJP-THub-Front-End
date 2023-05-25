@@ -3,16 +3,20 @@ export interface Creator {
 }
 
 export interface Game {
-  id: number;
+  id: number ;
 }
 
+export interface Activity {
+  id: number ;
+}
 
 export interface Party{
 
   title: string;
   description: string;
   creator: Creator;
-  game: Game;
+  game: Game | null;
+  activity: Activity | null;
 }
 
 
