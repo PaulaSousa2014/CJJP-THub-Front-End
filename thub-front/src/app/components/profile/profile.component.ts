@@ -3,7 +3,6 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { FriendsService } from 'src/app/services/friends.service';
-import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -14,28 +13,33 @@ export class ProfileComponent {
 
   // Boolen to change my profile view or other profile view
   myProfile: boolean = true;
+
+  // Id user profile (URL)
   showData: number = 0;
 
   // User array
   user: any;
 
-  constructor(
-    private userService: UserService,
-    private tokenStorage: TokenStorageService,
-    private route: ActivatedRoute,
-    private friendsService: FriendsService
-    ) {}
+  // Lists of friends
+  friends:    any[] = [];                       // List one - Friends
+  friendsRS:  any[] = [];                       // List two - Request send
+  friendsRR:  any[] = [];                       // List three - Request recived
 
-  id: number = 3;
-  friends: any[] = [];                                          // List one
-  friendsRequest: any[] = [];                                   // List two
-  friendsRequestReceiver: any[] = [];                           // List three
-  isFriendSenderMatchUser: boolean | undefined;                 // List one
-  isFriendRequestSenderMatchUser: boolean | undefined;          // List two
-  isFriendRequestReceiverMatchUser: boolean | undefined;        // List three
+  isFriend:   boolean = false                   // List one
+  isFriendRS: boolean = false;                  // List two
+  isFriendRR: boolean = false;                  // List three
+
+  // Constructor
+  constructor (
+    private userService: UserService,           // User server to get user
+    private tokenStorage: TokenStorageService,  // Tocken to get session
+    private route: ActivatedRoute,              // Router
+    private friendsService: FriendsService      // Friend service to get friend
+    ) {}
 
   ngOnInit() {
 
+    // Get id from URL
     this.route.paramMap.subscribe(params => {
       const showDataParam = params.get('showData');
       if (showDataParam !== null) {

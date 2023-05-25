@@ -66,16 +66,9 @@ export class NavbarComponent implements OnInit {
   /* View my profile button */
   goToYourProfile(): void {
     const currentUserId = this.tokenStorage.getUser().id;
-    const userProfileUrl = `/profile/${currentUserId}`;
-
-    if (this.router.url === userProfileUrl) {
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate([userProfileUrl]);
-      });
-    } else {
-      this.router.navigate([userProfileUrl]);
-    }
+    this.handleProfileClick(currentUserId);
   }
+
 
   /* Go to another profile */
   goToOtherProfile(id: number) {

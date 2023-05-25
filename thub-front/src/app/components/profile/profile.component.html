@@ -19,13 +19,13 @@
                 <div class="col-12 col-md-auto mb-3 mb-md-0 text-md-end">
                   <ng-container *ngIf="!myProfile">
                     <!-- No friend, no request send -->
-                    <button *ngIf="!isFriendSenderMatchUser && !isFriendSenderMatchUser" class="btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                    <button *ngIf="!isFriend && !isFriend" class="btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
                     <!-- Request send -->
-                    <button *ngIf="!isFriendSenderMatchUser && isFriendSenderMatchUser" class="btn"><i class="bi bi-person-fill-add"></i> Pending</button>
+                    <button *ngIf="!isFriend && isFriend" class="btn"><i class="bi bi-person-fill-add"></i> Pending</button>
                     <!-- Request recived -->
-                    <button *ngIf="!isFriendSenderMatchUser && isFriendSenderMatchUser" class="btn"><i class="bi bi-person-fill-add"></i> Accept</button>
+                    <button *ngIf="!isFriend && isFriend" class="btn"><i class="bi bi-person-fill-add"></i> Accept</button>
                     <!-- Friends -->
-                    <button *ngIf="isFriendSenderMatchUser && !isFriendSenderMatchUser" class="btn btn-success" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
+                    <button *ngIf="isFriend && !isFriend" class="btn btn-success" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
                   </ng-container>
                 </div>
                 <div class="col-12 col-md-auto text-md-end">
