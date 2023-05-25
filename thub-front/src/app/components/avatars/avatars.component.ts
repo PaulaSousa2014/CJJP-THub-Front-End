@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { AvatarService } from 'src/app/services/avatar.service';
 
 @Component({
   selector: 'app-avatars',
@@ -37,17 +38,20 @@ export class AvatarsComponent {
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private avatarService: AvatarService
   ) {}
 
   //Update User
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
     this.getUser();
+
   }
 
   selectAvatar(image: string): void {
     this.selectedAvatar = image;
+    this.avatarService.setSelectedAvatar(image);
   }
 
   getUser() {
@@ -62,8 +66,11 @@ export class AvatarsComponent {
   }
 
   save(): void {
+
     this.userChanged.profile_img =
       '../../../assets/img/avatars/' + this.selectedAvatar;
+
+
 
     // Llamar al servicio de actualización de usuario para enviar los cambios al servidor
     this.userService.updateUser(this.user.id, this.userChanged).subscribe({
@@ -79,9 +86,11 @@ export class AvatarsComponent {
         console.log('Something went wrong', error);
       },
     });
+
   }
 
+
   returnPage(): void {
-    this.router.navigate(['editprofile']);
+    this.router.navigate(["editprofile"]);
   }
 }

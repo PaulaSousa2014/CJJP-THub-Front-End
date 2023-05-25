@@ -14,12 +14,12 @@ export interface User {
 
 export interface Job{
     id: number;
-    title: string;
-    description: string;
+
 }
 
 export interface Office{
     id: number;
+
 }
 
 export interface Roles{
