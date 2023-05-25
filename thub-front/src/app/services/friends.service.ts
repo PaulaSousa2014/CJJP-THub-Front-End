@@ -33,6 +33,12 @@ export class FriendsService {
     return this.httpClient.put<any>(url, friend, httpOptions);
   }
 
+  /* DELETE specific friend from backend */
+  deleteFriend(id: number): Observable<any> {
+    const url = `${FRIENDS_API}/${id}`;
+    return this.httpClient.delete<any>(url, httpOptions);
+  }
+
   /* Get all friends list */
   getFriendsList(id: number, type: boolean, btn: boolean): Observable<any[]> {
     return this.getFriends().pipe(
