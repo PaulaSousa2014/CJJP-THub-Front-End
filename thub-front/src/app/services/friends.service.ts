@@ -15,15 +15,18 @@ export class FriendsService {
 
   constructor(private httpClient: HttpClient) { }
 
+  /* GET firiends form backend */
   getFriends() {
     return this.httpClient.get(FRIENDS_API, httpOptions);
   }
 
+  /* POST firiends to backend */
   createFriend(userSender: any, userReceiver: any): Observable<any> {
     const friend = { userSender, userReceiver };
     return this.httpClient.post<any>(FRIENDS_API, friend, httpOptions);
   }
 
+  /* PUT specific friend form backend */
   updateFriend(id: number, userSender: any, userReceiver: any, status: boolean): Observable<any> {
     const friend = { id, userSender, userReceiver, status };
     const url = `${FRIENDS_API}/${id}`;
