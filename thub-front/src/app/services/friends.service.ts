@@ -20,29 +20,38 @@ export class FriendsService {
   }
 
   /* Get all friends list */
-getFriendsList(id: number, type: boolean): Observable<any[]> {
-  return this.getFriends().pipe(
-    map((data: any) => {
-      const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
-      return this.getMyFriends(friends, id);
-    })
-  );
-}
+  getFriendsList(id: number, type: boolean): Observable<any[]> {
+    return this.getFriends().pipe(
+      map((data: any) => {
+        const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
+        console.log(friends);
+        if(type){
+          return this.getMyFriends(friends, id);
+        } else {
+          return this.getMyFriendsRequest(friends, id);
+        }
+      })
+    );
+  }
 
-/* Get friends by id */
-getMyFriends(friends: any[], id: number): any[] {
-  return friends.map((friend: any) => {
-    if (friend.userSender.id === id) {
-      const tempReceiver = { ...friend.userReciever };
+  /* Get friends by id */
+  getMyFriends(friends: any[], id: number): any[] {
+    return friends.map((friend: any) => {
+      if (friend.userSender.id === id) {
+        const tempReceiver = { ...friend.userReciever };
 
-      return {
-        ...friend,
-        userSender: { ...tempReceiver },
-        userReciever: { ...friend.userSender }
-      };
-    } else {
-      return friend;
-    }
-  });
-}
+        return {
+          ...friend,
+          userSender: { ...tempReceiver },
+          userReciever: { ...friend.userSender }
+        };
+      } else {
+        return friend;
+      }
+    });
+  }
+
+  getMyFriendsRequest(friends: any[], id: number): any[] {
+    return friends.filter((friend: any) => friend.userSender.id !== id);
+  }
 }
