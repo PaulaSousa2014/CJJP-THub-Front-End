@@ -125,4 +125,10 @@ export class ProfileComponent implements OnInit {
       console.log("El botón no ha cambiado");
     }
   }
+
+  // Send friend request
+  sendRequest() {
+    // Sender, my sesion and receiver, URL user
+    this.friendsService.createFriend(this.tokenStorage.getUser().id, this.showData);
+  }
 }
