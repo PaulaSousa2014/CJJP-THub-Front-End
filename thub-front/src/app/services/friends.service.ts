@@ -64,4 +64,23 @@ export class FriendsService {
   getMyFriendsRequestSended(friends: any[], id: number): any[] {
     return friends.filter((friend: any) => friend.userReciever.id !== id);
   }
+
+  /* Get all my interacions */
+  getFriendsListTest(id: number): Observable<any[]> {
+    return this.getFriends().pipe(
+      map((data: any) => data.filter((friend: any) => friend.userSender.id === id))
+    );
+  }
+
+
+  /* Get all my interacions */
+  getFriendsListTestFormat(id: number, condition: boolean): Observable<any[]> {
+    return this.getFriends().pipe(
+      map((data: any) => {
+        const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id));
+        return this.getMyFriends(friends, id);
+      })
+    );
+  }
+
 }
