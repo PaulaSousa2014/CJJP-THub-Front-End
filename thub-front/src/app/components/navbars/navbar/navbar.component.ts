@@ -13,10 +13,10 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
 
-  isLoggedIn = true;  // Logged
-  user: any;
-  friends: any[] = [];
-  friendsRequest: any[] = [];
+  isLoggedIn = true;            // Logged
+  user: any;                    // User logged info
+  friends: any[] = [];          // Friends list
+  friendsRequest: any[] = [];   // Friends requests list
 
   /* Constructor */
   constructor(
@@ -27,10 +27,14 @@ export class NavbarComponent implements OnInit {
     private friendsService: FriendsService
   ) {}
 
+  /* On init */
   ngOnInit() {
+
+    /* Obtain user logged */
     this.user = this.tokenStorage.getUser();
     this.getUserById(this.user.id);
 
+    /* Open modal (firends page) */
     $(document).ready(() => {
       $('#myModal').on('shown.bs.modal', () => {
         $('#myInput').trigger('focus');
