@@ -7,43 +7,45 @@
       <img type="link" class="logoimg img-fluid" src="/assets/cat.jpg" alt="" [routerLink]="['/avatars']">
     </div>
     <div class="col-md-7 my-auto text-md-end text-center">
-      <button type="submit" [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="btn Create mr-3">Save</button>
+      <button type="submit"   class="btn Create mr-3" (click)="save()">Save</button>
       <a  [routerLink]="['/profile']" href="" class="cancel">Cancel</a>
     </div>
   </div>
 
+  <!-- Form -->
 
-  <div class="row mb-3">
+  <div  class="row mb-3">
     <div class="col-md-6">
       <div class="mb-3 ">
         <label class="form-label">Name</label>
-        <input class="form-control">
+        <input type="text" class="form-control" id="name" [(ngModel)]="user.nameSurn" name="nameSurn" />
+        
       </div>
       <div class="mb-3">
         <label class="form-label">Username</label>
-        <input class="form-control">
+        <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" />
       </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email"/>
       </div>
     </div>
 
     <div class="col-md-6">
       <div class="mb-3">
-        <label class="form-label">Steam user</label>
-        <input class="form-control">
-      </div>
-      <div class="mb-3">
         <label class="form-label">Job</label>
-        <select class="form-select">
-          <option>Select job</option>
+        <select class="form-select" [(ngModel)]="user.job" name="job">
+          <option *ngFor="let option of jobOptions" [value]="option.title" [selected]="option.selected">{{ option.title }}</option>
         </select>
+        
       </div>
+      
+      
+      
       <div class="mb-3">
         <label class="form-label office">Office</label>
-        <select class="form-select">
-          <option>Select office</option>
+        <select class="form-select" [(ngModel)]="user.office" name="office">
+          <option *ngFor="let option of officeOptions" [value]="option.name" [selected]="option.selected">{{ option.name }}</option>
         </select>
       </div>
     </div>
