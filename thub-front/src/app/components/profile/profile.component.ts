@@ -18,8 +18,8 @@ export class ProfileComponent implements OnInit {
 
   // Lists
   friends:   any[] = [];  // To GET all my friend interaction
-  friendsRS: any[] = [];
-  friendsRR: any[] = [];
+  friendsRS: any[] = [];  // To GET all my friend request sent
+  friendsRR: any[] = [];  // To GET all my friend request received
 
   button = 0;
   buttonChanged = false;
