@@ -20,7 +20,7 @@ export class FriendsService {
   }
 
   /* Get all friends list */
-  getFriendsList(id: number, type: boolean): Observable<any[]> {
+  getFriendsList(id: number, type: boolean, btn: boolean): Observable<any[]> {
     return this.getFriends().pipe(
       map((data: any) => {
         const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
@@ -28,7 +28,11 @@ export class FriendsService {
         if(type){
           return this.getMyFriends(friends, id);
         } else {
-          return this.getMyFriendsRequest(friends, id);
+          if (btn) {
+            return this.getMyFriendsRequest(friends, id);
+          } else {
+            return this.getMyFriendsRequestSended(friends, id);
+          }
         }
       })
     );
@@ -51,7 +55,13 @@ export class FriendsService {
     });
   }
 
+  /* Get only my friend request */
   getMyFriendsRequest(friends: any[], id: number): any[] {
     return friends.filter((friend: any) => friend.userSender.id !== id);
+  }
+
+  /* Get only my friend request */
+  getMyFriendsRequestSended(friends: any[], id: number): any[] {
+    return friends.filter((friend: any) => friend.userReciever.id !== id);
   }
 }

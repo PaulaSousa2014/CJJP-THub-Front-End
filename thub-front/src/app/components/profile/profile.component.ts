@@ -25,10 +25,16 @@ export class ProfileComponent {
     private friendsService: FriendsService
     ) {}
 
+  /* Lists */
   id: number = 3;
-  friends: any[] = [];
-  friendsRequest: any[] = [];
-  isFriendSenderMatchUser: boolean | undefined;
+  friends: any[] = [];                                          // List one
+  friendsRequest: any[] = [];                                   // List two
+  friendsRequestReceiver: any[] = [];                           // List three
+
+  /* Results */
+  isFriendSenderMatchUser: boolean | undefined;                 // List one
+  isFriendRequestSenderMatchUser: boolean | undefined;          // List two
+  isFriendRequestReceiverMatchUser: boolean | undefined;        // List three
 
   ngOnInit() {
 
@@ -46,18 +52,6 @@ export class ProfileComponent {
     }
 
     this.getUserById(this.showData);
-    console.log(this.myProfile);
-
-    /* Get fiend list */
-    this.friendsService.getFriendsList(this.tokenStorage.getUser().id, true).subscribe(
-      (friends: any[]) => {
-        this.friends = friends;
-        this.isFriendSenderMatchUser = this.friends.some(friend => friend.userSender.id === this.showData);
-      (error: any) => {
-        console.log("Error retrieving friends list", error);
-      }
-    });
-
   }
 
   //Function on get user by id

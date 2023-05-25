@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
     });
 
     /* Get fiend list */
-    this.friendsService.getFriendsList(this.user.id, true).subscribe(
+    this.friendsService.getFriendsList(this.user.id, true, true).subscribe(
       (friends: any[]) => {
         this.friends = friends;
       },
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit {
     );
 
      /* Get fiend request list */
-     this.friendsService.getFriendsList(this.user.id, false).subscribe(
+     this.friendsService.getFriendsList(this.user.id, false, true).subscribe(
       (friends: any[]) => {
         this.friendsRequest = friends;
       },
