@@ -11,24 +11,26 @@ import { FriendsService } from 'src/app/services/friends.service';
 })
 export class ProfileComponent implements OnInit {
 
-  // Variables
+  // User
   myProfile = true;       // To check if is my profile or other profile
   showData = 0;           // To GET user id from URL
   user: any;              // To GET user profile information
 
-  // Lists
+  // Lists friends
   friends:   any[] = [];  // To GET all my friend interaction
   friendsRS: any[] = [];  // To GET all my friend request sent
   friendsRR: any[] = [];  // To GET all my friend request received
 
-  button = 0;
-  buttonChanged = false;
+  // Button
+  button = 0;             // Value to change button friend profile
+  buttonChanged = false;  // Compove if button change
 
+  // Contructor
   constructor(
-    private userService: UserService,
-    private tokenStorage: TokenStorageService,
-    private route: ActivatedRoute,
-    private friendsService: FriendsService
+    private userService: UserService,           // To manage users
+    private tokenStorage: TokenStorageService,  // To manage my session logged
+    private route: ActivatedRoute,              // To manage routes
+    private friendsService: FriendsService      // To manage friends
   ) {}
 
   ngOnInit() {
