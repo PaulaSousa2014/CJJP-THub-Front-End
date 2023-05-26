@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { Party, Creator, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
+import { Router } from '@angular/router';
+import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+
+import { PartiesService } from 'src/app/services/parties.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-createparty',
@@ -28,9 +33,8 @@ export class CreatepartyComponent {
 
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
-
-  constructor(private createPartyService: CreatepartyService, private tokenStorageService: TokenStorageService) {
-        // Initialize the form and its controls
+  constructor(private createPartyService: CreatepartyService, private router: Router, private tokenStorageService: TokenStorageService, private partyService: PartiesService) {
+    // Initialize the form and its controls
     this.formulario = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
@@ -40,11 +44,11 @@ export class CreatepartyComponent {
       activity: new FormControl(null)
     }, {
       validators: [
-                // Conditional validator to require 'game' when 'partyType' is 'Activity'
+        // Conditional validator to require 'game' when 'partyType' is 'Activity'
         this.conditionalRequiredValidator(() => this.partyType === 'Activity', 'game'),
-                // Conditional validator to require 'activity' when 'partyType' is 'Game'
+        // Conditional validator to require 'activity' when 'partyType' is 'Game'
         this.conditionalRequiredValidator(() => this.partyType === 'Game', 'activity'),
-                // Conditional validator to require 'activity' when 'partyType' is 'Social'
+        // Conditional validator to require 'activity' when 'partyType' is 'Social'
         this.conditionalRequiredValidator(() => this.partyType === 'Social', 'activity')]
     });
   }
@@ -60,7 +64,7 @@ export class CreatepartyComponent {
 
   submitForm() {
     if (this.formulario.valid) {
-            // Get the form values
+      // Get the form values
       this.party.title = this.formulario.value.title;
       this.party.description = this.formulario.value.description;
       this.partyType = this.formulario.value.partyType;
@@ -144,35 +148,56 @@ export class CreatepartyComponent {
 
   // Function to post the data.
   submitParty() {
-    this.creator.id = this.userId; // Asign ID creator
+    this.creator.id = this.userId; // Assign ID to the creator
     this.party.creator = this.creator;
-    this.party.game = this.game;  //Asign object game to the game at party.
-    this.party.activity = this.activity;  //Asign object game to the game at party.
+    this.party.game = this.game; // Assign object game to the game property in the party.
+    this.party.activity = this.activity; // Assign object activity to the activity property in the party.
 
     if (this.partyType === 'Game') {
       this.party.activity = null;
       this.party.social = null;
-      this.game.id = this.selectedGameId; //Asign the id of the selected game to the property Id on Game.
+      this.game.id = this.selectedGameId; // Assign the ID of the selected game to the Id property in Game.
     } else if (this.partyType === 'Activity') {
       this.party.game = null;
       this.party.social = null;
-      this.activity.id = this.selectedActivityId; //Asign the id of the selected game to the property Id on Game.
+      this.activity.id = this.selectedActivityId; // Assign the ID of the selected activity to the Id property in Activity.
     } else if (this.partyType === 'Social') {
       this.party.game = null;
       this.party.activity = null;
-      this.social.id = this.selectedSocialId; //Asign the id of the selected game to the property Id on Game.
+      this.social.id = this.selectedSocialId; // Assign the ID of the selected social event to the Id property in Social.
     }
 
     console.log(this.party);
+
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
         console.log(data);
         console.log("Funciona");
+
+        // Add creator as party member
+        this.partyService.joinParty(data.id, this.creator.id, data).subscribe({
+          next: () => {
+            window.alert("El formulario es correcto.");
+            window.location.href = "/parties";
+          },
+          error: (error: any) => {
+            console.log("No se pudo unir al usuario a la fiesta", error);
+          }
+        });
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your party has been created!',
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          this.router.navigate(['/parties']); // Redirect to the parties page
+        });
       },
       error: (error: any) => {
         console.log("No se puede enviar la fiesta", error);
       }
     });
   }
-
 }
