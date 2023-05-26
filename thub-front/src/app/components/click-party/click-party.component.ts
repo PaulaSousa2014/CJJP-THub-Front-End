@@ -43,7 +43,7 @@ export class ClickPartyComponent implements OnInit {
   }
 
   getParties() {
-    this.partiesService.getPartyMembers(this.currentUser.id).subscribe({
+    this.partiesService.getMemberParties(this.currentUser.id).subscribe({
       next: (data: any) => {
         console.log('getting members');
         this.partyList = data;

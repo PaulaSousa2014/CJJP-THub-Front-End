@@ -36,7 +36,7 @@ export class PartiesService {
 }
 
 // Function to get all parties from user
-getPartyMembers(id: number): Observable<any> {
+getMemberParties(id: number): Observable<any> {
   return this.httpClient.get(POST_API_JOIN + "/user/"+ id);
 }
 
