@@ -41,8 +41,8 @@ export class EditprofileComponent {
 
   //Cancel edit and go back to user profile page
   goToYourProfile() {
-    const id = this.user.id;
-    this.router.navigate(['/profile', id]);
+    const showdata = this.user.id;
+    this.router.navigate(['/profile', showdata]);
   }
 
   //Get profile data from user db
