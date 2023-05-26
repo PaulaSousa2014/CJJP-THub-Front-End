@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class ClickPartyComponent implements OnInit {
   // Attribute to store id and character
-  id: number = 0;
+  partyId: number = 0;
   party: Party = {} as Party;
   creator: Creator = {} as Creator;
   currentUser: any;
@@ -25,24 +25,21 @@ export class ClickPartyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('party inicial: ' + this.party);
     this.currentUser = this.tokenStorage.getUser();
-    this.creator = this.currentUser.creator;
 
-    console.log('party : ' + this.party);
-    console.log('creator : ' + this.creator);
-    console.log('party : ' + this.id);
     // Get the id from the route parameters
     this.route.params.subscribe((params) => {
-      this.id = +params['id'];
+      this.partyId = +params['id'];
 
-      if (this.id) {
-        this.partiesService.getPartiesId(this.id).subscribe((data: Party) => {
+      if (this.partyId) {
+        this.partiesService.getPartiesId(this.partyId).subscribe((data: Party) => {
           console.log('Data: ' + data);
           this.party = data;
         });
       }
     });
+
+    this.getParties();
   }
 
   getParties() {
@@ -57,13 +54,17 @@ export class ClickPartyComponent implements OnInit {
     });
   }
 
-  isUserInParty() :boolean{
-    console.log("user in party");
-    for(let member in this.partyList){
-      console.log(member);
-    }
-    return true;
+  isUserInParty(): boolean {
+
+    this.partyList.forEach((element: any) => {
+      console.log(this.partyId);
+      if (element.party.id === this.partyId) {
+        console.log("User is in party!");
+      }
+    });
+    return false;
   }
+
 
   goBack() {
     this.router.navigate(['/parties']);
