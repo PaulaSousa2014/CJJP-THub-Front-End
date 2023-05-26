@@ -1,18 +1,20 @@
 
 <div id="general-click-party">
   <div class="party-button">
-    <button class="btn btn-primary fw-blod me-5" id="new-post-button">&lt;</button>
+    <button (click)="goBack()" class="btn btn-primary fw-blod me-5" id="new-post-button">&lt;</button>
   </div>
-  <div id="party-details">
-    <div class="container">
+  <div id="party-details" >
+    <div class="container" *ngIf="party.id">
       <div class="titol-detail">
-        <div><h2 class="fw-bold text-uppercase">Weekend at molina</h2></div>
+        <div><h2 class="fw-bold text-uppercase">Title: {{ party.title }}</h2></div>
         <div> </div>
 
       </div>
       <div id="text-body">
-        <p class="fw-bold fs-5">Created by Username</p>
-        <p class="fw-bold fs-5">Type of activity: ActivityType</p>
+        <h1 class="fw-bold fs-5">Created by {{party.creator.username}}</h1>
+        <h4 *ngIf="party.activity">Type: Activity</h4>
+        <h4 *ngIf="party.game">Type: Game</h4>
+        <h4 *ngIf="party.social">Type: Social</h4>
       </div>
       <div class="buttons">
         <div>
@@ -26,10 +28,7 @@
       </div>
       <div>
         <p class="text-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-          esse provident, distinctio laborum delectus veritatis necessitatibus
-          placeat laudantium facere suscipit! Vitae harum eligendi animi id non
-          dignissimos itaque facere dolor?
+          {{ party.description }}
         </p>
       </div>
     </div>
