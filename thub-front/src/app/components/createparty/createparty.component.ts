@@ -172,21 +172,24 @@ export class CreatepartyComponent {
    
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
-
         console.log(data);
         console.log("Funciona");
-         //Add creator to party
-        this.partyService.joinParty(data.id, this.creator.id);
-
-        window.alert("El formulario es correcto.");
-        window.location.href = "/parties";
+    
+        // Add creator as party member
+        this.partyService.joinParty(data.id, this.creator.id, data).subscribe({
+          next: () => {
+            window.alert("El formulario es correcto.");
+            window.location.href = "/parties";
+          },
+          error: (error: any) => {
+            console.log("No se pudo unir al usuario a la fiesta", error);
+          }
+        });
       },
       error: (error: any) => {
         console.log("No se puede enviar la fiesta", error);
       }
     });
   }
-
- 
 
 }

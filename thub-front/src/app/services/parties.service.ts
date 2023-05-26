@@ -44,8 +44,8 @@ export class PartiesService {
 
 
 // Function to add user to a party by party_id & user_id
-joinParty(party_id: number, user_id:number): Observable<any> {
-  return this.httpClient.get(POST_API_JOIN + "/"+ party_id + "/"+ user_id);
+joinParty(party_id: number, user_id:number, newJoin: any): Observable<any> {
+  return this.httpClient.post(POST_API_JOIN + "/"+ party_id + "/"+ user_id, newJoin);
 }
 
 
