@@ -1,5 +1,6 @@
 export interface Creator {
   id: number;
+  username: string;
 }
 
 export interface Game {
@@ -13,7 +14,7 @@ export interface Social {
   id: number ;
 }
 export interface Party{
-
+  id: number;
   title: string;
   description: string;
   creator: Creator;

@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+<<<<<<< HEAD
 import { Router } from '@angular/router';
 import { Party, Creator, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
+=======
+import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
+>>>>>>> b43b61e4ec83c1b4aa2537098e444c03ec5fafe6
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
