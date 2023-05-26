@@ -18,7 +18,6 @@ export class EditprofileComponent {
   user: any;
   jobOptions: any[] = [];
   officeOptions: any[] = [];
-  updatedUser: any = {};
   selectedJob: any = 0;
   selectedOffice: any = 0;
   image: any;
@@ -29,8 +28,7 @@ export class EditprofileComponent {
     private jobService: JobService,
     private officeService: OfficesService,
     private router: Router
-
-  ) {}
+  ) { }
 
   //Inicializing with user data and avatar image
   ngOnInit() {
@@ -113,50 +111,17 @@ export class EditprofileComponent {
     });
   }
 
-  //Update user information
-  updateUser() {
-
-    this.updatedUser = {
-
-      username: this.userProfile.username,
-      password: this.userProfile.password,
-      email: this.userProfile.email,
-      nameSurn: this.userProfile.nameSurn,
-      profile_image: this.userProfile.profile_image,
-      steam_username: this.userProfile.steam_username,
-
-      job: {
-        id: this.selectedJob.id,
-        title: this.selectedJob.title,
-        description: this.selectedJob.description,
-      },
-
-      office: {
-        id: this.selectedOffice.id,
-        name: this.selectedOffice.name,
-        location: this.selectedOffice.location,
-      },
-
-      roles: this.userProfile.roles,
-    };
-  }
-
   //Save changed info
   save(): void {
 
-    // Update user info
-    this.updateUser();
-
-    console.log(this.updatedUser);
+    this.userProfile.job.id = this.selectedJob.id;
+    this.userProfile.office.id = this.selectedOffice.id;
 
     // Save changes into DB
-    this.userService.updateUser(this.user.id, this.updatedUser).subscribe({
+    this.userService.updateUser(this.user.id, this.userProfile).subscribe({
       next: (response) => {
-        // check is valid info
-        if (response) {
-          // notify if it is OK
-          alert('Character updated successfully!');
-        }
+        // notify if it is OK
+        alert('User updated successfully!');
       },
       error: (error) => {
         console.log('Something went wrong', error);
