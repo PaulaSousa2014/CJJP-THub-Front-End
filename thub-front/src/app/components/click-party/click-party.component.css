@@ -11,7 +11,10 @@
   margin-right: 10px;
 }
 
-
+.figure-container{
+  width: 80%;
+  height: auto;
+}
 .btn {
   background-color: #e20074;
   font-size: 1.5rem;
