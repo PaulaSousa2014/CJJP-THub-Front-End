@@ -30,10 +30,12 @@
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
+      <div class="divbutton d-flex flex-column align-items-center mt-1">
+        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create party</a>
+      </div>
 
 
-
-      <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
+      <div class="componentcard d-flex"  *ngFor="let party of filteredParties" >
 
         <div class="text-component" >
           <a style="color: black;" (click)="readMore(party.id)">
@@ -66,9 +68,7 @@
       <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
         <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer" (click)="allParties()">join a party</a> or create one! 🎉</h2>
       </div>
-      <div class="divbutton d-flex flex-column align-items-center mt-3">
-        <a class="btn btn-primary createparty" href="/createparty" role="button">Create party</a>
-      </div>
+
     </div>
   </div>
 </div>
