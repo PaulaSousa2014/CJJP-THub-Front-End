@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { User} from '../models/UserModels';
 
 // API user location
-const USER_API = "https://t-hub.up.railway.app/api/users/"
+const USER_API = "https://t-hub.up.railway.app/api/jobs"
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
@@ -13,23 +12,14 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-
-export class UserService {
-
-
+export class JobService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createUser(data: any): Observable<any> {
-    return this.httpClient.post(USER_API, data).pipe(
-      catchError(this.handleError)
-    );
+  //Get all jobs options
+  getJobs(): Observable<any> {
+    return this.httpClient.get(USER_API,httpOptions);
   }
-
-  updateUser(id:number, newUser: any): Observable<any> {
-    return this.httpClient.put(USER_API +id , newUser, httpOptions);
-  }
-
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {
@@ -44,8 +34,4 @@ export class UserService {
       'Something bad happened; please try again later.');
   };
 
-  // Get user by id
-  getUser(id: number): Observable<any> {
-    return this.httpClient.get(USER_API + id, httpOptions);
-  }
 }

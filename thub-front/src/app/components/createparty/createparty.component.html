@@ -23,34 +23,57 @@
               characters.</div>
           </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" formControlName="email" id="emailInput" aria-describedby="emailHelp">
-          <div *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched">
-            <div *ngIf="formulario.get('email')?.errors?.['required']">Email is required.</div>
-            <div *ngIf="formulario.get('email')?.errors?.['email']">Please enter a valid email address.</div>
-          </div>
-        </div>
+
         <div class="mb-3">
           <label class="form-label">Party type</label>
           <select class="form-select" formControlName="partyType" id="partyTypeInput">
             <option value="">Select party type</option>
-            <option value="Social">Social</option>
             <option value="Game">Game</option>
             <option value="Activity">Activity</option>
+            <option value="Social">Social</option>
+
           </select>
           <div *ngIf="formulario.get('partyType')?.invalid && formulario.get('partyType')?.touched">
             <div *ngIf="formulario.get('partyType')?.errors?.['required']">Party type is required.</div>
           </div>
         </div>
-        <div class="mb-3">
-          <label class="form-label">Theme</label>
-          <input class="form-control" formControlName="theme" id="themeInput">
+
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Game'">
+          <label class="form-label">Game</label>
+          <select class="form-select" formControlName="game" id="gameInput">
+            <option value="">Select a game</option>
+            <option *ngFor="let game of games" [value]="game.id">{{ game.title }}</option>
+          </select>
         </div>
 
-        <button type="submit" class="btn Create" [disabled]="formulario.invalid">Create</button>
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Activity'">
+          <label class="form-label">Activity</label>
+          <select class="form-select" formControlName="activity" id="activityInput">
+            <option value="">Select an activity</option>
+            <option *ngFor="let activity of activities" [value]="activity.id">{{ activity.title }}</option>
+          </select>
+        </div>
+
+
+        <div class="mb-3" *ngIf="formulario.get('partyType')?.value === 'Social'">
+          <label class="form-label">Social</label>
+          <select class="form-select" formControlName="social" id="socialInput">
+            <option value="">Select an social</option>
+            <option *ngFor="let social of socials" [value]="social.id">{{ social.title }}</option>
+          </select>
+        </div>
+<!--        <button type="submit" class="btn Create" (ngSubmit)="submitParty()"
+ -->
+
+        <button type="submit" class="btn Create" (ngSubmit)="submitParty() "
+        >Create</button>
         <a href="" style="color: black; font-size: 20px; margin-right: 10px;" routerLink="/parties">Cancel</a>
+
+
+
       </form>
+
+      
     </div>
   </div>
 </div>

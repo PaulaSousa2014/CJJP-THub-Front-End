@@ -1,38 +1,50 @@
-<div class="container my-3" style="background-color: #D9D9D9; border-radius: 5px;">
+<div class="container">
   <div class="row">
-    <div class="col-12" id="profile-header"> </div>
-  </div>
-  <div class="row mb-4">
-    <div class="col-5 text-center">
-      <img class="logoimg img-fluid" src="/assets/cat.jpg" alt="">
-    </div>
-
-    <div class="col-7 d-flex justify-content-between align-items-center">
-      <div>
-        <button class="btn btn-warning px-3" style="background-color: #E20074"><i class="bi bi-person-plus"></i></button>
-        <button class="btn btn-warning px-3 ms-1" style="background-color: #E20074"><i class="bi bi-chat-left-dots"></i></button>
-      </div>
-      <div>
-        <button class="btn btn-link px-3 ms-1" style="color: black;" routerLink="/editprofile"><i class="bi bi-gear"></i></button>
+    <div class="col-md-2">
+      <div class="card mb-3">
+        <!-- Contenido de la tarjeta -->
       </div>
     </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-md-5 col-12 text-break text-center">
-      <h4>Username</h4>
-      <h5>Name</h5>
-      <a href=""><i class="bi bi-steam"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-instagram"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-twitter"></i></a>
-      <a class="ms-1" href=""><i class="bi bi-facebook"></i></a>
+    <!-- Card profile -->
+    <div class="feed col-md-8">
+      <div class="card mt-4">
+        <div class="card-body">
+          <img *ngIf="user" class="icon img-fluid" [src]="user.profile_img" alt="">
+          <!-- Contenido del card-body -->
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="text-end mb-4">
+              <div class="row justify-content-end">
+                <div class="col-12 col-md-auto mb-3 mb-md-0 text-md-end">
+                  <button *ngIf="!myProfile" class="btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                </div>
+                <div class="col-12 col-md-auto text-md-end">
+                  <button *ngIf="!myProfile" class="btn ms-3"><i class="bi bi-chat-dots-fill"></i> Send Message</button>
+                </div>
+                <div class="col-12 col-md-auto text-md-end">
+                  <a *ngIf="myProfile" routerLink="/editprofile"><i  class="bi bi-pencil-fill ms-3"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3" *ngIf="user">
+              <div class="col-md-6 mt-3">
+                <div class="text-center">
+                  <h2 class="ms-4">{{user.nameSurn}}</h2>
+                  <h4>{{user.username}}</h4>
+                  <a href="https://steamcommunity.com/id/{{user.steam_username}}" target="_blank"><i class="bi bi-steam"></i></a>
+                </div>
+              </div>
+              <div class="col-md-6 mt-3">
+                <div>
+                  <h2 class="ms-4">{{user.job.title}}</h2>
+                  <h4 class="ms-4"><i class="bi bi-geo-alt-fill"></i> {{user.office.name}}, {{user.office.location}}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-7 col-12 px-md-auto px-3 mt-4 mt-md-n3 text-center text-md-start">
-      <h2>Job Title</h2>
-      <p><i class="bi bi-geo-alt-fill"></i> Location</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce convallis condimentum purus, ac suscipit mauris consequat id.</p>
-    </div>
-
-
   </div>
 </div>

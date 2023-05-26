@@ -51,8 +51,12 @@ const routes: Routes = [
     component: ChatComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:showData',
     component: ProfileComponent
+  },
+  {
+    path: 'parties/id/:id',
+    component: ClickPartyComponent
   },
   {
     path: 'createparty',

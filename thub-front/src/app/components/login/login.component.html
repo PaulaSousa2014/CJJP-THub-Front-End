@@ -7,7 +7,7 @@
       <a class="bi close bi-x-lg" [routerLink]="['/landingpage']"></a>
       <div  *ngIf="!isLoggedIn">
         <div><h2 class="fw-bold text-center mt-1">LOGIN</h2></div>
-        
+
       </div>
       <!-- Already logged In Message -->
       <div *ngIf="isLoggedIn">
@@ -31,7 +31,7 @@
             </span>
             <input type="password" name="password" [(ngModel)]="form.password" required minlength="6"
               #password="ngModel" id="inputPassword5" class="form-control bg-secondary-subtle"
-              aria-labelledby="passwordHelpBlock" placeholder="Password" />
+              aria-labelledby="passwordHelpBlock" placeholder="Password" (keydown)="onEnterKey($event)"/>
             <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">ç
               <div *ngIf="password.errors?.['required']">Password is required</div>
               <div *ngIf="password.errors?.['minlength']">Password must be at least 6 characters</div>
