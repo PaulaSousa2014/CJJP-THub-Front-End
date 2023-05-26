@@ -26,9 +26,10 @@ export class ProfileComponent implements OnInit {
   button = 0;             // Value to change button friend profile
   buttonChanged = false;  // Compove if button change
 
-  friendRt: FriendRequest = {} as FriendRequest;
-  userSRt: UserSender = {} as UserSender;
-  userRRt: UserReciever = {} as UserReciever;
+  // Models
+  friendRt: FriendRequest = {} as FriendRequest;  // Model with sender and reciever
+  userSRt: UserSender = {} as UserSender;         // Model with id sender
+  userRRt: UserReciever = {} as UserReciever;     // Model with id reciever
 
   // Contructor
   constructor(
@@ -134,13 +135,15 @@ export class ProfileComponent implements OnInit {
 
   // Send friend request
   sendRequest(): void {
-
+    // Save session user id into model
     this.userSRt.id = this.tokenStorage.getUser().id;
     this.getUserById(this.showData);
+    // Save URL user id into model
     this.userRRt.id = this.user.id;
     this.friendRt.userSender = this.userSRt;
+    // Save users id models into request model
     this.friendRt.userReciever = this.userRRt;
-
+    // Post with request model
     this.friendsService.createFriend(this.friendRt).subscribe({
     });
   }
