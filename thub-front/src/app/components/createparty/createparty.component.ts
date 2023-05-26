@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { PartiesService } from 'src/app/services/parties.service';
 
 @Component({
   selector: 'app-createparty',
@@ -29,7 +30,7 @@ export class CreatepartyComponent {
 
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
-  constructor(private createPartyService: CreatepartyService, private router: Router,  private tokenStorageService: TokenStorageService) {
+  constructor(private createPartyService: CreatepartyService, private router: Router,  private tokenStorageService: TokenStorageService, private partyService: PartiesService) {
         // Initialize the form and its controls
     this.formulario = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -149,6 +150,7 @@ export class CreatepartyComponent {
     this.party.game = this.game;  //Asign object game to the game at party.
     this.party.activity = this.activity;  //Asign object game to the game at party.
 
+
     if (this.partyType === 'Game') {
       this.party.activity = null;
       this.party.social = null;
@@ -163,12 +165,18 @@ export class CreatepartyComponent {
       this.social.id = this.selectedSocialId; //Asign the id of the selected game to the property Id on Game.
     }
 
+   
+   
 
     console.log(this.party);
+   
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
+
         console.log(data);
         console.log("Funciona");
+         //Add creator to party
+        this.partyService.joinParty(data.id, this.creator.id);
 
         window.alert("El formulario es correcto.");
         window.location.href = "/parties";
@@ -178,5 +186,7 @@ export class CreatepartyComponent {
       }
     });
   }
+
+ 
 
 }
