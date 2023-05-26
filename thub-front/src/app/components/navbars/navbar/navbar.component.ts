@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { FriendsService } from 'src/app/services/friends.service';
+import Swal from 'sweetalert2';
 
 declare var $: any;
 
@@ -119,8 +120,43 @@ export class NavbarComponent implements OnInit {
     $('#exampleModal').modal('show');
   }
 
-  /* Delete friend request recieved */
+  /* Delete friend request recieved with sweet alert */
   deleteFriend(id: number) {
-    this.friendsService.deleteFriend(id).subscribe();
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: 'This action will remove the friend request.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.friendsService.deleteFriend(id).subscribe(() => {
+          swalWithBootstrapButtons.fire(
+            'Deleted',
+            'The friend request has been removed.',
+            'success'
+          );
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'The friend request has not been removed.',
+          'error'
+        );
+      }
+    });
   }
+
+
+
 }
