@@ -1,6 +1,6 @@
 <div class="content container-fluid vh-100 d-flex" style="display: flex; flex-direction: column;">
   <div class="contentbox d-flex" style="background-color: #D9D9D9;">
-    <div class="imagediv"></div>
+    <div class="imagediv" [ngClass]="'imagediv-' + formulario.get('partyType')?.value.toLowerCase()"></div>
 
     <div class="formdiv">
 

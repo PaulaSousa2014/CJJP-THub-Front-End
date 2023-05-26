@@ -54,4 +54,18 @@ export class ClickPartyComponent implements OnInit {
     this.router.navigate(['/parties']);
   }
 
+  getPartyImage(party: any): string {
+    // Logic to determine the image URL based on the party
+    // For example:
+    if (party.activity) {
+      return "../../../assets/carousel2.jpg";
+    } else if (party.game) {
+      return "../../../assets/carousel3.jpg";
+    } else if (party.social) {
+      return "../../../assets/carousel1.jpg";
+    } else {
+      return "../../../assets/login.jpg";
+    }
+  }
+
 }
