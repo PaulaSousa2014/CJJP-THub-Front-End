@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { FriendsService } from 'src/app/services/friends.service';
+import { Accept, UserReciever, UserSender } from 'src/app/models/FriendsModels';
 import Swal from 'sweetalert2';
 
 declare var $: any;
@@ -18,6 +19,10 @@ export class NavbarComponent implements OnInit {
   user: any;                    // User logged info
   friends: any[] = [];          // Friends list
   friendsRequest: any[] = [];   // Friends requests list
+
+  accept: Accept = {} as Accept;  // Accept request
+  acceptRS: UserSender = {} as UserSender;
+  acceptRR: UserReciever = {} as UserReciever;
 
   /* Constructor */
   constructor(
@@ -144,5 +149,20 @@ export class NavbarComponent implements OnInit {
         );
       }
     });
+  }
+
+  acceptFriend(id: number, idR: number) {
+    // Id
+    this.accept.id = id;
+    // Sender
+    this.acceptRS.id = this.tokenStorage.getUser().id;
+    this.accept.userSender = this.acceptRS;
+    // Reciever
+    this.acceptRR.id = idR;
+    this.accept.userReciever = this.acceptRR;
+    // Status
+    this.accept.status = true;
+    // Send to PUT
+    this.friendsService.updateFriend(id, this.accept).subscribe();
   }
 }

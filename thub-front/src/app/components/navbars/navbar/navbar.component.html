@@ -78,7 +78,7 @@
                   <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
                   <td>
                     <div class="d-flex justify-content-end">
-                      <i class="bi bi-check-lg text-success"></i>
+                      <i class="bi bi-check-lg text-success" (click)="acceptFriend(friend.id, friend.userSender.id)"></i>
                       <!-- Delete friend request button -->
                       <i class="delete-friend bi bi-x-lg ms-3" (click)="deleteFriend(friend.id)"></i>
                     </div>

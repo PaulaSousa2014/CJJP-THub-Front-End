@@ -30,10 +30,9 @@ export class FriendsService {
 
 
   /* PUT specific friend form backend */
-  updateFriend(id: number, userSender: any, userReceiver: any, status: boolean): Observable<any> {
-    const friend = { id, userSender, userReceiver, status };
+  updateFriend(id: number, status: any): Observable<any> {
     const url = `${FRIENDS_API}/${id}`;
-    return this.httpClient.put<any>(url, friend, httpOptions);
+    return this.httpClient.put(url, status, httpOptions);
   }
 
   /* DELETE specific friend from backend */

@@ -4,6 +4,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { FriendsService } from 'src/app/services/friends.service';
 import { FriendRequest, UserReciever, UserSender } from 'src/app/models/FriendsModels';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -148,6 +149,14 @@ export class ProfileComponent implements OnInit {
       () => {
         // Change button status to pending
         this.button = 3;
+        // Show success message
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your friend request has been sent',
+          showConfirmButton: false,
+          timer: 1500
+        });
       },
     );
   }
