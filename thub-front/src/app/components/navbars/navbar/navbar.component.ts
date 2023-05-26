@@ -164,21 +164,30 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-
-
-
   acceptFriend(id: number, idR: number) {
-    // Id
     this.accept.id = id;
-    // Sender
     this.acceptRS.id = this.tokenStorage.getUser().id;
     this.accept.userSender = this.acceptRS;
-    // Reciever
     this.acceptRR.id = idR;
     this.accept.userReciever = this.acceptRR;
-    // Status
     this.accept.status = true;
-    // Send to PUT
-    this.friendsService.updateFriend(id, this.accept).subscribe();
+
+    this.friendsService.updateFriend(id, this.accept).subscribe(() => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Friend request accepted',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        this.getList();
+        const friendsListTab = document.querySelector('#home-tab');
+          if (friendsListTab) {
+            friendsListTab.dispatchEvent(new Event('click'));
+          }
+      });
+    });
   }
+
+
 }
