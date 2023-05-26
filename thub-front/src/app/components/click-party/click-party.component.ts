@@ -87,9 +87,9 @@ export class ClickPartyComponent {
   getPartyImage(party: any): string {
     // Logic to determine the image URL based on the party
     if (party.activity) {
-      return '../../../assets/carousel2.jpg';
+      return '../../../assets/activities.jpg';
     } else if (party.game) {
-      return '../../../assets/carousel3.jpg';
+      return '../../../assets/games.jpg';
     } else if (party.social) {
       return '../../../assets/carousel1.jpg';
     } else {

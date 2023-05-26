@@ -123,13 +123,13 @@ export class PartiesComponent {
     // Logic to determine the image URL based on the party
     // For example:
     if (party.activity) {
-      return "../../../assets/carousel2.jpg";
+      return "../../../assets/activities.jpg";
     } else if (party.game) {
-      return "../../../assets/carousel3.jpg";
+      return "../../../assets/games.jpg";
     } else if (party.social) {
       return "../../../assets/carousel1.jpg";
     } else {
-      return "../../../assets/login.jpg";
+      return "../../../assets/card1.png";
     }
   }
 
