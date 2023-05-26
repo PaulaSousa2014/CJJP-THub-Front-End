@@ -54,7 +54,7 @@
             </div>
           </a>
           <ng-container *ngIf="party.creator.id === userId">
-            <button class="btn btn-primary" style="background-color: red;" (click)="deleteParty(party.id, party.title)"> <i class="bi bi-trash3-fill"></i></button>
+            <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i class="bi bi-trash3-fill"></i></button>
           </ng-container>
         </div>
         <div class="card-inside">
