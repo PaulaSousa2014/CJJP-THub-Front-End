@@ -1,71 +1,85 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Creator, Party } from 'src/app/models/PartyModels';
 import { PartiesService } from 'src/app/services/parties.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+
 
 @Component({
   selector: 'app-click-party',
   templateUrl: './click-party.component.html',
   styleUrls: ['./click-party.component.css'],
 })
-export class ClickPartyComponent implements OnInit {
-  // Attribute to store id and character
-  partyId: number = 0;
-  party: Party = {} as Party;
-  creator: Creator = {} as Creator;
-  currentUser: any;
-  partyList: any;
+export class ClickPartyComponent {
+
+  // Variables to store data
+  party: Party = {} as Party; // Store current party
+  currentUser: any; // Store user
+  partyList: any; // Store user party list
+  partyId: number = 0; // Store party id
+
+  // Variables to check
+  userInParty: boolean = false;
+  partyLoaded: boolean = false;
+  partyListLoaded: boolean = false;
 
   constructor(
     private partiesService: PartiesService,
     private route: ActivatedRoute,
     private router: Router,
     private tokenStorage: TokenStorageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    // Get user from token storage
     this.currentUser = this.tokenStorage.getUser();
 
-    // Get the id from the route parameters
+    // Get party id from route
     this.route.params.subscribe((params) => {
       this.partyId = +params['id'];
-
-      if (this.partyId) {
-        this.partiesService.getPartiesId(this.partyId).subscribe((data: Party) => {
-          console.log('Data: ' + data);
-          this.party = data;
-        });
-      }
     });
 
-    this.getParties();
+    // Start functions to get
+    this.getPartyMemberlist();
+    this.getPartyById();
   }
 
-  getParties() {
-    this.partiesService.getMemberParties(this.currentUser.id).subscribe({
+  getPartyById() {
+    this.partiesService.getPartiesId(this.partyId).subscribe({
       next: (data: any) => {
-        console.log('getting members');
-        this.partyList = data;
+        this.party = data;
+        this.partyLoaded = true;
       },
       error: (error: any) => {
-        console.log('Cannot get members', error);
-      },
-    });
-  }
-
-
-  isUserInParty(): boolean {
-
-    this.partyList.forEach((element: any) => {
-      console.log(this.partyId);
-      if (element.party.id === this.partyId) {
-        console.log("User is in party!");
       }
     });
-    return false;
-
   }
+
+  getPartyMemberlist() {
+    this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
+      next: (data: any) => {
+        this.partyList = data;
+        this.partyListLoaded = true;
+        this.isUserInParty();
+      },
+      error: (error: any) => {
+      }
+    });
+  }
+
+
+  isUserInParty(): void {
+    const userFound = this.partyList.some((element: any) => element.party.id === this.party.id);
+
+    if (userFound) {
+      console.log("He's in the party");
+      this.userInParty = true;
+    } else {
+      console.log("User not in party");
+      this.userInParty = false;
+    }
+  }
+
 
 
   goBack() {

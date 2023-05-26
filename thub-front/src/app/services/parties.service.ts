@@ -26,19 +26,19 @@ export class PartiesService {
 
   getPartiesId(id: number): Observable<Party> {
     return this.httpClient.get<Party>(POST_API + "/" + id)
-    ;
+      ;
   }
 
 
- // Function to delete character
- deleteParty(id: number): Observable<any> {
-  return this.httpClient.delete(POST_API + "/"+id);
-}
+  // Function to delete character
+  deleteParty(id: number): Observable<any> {
+    return this.httpClient.delete(POST_API + "/" + id);
+  }
 
-// Function to get all parties from user
-getMemberParties(id: number): Observable<any> {
-  return this.httpClient.get(POST_API_JOIN + "/user/"+ id);
-}
+  // Function to get all parties from user
+  getUserPartyList(id: number): Observable<any> {
+    return this.httpClient.get(POST_API_JOIN + "/user/" + id);
+  }
 
 
 }
