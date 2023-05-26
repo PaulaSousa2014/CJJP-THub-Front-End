@@ -26,19 +26,21 @@
     <div class="col-md-7 col-12 ">
       <form class="search d-flex mb-4" (ngSubmit)="filterParties()">
         <div class="input-group">
-          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm">
+          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar" [(ngModel)]="searchTerm"
+            name="searchTerm">
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
       <div class="divbutton d-flex flex-column align-items-center mt-1">
-        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create party</a>
+        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create
+          party</a>
       </div>
 
 
-      <div class="componentcard d-flex"  *ngFor="let party of filteredParties" >
+      <div class="componentcard d-flex" (click)="readMore(party.id)" *ngFor="let party of filteredParties">
 
-        <div class="text-component" >
-          <a style="color: black;" (click)="readMore(party.id)">
+        <div class="text-component">
+          <a style="color: black;">
             <div class="card-body">
               <div class="superiorcomponents d-flex justify-content-between">
                 <div class="activitytype" style="margin-left: 2%;">
@@ -55,10 +57,12 @@
               <h5 class="card-title">{{party.title}}</h5>
               <p>{{party.description}}.</p>
             </div>
+            <ng-container *ngIf="party.creator.id === userId">
+              <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
+                  class="bi bi-trash3-fill"></i></button>
+            </ng-container>
           </a>
-          <ng-container *ngIf="party.creator.id === userId">
-            <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i class="bi bi-trash3-fill"></i></button>
-          </ng-container>
+
         </div>
         <div class="card-inside">
           <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
@@ -66,7 +70,9 @@
       </div>
 
       <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
-        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer" (click)="allParties()">join a party</a> or create one! 🎉</h2>
+        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero
+          parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer"
+            (click)="allParties()">join a party</a> or create one! 🎉</h2>
       </div>
 
     </div>
