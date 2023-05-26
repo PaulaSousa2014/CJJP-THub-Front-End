@@ -18,15 +18,16 @@
       </div>
       <div class="buttons">
         <div *ngIf="userInParty == false">
-          <button class="btn btn-primary" id="join-button">
+          <button class="btn btn-primary" id="join-button" (click)="join()">
             <i class="bi bi-plus-lg"></i>
           </button>
         </div>
-        <div *ngIf="userInParty == true">
-          <button class="btn btn-primary" id="comments-button">
+        <div *ngIf="userInParty == true" class="d-flex">
+          <button class="btn btn-primary" id="comments-button" [routerLink]="'/chat'">
             <i class="bi bi-wechat"></i>
           </button>
-          <button class="btn btn-primary fw-bold" id="exit-button">-</button>
+          <button class="btn btn-primary fw-bold" id="exit-button" >-</button>
+
         </div>
       </div>
       <div>

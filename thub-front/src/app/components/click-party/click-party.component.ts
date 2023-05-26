@@ -4,14 +4,12 @@ import { Creator, Party } from 'src/app/models/PartyModels';
 import { PartiesService } from 'src/app/services/parties.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
-
 @Component({
   selector: 'app-click-party',
   templateUrl: './click-party.component.html',
   styleUrls: ['./click-party.component.css'],
 })
 export class ClickPartyComponent {
-
   // Variables to store data
   party: Party = {} as Party; // Store current party
   currentUser: any; // Store user
@@ -28,7 +26,7 @@ export class ClickPartyComponent {
     private route: ActivatedRoute,
     private router: Router,
     private tokenStorage: TokenStorageService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Get user from token storage
@@ -41,7 +39,6 @@ export class ClickPartyComponent {
 
     // Start chain function
     this.getPartyById();
-
   }
 
   // Gets party by id
@@ -51,10 +48,9 @@ export class ClickPartyComponent {
         this.party = data; // Adds data to party
         this.partyLoaded = true; // sets party Loaded to true
         this.getPartyMemberlist(); // Executes next function
-        console.log("1");
+        console.log('1');
       },
-      error: (error: any) => {
-      }
+      error: (error: any) => {},
     });
   }
 
@@ -64,27 +60,25 @@ export class ClickPartyComponent {
       next: (data: any) => {
         this.partyList = data;
         this.partyListLoaded = true;
-        console.log("2")
+        console.log('2');
         this.isUserInParty();
       },
-      error: (error: any) => {
-      }
+      error: (error: any) => {},
     });
   }
 
-
   isUserInParty(): void {
-    const userFound = this.partyList.some((element: any) => element.party.id === this.party.id);
+    const userFound = this.partyList.some(
+      (element: any) => element.party.id === this.party.id
+    );
 
-    console.log("3")
+    console.log('3');
     if (userFound) {
       this.userInParty = true;
     } else {
       this.userInParty = false;
     }
   }
-
-
 
   goBack() {
     this.router.navigate(['/parties']);
@@ -102,4 +96,21 @@ export class ClickPartyComponent {
       return '../../../assets/login.jpg';
     }
   }
+
+  //Join this party
+  join() {
+    this.partiesService
+      .joinParty(this.partyId, this.currentUser.id, this.party)
+      .subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: (error: any) => {
+          console.log('Error joining the party', error);
+        },
+      });
+  }
+
+  //exit this party
+  exit() {}
 }
