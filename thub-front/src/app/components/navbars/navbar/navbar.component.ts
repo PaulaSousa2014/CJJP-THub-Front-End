@@ -47,6 +47,11 @@ export class NavbarComponent implements OnInit {
       });
     });
 
+    this.getList();
+  }
+
+  /* Get Lists */
+  getList() {
     /* Get fiend list */
     this.friendsService.getFriendsList(this.user.id, true, false).subscribe(
       (friends: any[]) => {
@@ -116,6 +121,8 @@ export class NavbarComponent implements OnInit {
 
   /* Delete friend request recieved with sweet alert */
   deleteFriend(id: number) {
+    let modalClosed = false;
+
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -133,23 +140,32 @@ export class NavbarComponent implements OnInit {
       cancelButtonText: 'Cancel',
       reverseButtons: true
     }).then((result) => {
-      if (result.isConfirmed) {
-        this.friendsService.deleteFriend(id).subscribe(() => {
+      if (!modalClosed) {
+        modalClosed = true;
+
+        if (result.isConfirmed) {
+          this.friendsService.deleteFriend(id).subscribe(() => {
+            swalWithBootstrapButtons.fire(
+              'Deleted',
+              'The friend request has been removed.',
+              'success'
+            ).then(() => {
+              this.getList();
+            });
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(
-            'Deleted',
-            'The friend request has been removed.',
-            'success'
+            'Cancelled',
+            'The friend request has not been removed.',
+            'error'
           );
-        });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'The friend request has not been removed.',
-          'error'
-        );
+        }
       }
     });
   }
+
+
+
 
   acceptFriend(id: number, idR: number) {
     // Id
