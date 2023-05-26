@@ -39,17 +39,18 @@ export class ClickPartyComponent {
       this.partyId = +params['id'];
     });
 
-    // Start functions to get
+    // Start chain function
     this.getPartyById();
 
   }
 
+  // Gets party by id
   getPartyById() {
     this.partiesService.getPartiesId(this.partyId).subscribe({
       next: (data: any) => {
-        this.party = data;
-        this.partyLoaded = true;
-        this.getPartyMemberlist();
+        this.party = data; // Adds data to party
+        this.partyLoaded = true; // sets party Loaded to true
+        this.getPartyMemberlist(); // Executes next function
         console.log("1");
       },
       error: (error: any) => {
@@ -57,6 +58,7 @@ export class ClickPartyComponent {
     });
   }
 
+  // Gets party list by user id
   getPartyMemberlist() {
     this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
       next: (data: any) => {
