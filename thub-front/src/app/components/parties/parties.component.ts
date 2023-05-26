@@ -4,6 +4,7 @@ import { PartiesService } from 'src/app/services/parties.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Creator, Party } from 'src/app/models/PartyModels';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Creator, Party } from 'src/app/models/PartyModels';
   styleUrls: ['./parties.component.css']
 })
 export class PartiesComponent {
-  
+
   id: number = 0;
   party: Party = {} as Party;
   parties: any[] = [];
@@ -89,23 +90,33 @@ export class PartiesComponent {
 
   deleteParty(id: number, name: string) {
     const message: string = "Are you sure you want to delete the character " + name + "?";
-    const userChoice = window.confirm(message);
 
-    // If user confirms
-    if (userChoice) {
-      // Delete character by ID
-      this.partiesService.deleteParty(id).subscribe({
-        next: response => {
-          // Refresh characters
-          this.getAllParties();
-        },
-        error: error => {
-          console.log("Something went wrong:", error);
-        }
-      });
-    } else {
-      return;
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You're going to delete this party. Won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'I know, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your party has been deleted.',
+          'success'
+        )
+        this.partiesService.deleteParty(id).subscribe({
+          next: response => {
+            // Refresh characters
+            this.getAllParties();
+          },
+          error: error => {
+            console.log("Something went wrong:", error);
+          }
+        });
+      }
+    })
   }
 
   getPartyImage(party: any): string {

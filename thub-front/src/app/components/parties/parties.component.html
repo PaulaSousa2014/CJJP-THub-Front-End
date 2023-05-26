@@ -37,9 +37,9 @@
       </div>
 
 
-      <div class="componentcard d-flex" (click)="readMore(party.id)" *ngFor="let party of filteredParties">
+      <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
 
-        <div class="text-component">
+        <div class="text-component" (click)="readMore(party.id)">
           <a style="color: black;">
             <div class="card-body">
               <div class="superiorcomponents d-flex justify-content-between">
@@ -57,16 +57,19 @@
               <h5 class="card-title">{{party.title}}</h5>
               <p>{{party.description}}.</p>
             </div>
-            <ng-container *ngIf="party.creator.id === userId">
-              <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
-                  class="bi bi-trash3-fill"></i></button>
-            </ng-container>
+
           </a>
 
         </div>
+
         <div class="card-inside">
           <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
         </div>
+        <ng-container *ngIf="party.creator.id === userId">
+          <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
+              class="bi bi-trash3-fill"></i></button>
+        </ng-container>
+
       </div>
 
       <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
