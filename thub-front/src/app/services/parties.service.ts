@@ -29,4 +29,10 @@ export class PartiesService {
   }
 
 
+ // Function to delete character
+ deleteParty(id: number): Observable<any> {
+  return this.httpClient.delete(`https://t-hub.up.railway.app/api/parties/${id}`)
+};
+
+
 }
