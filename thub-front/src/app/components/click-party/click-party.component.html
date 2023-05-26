@@ -17,12 +17,17 @@
         <h4 *ngIf="party.social">Type: Social</h4>
       </div>
       <div class="buttons">
-        <div>
-          <button class="btn btn-primary" id="comments-button">
-            <i class="fa-solid fa-comments" style="color: #f7f7f8"></i>
+        <div *ngIf="!isUserInParty()">
+          <button class="btn btn-primary" id="join-button">
+            <i class="bi bi-plus-lg"></i>
           </button>
         </div>
-        <div>
+        <div *ngIf="isUserInParty()">
+          <button class="btn btn-primary" id="comments-button">
+            <i class="bi bi-wechat"></i>
+          </button>
+        </div>
+        <div *ngIf="isUserInParty()">
           <button class="btn btn-primary fw-bold" id="exit-button">-</button>
         </div>
       </div>
