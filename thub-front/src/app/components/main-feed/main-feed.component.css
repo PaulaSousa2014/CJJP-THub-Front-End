@@ -26,3 +26,7 @@ h5 {
 .post-user-pic {
   border-radius: 100%;
 }
+
+p i:hover {
+  cursor: pointer;
+}
