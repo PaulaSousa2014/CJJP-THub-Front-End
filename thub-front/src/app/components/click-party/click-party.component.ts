@@ -107,13 +107,17 @@ export class ClickPartyComponent {
 
     this.partiesService.joinParty(this.partyId, this.currentUser.id, this.party).subscribe({
       next: () => {
-        window.alert("You joined the party");
-        window.location.href = "/parties";
+        window.location.reload(); 
       },
       error: (error: any) => {
         console.log("Error joining the party", error);
       }
     });
+  }
+
+  exit(){
+
+    //
   }
 
 }
