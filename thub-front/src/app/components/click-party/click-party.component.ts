@@ -59,8 +59,8 @@ export class ClickPartyComponent implements OnInit {
 
   isUserInParty() :boolean{
     console.log("user in party");
-    for(let member in this.partyList){
-      console.log(member);
+    for(let user in this.partyList){
+      console.log(user);
     }
     return true;
   }
