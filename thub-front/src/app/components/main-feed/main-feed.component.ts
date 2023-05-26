@@ -94,7 +94,6 @@ export class MainFeedComponent {
     return this.postService.getPostCommentsNumber(id);
   }
 
-
   // Function to submit post
   submitPost() {
     this.creator.id = this.currentUser.id;
@@ -147,5 +146,6 @@ export class MainFeedComponent {
   doStuff() {
     console.log("aaaaaaaaa")
   }
-
 }
+
+

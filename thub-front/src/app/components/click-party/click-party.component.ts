@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Creator, Party } from 'src/app/models/PartyModels';
 import { PartiesService } from 'src/app/services/parties.service';
@@ -7,47 +7,77 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 @Component({
   selector: 'app-click-party',
   templateUrl: './click-party.component.html',
-  styleUrls: ['./click-party.component.css']
+  styleUrls: ['./click-party.component.css'],
 })
-export class ClickPartyComponent implements OnInit {
+export class ClickPartyComponent {
+  // Variables to store data
+  party: Party = {} as Party; // Store current party
+  currentUser: any; // Store user
+  partyList: any; // Store user party list
+  partyId: number = 0; // Store party id
 
-   // Attribute to store id and character
-   id: number = 0;
-   party: Party = {} as Party;
-   creator: Creator = { } as Creator;
-   currentUser: any;
+  // Variables to check
+  userInParty: boolean = false;
+  partyLoaded: boolean = false;
+  partyListLoaded: boolean = false;
 
-  constructor(private partiesService: PartiesService, private route: ActivatedRoute, private router: Router, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private partiesService: PartiesService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private tokenStorage: TokenStorageService
+  ) {}
 
+  ngOnInit(): void {
+    // Get user from token storage
+    this.currentUser = this.tokenStorage.getUser();
 
-    ngOnInit(): void {
-      console.log("party inicial: " + this.party);
-      this.currentUser = this.tokenStorage.getUser();
-    this.creator = this.currentUser.creator;
+    // Get party id from route
+    this.route.params.subscribe((params) => {
+      this.partyId = +params['id'];
+    });
 
-    console.log( "party : "+
-      this.party
+    // Start chain function
+    this.getPartyById();
+  }
+
+  // Gets party by id
+  getPartyById() {
+    this.partiesService.getPartiesId(this.partyId).subscribe({
+      next: (data: any) => {
+        this.party = data; // Adds data to party
+        this.partyLoaded = true; // sets party Loaded to true
+        this.getPartyMemberlist(); // Executes next function
+        console.log('1');
+      },
+      error: (error: any) => {},
+    });
+  }
+
+  // Gets party list by user id
+  getPartyMemberlist() {
+    this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
+      next: (data: any) => {
+        this.partyList = data;
+        this.partyListLoaded = true;
+        console.log('2');
+        this.isUserInParty();
+      },
+      error: (error: any) => {},
+    });
+  }
+
+  isUserInParty(): void {
+    const userFound = this.partyList.some(
+      (element: any) => element.party.id === this.party.id
     );
-    console.log( "creator : "+
-      this.creator
-    );
-    console.log( "party : "+
-      this.id
-    );
-      // Get the id from the route parameters
-      this.route.params.subscribe(params => {
-        this.id = +params['id'];
 
-        if (this.id) {
-          this.partiesService.getPartiesId(this.id).subscribe((data: Party) => {
-            console.log("Data: " + data);
-            this.party = data;
-          });
-        }
-
-      });
-
-
+    console.log('3');
+    if (userFound) {
+      this.userInParty = true;
+    } else {
+      this.userInParty = false;
+    }
   }
 
   goBack() {
@@ -56,16 +86,31 @@ export class ClickPartyComponent implements OnInit {
 
   getPartyImage(party: any): string {
     // Logic to determine the image URL based on the party
-    // For example:
     if (party.activity) {
-      return "../../../assets/carousel2.jpg";
+      return '../../../assets/activities.jpg';
     } else if (party.game) {
-      return "../../../assets/carousel3.jpg";
+      return '../../../assets/games.jpg';
     } else if (party.social) {
-      return "../../../assets/carousel1.jpg";
+      return '../../../assets/carousel1.jpg';
     } else {
-      return "../../../assets/login.jpg";
+      return '../../../assets/login.jpg';
     }
   }
 
+  //Join this party
+  join() {
+    this.partiesService
+      .joinParty(this.partyId, this.currentUser.id, this.party)
+      .subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: (error: any) => {
+          console.log('Error joining the party', error);
+        },
+      });
+  }
+
+  //exit this party
+  exit() {}
 }
