@@ -58,7 +58,7 @@
           </ng-container>
         </div>
         <div class="card-inside">
-          <img class="card-img-top" src="/assets/login.jpg">
+          <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
         </div>
 
       </div>
