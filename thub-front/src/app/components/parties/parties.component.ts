@@ -2,8 +2,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Component } from '@angular/core';
 import { PartiesService } from 'src/app/services/parties.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
-import { Party } from 'src/app/models/PartyModels';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Creator, Party } from 'src/app/models/PartyModels';
 
 
 @Component({
@@ -12,15 +12,19 @@ import { Party } from 'src/app/models/PartyModels';
   styleUrls: ['./parties.component.css']
 })
 export class PartiesComponent {
-
+  id: number = 0;
+  party: Party = {} as Party;
   parties: any[] = [];
   filteredParties: any[] = [];
   selectedPartyType: string = '';
+  currentUser: any;
+  creator: Creator = {} as Creator;
+
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
 
 
-  constructor(private partiesService: PartiesService, private authService: AuthService, private router: Router, private tokenStorageService: TokenStorageService) {
+  constructor(private partiesService: PartiesService, private route: ActivatedRoute, private authService: AuthService, private router: Router, private tokenStorageService: TokenStorageService) {
   }
 
   ngOnInit() {
@@ -71,6 +75,26 @@ export class PartiesComponent {
   }
 
 
+  deleteParty(id: number, name: string) {
+    const message: string = "Are you sure you want to delete the character " + name + "?";
+    const userChoice = window.confirm(message);
 
+    // If user confirms
+    if (userChoice) {
+      // Delete character by ID
+      this.partiesService.deleteParty(id).subscribe({
+        next: response => {
+          // Refresh characters
+          this.getAllParties();
+        },
+        error: error => {
+          console.log("Something went wrong:", error);
+        }
+      });
+    } else {
+      return;
+    }
   }
+
+}
 
