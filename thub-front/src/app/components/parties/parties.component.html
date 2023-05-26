@@ -61,12 +61,10 @@
         <div class="card-inside">
           <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
         </div>
-
-
       </div>
 
       <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
-        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero parties detected. <br> Keep calm and party on! 🎉</h2>
+        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer" (click)="allParties()">join a party</a> or create one! 🎉</h2>
       </div>
       <div class="divbutton d-flex flex-column align-items-center mt-3">
         <a class="btn btn-primary createparty" href="/createparty" role="button">Create party</a>
