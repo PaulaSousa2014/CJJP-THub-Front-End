@@ -4,7 +4,10 @@ import { Router } from '@angular/router';
 import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+
 import { PartiesService } from 'src/app/services/parties.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-createparty',
@@ -165,28 +168,39 @@ export class CreatepartyComponent {
       this.social.id = this.selectedSocialId; //Asign the id of the selected game to the property Id on Game.
     }
 
-   
-   
-
     console.log(this.party);
    
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
-
         console.log(data);
         console.log("Funciona");
-         //Add creator to party
-        this.partyService.joinParty(data.id, this.creator.id);
 
-        window.alert("El formulario es correcto.");
-        window.location.href = "/parties";
+    
+        // Add creator as party member
+        this.partyService.joinParty(data.id, this.creator.id, data).subscribe({
+          next: () => {
+            window.alert("El formulario es correcto.");
+            window.location.href = "/parties";
+          },
+          error: (error: any) => {
+            console.log("No se pudo unir al usuario a la fiesta", error);
+          
+
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your party has been created!',
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          this.router.navigate(['/parties']); // Redirigir a la página de parties
+
+        });
       },
       error: (error: any) => {
         console.log("No se puede enviar la fiesta", error);
       }
     });
   }
-
- 
 
 }
