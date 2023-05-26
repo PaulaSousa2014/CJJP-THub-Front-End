@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { FriendsService } from 'src/app/services/friends.service';
+import { FriendRequest, UserReciever, UserSender } from 'src/app/models/FriendsModels';
 
 @Component({
   selector: 'app-profile',
@@ -25,12 +26,17 @@ export class ProfileComponent implements OnInit {
   button = 0;             // Value to change button friend profile
   buttonChanged = false;  // Compove if button change
 
+  friendRt: FriendRequest = {} as FriendRequest;
+  userSRt: UserSender = {} as UserSender;
+  userRRt: UserReciever = {} as UserReciever;
+
   // Contructor
   constructor(
     private userService: UserService,           // To manage users
     private tokenStorage: TokenStorageService,  // To manage my session logged
     private route: ActivatedRoute,              // To manage routes
     private friendsService: FriendsService      // To manage friends
+
   ) {}
 
   // OnInit
@@ -127,8 +133,15 @@ export class ProfileComponent implements OnInit {
   }
 
   // Send friend request
-  sendRequest() {
-    // Sender, my sesion and receiver, URL user
-    this.friendsService.createFriend(this.tokenStorage.getUser().id, this.showData);
+  sendRequest(): void {
+
+    this.userSRt.id = this.tokenStorage.getUser().id;
+    this.getUserById(this.showData);
+    this.userRRt.id = this.user.id;
+    this.friendRt.userSender = this.userSRt;
+    this.friendRt.userReciever = this.userRRt;
+
+    this.friendsService.createFriend(this.friendRt).subscribe({
+    });
   }
 }

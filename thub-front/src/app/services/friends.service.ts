@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
+
 
 // API friends location
 const FRIENDS_API = "https://t-hub.up.railway.app/api/friends"
@@ -21,10 +22,12 @@ export class FriendsService {
   }
 
   /* POST firiends to backend */
-  createFriend(userSender: any, userReceiver: any): Observable<any> {
-    const friend = { userSender, userReceiver };
-    return this.httpClient.post<any>(FRIENDS_API, friend, httpOptions);
+  createFriend(data: any): Observable<any> {
+    return this.httpClient.post(FRIENDS_API, data).pipe(
+      catchError(this.handleError)
+    );
   }
+
 
   /* PUT specific friend form backend */
   updateFriend(id: number, userSender: any, userReceiver: any, status: boolean): Observable<any> {
@@ -102,4 +105,17 @@ export class FriendsService {
       })
     );
   }
+
+  // Handle API errors
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
 }
