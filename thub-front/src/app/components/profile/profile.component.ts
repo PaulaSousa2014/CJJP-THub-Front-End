@@ -144,7 +144,11 @@ export class ProfileComponent implements OnInit {
     // Save users id models into request model
     this.friendRt.userReciever = this.userRRt;
     // Post with request model
-    this.friendsService.createFriend(this.friendRt).subscribe({
-    });
+    this.friendsService.createFriend(this.friendRt).subscribe(
+      () => {
+        // Change button status to pending
+        this.button = 3;
+      },
+    );
   }
 }
