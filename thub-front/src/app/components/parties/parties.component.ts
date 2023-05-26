@@ -19,7 +19,7 @@ export class PartiesComponent {
   selectedPartyType: string = '';
   currentUser: any;
   creator: Creator = {} as Creator;
-
+  searchTerm: string = '';
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
 
@@ -46,6 +46,17 @@ export class PartiesComponent {
         console.log("Cannot get all parties", error);
       }
     });
+  }
+
+  filterParties() {
+    if (this.searchTerm.trim() === '') {
+      this.filteredParties = this.parties;
+    } else {
+      const lowercaseSearchTerm = this.searchTerm.toLowerCase();
+      this.filteredParties = this.parties.filter(party => {
+        return party.title.toLowerCase().includes(lowercaseSearchTerm);
+      });
+    }
   }
 
   readMore(id: number) {

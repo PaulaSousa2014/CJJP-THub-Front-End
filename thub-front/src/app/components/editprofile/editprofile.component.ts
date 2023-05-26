@@ -4,6 +4,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { JobService } from 'src/app/services/job.service';
 import { OfficesService } from 'src/app/services/offices.service';
 import { Route, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 
 
@@ -40,7 +42,7 @@ export class EditprofileComponent {
   //Cancel edit and go back to user profile page
   goToYourProfile() {
     const id = this.user.id;
-    this.router.navigate(['/profile', id]);
+    window.location.href = '/profile/' + this.user.id;
   }
 
   //Get profile data from user db
@@ -87,6 +89,17 @@ export class EditprofileComponent {
     });
   }
 
+  alert(){
+    Swal.fire({
+      title: 'Good job!',
+      text: 'You clicked the button!',
+      icon: 'success'
+    }).then(() => {
+      window.location.href = '/profile/' + this.user.id;
+    });
+
+  }
+
   getOfficeOptions() {
 
     this.officeService.getOffices().subscribe({
@@ -121,7 +134,7 @@ export class EditprofileComponent {
     this.userService.updateUser(this.user.id, this.userProfile).subscribe({
       next: (response) => {
         // notify if it is OK
-        alert('User updated successfully!');
+       this.alert();
       },
       error: (error) => {
         console.log('Something went wrong', error);

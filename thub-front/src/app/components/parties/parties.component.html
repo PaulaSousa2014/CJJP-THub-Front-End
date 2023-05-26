@@ -24,12 +24,13 @@
 
 
     <div class="col-md-7 col-12 ">
-      <form class="search d-flex mb-4">
+      <form class="search d-flex mb-4" (ngSubmit)="filterParties()">
         <div class="input-group">
-          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar">
+          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar" [(ngModel)]="searchTerm" name="searchTerm">
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
+
 
 
       <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
