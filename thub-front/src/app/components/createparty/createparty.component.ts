@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Party, Creator, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -28,8 +29,7 @@ export class CreatepartyComponent {
 
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
-
-  constructor(private createPartyService: CreatepartyService, private tokenStorageService: TokenStorageService) {
+  constructor(private createPartyService: CreatepartyService, private router: Router,  private tokenStorageService: TokenStorageService) {
         // Initialize the form and its controls
     this.formulario = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -163,11 +163,15 @@ export class CreatepartyComponent {
       this.social.id = this.selectedSocialId; //Asign the id of the selected game to the property Id on Game.
     }
 
+
     console.log(this.party);
     this.createPartyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
         console.log(data);
         console.log("Funciona");
+
+        window.alert("El formulario es correcto.");
+        window.location.href = "/parties";
       },
       error: (error: any) => {
         console.log("No se puede enviar la fiesta", error);
