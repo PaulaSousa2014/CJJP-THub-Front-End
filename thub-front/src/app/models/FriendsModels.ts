@@ -11,3 +11,7 @@ export interface FriendRequest {
   userReciever: UserReciever;
 }
 
+export interface Accept {
+  id: number;
+  status: boolean;
+}
