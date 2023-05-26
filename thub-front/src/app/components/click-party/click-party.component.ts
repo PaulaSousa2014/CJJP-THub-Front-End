@@ -40,8 +40,8 @@ export class ClickPartyComponent {
     });
 
     // Start functions to get
-    this.getPartyMemberlist();
     this.getPartyById();
+
   }
 
   getPartyById() {
@@ -49,6 +49,8 @@ export class ClickPartyComponent {
       next: (data: any) => {
         this.party = data;
         this.partyLoaded = true;
+        this.getPartyMemberlist();
+        console.log("1");
       },
       error: (error: any) => {
       }
@@ -60,6 +62,7 @@ export class ClickPartyComponent {
       next: (data: any) => {
         this.partyList = data;
         this.partyListLoaded = true;
+        console.log("2")
         this.isUserInParty();
       },
       error: (error: any) => {
@@ -71,11 +74,10 @@ export class ClickPartyComponent {
   isUserInParty(): void {
     const userFound = this.partyList.some((element: any) => element.party.id === this.party.id);
 
+    console.log("3")
     if (userFound) {
-      console.log("He's in the party");
       this.userInParty = true;
     } else {
-      console.log("User not in party");
       this.userInParty = false;
     }
   }
