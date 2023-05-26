@@ -120,8 +120,8 @@ export class PartiesComponent {
       return "../../../assets/login.jpg";
     }
   }
-  
-  
+
+
 
 }
 
