@@ -1,26 +1,27 @@
 export interface Creator {
   id: number;
+  username: string;
 }
 
 export interface Game {
-  id: number;
-}
-
-export interface Social {
-  id: number;
+  id: number ;
 }
 
 export interface Activity {
-  id: number;
+  id: number ;
+}
+export interface Social {
+  id: number ;
 }
 export interface Party{
-
+  id: number;
   title: string;
   description: string;
   creator: Creator;
-  activity: Activity | null;
   game: Game | null;
-  social:Social | null;
+  activity: Activity | null;
+  social: Social | null;
+
 }
 
 

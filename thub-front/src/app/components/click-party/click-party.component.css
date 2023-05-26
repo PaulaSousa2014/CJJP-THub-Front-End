@@ -11,9 +11,12 @@
   margin-right: 10px;
 }
 
-
+.figure-container{
+  width: 80%;
+  height: auto;
+}
 .btn {
-  background-color: #e20074;
+  background-color: var(--color-pink);
   font-size: 1.5rem;
   font-size: x-large;
   width: 50px;
@@ -40,7 +43,7 @@
   color: black;
 }
 h2 {
-  text-decoration: underline #6f6e6e;
+  text-decoration: underline var(--color-darkgrey);
   padding-bottom: 1px;
 }
 .text-description {

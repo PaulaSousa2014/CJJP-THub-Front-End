@@ -9,7 +9,7 @@
     <div class="feed col-md-8">
       <div class="card mt-4">
         <div class="card-body">
-          <img *ngIf="user" class="icon img-fluid" src="./../../../assets/img/avatars/{{user.profile_img}}" alt="">
+          <img *ngIf="user" class="icon img-fluid" [src]="user.profile_img" alt="">
           <!-- Contenido del card-body -->
         </div>
         <div class="card-footer">

@@ -6,8 +6,22 @@ export interface User {
     nameSurn: string;
     profile_img: string;
     steam_username: string;
-    job: [];
-    office: [];
-    roles: [];
+    job: Job;
+    office: Office;
+    roles: Roles;
 
+}
+
+export interface Job{
+    id: number;
+
+}
+
+export interface Office{
+    id: number;
+
+}
+
+export interface Roles{
+    id: number;
 }

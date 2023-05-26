@@ -49,6 +49,7 @@ export class ProfileComponent implements OnInit {
       const showDataParam = params.get('showData');
       this.showData = showDataParam !== null ? parseInt(showDataParam) : 0;
     });
+
     this.user = this.tokenStorage.getUser();
     this.myProfile = this.showData === this.user.id;
 
