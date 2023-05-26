@@ -12,6 +12,7 @@ import { Creator, Party } from 'src/app/models/PartyModels';
   styleUrls: ['./parties.component.css']
 })
 export class PartiesComponent {
+  
   id: number = 0;
   party: Party = {} as Party;
   parties: any[] = [];
@@ -120,8 +121,8 @@ export class PartiesComponent {
       return "../../../assets/login.jpg";
     }
   }
-  
-  
+
+
 
 }
 
