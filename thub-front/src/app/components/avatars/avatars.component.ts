@@ -44,6 +44,7 @@ export class AvatarsComponent {
   ngOnInit() {
     this.user = this.tokenStorageService.getUser();
     this.getUser();
+    console.log(this.user);
   }
 
   selectAvatar(image: string): void {
@@ -62,8 +63,11 @@ export class AvatarsComponent {
   }
 
   save(): void {
+
     this.userChanged.profile_img =
       '../../../assets/img/avatars/' + this.selectedAvatar;
+
+
 
     // Llamar al servicio de actualización de usuario para enviar los cambios al servidor
     this.userService.updateUser(this.user.id, this.userChanged).subscribe({
@@ -79,9 +83,11 @@ export class AvatarsComponent {
         console.log('Something went wrong', error);
       },
     });
+
   }
 
+
   returnPage(): void {
-    this.router.navigate(['editprofile']);
+    this.router.navigate(["editprofile"]);
   }
 }

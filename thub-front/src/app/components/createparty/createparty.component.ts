@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { Party, Creator, Game, Activity, Social } from 'src/app/models/CreatePartyModels';
+import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
 import { CreatepartyService } from 'src/app/services/createparty.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
