@@ -20,9 +20,10 @@ export class NavbarComponent implements OnInit {
   friends: any[] = [];          // Friends list
   friendsRequest: any[] = [];   // Friends requests list
 
-  accept: Accept = {} as Accept;  // Accept request
-  acceptRS: UserSender = {} as UserSender;
-  acceptRR: UserReciever = {} as UserReciever;
+  // Models
+  accept: Accept = {} as Accept;                // Accept friend model
+  acceptRS: UserSender = {} as UserSender;      // Model to user sender
+  acceptRR: UserReciever = {} as UserReciever;  // Model to user reciever
 
   /* Constructor */
   constructor(
@@ -47,6 +48,7 @@ export class NavbarComponent implements OnInit {
       });
     });
 
+    /* Get friends lists (not necessary) */
     this.getList();
   }
 
@@ -164,14 +166,16 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  // Accept friend request with sweet alert
   acceptFriend(id: number, idR: number) {
+    // Friend request PUT format
     this.accept.id = id;
     this.acceptRS.id = this.tokenStorage.getUser().id;
     this.accept.userSender = this.acceptRS;
     this.acceptRR.id = idR;
     this.accept.userReciever = this.acceptRR;
     this.accept.status = true;
-
+    // Send PUT
     this.friendsService.updateFriend(id, this.accept).subscribe(() => {
       Swal.fire({
         position: 'top-end',
@@ -188,6 +192,4 @@ export class NavbarComponent implements OnInit {
       });
     });
   }
-
-
 }
