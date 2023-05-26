@@ -15,6 +15,7 @@ export class ProfileComponent {
   showData: number = 0;
 
   // User array
+  usertoken: any;
   user: any;
 
   constructor(private userService: UserService, private tokenStorage: TokenStorageService, private route: ActivatedRoute) {}
@@ -30,8 +31,8 @@ export class ProfileComponent {
     });
 
     // Logged user info
-    this.user = this.tokenStorage.getUser();
-    if(this.showData != this.user.id) {
+    this.usertoken = this.tokenStorage.getUser();
+    if(this.showData != this.usertoken.id) {
       this.myProfile = false;
     }
 
