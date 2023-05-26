@@ -52,10 +52,9 @@ export class EditprofileComponent {
 
       next: (profile: any) => {
 
+        console.log(profile);
+
         this.userProfile = profile;
-        this.user.nameSurn = this.userProfile.nameSurn;
-        this.user.profile_image = this.userProfile.profile_image;
-        this.user.roles = this.userProfile.roles;
         this.getJobOptions(); // Get job data
         this.getOfficeOptions(); //Get office data
       },
@@ -116,7 +115,7 @@ export class EditprofileComponent {
 
   //Update user information
   updateUser() {
-    
+
     this.updatedUser = {
 
       username: this.userProfile.username,
