@@ -32,6 +32,7 @@ export class SignupComponent implements OnInit{
     if (this.isPasswordMatch()) {
       const { username, email, password } = this.form;
       console.log(this.form);
+    
 
       this.authService.register(username, email, password).subscribe({
         next: (data: any) => {
@@ -48,7 +49,7 @@ export class SignupComponent implements OnInit{
 
 
   refreshPage(): void {
-    this.router.navigate(["home"]);
+    this.router.navigate(["login"]);
   }
 
 }
