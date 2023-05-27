@@ -254,6 +254,7 @@ export class MainFeedComponent {
     console.log(postId);
     this.postService.deletePost(postId).subscribe({
       next: (response: any) => {
+        location.reload();
         console.log(response + 'Post delected'); // Handle the successful response as needed
       },
       error: (error: any) => {
