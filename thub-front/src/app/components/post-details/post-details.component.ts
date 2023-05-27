@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-details',
@@ -9,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostDetailsComponent {
 
-  constructor(private route: ActivatedRoute, private postService: PostService) {}
+  constructor(private route: ActivatedRoute, private postService: PostService, private location: Location) {}
 
   postFound: boolean = false;
   postId: number = 0;
@@ -37,6 +38,10 @@ export class PostDetailsComponent {
       }
     });
 
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

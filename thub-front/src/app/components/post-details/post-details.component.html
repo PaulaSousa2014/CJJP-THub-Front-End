@@ -1,6 +1,14 @@
-<div class="container" *ngIf="postFound">
-  <p>{{post.id}}</p>
-  <p>{{post.content}}</p>
-  <p>{{post.creator.username}}</p>
+<div class="container">
+  <div class="row ms-1 mt-1">
+    <div class="col-12">
+      <button class="btn btn-primary px-3" (click)="goBack()">&#60;</button>
+    </div>
+  </div>
+  <div class="col-12" *ngIf="postFound">
+    <p>{{post.id}}</p>
+    <p>{{post.content}}</p>
+    <p>{{post.creator.username}}</p>
+  </div>
+
 
 </div>
