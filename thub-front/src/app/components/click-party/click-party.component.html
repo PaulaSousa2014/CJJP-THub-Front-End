@@ -4,7 +4,7 @@
     <button (click)="goBack()" class="btn btn-primary fw-blod me-5" id="new-post-button">&lt;</button>
   </div>
   <div id="party-details" >
-    <div class="container" *ngIf="party.id">
+    <div class="container" *ngIf="partyLoaded == true && partyListLoaded == true">
       <div class="titol-detail">
         <div><h2 class="fw-bold text-uppercase">Title: {{ party.title }}</h2></div>
         <div> </div>
@@ -17,13 +17,17 @@
         <h4 *ngIf="party.social">Type: Social</h4>
       </div>
       <div class="buttons">
-        <div>
-          <button class="btn btn-primary" id="comments-button">
-            <i class="fa-solid fa-comments" style="color: #f7f7f8"></i>
+        <div *ngIf="userInParty == false">
+          <button class="btn btn-primary" id="join-button" (click)="join()">
+            <i class="bi bi-plus-lg"></i>
           </button>
         </div>
-        <div>
-          <button class="btn btn-primary fw-bold" id="exit-button">-</button>
+        <div *ngIf="userInParty == true" class="d-flex">
+          <button class="btn btn-primary" id="comments-button" [routerLink]="'/chat'">
+            <i class="bi bi-wechat"></i>
+          </button>
+          <button class="btn btn-primary fw-bold" id="exit-button" >-</button>
+
         </div>
       </div>
       <div>
