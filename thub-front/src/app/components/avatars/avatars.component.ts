@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-avatars',
@@ -63,31 +64,57 @@ export class AvatarsComponent {
   }
 
   save(): void {
+    if (!this.selectedAvatar) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'No avatar selected',
+        text: 'Please select an avatar before saving.',
+        confirmButtonText: 'OK'
+      });
+      return;
+    }
 
-    this.userChanged.profile_img =
-      '../../../assets/img/avatars/' + this.selectedAvatar;
-
-
+    this.userChanged.profile_img = '../../../assets/img/avatars/' + this.selectedAvatar;
 
     // Llamar al servicio de actualización de usuario para enviar los cambios al servidor
     this.userService.updateUser(this.user.id, this.userChanged).subscribe({
       next: (response) => {
-        // Checks response is valid
+        // Verificar que la respuesta sea válida
         if (response) {
-          // Notifies it's valid
-          alert('Character updated successfully!');
-          this.returnPage();
+          // Mostrar SweetAlert de éxito
+          Swal.fire({
+            icon: 'success',
+            title: 'Character updated successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.returnPage();
+          });
         }
       },
       error: (error) => {
         console.log('Something went wrong', error);
       },
     });
-
   }
+
 
 
   returnPage(): void {
     this.router.navigate(["editprofile"]);
+  }
+
+  returnPageCancel(): void {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure?',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(["editprofile"]);
+      }
+    });
   }
 }
