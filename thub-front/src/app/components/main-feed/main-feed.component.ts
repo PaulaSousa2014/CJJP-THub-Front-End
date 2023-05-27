@@ -8,11 +8,10 @@ import { switchMap } from 'rxjs/operators';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-main-feed',
   templateUrl: './main-feed.component.html',
-  styleUrls: ['./main-feed.component.css']
+  styleUrls: ['./main-feed.component.css'],
 })
 export class MainFeedComponent {
   // Posts array
@@ -24,11 +23,19 @@ export class MainFeedComponent {
   currentUser = this.tokenStorage.getUser();
   foundLike: any;
 
-  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService, private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
+
+  constructor(
+    private router: Router,
+    private postService: PostService,
+    private datePipe: DatePipe,
+    private tokenStorage: TokenStorageService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
+
 
   // On page load, get all posts
   ngOnInit() {
-    console.log("init");
+    console.log('init');
     this.getAllPosts();
     this.filterPosts();
   }
@@ -37,7 +44,7 @@ export class MainFeedComponent {
   getAllPosts() {
     this.postService.getPosts().subscribe({
       next: (data: any) => {
-        console.log("getting posts")
+        console.log('getting posts');
         this.posts = data;
         this.sortPostsByTimestamp(); // Sort the posts by timestamp
         this.fetchPostDetails(); // Get likes and comments for each post
@@ -45,8 +52,8 @@ export class MainFeedComponent {
         this.filterPosts();
       },
       error: (error: any) => {
-        console.log("Cannot get posts", error);
-      }
+        console.log('Cannot get posts', error);
+      },
     });
   }
 
@@ -73,8 +80,8 @@ export class MainFeedComponent {
           console.log(likes);
         },
         error: (error: any) => {
-          console.log("Cannot get likes", error);
-        }
+          console.log('Cannot get likes', error);
+        },
       });
 
       this.getCommentsNumber(post.id).subscribe({
@@ -82,8 +89,8 @@ export class MainFeedComponent {
           post.comments = comments;
         },
         error: (error: any) => {
-          console.log("Cannot get comments", error);
-        }
+          console.log('Cannot get comments', error);
+        },
       });
     }
   }
@@ -97,10 +104,10 @@ export class MainFeedComponent {
       console.log(isLiked);
 
       if (isLiked) {
-        console.log("Deleting like");
+        console.log('Deleting like');
         this.deleteLike(post, userId);
       } else {
-        console.log("Adding like");
+        console.log('Adding like');
         this.addLike(post, userId);
       }
     });
@@ -108,20 +115,26 @@ export class MainFeedComponent {
 
   // Function to check if a post is liked by the user
   isPostLiked(post: any, userId: number): Observable<boolean> {
-    console.log("In isPostLiked function");
+    console.log('In isPostLiked function');
 
     // Get the Observable of likes
     const likesObservable = this.postService.getAllLikes();
-    console.log("likesObservables: " + likesObservable);
+    console.log('likesObservables: ' + likesObservable);
 
     // Transform the retrieved data into a new Observable
     return likesObservable.pipe(
       switchMap((likes: any[]) => {
         // Check if any like matches the specific post and user
-        const isLiked = likes.some((like: any) => like.post_liked.id === post.id && like.user_liked.id === userId);
+        const isLiked = likes.some(
+          (like: any) =>
+            like.post_liked.id === post.id && like.user_liked.id === userId
+        );
 
         // Save the found like in a variable
-        this.foundLike = likes.find((like: any) => like.post_liked.id === post.id && like.user_liked.id === userId);
+        this.foundLike = likes.find(
+          (like: any) =>
+            like.post_liked.id === post.id && like.user_liked.id === userId
+        );
         return of(isLiked);
       })
     );
@@ -131,7 +144,7 @@ export class MainFeedComponent {
   addLike(post: any, userId: number) {
     const newLike = {
       user_liked: this.currentUser,
-      post_liked: post
+      post_liked: post,
     };
 
     this.postService.addLike(userId, post.id, newLike).subscribe({
@@ -144,13 +157,13 @@ export class MainFeedComponent {
             this.changeDetectorRef.detectChanges(); // Update the view
           },
           error: (error: any) => {
-            console.log("Cannot get likes", error);
-          }
+            console.log('Cannot get likes', error);
+          },
         });
       },
       error: (error: any) => {
-        console.log("Failed to add like", error);
-      }
+        console.log('Failed to add like', error);
+      },
     });
   }
 
@@ -166,13 +179,13 @@ export class MainFeedComponent {
             this.changeDetectorRef.detectChanges(); // Update the view
           },
           error: (error: any) => {
-            console.log("Cannot get likes", error);
-          }
+            console.log('Cannot get likes', error);
+          },
         });
       },
       error: (error: any) => {
-        console.log("Failed to delete like", error);
-      }
+        console.log('Failed to delete like', error);
+      },
     });
   }
 
@@ -190,7 +203,7 @@ export class MainFeedComponent {
   submitPost() {
     this.creator.id = this.currentUser.id;
     this.post.creator = this.creator;
-    console.log("button pressed");
+    console.log('button pressed');
     console.log(this.post);
 
     this.postService.postNewPost(this.post).subscribe({
@@ -199,8 +212,8 @@ export class MainFeedComponent {
         location.reload(); // Reload the page after successfully submitting the post
       },
       error: (error: any) => {
-        console.log("Cannot post Post", error);
-      }
+        console.log('Cannot post Post', error);
+      },
     });
     this.getAllPosts();
   }
@@ -210,7 +223,9 @@ export class MainFeedComponent {
     const serverTime = new Date(serverTimestamp + 'Z'); // Add 'Z' for UTC time zone offset
     const localTime = new Date(); // Local datetime
 
-    const timeDiff = Math.floor((localTime.getTime() - serverTime.getTime()) / 1000); // Time difference in seconds
+    const timeDiff = Math.floor(
+      (localTime.getTime() - serverTime.getTime()) / 1000
+    ); // Time difference in seconds
 
     if (timeDiff < 60) {
       return `< 1 minute ago`;
@@ -236,14 +251,22 @@ export class MainFeedComponent {
     });
   }
 
-  doStuff() {
-    console.log("aaaaaaaaa");
+  //Function to delete post
+  deletePost(postId: number) {
+    console.log(postId);
+    this.postService.deletePost(postId).subscribe({
+      next: (response: any) => {
+        location.reload();
+        console.log(response + 'Post delected'); // Handle the successful response as needed
+      },
+      error: (error: any) => {
+        console.log('Failed to delete post', error);
+      },
+    });
   }
 
   goToPost(id: number) {
     this.router.navigate(['post', id]);
   }
-
-
 }
 

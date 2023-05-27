@@ -112,5 +112,15 @@ export class ClickPartyComponent {
   }
 
   //exit this party
-  exit() {}
+  exit() {
+this.partiesService.deleteParty(this.partyId).subscribe({
+  next: () => {
+    this.goBack();
+  },
+  error: (error: any) => {
+    console.log('Error deleting the party', error);
+  },
+});
+
+  }
 }
