@@ -3,7 +3,6 @@ import { PostService } from 'src/app/services/post.service';
 import { DatePipe } from '@angular/common';
 import { Creator, Post } from 'src/app/models/PostModels';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-main-feed',
@@ -13,19 +12,16 @@ import { Observable } from 'rxjs';
 export class MainFeedComponent {
   // Posts array
   posts: any[] = [];
-  creator: Creator = {} as Creator;
-  filteredPosts: any[] = [];
-  searchText: string = '';
-  post: Post = {} as Post;
+  creator: Creator = { } as Creator;
+  post: Post = { } as Post;
   currentUser = this.tokenStorage.getUser();
 
-  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService) { }
+  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService) {}
 
   // On page load, get all posts
   ngOnInit() {
     console.log("init");
     this.getAllPosts();
-    this.filterPosts();
   }
 
   // Function to get posts and get likes/comments
@@ -37,23 +33,11 @@ export class MainFeedComponent {
         this.sortPostsByTimestamp(); // Sort the posts by timestamp
         this.fetchPostDetails();
         console.log(this.posts);
-        this.filterPosts();
-
       },
       error: (error: any) => {
         console.log("Cannot get posts", error);
       }
     });
-  }
-  filterPosts() {
-    if (!this.searchText) {
-      this.filteredPosts = this.posts;
-    } else {
-      const searchTextLower = this.searchText.toLowerCase();
-      this.filteredPosts = this.posts.filter((post: any) => {
-        return post.content.toLowerCase().includes(searchTextLower);
-      });
-    }
   }
 
   // Function that gets likes and comments and adds them to each post
@@ -104,14 +88,12 @@ export class MainFeedComponent {
     this.postService.postNewPost(this.post).subscribe({
       next: (data: any) => {
         console.log(data);
-        location.reload(); // Recargar la página después de enviar el post exitosamente
       },
       error: (error: any) => {
         console.log("Cannot post Post", error);
       }
     });
     this.getAllPosts();
-
   }
 
   formatTimestamp(serverTimestamp: string): string {
@@ -143,9 +125,4 @@ export class MainFeedComponent {
     });
   }
 
-  doStuff() {
-    console.log("aaaaaaaaa")
-  }
 }
-
-

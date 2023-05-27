@@ -55,10 +55,6 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'parties/id/:id',
-    component: ClickPartyComponent
-  },
-  {
     path: 'createparty',
     component: CreatepartyComponent
   },
