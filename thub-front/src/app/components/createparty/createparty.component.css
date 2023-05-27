@@ -6,11 +6,23 @@
   background-position-y: center;
   background-position-x: center;
   background-size: cover;
-  background-image: url("/assets/backgroundprofile.png");
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 
 }
+
+.imagediv-game {
+  background-image: url("../../../assets/games.jpg");
+}
+
+.imagediv-activity {
+  background-image: url("../../../assets/activities.jpg");
+}
+
+.imagediv-social {
+  background-image: url("../../../assets/carousel1.jpg");
+}
+
 
 
 .contentbox {

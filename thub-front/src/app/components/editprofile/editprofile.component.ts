@@ -4,6 +4,11 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { JobService } from 'src/app/services/job.service';
 import { OfficesService } from 'src/app/services/offices.service';
 import { Route, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
+
+
+
 
 
 
@@ -18,7 +23,6 @@ export class EditprofileComponent {
   user: any;
   jobOptions: any[] = [];
   officeOptions: any[] = [];
-  updatedUser: any = {};
   selectedJob: any = 0;
   selectedOffice: any = 0;
   image: any;
@@ -28,9 +32,9 @@ export class EditprofileComponent {
     private userService: UserService,
     private jobService: JobService,
     private officeService: OfficesService,
-    private router: Router
-
-  ) {}
+    private router: Router,
+    private location: Location
+  ) { }
 
   //Inicializing with user data and avatar image
   ngOnInit() {
@@ -40,9 +44,9 @@ export class EditprofileComponent {
   }
 
   //Cancel edit and go back to user profile page
-  goToYourProfile() {
-    const showdata = this.user.id;
-    this.router.navigate(['/profile', showdata]);
+
+  goBack() {
+    this.location.back();
   }
 
   //Get profile data from user db
@@ -52,10 +56,9 @@ export class EditprofileComponent {
 
       next: (profile: any) => {
 
+        console.log(profile);
+
         this.userProfile = profile;
-        this.user.nameSurn = this.userProfile.nameSurn;
-        this.user.profile_image = this.userProfile.profile_image;
-        this.user.roles = this.userProfile.roles;
         this.getJobOptions(); // Get job data
         this.getOfficeOptions(); //Get office data
       },
@@ -90,6 +93,17 @@ export class EditprofileComponent {
     });
   }
 
+  alert() {
+    Swal.fire({
+      title: 'Good job!',
+      text: 'You clicked the button!',
+      icon: 'success'
+    }).then(() => {
+      window.location.href = '/profile/' + this.user.id;
+    });
+
+  }
+
   getOfficeOptions() {
 
     this.officeService.getOffices().subscribe({
@@ -114,50 +128,17 @@ export class EditprofileComponent {
     });
   }
 
-  //Update user information
-  updateUser() {
-    
-    this.updatedUser = {
-
-      username: this.userProfile.username,
-      password: this.userProfile.password,
-      email: this.userProfile.email,
-      nameSurn: this.userProfile.nameSurn,
-      profile_image: this.userProfile.profile_image,
-      steam_username: this.userProfile.steam_username,
-
-      job: {
-        id: this.selectedJob.id,
-        title: this.selectedJob.title,
-        description: this.selectedJob.description,
-      },
-
-      office: {
-        id: this.selectedOffice.id,
-        name: this.selectedOffice.name,
-        location: this.selectedOffice.location,
-      },
-
-      roles: this.userProfile.roles,
-    };
-  }
-
   //Save changed info
   save(): void {
 
-    // Update user info
-    this.updateUser();
-
-    console.log(this.updatedUser);
+    this.userProfile.job.id = this.selectedJob.id;
+    this.userProfile.office.id = this.selectedOffice.id;
 
     // Save changes into DB
-    this.userService.updateUser(this.user.id, this.updatedUser).subscribe({
+    this.userService.updateUser(this.user.id, this.userProfile).subscribe({
       next: (response) => {
-        // check is valid info
-        if (response) {
-          // notify if it is OK
-          alert('Character updated successfully!');
-        }
+        // notify if it is OK
+        this.alert();
       },
       error: (error) => {
         console.log('Something went wrong', error);

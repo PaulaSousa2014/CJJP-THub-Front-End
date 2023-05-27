@@ -1,4 +1,11 @@
+
 import { User } from "./UserModels";
+
+
+export interface Creator {
+  id: number;
+  username: string;
+}
 
 
 export interface Game {
