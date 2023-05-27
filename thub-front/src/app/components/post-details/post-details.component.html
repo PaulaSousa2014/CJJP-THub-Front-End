@@ -1,38 +1,63 @@
 <div class="container">
+  <!-- Back button -->
   <div class="row mt-1">
     <div class="col-12">
       <button class="btn btn-primary px-3" (click)="goBack()">&#60;</button>
     </div>
   </div>
-  <div class="row my-3 py-3 px-3 card" *ngIf="postFound">
+
+  <!-- Post -->
+  <div class="row my-3 py-3 mx-1 px-md-2 px-1 card" *ngIf="postFound">
     <div class="col-12">
       <div class="row">
         <div class="col-12 d-flex">
           <img class="my-auto" [src]="post.creator.profile_img" class="post-user-pic" alt="post creator image">
           <span class="ms-2 my-auto">{{post.creator.username}}</span>
-          <span class="ms-auto my-auto">{{post.time_submitted}}</span>
+          <span class="ms-auto my-auto">{{formatTimestamp(post.time_submitted)}}</span>
         </div>
       </div>
       <div class="row my-2">
         <div class="col-12">
           <p class="ms-2 mt-2">{{post.content}}</p>
         </div>
+        <div class="col-12 text-center">
+          <p *ngIf="likesFound" class="my-auto"><i class="bi bi-heart-fill" style="color: var(--color-pink);"></i> {{ likeNum }}</p>
+        </div>
       </div>
-
-
     </div>
   </div>
 
-
-  <div class="container" *ngIf="postCommentsFound">
-    <div class="row" *ngFor="let comment of postComments">
-      <div class="col-12">
-        <p>{{comment.id}}</p>
-        <p>{{comment.content}}</p>
-        <p>{{comment.comment_by.username}}</p>
-        <p>{{comment.time_submitted}}</p>
+  <!-- Comment write box -->
+  <div class="row my-4 mx-3">
+    <div class="col-12">
+      <div class="form-group">
+        <textarea class="form-control" placeholder="Write a comment..." [(ngModel)]="newComment.content"></textarea>
+      </div>
+      <div class="text-end">
+        <a class="smile" href="#"><i class="bi bi-emoji-smile"></i></a>
+        <button type="button" class="btn mt-3" (click)="submitComment()">Comment</button>
       </div>
     </div>
+  </div>
+
+<!-- Comment list -->
+  <div class="container" *ngIf="postCommentsFound">
+    <div class="row justify-content-center mb-3 mx-2" *ngFor="let comment of postComments">
+    <div class="col-md-11 col-12 pt-3 px-md-3 px-2 card commentCard">
+      <div class="row">
+        <div class="col-12 d-flex">
+          <img class="my-auto" [src]="comment.comment_by.profile_img" class="post-user-pic" alt="post creator image">
+          <span class="ms-2 my-auto">{{comment.comment_by.username}}</span>
+          <span class="ms-auto my-auto">{{formatTimestamp(comment.time_submitted)}}</span>
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-12">
+          <p class="ms-2 mt-2">{{comment.content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 
 
