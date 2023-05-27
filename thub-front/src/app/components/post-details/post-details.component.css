@@ -12,6 +12,19 @@
   background-color: var(--color-light-grey);
 }
 
+.commentCard {
+  background-color: #6a6a6a1f;
+}
+
 p i:hover {
   cursor: pointer;
+}
+
+.smile {
+  margin-right: 2%;
+  color: var(--color-dark-grey);
+}
+
+textarea {
+  resize: none;
 }
