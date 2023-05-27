@@ -15,17 +15,21 @@ export class PostDetailsComponent {
   postFound: boolean = false;
   postId: number = 0;
   post: any;
+  postComments: any;
 
   ngOnInit() {
 
+    // Get id param from route
     this.route.params.subscribe((params) => {
       this.postId = +params['id'];
     });
 
+    // get post by param id
     this.getPostById();
 
   }
 
+  // Function to get post by ID
   getPostById() {
     this.postService.getPostById(this.postId).subscribe({
       next: (data: any) => {
@@ -40,6 +44,7 @@ export class PostDetailsComponent {
 
   }
 
+  // Function to return to posts screen
   goBack() {
     this.location.back();
   }
