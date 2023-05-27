@@ -1,58 +1,66 @@
-<div class="container my-3" style="background-color: #D9D9D9; border-radius: 5px;" *ngIf="userProfile">
+<div class="container">
   <div class="row">
-    <div class="col-12" id="profile-header"></div>
-  </div>
-  <div class="row mb-4">
-    <div class="col-md-5 text-center mb-3 mb-md-0">
-      <img type="link" class="logoimg img-fluid" [src]="'../../../assets/img/avatars/cat0.jpg' || '../../../assets/img/avatars/default.jpg'" alt="" [routerLink]="['/avatars']" alt="Click to get profile picture">
-    </div>
-    
-    <div class="col-md-7 my-auto text-md-end text-center">
-      <button type="submit" class="btn Create mr-3" (click)="save()">Save</button>
-      <a (click)="goBack()" class="cancel">Cancel</a>
-    </div>
-  </div>
-
-  <!-- Form -->
-
-  <div class="row mb-3">
-    <div class="col-md-6">
-      <div class="mb-3 ">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" [(ngModel)]="userProfile.nameSurn" name="nameSurn" />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="userProfile.username" name="username" />
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="email" [(ngModel)]="userProfile.email" name="email" />
+    <div class="col-md-2">
+      <div class="card mb-3">
+        <!-- Contenido de la tarjeta -->
       </div>
     </div>
-
-    <div class="col-md-6">
-      <div class="mb-3">
-        <label class="form-label">Steam Username</label>
-        <input type="text" class="form-control" id="steam-username" [(ngModel)]="userProfile.steam_username" name="steam_username" />
+    <div class="feed col-md-8">
+      <div class="card mt-4 mb-4">
+        <div class="card-body">
+          <div class="profile-container text-center position-relative">
+            <div class="d-flex text-end d-none d-md-block">
+              <!-- Accept / Cancel (for non-mobile devices) -->
+              <button type="submit" class="btn btn-success mr-3" (click)="save()">Save</button>
+              <button type="submit" class="btn btn-danger mr-3 ms-2" (click)="goBack()">Cancel</button>
+            </div>
+          </div>
+          <img type="link" class="icon img-fluid" [src]="userProfile.profile_img" alt="" [routerLink]="['/avatars']" alt="Click to get profile picture">
+          <i class="edit-icon bi bi-pencil-square display-2"></i>
+          <!-- Contenido del card-body -->
+        </div>
+        <div class="card-footer">
+          <div class="container row mt-5">
+            <div class="mb-3 mt-5">
+              <label class="text-secondary"><i class="bi bi-person-fill"></i> Name:</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="userProfile.nameSurn" name="nameSurn" />
+            </div>
+            <div class="mb-3">
+              <label class="text-secondary"><i class="bi bi-person-fill"></i> Username:</label>
+              <input type="text" class="form-control" id="username" [(ngModel)]="userProfile.username" name="username" />
+            </div>
+            <div class="mb-3">
+              <label class="text-secondary"><i class="bi bi-envelope-fill"></i> Email address:</label>
+              <input type="text" class="form-control" id="email" [(ngModel)]="userProfile.email" name="email" />
+            </div>
+            <div class="dropdown-divider mt-3 mb-3"></div>
+            <div class="mb-3">
+              <label class="text-secondary"><i class="bi bi-briefcase-fill"></i> Job:</label>
+              <select class="form-select" [(ngModel)]="selectedJob" name="job">
+                <option *ngFor="let option of jobOptions" [ngValue]="option" [selected]="option.selected">{{ option.title }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="text-secondary"><i class="bi bi-geo-alt-fill"></i> Office:</label>
+              <select class="form-select" [(ngModel)]="selectedOffice" name="office">
+                <option *ngFor="let option of officeOptions" [ngValue]="option" [selected]="option.selected">{{ option.name }}</option>
+              </select>
+            </div>
+            <div class="dropdown-divider mt-3 mb-3"></div>
+            <div class="mb-3">
+              <label class="text-secondary"><i class="bi bi-steam"></i> Steam username:</label>
+              <input type="text" class="form-control" id="steam-username" [(ngModel)]="userProfile.steam_username" name="steam_username" />
+            </div>
+            <div class="d-md-none">
+              <!-- Accept / Cancel (for mobile devices) -->
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success mr-3" (click)="save()">Save</button>
+                <button type="submit" class="btn btn-danger mr-3 ms-2" (click)="goBack()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Job</label>
-        <select class="form-select" [(ngModel)]="selectedJob" name="job">
-          <option *ngFor="let option of jobOptions" [ngValue]="option" [selected]="option.selected">{{ option.title }}
-          </option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Office</label>
-        <select class="form-select" [(ngModel)]="selectedOffice" name="office">
-          <option *ngFor="let option of officeOptions" [ngValue]="option" [selected]="option.selected">{{ option.name }}
-          </option>
-        </select>
-      </div>
-
-
-
     </div>
   </div>
 </div>
