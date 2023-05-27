@@ -12,6 +12,6 @@ export interface Message {
   content: string;
   sender: Sender;
   time_submitted: string;
-  party: number;
+  party: Party;
 }
 

@@ -50,7 +50,16 @@ export class OpenChatComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     // Get party id from route
-    this.partyId = +this.partySeleccionada;
+    const partyId = parseInt(this.partySeleccionada, 10);
+    if (!isNaN(partyId)) {
+      this.partyId = partyId;
+    } else {
+      // Handle the case when partySeleccionada is not a valid number
+      // For example, you can display an error message or set a default value
+      console.error('Invalid partyId:', this.partySeleccionada);
+      // Set a default partyId value:
+      // this.partyId = 0;
+    }
     this.getAllMessages();
 
   }
@@ -74,22 +83,23 @@ export class OpenChatComponent {
   submitMessage() {
     this.sender.id = this.currentUser.id;
     this.message.sender = this.sender;
-
-
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString();
 
     this.message.time_submitted = formattedDate;
-    this.message.party = this.partyId;
+    this.message.party = { id: this.partyId };
+
     console.log('button pressed');
     console.log(this.message);
 
     this.messagesService.postMessage(this.message).subscribe({
       next: (data: any) => {
+
         console.log("Datadentrosubmit" + data);
         location.reload(); // Reload the page after successfully submitting the post
       },
       error: (error: any) => {
+        console.log(this.message);
         console.log('Cannot post message', error);
       },
     });
