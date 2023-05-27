@@ -11,3 +11,7 @@
 .card {
   background-color: var(--color-light-grey);
 }
+
+p i:hover {
+  cursor: pointer;
+}
