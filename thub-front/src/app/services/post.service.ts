@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { Comment } from '../models/CommentModels';
 import { Like, Post } from '../models/PostModels';
+
 
 // API auth location
 const POST_API = "https://t-hub.up.railway.app/api/posts";
@@ -66,5 +69,9 @@ export class PostService {
     return this.httpClient.get(COMMENT_API + "/post/" + id, httpOptions);
   }
 
+  // Post new comment
+  postComment(newComment: Comment): Observable<any> {
+    return this.httpClient.post(COMMENT_API, newComment, httpOptions);
+  }
 
 }
