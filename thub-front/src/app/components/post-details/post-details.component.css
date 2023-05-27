@@ -1,0 +1,17 @@
+.btn {
+  background-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.post-user-pic {
+  max-width: 50px;
+  border-radius: 100%;
+}
+
+.card {
+  background-color: var(--color-light-grey);
+}
+
+p i:hover {
+  cursor: pointer;
+}

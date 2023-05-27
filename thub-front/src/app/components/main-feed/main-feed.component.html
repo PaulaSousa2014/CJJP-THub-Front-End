@@ -39,7 +39,7 @@
                 <a class="my-auto" href="#"><img class="img-fluid post-user-pic"
                   [src]="post.creator.profile_img" alt=""></a>
               </div>
-              <div class="col-md-11 col-10">
+              <a (click)="goToPost(post.id)"><div class="col-md-11 col-10">
                 <div class="col-12 d-flex">
                   <h5>{{post.creator.username}}</h5><strong><span class="m-1"> </span></strong><span class="username"></span>
                   <p class="ms-auto my-auto">{{ post.time_submitted }}</p>
@@ -47,7 +47,7 @@
                 <div class="col-12 pt-3">
                   <p>{{post.content}}</p>
                 </div>
-              </div>
+              </div></a>
             </div>
           </div>
           <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
