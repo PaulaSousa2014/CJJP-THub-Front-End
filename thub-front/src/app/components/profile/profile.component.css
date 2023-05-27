@@ -3,33 +3,44 @@
   border-top-right-radius: 10px;
   height: 100px;
 }
+
 .card-footer {
-  padding-bottom: 10%;
+  background-color: var(--color-light-grey);
 }
+
 .icon {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
   width: 150px;
   height: auto;
-  margin-left: 14%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-@media (max-width: 767.98px) {
-  .icon {
-    margin-left: 30%;
-  }
-}
-.card-footer {
-  background-color: var(--color-light-grey);
-}
+
 a {
   color: var(--color-dark-grey);
 }
+
 .btn-add {
   background-color: var(--color-pink);
+  color: var(--color-white);
+  font-weight: bold;
 }
+
 .btn {
   color: var(--color-white);
   font-weight: bold;
 }
 
+.custom-width-btn {
+  width: 200px;
+}
+
+.edit {
+  color: var(--color-dark-grey);
+}
+.edit:hover {
+  color: var(--color-pink);
+}

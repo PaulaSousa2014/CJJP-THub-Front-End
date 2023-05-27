@@ -5,53 +5,59 @@
         <!-- Contenido de la tarjeta -->
       </div>
     </div>
-    <!-- Card profile -->
     <div class="feed col-md-8">
-      <div class="card mt-4">
+      <div class="card mt-4 mb-4">
         <div class="card-body">
-          <img *ngIf="user" class="icon img-fluid" [src]="user.profile_img" alt="">
-                  <!-- Contenido del card-body -->
+          <div class="profile-container text-center">
+            <div class="d-flex justify-content-end">
+              <a class="edit" *ngIf="myProfile" routerLink="/editprofile"><i class="bi bi-pencil-fill ms-3"></i></a>
+            </div>
+            <img *ngIf="user" class="icon img-fluid" [src]="user.profile_img" alt="">
+          </div>
+          <!-- Contenido del card-body -->
         </div>
         <div class="card-footer">
-          <div class="row">
-            <div class="text-end mb-4">
-              <div class="row justify-content-end">
-                <div class="col-12 col-md-auto mb-3 mb-md-0 text-md-end">
-                  <ng-container *ngIf="!myProfile">
-                    <!-- No friend, no request send -->
-                    <button *ngIf="button == 0" class="btn btn-add" (click)="sendRequest()"><i class="bi bi-person-fill-add"></i> Add Friend</button>
-                    <!-- Request send -->
-                    <button *ngIf="button == 3" class="btn btn-primary" disabled><i class="bi bi-person-fill-add"></i> Pending</button>
-                    <!-- Request recived -->
-                    <button *ngIf="button == 2" class="btn btn-success"><i class="bi bi-person-fill-add"></i> Accept</button>
-                    <!-- Friends -->
-                    <button *ngIf="button == 1" class="btn btn-info" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
-                  </ng-container>
+          <div class="row mt-5">
+            <div class="col-md-12 text-center">
+              <h2 class="mt-5">{{user.nameSurn || 'Add Name'}}</h2>
+              <h4 class="text-secondary">{{user.username}}</h4>
+              <div class="dropdown-divider m-3"></div>
+              <div class="d-flex justify-content-center">
+                <ng-container *ngIf="!myProfile">
+                  <!-- No friend, no request send -->
+                  <button *ngIf="button == 0" class="btn btn-add custom-width-btn"><i class="bi bi-person-fill-add"></i> Add Friend</button>
+                  <!-- Request send -->
+                  <button *ngIf="button == 3" class="btn btn-primary custom-width-btn" disabled><i class="bi bi-person-fill-add"></i> Pending</button>
+                  <!-- Request received -->
+                  <button *ngIf="button == 2" class="btn btn-success custom-width-btn"><i class="bi bi-person-fill-add"></i> Accept</button>
+                  <!-- Friends -->
+                  <button *ngIf="button == 1" class="btn btn-info custom-width-btn" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
+                </ng-container>
+                <button *ngIf="!myProfile" class="btn ms-3 btn-add custom-width-btn"><i class="bi bi-chat-dots-fill"></i> Send Message</button>
+              </div>
+              <div *ngIf="!myProfile" class="dropdown-divider m-3"></div>
+            </div>
+          </div>
+          <div class="container mt-3">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <div class="text-left">
+                  <h5 class="text-secondary"><i class="bi bi-briefcase-fill"></i> Job:</h5>
+                  <h5 class="ms-4">{{user.job?.title || 'Add Job'}}</h5>
                 </div>
-                <div class="col-12 col-md-auto text-md-end">
-                  <button *ngIf="!myProfile" class="btn ms-3 btn-add"><i class="bi bi-chat-dots-fill"></i> Send Message</button>
-                </div>
-                <div class="col-12 col-md-auto text-md-end">
-                  <a *ngIf="myProfile" routerLink="/editprofile"><i  class="bi bi-pencil-fill ms-3"></i></a>
+                <div class="text-left mt-3">
+                  <h5 class="text-secondary"><i class="bi bi-geo-alt-fill"></i> Office:</h5>
+                  <h5 class="ms-4">{{user.office?.name || 'Add Office'}}</h5>
+                  <h5 class="ms-4">{{user.office?.location || 'Add location'}}</h5>
                 </div>
               </div>
             </div>
-            <div class="row mt-3" *ngIf="user">
-              <div class="col-md-6 mt-3">
-                <div class="text-center">
-                  <h2 class="ms-4">{{user.nameSurn || 'Add Name'}}</h2>
-                  <h4>{{user.username}}</h4>
-                  <a href="https://steamcommunity.com/id/{{user.steam_username}}" target="_blank"><i class="bi bi-steam"></i></a>
-                </div>
-              </div>
-              <div class="col-md-6 mt-3">
-                <div>
-                  <h2 class="ms-4">{{user.job?.title || 'Add Job'}}</h2>
-                  <h4 class="ms-4"><i class="bi bi-geo-alt-fill"></i> {{user.office?.name || 'Add Office'}}, {{user.office?.location || 'Add location'}}</h4>
-                </div>
-              </div>
-            </div>
-            
+          </div>
+          <div class="dropdown-divider mt-3 mb-3"></div>
+          <div class="col-md-12 text-center">
+            <a href="https://steamcommunity.com/id/{{user.steam_username}}" target="_blank">
+              <i class="bi bi-steam fs-4"></i>
+            </a>
           </div>
         </div>
       </div>
