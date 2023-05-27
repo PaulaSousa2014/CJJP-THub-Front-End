@@ -24,7 +24,7 @@ export class MainFeedComponent {
   currentUser = this.tokenStorage.getUser();
   foundLike: any;
 
-  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private postService: PostService, private router:Router, private datePipe: DatePipe, private tokenStorage: TokenStorageService, private changeDetectorRef: ChangeDetectorRef) { }
 
   // On page load, get all posts
   ngOnInit() {
