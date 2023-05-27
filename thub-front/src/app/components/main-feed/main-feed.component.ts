@@ -23,6 +23,7 @@ export class MainFeedComponent {
   currentUser = this.tokenStorage.getUser();
   foundLike: any;
 
+
   constructor(
     private router: Router,
     private postService: PostService,
@@ -30,6 +31,7 @@ export class MainFeedComponent {
     private tokenStorage: TokenStorageService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
+
 
   // On page load, get all posts
   ngOnInit() {
@@ -267,3 +269,4 @@ export class MainFeedComponent {
     this.router.navigate(['post', id]);
   }
 }
+
