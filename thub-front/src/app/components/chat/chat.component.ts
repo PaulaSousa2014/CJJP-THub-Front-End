@@ -12,6 +12,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class ChatComponent {
 
   selectedTab = 'private';
+  partySeleccionada: string | undefined;
+
   changeTab(tabId: string) {
     this.selectedTab = tabId;
   }
@@ -47,6 +49,7 @@ export class ChatComponent {
     //Add 'implements OnInit' to the class.
     this.currentUser = this.tokenStorage.getUser();
 
+    this.selectedTab = 'parties';
     // Get party id from route
     this.route.params.subscribe((params) => {
       this.partyId = +params['id'];
@@ -123,5 +126,10 @@ export class ChatComponent {
       this.userInParty = false;
     }
   }
+  resetPartySelection(): void {
+    this.partySeleccionada = '';
+  }
+
+
 
 }

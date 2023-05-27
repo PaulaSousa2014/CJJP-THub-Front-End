@@ -11,6 +11,13 @@ export class OpenChatComponent {
   private _partySeleccionada: string = "";
 
   @Input()
+  set partySeleccionada(value: string) {
+    this._partySeleccionada = value;
+  }
+  get partySeleccionada(): string {
+    return this._partySeleccionada;
+  }
+  @Input()
   set usuarioSeleccionado(value: string) {
     this._usuarioSeleccionado = value;
   }
@@ -18,24 +25,14 @@ export class OpenChatComponent {
     return this._usuarioSeleccionado;
   }
 
-  @Input()
-  set partySeleccionada(value: string) {
-    this._partySeleccionada = value;
-  }
-  get partySeleccionada(): string {
-    return this._partySeleccionada;
-  }
 
   private _status: number = 0;
   open() {
-    if(this._usuarioSeleccionado) {
-      this._status = 1;
-      this._partySeleccionada = "";
-    } else {
-      this._status = 2;
-      this._usuarioSeleccionado = "";
-    }
+    this._partySeleccionada = "";
+    this._usuarioSeleccionado = "";
+    this._status = 0;
   }
+
 
   messages: {id: number, sender: string, receiver:string, message: string, hour: string}[] = [];
   constructor() {

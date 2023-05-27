@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-contacts',
@@ -7,11 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class ContactsComponent {
 
-  @Input()
-  contactos: { id: number; nombre: string; }[] = [];
+  //@Input()
+  //contactos: { id: number; nombre: string; }[] = [];
   @Input()
   parties: { id: number; title: string; }[] = [];
-
   private _selectedTab!: string;
   @Input()
   set selectedTab(value: string) {
@@ -21,10 +20,11 @@ export class ContactsComponent {
     return this._selectedTab;
   }
 
-  usuarioSeleccionado!: string;
+  /*usuarioSeleccionado!: string;
   seleccionarUsuario(usuario: string) {
     this.usuarioSeleccionado = usuario;
   }
+*/
 
   partySeleccionada!: string;
   sleccionarParty(party: string) {
