@@ -21,7 +21,6 @@ export interface Party{
   game: Game | null;
   activity: Activity | null;
   social: Social | null;
-  
 }
 
 

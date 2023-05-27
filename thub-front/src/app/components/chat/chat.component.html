@@ -1,13 +1,9 @@
 <div id="general-container">
   <div class="container bg-light mt-5 rounded p-0">
     <ul class="nav nav-tabs">
+
       <li class="nav-item">
-        <a class="nav-link" (click)="selectedTab = 'private'; resetPartySelection()" [class.active]="selectedTab === 'private'" style="cursor: pointer">
-          <h4>Private message</h4>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link fw-bold" (click)="selectedTab = 'parties'; resetPartySelection()" [class.active]="selectedTab === 'parties'" style="cursor: pointer">
+        <a class="nav-link fw-bold"  [class.active]="selectedTab === 'parties'" style="cursor: pointer">
           <h4>Parties</h4>
         </a>
       </li>
@@ -15,7 +11,7 @@
 
     <div>
       <!-- Contact Panel and chat -->
-      <app-contacts [parties]="parties" [selectedTab]="selectedTab" (selectedTabChange)="resetPartySelection()"></app-contacts>
+      <app-contacts [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
     </div>
   </div>
 </div>

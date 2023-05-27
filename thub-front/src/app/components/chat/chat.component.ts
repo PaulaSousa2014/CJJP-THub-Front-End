@@ -35,12 +35,6 @@ export class ChatComponent {
 
 
   ) {
-    this.contactos = [
-      { id: 1, nombre: 'Juan Pérez' },
-      { id: 2, nombre: 'María García' },
-      { id: 3, nombre: 'Pedro López' }
-    ];
-
 
   }
 
@@ -56,13 +50,12 @@ export class ChatComponent {
     });
 
     // Start chain function
-    this.getPartyById();
     this.getAllParties();
 
   }
 
-   // Get all parties
-   getAllParties(filterByUser: boolean = false) {
+  // Get all parties
+  getAllParties(filterByUser: boolean = false) {
     if (filterByUser) {
       this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
         next: (data: any) => {
@@ -85,51 +78,8 @@ export class ChatComponent {
       });
     }
   }
-  // Gets party by id
 
-  getPartyById() {
-    this.partiesService.getPartiesId(this.partyId).subscribe({
-      next: (data: any) => {
-        this.party = data; // Adds data to party
-        this.partyLoaded = true; // sets party Loaded to true
-        this.party.title = data.title; // Obtén el título de la fiesta
-        this.getPartyMemberlist(); // Executes next function
-        console.log('1');
-        console.log(data.title);
-      },
-      error: (error: any) => { },
-    });
-  }
-
-  // Gets party list by user id
-  getPartyMemberlist() {
-    this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
-      next: (data: any) => {
-        this.partyList = data;
-        this.partyListLoaded = true;
-        console.log('2');
-        this.isUserInParty();
-        this.getAllParties(true); // Obtén solo las parties del usuario actual
-      },
-      error: (error: any) => { },
-    });
-  }
-  isUserInParty(): void {
-    const userFound = this.partyList.some(
-      (element: any) => element.party.id === this.party.id
-    );
-
-    console.log('3');
-    if (userFound) {
-      this.userInParty = true;
-    } else {
-      this.userInParty = false;
-    }
-  }
-  resetPartySelection(): void {
-    this.partySeleccionada = '';
-  }
-
+  
 
 
 }

@@ -1,10 +1,10 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Message, Party, Sender } from 'src/app/models/MessageModels';
+import { Message, Sender } from 'src/app/models/MessageModels';
 import { MessagesService } from 'src/app/services/message.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-
+import { Party } from 'src/app/models/PartyModels';
 @Component({
   selector: 'app-open-chat',
   templateUrl: './open-chat.component.html',
@@ -13,15 +13,13 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class OpenChatComponent {
 
   private _partySeleccionada: string = "";
+  @Input() partyId: number = 0;
 
   messages: any[] = [];
   sender: Sender = {} as Sender;
   party: Party = {} as Party;
   message: Message = {} as Message;
   currentUser = this.tokenStorage.getUser();
-
-  @Input() partyId: number = 0;
-
 
   @Input()
   set partySeleccionada(value: string) {
@@ -43,12 +41,12 @@ export class OpenChatComponent {
     private route: ActivatedRoute,
     private datePipe: DatePipe,
     private tokenStorage: TokenStorageService) {
+
   }
 
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+
     // Get party id from route
     const partyId = parseInt(this.partySeleccionada, 10);
     if (!isNaN(partyId)) {
@@ -61,6 +59,8 @@ export class OpenChatComponent {
       // this.partyId = 0;
     }
     this.getAllMessages();
+    this.getPartyIdMessages();
+
 
   }
   // Function to get posts and get likes/comments
@@ -68,8 +68,8 @@ export class OpenChatComponent {
     this.messagesService.getMessage().subscribe({
       next: (data: any) => {
         console.log('getting posts');
-        this.messages = data;
-        console.log("Mensajes:" + this.messages);
+        this.messages = data; //here ir where the message array is.
+        console.log( this.messages);
 
         this.sortPostsByTimestamp(); // Sort the posts by timestamp
       },
@@ -95,7 +95,7 @@ export class OpenChatComponent {
     this.messagesService.postMessage(this.message).subscribe({
       next: (data: any) => {
 
-        console.log("Datadentrosubmit" + data);
+        console.log('Datadentrosubmit' + data);
         location.reload(); // Reload the page after successfully submitting the post
       },
       error: (error: any) => {
@@ -103,7 +103,29 @@ export class OpenChatComponent {
         console.log('Cannot post message', error);
       },
     });
-    this.getAllMessages();
+    this.getPartyIdMessages();
+    this.loadMessageHistory();
+  }
+
+  getPartyIdMessages() {
+    this.messagesService.getMessageByPartyId(this.partyId).subscribe({
+      next: (data: any) => {
+        console.log('getting partyid');
+        this.messages = data; // Asigna los mensajes a this.messages
+        console.log('party id: ' + this.partyId);
+        console.log('messages: ', this.messages);
+
+        this.sortPostsByTimestamp();
+      },
+      error: (error: any) => {
+        console.log('Cannot get posts', error);
+      },
+    });
+  }
+
+  onPartySelected(partyId: number) {
+    this.partyId = partyId; // Obtener el ID de la fiesta seleccionada
+    // Realizar las acciones necesarias con el nuevo partyId
   }
 
   // Function to format the timestamp of a post
@@ -139,6 +161,16 @@ export class OpenChatComponent {
     });
   }
 
-
+  loadMessageHistory(): void {
+    // Llama al servicio para obtener el historial de mensajes
+    this.messagesService.getMessage().subscribe(
+      (messages: Message[]) => {
+        this.messages = messages;
+      },
+      (error: any) => {
+        console.error('Error al cargar el historial de mensajes:', error);
+      }
+    );
+  }
 
 }

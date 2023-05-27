@@ -10,7 +10,6 @@ export class ContactsComponent {
 
   selectedPartyId: number = 0;
 
-
   //@Input()
   //contactos: { id: number; nombre: string; }[] = [];
   @Input()
@@ -25,27 +24,21 @@ export class ContactsComponent {
   get selectedTab(): string {
     return this._selectedTab;
   }
+
+  @Output() partySelected: EventEmitter<number> = new EventEmitter<number>();
   constructor(
 
     private router: Router,
   ) {}
 
-  /*usuarioSeleccionado!: string;
-  seleccionarUsuario(usuario: string) {
-    this.usuarioSeleccionado = usuario;
-  }
-*/
-idparty(id: number) {
-  this.router.navigate(['chat/', id]);
-  console.log(id);
-}
+
 
   partySeleccionada!: string;
   seleccionarParty(party: string, id: number) {
     this.partySeleccionada = party;
     this.selectedPartyId = id;
+    console.log('ID de la party seleccionada:', id); // Imprimir la ID de la fiesta seleccionada en la consola
+    this.partySelected.emit(id); // Emitir el ID de la fiesta seleccionada
   }
-
-
 
 }

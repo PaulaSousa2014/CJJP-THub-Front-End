@@ -1,4 +1,3 @@
-
 <ng-container *ngIf="!partySeleccionada">
   <p class="text-center mt-5">No tienes ningún chat abierto.</p>
 </ng-container>
@@ -10,41 +9,31 @@
       <!-- Agrega aquí cualquier información adicional del usuario -->
     </div>
 
-    <div class="chat" id="chatContainer">
-      <div style="padding-bottom: 16px">
-        <ng-container *ngFor="let msg of messages">
-          <div
-            *ngIf="
-              msg.sender === partySeleccionada ||
-              msg.receiver === partySeleccionada
-            "
-          >
-            <div *ngIf="msg.sender === partySeleccionada">
-              <div class="message w-100">
-                <div class="recive alert alert-dark d-inline-block">
-                  <div class="msg">{{ msg.message }}</div>
-                </div>
-                <div class="hour-r font-weight-light d-block mt-1">
-                  <small>{{ msg.hour }}</small>
+    <div class="container">
+      <div class="chat">
+        <div *ngIf="messages.length > 0; else emptyChat">
+          <div *ngFor="let message of messages" class="message">
+            <div *ngIf="message.party.id === partyId" class="message">
+              <div *ngIf="message.sender === 'Me'; else otherUser">
+                <div class="sender">
+                  <p>{{ message.content }}</p>
+                  <span class="timestamp">{{ message.timestamp }}</span>
                 </div>
               </div>
-            </div>
-            <div *ngIf="msg.receiver === partySeleccionada">
-              <div class="message w-100 d-flex flex-row-reverse">
-                <div class="send alert d-inline-block">
-                  {{ msg.message }}
+              <ng-template #otherUser>
+                <div class="other-user">
+                  <p>{{ message.content }}</p>
+                  <span class="timestamp">{{ message.timestamp }}</span>
                 </div>
-                <div class="hour-s font-weight-light d-block mt-1 text-end">
-                  <small>{{ msg.hour }}</small>
-                </div>
-              </div>
+              </ng-template>
             </div>
+
           </div>
-        </ng-container>
+        </div>
+        <ng-template #emptyChat>
+          <p class="empty-chat">El chat está vacío.</p>
+        </ng-template>
       </div>
-      <p class="text-center">
-        El chat está vacío.
-      </p>
     </div>
 
     <div class="input-group message-input">
@@ -57,8 +46,9 @@
         aria-describedby="button-addon2"
       />
 
-        <button type="button" class="btn mt-3" (click)="submitMessage()"> <i class="bi bi-send" style="color: #f9fafa"></i></button>
-
+      <button type="button" class="btn mt-3" (click)="submitMessage()">
+        <i class="bi bi-send" style="color: #f9fafa"></i>
+      </button>
     </div>
   </div>
 </ng-container>
