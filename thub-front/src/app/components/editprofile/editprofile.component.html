@@ -4,9 +4,9 @@
   </div>
   <div class="row mb-4">
     <div class="col-md-5 text-center mb-3 mb-md-0">
-      <img type="link" class="logoimg img-fluid" [src]="'../../../assets/img/avatars/cat0.jpg' || '../../../assets/img/avatars/default.jpg'" alt="" [routerLink]="['/avatars']" alt="Click to get profile picture">
+      <img type="link" class="logoimg img-fluid" [src]="userProfile.profile_img" alt="" [routerLink]="['/avatars']" alt="Click to get profile picture">
     </div>
-    
+
     <div class="col-md-7 my-auto text-md-end text-center">
       <button type="submit" class="btn Create mr-3" (click)="save()">Save</button>
       <a (click)="goBack()" class="cancel">Cancel</a>
