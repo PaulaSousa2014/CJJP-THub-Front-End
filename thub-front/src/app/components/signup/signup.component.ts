@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit{
     username: "",
     email: "",
     password: "",
-    passwordConfirmation: ""
+    passwordConfirmation: "" 
   };
 
   errorMessage = "";
@@ -28,12 +28,13 @@ export class SignupComponent implements OnInit{
     return this.form.passwordConfirmation === this.form.password;
   }
 
+
+
   onSubmit(): void {
     if (this.isPasswordMatch()) {
       const { username, email, password } = this.form;
       console.log(this.form);
-    
-
+  
       this.authService.register(username, email, password).subscribe({
         next: (data: any) => {
           this.refreshPage();
@@ -46,10 +47,10 @@ export class SignupComponent implements OnInit{
       console.log("Las contraseñas no coinciden");
     }
   }
-
+  
 
   refreshPage(): void {
-    this.router.navigate(["login"]);
+    this.router.navigate(["home"]);
   }
 
 }

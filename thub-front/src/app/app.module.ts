@@ -38,6 +38,7 @@ import { MinifooterComponent } from './components/footers/minifooter/minifooter.
 import { AvatarsComponent } from './components/avatars/avatars.component';
 
 import { AuthInterceptor } from './_helpers/auth.interceptor';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { AuthInterceptor } from './_helpers/auth.interceptor';
     PrivacyPolicyComponent,
     TermsServiceComponent,
     MinifooterComponent,
-    AvatarsComponent
+    AvatarsComponent,
+    PostDetailsComponent
 
   ],
   imports: [

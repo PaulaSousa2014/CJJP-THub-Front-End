@@ -18,6 +18,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { TermsServiceComponent } from './components/terms-service/terms-service.component';
 import { ClickPartyComponent } from './components/click-party/click-party.component';
 import { AvatarsComponent } from './components/avatars/avatars.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
 
 
 const routes: Routes = [
@@ -55,10 +56,6 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'parties/id/:id',
-    component: ClickPartyComponent
-  },
-  {
     path: 'createparty',
     component: CreatepartyComponent
   },
@@ -90,8 +87,14 @@ const routes: Routes = [
     path: 'avatars',
     component: AvatarsComponent
   },
-  { path: '**',
-  component: Error404Component}
+  {
+    path: 'post/:id',
+    component: PostDetailsComponent
+  },
+  {
+    path: '**',
+    component: Error404Component
+  }
 ];
 
 @NgModule({

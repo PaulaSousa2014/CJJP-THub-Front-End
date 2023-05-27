@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Party } from '../models/PartyModels';
+import { Party } from '../models/CreatePartyModels';
 
 
 // API auth location
