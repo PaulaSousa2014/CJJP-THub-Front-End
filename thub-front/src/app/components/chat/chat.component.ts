@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Party } from 'src/app/models/PartyModels';
+import { PartiesService } from 'src/app/services/parties.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,45 +15,113 @@ export class ChatComponent {
   changeTab(tabId: string) {
     this.selectedTab = tabId;
   }
+  party: Party = {} as Party; // Store current party
+  currentUser: any; // Store user
+  partyId: number = 0; // Store party id
+  partyList: any; // Store user party list
+  // Variables to check
+  userInParty: boolean = false;
+  partyLoaded: boolean = false;
+  partyListLoaded: boolean = false;
 
   contactos: { id: number, nombre: string }[] = [];
-  parties: {id: number, title: string, participantes: number}[] = [];
+  parties: { id: number, title: string, participantes: number }[] = [];
 
-  constructor() {
+  //traer el id de parties, y mostrar el nombre en contactos
+
+  constructor(private partiesService: PartiesService, private tokenStorage: TokenStorageService, private route: ActivatedRoute,
+
+
+  ) {
     this.contactos = [
       { id: 1, nombre: 'Juan Pérez' },
       { id: 2, nombre: 'María García' },
-      { id: 3, nombre: 'Pedro López' },
-      { id: 4, nombre: 'Ana Rodríguez' },
-      { id: 5, nombre: 'Luis Martínez' },
-      { id: 6, nombre: 'Laura Fernández' },
-      { id: 7, nombre: 'Carlos González' },
-      { id: 8, nombre: 'Sofía Ramírez' },
-      { id: 9, nombre: 'Miguel Torres' },
-      { id: 10, nombre: 'Isabel Sánchez' },
-      { id: 11, nombre: 'Mario Gómez' },
-      { id: 12, nombre: 'Lucía Silva' },
-      { id: 13, nombre: 'Andrés Castro' },
-      { id: 14, nombre: 'Carolina Peralta' },
-      { id: 15, nombre: 'Fernando Molina' },
-      { id: 16, nombre: 'Julieta Ramírez' },
-      { id: 17, nombre: 'Ricardo Ortega' },
-      { id: 18, nombre: 'Beatriz Morales' },
-      { id: 19, nombre: 'Gustavo Herrera' },
-      { id: 20, nombre: 'Valentina Rojas' }
+      { id: 3, nombre: 'Pedro López' }
     ];
 
-    this.parties = [
-      { id: 1, title: 'Fall Guys: Ultimate Knockout', participantes: 5 },
-      { id: 2, title: 'Among Us', participantes: 8 },
-      { id: 3, title: 'Phasmophobia', participantes: 3 },
-      { id: 4, title: 'Dead by Daylight', participantes: 6 },
-      { id: 5, title: 'Sea of Thieves', participantes: 2 },
-      { id: 6, title: 'Overcooked 2', participantes: 7 },
-      { id: 7, title: 'Genshin Impact', participantes: 9 },
-      { id: 8, title: 'Raft', participantes: 4 },
-      { id: 9, title: 'Minecraft', participantes: 1 },
-      { id: 10, title: 'Terraria', participantes: 10 }
-    ];
+
   }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.currentUser = this.tokenStorage.getUser();
+
+    // Get party id from route
+    this.route.params.subscribe((params) => {
+      this.partyId = +params['id'];
+    });
+
+    // Start chain function
+    this.getPartyById();
+    this.getAllParties();
+
+  }
+
+   // Get all parties
+   getAllParties(filterByUser: boolean = false) {
+    if (filterByUser) {
+      this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
+        next: (data: any) => {
+          this.parties = data;
+          console.log(this.parties);
+        },
+        error: (error: any) => {
+          console.log("Cannot get user's parties", error);
+        }
+      });
+    } else {
+      this.partiesService.getParties().subscribe({
+        next: (data: any) => {
+          this.parties = data;
+          console.log(this.parties);
+        },
+        error: (error: any) => {
+          console.log("Cannot get all parties", error);
+        }
+      });
+    }
+  }
+  // Gets party by id
+
+  getPartyById() {
+    this.partiesService.getPartiesId(this.partyId).subscribe({
+      next: (data: any) => {
+        this.party = data; // Adds data to party
+        this.partyLoaded = true; // sets party Loaded to true
+        this.party.title = data.title; // Obtén el título de la fiesta
+        this.getPartyMemberlist(); // Executes next function
+        console.log('1');
+        console.log(data.title);
+      },
+      error: (error: any) => { },
+    });
+  }
+
+  // Gets party list by user id
+  getPartyMemberlist() {
+    this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
+      next: (data: any) => {
+        this.partyList = data;
+        this.partyListLoaded = true;
+        console.log('2');
+        this.isUserInParty();
+        this.getAllParties(true); // Obtén solo las parties del usuario actual
+      },
+      error: (error: any) => { },
+    });
+  }
+  isUserInParty(): void {
+    const userFound = this.partyList.some(
+      (element: any) => element.party.id === this.party.id
+    );
+
+    console.log('3');
+    if (userFound) {
+      this.userInParty = true;
+    } else {
+      this.userInParty = false;
+    }
+  }
+
 }
