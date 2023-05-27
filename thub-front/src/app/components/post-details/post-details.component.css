@@ -12,6 +12,10 @@
   background-color: var(--color-light-grey);
 }
 
+.commentCard {
+  background-color: #6a6a6a1f;
+}
+
 p i:hover {
   cursor: pointer;
 }
