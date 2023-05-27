@@ -29,6 +29,10 @@ export class PostService {
     return this.httpClient.get(POST_API + "/"+id+"/likes/ammount", httpOptions);
   }
 
+  getAllLikes(): Observable<any> {
+    return this.httpClient.get (POST_API_likes,httpOptions);
+  }
+
   // Add post like
   addLike(userId:number, postId:number, newLike: any): Observable<any> {
     return this.httpClient.post(POST_API_likes + "/" + postId + "/" + userId, newLike, httpOptions);
