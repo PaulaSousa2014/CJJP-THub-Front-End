@@ -55,5 +55,9 @@ joinParty(party_id: number, user_id:number, newJoin: any): Observable<any> {
     return this.httpClient.delete(POST_API_JOIN + "/" + party_member_id);
   }
 
+  //Funcion to get partyMemberList by partyId
+  getPartyMembersListByPartyId(party_id: number): Observable<any> {
+    return this.httpClient.get(POST_API_JOIN + "/party/" + party_id);
+  }
 
 }
