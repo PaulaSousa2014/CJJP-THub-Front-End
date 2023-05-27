@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <p><i class="bi bi-heart-fill" style="color: var(--color-pink);"></i> {{ post.likes }}</p>
+            <i class="bi bi-heart-fill" style="color: var(--color-pink);" (click)="toggleLike(post)">{{ post.likes }}</i>
             <p><i class="bi bi-chat-left-text-fill" style="color: rgb(40, 124, 251);"></i> {{ post.comments }}</p>
             <p *ngIf="post.creator.id == currentUser.id"><i class="bi bi-trash3-fill" style="color: rgb(170, 5, 5);"
                 (click)="doStuff()"></i></p>

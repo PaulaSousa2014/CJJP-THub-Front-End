@@ -28,6 +28,7 @@ export class PostDetailsComponent {
   commentInPost: Post = {} as Post;
   newComment: Comment = {} as Comment;
 
+
   // MAIN
   ngOnInit() {
 
@@ -96,7 +97,6 @@ export class PostDetailsComponent {
   }
 
   submitComment() {
-
     // Check comment is not empty or only blank spaces
     if (!this.newComment.content || this.newComment.content.trim() === '') {
       window.alert('Comment cannot be empty'); // alerts
@@ -108,6 +108,7 @@ export class PostDetailsComponent {
       this.postComment();
     }
   }
+
   // Function to format timestamp
   formatTimestamp(serverTimestamp: string): string {
     const serverTime = new Date(serverTimestamp + 'Z'); // Add 'Z' for UTC time zone offset
