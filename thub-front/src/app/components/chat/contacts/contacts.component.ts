@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ContactsComponent {
 
   @Input()
-  contactos: { id: number; nombre: string; }[] = [];
+  contacts: { id: number; nombre: string; }[] = [];
   @Input()
   parties: { id: number; title: string; }[] = [];
 
@@ -27,7 +27,7 @@ export class ContactsComponent {
   }
 
   partySeleccionada!: string;
-  sleccionarParty(party: string) {
+  seleccionarParty(party: string) {
     this.partySeleccionada = party;
   }
 }

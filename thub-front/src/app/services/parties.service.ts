@@ -29,6 +29,7 @@ export class PartiesService {
       ;
   }
 
+ 
 
   // Function to delete character
   deleteParty(id: number): Observable<any> {

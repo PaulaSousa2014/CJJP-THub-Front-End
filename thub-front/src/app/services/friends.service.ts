@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
@@ -5,6 +6,7 @@ import { Observable, catchError, map, throwError } from 'rxjs';
 
 // API friends location
 const FRIENDS_API = "https://t-hub.up.railway.app/api/friends"
+
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
@@ -117,4 +119,5 @@ export class FriendsService {
     return throwError(
       'Something bad happened; please try again later.');
   };
+
 }

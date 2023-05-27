@@ -44,6 +44,7 @@ export class EditprofileComponent {
   }
 
   //Cancel edit and go back to user profile page
+
   goBack() {
     this.location.back();
   }
