@@ -13,6 +13,7 @@ export class PostDetailsComponent {
   constructor(private route: ActivatedRoute, private postService: PostService, private location: Location) {}
 
   postFound: boolean = false;
+  postCommentsFound: boolean = false;
   postId: number = 0;
   post: any;
   postComments: any;
@@ -27,6 +28,9 @@ export class PostDetailsComponent {
     // get post by param id
     this.getPostById();
 
+    // get comments by post id
+    this.getCommentsByPostId();
+
   }
 
   // Function to get post by ID
@@ -38,10 +42,22 @@ export class PostDetailsComponent {
         console.log(this.post);
       },
       error: (error: any) => {
-        console.log("Cannot get likes", error);
+        console.log("Cannot get post info", error);
       }
     });
+  }
 
+  // Function to get comments by post ID
+  getCommentsByPostId() {
+    this.postService.getCommentsByPostId(this.postId).subscribe({
+      next: (data: any) => {
+        this.postComments = data;
+        this.postCommentsFound = true;
+      },
+      error: (error: any) => {
+        console.log("Cannot get post comments", error);
+      }
+    });
   }
 
   // Function to return to posts screen

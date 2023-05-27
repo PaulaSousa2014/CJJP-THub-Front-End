@@ -10,5 +10,15 @@
     <p>{{post.creator.username}}</p>
   </div>
 
+  <div class="container" *ngIf="postCommentsFound">
+    <div class="row" *ngFor="let comment of postComments">
+      <div class="col-12">
+        <p>{{comment.id}}</p>
+        <p>{{comment.content}}</p>
+        <p>{{comment.comment_by.username}}</p>
+      </div>
+    </div>
+  </div>
+
 
 </div>
