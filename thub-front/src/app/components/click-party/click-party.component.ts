@@ -113,7 +113,7 @@ export class ClickPartyComponent {
 
   //exit this party
   exit() {
-this.partiesService.deleteParty(this.partyId).subscribe({
+this.partiesService.exitParty(this.partyId).subscribe({
   next: () => {
     this.goBack();
   },
