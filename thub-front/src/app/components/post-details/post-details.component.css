@@ -19,3 +19,13 @@
 p i:hover {
   cursor: pointer;
 }
+
+.smile {
+  margin-right: 2%;
+  color: var(--color-dark-grey);
+}
+
+textarea {
+  resize: none;
+}
+
