@@ -53,5 +53,10 @@ export class PostService {
     return this.httpClient.post(POST_API, newPost, httpOptions);
   }
 
+  //Delete post by postId
+  deletePost(postId:number): Observable<any> {
+    return this.httpClient.delete(POST_API + "/" + postId, httpOptions)
+  }
+
 
 }

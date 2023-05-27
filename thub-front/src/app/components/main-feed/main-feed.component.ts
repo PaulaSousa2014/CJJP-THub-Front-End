@@ -234,9 +234,18 @@ export class MainFeedComponent {
     });
   }
 
-  doStuff() {
-    console.log("aaaaaaaaa");
-  }
-}
+//Function to delete post
+deletePost(postId: number) {
+  console.log(postId);
+  this.postService.deletePost(postId).subscribe({
+    next: (response: any) => {
+      console.log(response+"Post delected"); // Handle the successful response as needed
 
+    },
+    error: (error: any) => {
+      console.log("Failed to delete post", error);
+    }
+  });
+}
+}
 
