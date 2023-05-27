@@ -35,7 +35,7 @@ export class PartiesService {
     return this.httpClient.delete(POST_API + "/" + id);
   }
 
-
+ 
 
   // Function to get all parties from user
   getUserPartyList(id: number): Observable<any> {

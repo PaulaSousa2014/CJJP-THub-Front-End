@@ -45,8 +45,8 @@ export class EditprofileComponent {
 
   //Cancel edit and go back to user profile page
   goBack() {
-    this.location.back();
-  }
+    this.router.navigate(['/profile', this.user.id]);
+    }
 
   //Get profile data from user db
   getUserProfile() {
@@ -94,8 +94,7 @@ export class EditprofileComponent {
 
   alert() {
     Swal.fire({
-      title: 'Good job!',
-      text: 'You clicked the button!',
+      title: 'Changes saved!',
       icon: 'success'
     }).then(() => {
       window.location.href = '/profile/' + this.user.id;

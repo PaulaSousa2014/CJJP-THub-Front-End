@@ -32,7 +32,6 @@ export class MainFeedComponent {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
-
   // On page load, get all posts
   ngOnInit() {
     console.log('init');
