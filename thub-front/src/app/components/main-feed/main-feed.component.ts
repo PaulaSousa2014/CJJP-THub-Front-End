@@ -149,7 +149,7 @@ export class MainFeedComponent {
   }
 
   goToPost(id: number) {
-
+    this.router.navigate(['post', id]);
   }
 
 
