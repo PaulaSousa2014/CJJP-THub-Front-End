@@ -9,7 +9,6 @@ export interface User {
     job: Job;
     office: Office;
     roles: Roles;
-
 }
 
 export interface Job{

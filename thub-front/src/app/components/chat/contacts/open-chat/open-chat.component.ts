@@ -1,4 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Message, Party, Sender } from 'src/app/models/MessageModels';
+import { MessagesService } from 'src/app/services/message.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-open-chat',
@@ -7,8 +12,16 @@ import { Component, Input } from '@angular/core';
 })
 export class OpenChatComponent {
 
-  private _usuarioSeleccionado: string = "";
   private _partySeleccionada: string = "";
+
+  messages: any[] = [];
+  sender: Sender = {} as Sender;
+  party: Party = {} as Party;
+  message: Message = {} as Message;
+  currentUser = this.tokenStorage.getUser();
+
+  @Input() partyId: number = 0;
+
 
   @Input()
   set partySeleccionada(value: string) {
@@ -17,53 +30,105 @@ export class OpenChatComponent {
   get partySeleccionada(): string {
     return this._partySeleccionada;
   }
-  @Input()
-  set usuarioSeleccionado(value: string) {
-    this._usuarioSeleccionado = value;
-  }
-  get usuarioSeleccionado(): string {
-    return this._usuarioSeleccionado;
-  }
 
 
   private _status: number = 0;
   open() {
     this._partySeleccionada = "";
-    this._usuarioSeleccionado = "";
     this._status = 0;
   }
 
-
-  messages: {id: number, sender: string, receiver:string, message: string, hour: string}[] = [];
-  constructor() {
-    this.messages = [
-      { id: 1, sender: 'Juan Pérez', receiver: 'me', message: "Hola!", hour: "11:00" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 3, sender: 'me', receiver: 'María García', message: "TEST.", hour: "05:00"},
-    ];
+  constructor(private router: Router,
+    private messagesService: MessagesService,
+    private route: ActivatedRoute,
+    private datePipe: DatePipe,
+    private tokenStorage: TokenStorageService) {
   }
 
-  public tieneMensajesDelUsuario(): boolean {
-    return this.messages.some(message => message.sender === this.usuarioSeleccionado || message.receiver === this.usuarioSeleccionado);
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    // Get party id from route
+    this.partyId = +this.partySeleccionada;
+    this.getAllMessages();
+
+  }
+  // Function to get posts and get likes/comments
+  getAllMessages() {
+    this.messagesService.getMessage().subscribe({
+      next: (data: any) => {
+        console.log('getting posts');
+        this.messages = data;
+        console.log("Mensajes:" + this.messages);
+
+        this.sortPostsByTimestamp(); // Sort the posts by timestamp
+      },
+      error: (error: any) => {
+        console.log('Cannot get posts', error);
+      },
+    });
   }
 
-  newMessage: string = '';
-  sendMessage() {
-    if (this.newMessage.trim() !== '') {
-      const newMsg = {
-        id: this.messages.length + 1,
-        sender: "ne",
-        receiver: this.usuarioSeleccionado,
-        message: this.newMessage,
-        hour: "12:00"
-      };
-      this.messages.push(newMsg);
-      this.newMessage = '';
+  // Function to submit a new post
+  submitMessage() {
+    this.sender.id = this.currentUser.id;
+    this.message.sender = this.sender;
+
+
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString();
+
+    this.message.time_submitted = formattedDate;
+    this.message.party = this.partyId;
+    console.log('button pressed');
+    console.log(this.message);
+
+    this.messagesService.postMessage(this.message).subscribe({
+      next: (data: any) => {
+        console.log("Datadentrosubmit" + data);
+        location.reload(); // Reload the page after successfully submitting the post
+      },
+      error: (error: any) => {
+        console.log('Cannot post message', error);
+      },
+    });
+    this.getAllMessages();
+  }
+
+  // Function to format the timestamp of a post
+  formatTimestamp(serverTimestamp: string): string {
+    const serverTime = new Date(serverTimestamp + 'Z'); // Add 'Z' for UTC time zone offset
+    const localTime = new Date(); // Local datetime
+
+    const timeDiff = Math.floor(
+      (localTime.getTime() - serverTime.getTime()) / 1000
+    ); // Time difference in seconds
+
+    if (timeDiff < 60) {
+      return `< 1 minute ago`;
+    } else if (timeDiff < 3600) {
+      const minutes = Math.floor(timeDiff / 60);
+      return `${minutes} minutes ago`;
+    } else if (timeDiff < 86400) {
+      const hours = Math.floor(timeDiff / 3600);
+      return `${hours} hours ago`;
+    } else {
+      // Format the date and time in the user's local time
+      const formattedDate = serverTime.toLocaleString();
+      return formattedDate;
     }
   }
+
+  // Function to sort posts by timestamp
+  sortPostsByTimestamp() {
+    this.messages.sort((a, b) => {
+      const timestampA = new Date(a.time_submitted);
+      const timestampB = new Date(b.time_submitted);
+      return timestampB.getTime() - timestampA.getTime();
+    });
+  }
+
+
+
 }
