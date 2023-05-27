@@ -6,16 +6,31 @@
   background-position-y: center;
   background-position-x: center;
   background-size: cover;
-  background-image: url("/assets/backgroundprofile.jpg");
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
 }
+
+.imagediv-game {
+  background-image: url("../../../assets/games.jpg");
+}
+
+.imagediv-activity {
+  background-image: url("../../../assets/activities.jpg");
+}
+
+.imagediv-social {
+  background-image: url("../../../assets/carousel1.jpg");
+}
+
 
 
 .contentbox {
   max-width: 70rem;
-  border: solid black;
   display: flex;
   flex-direction: column;
-
+  padding-bottom:2% ;
+  border-radius: 5px;
   /*centrar*/
   position: relative;
   top: 50%;
@@ -29,20 +44,13 @@
   margin-left: 20%;
 }
 
-.divbutton {
-  top: 0;
-  right: 0;
-  margin: 10px;
-  text-align: end;
-}
-
-
 .form {
   max-width: 40rem;
   justify-content: center;
   margin-bottom: 25px;
   margin-top: -20px;
 }
+
 .Create{
   background-color: #E20074;
 color: white;
@@ -50,10 +58,26 @@ margin-right: 10px;
 height: 35px;
 width: 120px;
 font-size:15px;
-text-transform: none;
 padding: 0;
 }
 .form-label{
   font-size: 20px;
   margin-bottom: 1px;
 }
+
+/*pixel5*/
+@media (max-width: 650px) {
+  .divbutton {
+    top: 0;
+    right: 0;
+    margin-top: 2rem;
+    text-align: end;
+  }
+
+.formdiv{
+  justify-content: center; /* Centrar verticalmente */
+  align-items: center; /* Centrar horizontalmente */
+  margin-left: 8%;
+  margin-top: 4%;
+  margin-right: 3%;
+}}

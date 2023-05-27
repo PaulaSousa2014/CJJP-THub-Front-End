@@ -1,65 +1,83 @@
-<div class="content container-fluid vh-100  d-flex ">
-
-  <div class="menulateralizq d-flex">
-    <div class="menulateralizq1 d-flex">
-      <a type="button" class="btn1 "> <i class="fas fa-gamepad"></i> Games
-      </a>
-      <a type="button" class="btn1 "> <i class="fas fa-person-biking"></i>
-        Activities
-      </a>
-    </div>
-
-
-    <div class="menulateralizq2">
-      <a type="button" class=" btn2 "> <i class="far fa-comments"></i> Social</a>
-      <a type="button" class=" btn2"> <i class="far fa-user"></i>
-        My Parties</a>
-    </div>
-  </div>
-
-  <div class="centercomponent">
-    <div class="searchdiv">
-      <form class="search d-flex">
-        <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar">
-        <button class="btn searchbtn" type="submit">Search</button>
-      </form>
-    </div>
-
-
-    <div class="listaparties">
-      <div class="card">
-        <div class="componentcard d-flex">
-
-          <div class="card-body">
-
-            <div class="superiorcomponents" style="display: flex; flex-direction: row; justify-content: space-between;">
-              <div class="activitytype" style="margin-left: 2%;">
-                <p>Activity_type</p>
-              </div>
-              <div class="people d-flex justify-content-end align-items-center " style="margin-bottom: 20px;">
-
-                <i class="fas fa-user-group"></i> 23
-              </div>
-
-            </div>
-
-            <h5 class="card-title">Weekend at Molina</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias eum ullam quaerat incidunt obcaecati.
-            </p>
-          </div>
-
-          <div class="card-inside">
-            <img class="card-img-top" src="/assets/login.jpg">
-          </div>
-        </div>
+<div class="container">
+  <div class="row my-2">
+    <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="allParties()"> All Parties</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterMyParties()"> My Parties</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('game')"><i
+            class="bi bi-controller"></i> Games</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('activity')"><i
+            class="bi bi-bicycle"></i> Activities</a>
+      </div>
+      <div class="row">
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('social')"><i
+            class="bi bi-chat"></i> Social</a>
       </div>
 
     </div>
 
 
-  </div>
+    <div class="col-md-7 col-12 ">
+      <form class="search d-flex mb-4" (ngSubmit)="filterParties()">
+        <div class="input-group">
+          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar" [(ngModel)]="searchTerm"
+            name="searchTerm">
+          <button class="btn btn-primary inside-btn" type="submit">Search</button>
+        </div>
+      </form>
+      <div class="divbutton d-flex flex-column align-items-center mt-1">
+        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create
+          party</a>
+      </div>
 
-  <div class="divbutton justify-content-top align-items-start ">
-    <button type="button" class="btn createparty" >Create party</button>
+
+      <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
+
+        <div class="text-component" (click)="readMore(party.id)">
+          <a style="color: black;">
+            <div class="card-body">
+              <div class="superiorcomponents d-flex justify-content-between">
+                <div class="activitytype" style="margin-left: 2%;">
+                  <p *ngIf="party.activity">Activity</p>
+                  <p *ngIf="party.game">Game</p>
+                  <p *ngIf="party.social">Social</p>
+                  <div class="col-6 d-grid mx-auto">
+                  </div>
+                </div>
+                <div class="people d-flex justify-content-end align-items-center">
+                  <i class="bi bi-people-fill"></i> 23
+                </div>
+              </div>
+              <h5 class="card-title">{{party.title}}</h5>
+              <p>{{party.description}}.</p>
+            </div>
+
+          </a>
+
+        </div>
+
+        <div class="card-inside">
+          <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
+        </div>
+        <ng-container *ngIf="party.creator.id === userId">
+          <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
+              class="bi bi-trash3-fill"></i></button>
+        </ng-container>
+
+      </div>
+
+      <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
+        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero
+          parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer"
+            (click)="allParties()">join a party</a> or create one! 🎉</h2>
+      </div>
+
+    </div>
   </div>
 </div>

@@ -1,37 +1,100 @@
-<!-- Header -->
-<nav class="navbar navbar-expand mb-3">
-  <div class="container-fluid" >
-    <div class="col-8 d-flex">
-      <a class="navbar-brand me-0 my-auto" href="#"><img class="img-fluid" src="../../assets/img/logos/THubLogo200pxWWhite.png"></a>
-      <ul class="navbar-nav">
-        <li class="nav-item ps-2 my-auto">
-          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-fill"></i></a>
-        </li>
-        <li class="nav-item ps-2 my-auto">
-          <a class="nav-link" href="#"><i class="bi bi-people-fill"></i></a>
-        </li>
-        <li class="nav-item px-2 my-auto">
-          <a class="nav-link" href="#"><i class="bi bi-chat-text-fill"></i></a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="d-flex col-4 justify-content-end align-items-center">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">
-            <img class="img-fluid" src="../../../../assets/img/placeholders/user-picture-50x50.png" alt="User Picture">
-            Username
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="../../assets/img/logos/THubLogo200pxWWhite.png" alt="Logo">
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <i class="bi bi-list fa-lg text-light"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
+        <a href="#" class="nav-link mx-2" routerLink="/home"><i class="bi bi-house-fill"></i></a>
+        <a href="#" class="nav-link mx-2" routerLink="/parties"><i class="bi bi-people-fill"></i></a>
+        <a href="#" class="nav-link mx-2" routerLink="/chat"><i class="bi bi-chat-text-fill"></i></a>
+      </div>
+      <div class="navbar-nav ms-auto align-items-center">
+        <div class="dropdown" *ngIf="user">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="profile-img me-2" src="{{user.profile_img}}">
+            {{user.username}}
           </a>
-          <ul class="dropdown-menu dropdown-menu-end list-unstyled">
-            <li><a class="dropdown-item" href="#">Your parties</a></li>
-            <li><a class="dropdown-item" href="#">View profle</a></li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
-
-
-          </ul>
-        </li>
-      </ul>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill"></i>Your parties</a>
+            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getList()"><i class="bi bi-person-heart"></i>Friends</a>
+            <a class="dropdown-item" (click)="goToYourProfile()"><i class="bi bi-person-fill"></i>View profile</a>
+            <div class="dropdown-divider"></div>
+            <a type="button" class="dropdown-item" (click)="logOut()"><i class="bi bi-door-open-fill"></i>Log out</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Friends</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Modal Content -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-person-heart"></i> Friends List</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-person-plus-fill"></i> Friend requests</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Table of friends list -->
+            <table class="table">
+              <tbody *ngIf="friends.length > 0; else noFriendsMessage">
+                <tr class="user-friend" *ngFor="let friend of friends">
+                  <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <i class="chat-friend bi bi-chat-dots-fill" routerLink="/chat" data-bs-dismiss="modal"></i>
+                      <i class="delete-friend bi bi-x-lg ms-3" (click)="deleteFriend(friend.id)"></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- 0 Friends in list -->
+            <ng-template #noFriendsMessage>
+              <p class="text-center mt-3">Your friends list is empty</p>
+            </ng-template>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <!-- Table of friends request list -->
+            <table class="table">
+              <tbody *ngIf="friendsRequest.length > 0; else noFriendsRequest">
+                <tr class="user-friend" *ngFor="let friend of friendsRequest">
+                  <td (click)="handleProfileClick(friend.userSender.id)" data-bs-dismiss="modal">{{friend.userSender.nameSurn}}</td>
+                  <td>
+                    <div class="d-flex justify-content-end">
+                      <i class="bi bi-check-lg text-success" (click)="acceptFriend(friend.id, friend.userSender.id)"></i>
+                      <!-- Delete friend request button -->
+                      <i class="delete-friend bi bi-x-lg ms-3" (click)="deleteFriend(friend.id)"></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- 0 Friends in list -->
+            <ng-template #noFriendsRequest>
+              <p class="text-center mt-3">Your friends request list is empty</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

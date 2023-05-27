@@ -1,59 +1,96 @@
+/* Navbar colors */
 nav {
-  background-color: #E20074;
-  color: white;
+  background-color: var(--color-pink);
+  color: var(--color-white);
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
+/* Navbar content */
+nav > div {
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
-nav i {
-  font-size: 1.25rem;
-  color: white;
-}
-
+/* THub icon */
 nav img {
-  max-width: 125px;
-}
-.container-fluid{
-  margin-left: 20px; margin-right: 20px;
-}
-.dropdown-menu-end {
-  left: auto;
-  right: 0;
+  width: 100px;
 }
 
-.dropdown-menu {
-  display: none;
-  background-color: #E20074;
-  transition: opacity 0.3s ease;
-  margin-top: 0; /* Adjust the margin to reduce the gap */
-  padding: 10px 0; /* Adjust the padding for vertical spacing */
+/* Icons */
+.nav-item {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-.dropdown:hover > .dropdown-menu {
-  display: block;
+/* Log in / Sign in text */
+nav a:not(.dropdown-item) {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: bold;
 }
 
-
-.navbar-expand .navbar-nav .dropdown-menu {
-  position: absolute;
+/* Button styles */
+.btn {
+  color: var(--color-white);
+  --mdb-btn-box-shadow: 0;
+  text-transform: none;
+  font-size: 1rem;
+}
+.btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-dark-grey);
 }
 
-.dropdown-menu a.dropdown-item {
-  color: white;
-  padding: 10px 20px;
-  line-height: 1.5;
+/* Dropdown menu */
+.dropdown-item {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: var(--color-dark-grey);
+  font-weight: bold;
+}
+.dropdown-item > i {
+  margin-right: 5%;
+}
+.dropdown-item:hover {
+  color: var(--color-pink);
+  background-color: var(--color-white);
 }
 
-.dropdown-menu a.dropdown-item:hover,
-.dropdown-menu a.dropdown-item:focus {
-  background-color: #f1add06e;
-  color: white;
+/* Icon profile */
+.profile-img {
+  border-radius: 50%;
+  width: 40px !important;
+  height: auto !important;
 }
-#user-picture {
-  max-width: 35px;
 
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .navbar-nav.me-auto.mb-2.mb-lg-0 {
+    justify-content: center;
+  }
+  .navbar-nav.ms-auto.align-items-center {
+    text-align: center;
+  }
+}
+
+/* Friends styles */
+.chat-friend:hover {
+  color: var(--color-pink);
+}
+.delete-friend:hover {
+  color: red;
+}
+.user-friend:hover {
+  background-color: var(--color-light-grey);
+  cursor: pointer;
+}
+.dropdown-item {
+  cursor: pointer;
+}
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+}
+.nav-link.active {
+  color: var(--color-pink) !important;
+  border-bottom-color: var(--color-pink) !important;
 }
