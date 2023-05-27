@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Creator, Post } from 'src/app/models/PostModels';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-feed',
@@ -19,7 +20,7 @@ export class MainFeedComponent {
   post: Post = {} as Post;
   currentUser = this.tokenStorage.getUser();
 
-  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService) { }
+  constructor(private postService: PostService, private datePipe: DatePipe, private tokenStorage: TokenStorageService, private router: Router) { }
 
   // On page load, get all posts
   ngOnInit() {
@@ -146,6 +147,12 @@ export class MainFeedComponent {
   doStuff() {
     console.log("aaaaaaaaa")
   }
+
+  goToPost(id: number) {
+
+  }
+
+
 }
 
 
