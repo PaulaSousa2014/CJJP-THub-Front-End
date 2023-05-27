@@ -45,8 +45,21 @@ export class EditprofileComponent {
 
   //Cancel edit and go back to user profile page
   goBack() {
-    this.location.back();
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Changes will not be saved!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.location.back();
+      }
+    });
   }
+
 
   //Get profile data from user db
   getUserProfile() {
@@ -94,8 +107,8 @@ export class EditprofileComponent {
 
   alert() {
     Swal.fire({
-      title: 'Good job!',
-      text: 'You clicked the button!',
+      title: 'Saved data!',
+      text: 'Your profile has been updated!',
       icon: 'success'
     }).then(() => {
       window.location.href = '/profile/' + this.user.id;
