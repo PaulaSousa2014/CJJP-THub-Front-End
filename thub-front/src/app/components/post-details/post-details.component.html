@@ -1,14 +1,27 @@
 <div class="container">
-  <div class="row ms-1 mt-1">
+  <div class="row mt-1">
     <div class="col-12">
       <button class="btn btn-primary px-3" (click)="goBack()">&#60;</button>
     </div>
   </div>
-  <div class="col-12" *ngIf="postFound">
-    <p>{{post.id}}</p>
-    <p>{{post.content}}</p>
-    <p>{{post.creator.username}}</p>
+  <div class="row my-3" *ngIf="postFound">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <img [src]="post.creator.profile_img" class="post-user-pic" alt="post creator image">
+          <span class="ms-2">{{post.creator.username}}</span>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <p>{{post.content}}</p>
+        </div>
+      </div>
+
+
+    </div>
   </div>
+
 
   <div class="container" *ngIf="postCommentsFound">
     <div class="row" *ngFor="let comment of postComments">
@@ -16,6 +29,7 @@
         <p>{{comment.id}}</p>
         <p>{{comment.content}}</p>
         <p>{{comment.comment_by.username}}</p>
+        <p>{{comment.time_submitted}}</p>
       </div>
     </div>
   </div>
