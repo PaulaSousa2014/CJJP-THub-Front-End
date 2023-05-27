@@ -6,6 +6,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main-feed',
@@ -237,6 +239,12 @@ export class MainFeedComponent {
   doStuff() {
     console.log("aaaaaaaaa");
   }
+
+  goToPost(id: number) {
+    this.router.navigate(['post', id]);
+  }
+
+
 }
 
 
