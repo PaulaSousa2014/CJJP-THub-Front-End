@@ -2,82 +2,61 @@
   <div class="row my-2">
     <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="allParties()"> All Parties</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5"(click)="allParties()"  > All Parties</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterMyParties()"> My Parties</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5"(click)="filterMyParties()"  > My Parties</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('game')"><i
-            class="bi bi-controller"></i> Games</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('game')"><i class="bi bi-controller"></i> Games</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('activity')"><i
-            class="bi bi-bicycle"></i> Activities</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('activity')" ><i class="bi bi-bicycle"></i> Activities</a>
       </div>
       <div class="row">
-        <a type="button" class="btn btn-primary btn1 me-md-5" (click)="filterPartiesByType('social')"><i
-            class="bi bi-chat"></i> Social</a>
+        <a type="button" class="btn btn-primary btn1 me-md-5"  (click)="filterPartiesByType('social')"><i class="bi bi-chat"></i> Social</a>
       </div>
 
     </div>
 
 
     <div class="col-md-7 col-12 ">
-      <form class="search d-flex mb-4" (ngSubmit)="filterParties()">
+      <form class="search d-flex mb-4">
         <div class="input-group">
-          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar" [(ngModel)]="searchTerm"
-            name="searchTerm">
+          <input class="form-control me-2 inputsearch" type="search" aria-label="Buscar">
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
-      <div class="divbutton d-flex flex-column align-items-center mt-1">
-        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create
-          party</a>
-      </div>
 
 
-      <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
+          <div class="componentcard d-flex" *ngFor="let party of filteredParties">
+            <div class="text-component">
+            <a href="/clickparty" style="color: black;">
 
-        <div class="text-component" (click)="readMore(party.id)">
-          <a style="color: black;">
-            <div class="card-body">
-              <div class="superiorcomponents d-flex justify-content-between">
-                <div class="activitytype" style="margin-left: 2%;">
-                  <p *ngIf="party.activity">Activity</p>
-                  <p *ngIf="party.game">Game</p>
-                  <p *ngIf="party.social">Social</p>
-                  <div class="col-6 d-grid mx-auto">
+              <div class="card-body">
+
+                <div class="superiorcomponents d-flex justify-content-between">
+                  <div class="activitytype" style="margin-left: 2%;">
+                    <p *ngIf="party.activity">Activity</p>
+                    <p *ngIf="party.game">Game</p>
+                    <p *ngIf="party.social">Social</p>                  </div>
+                  <div class="people d-flex justify-content-end align-items-center">
+                    <i class="bi bi-people-fill"></i> 23
                   </div>
                 </div>
-                <div class="people d-flex justify-content-end align-items-center">
-                  <i class="bi bi-people-fill"></i> {{party.memberCount}}
-                </div>
+                <h5 class="card-title">{{party.title}}</h5>
+                <p>{{party.description}}.</p>
               </div>
-              <h5 class="card-title">{{party.title}}</h5>
-              <p>{{party.description}}.</p>
+            </a>
+          </div>
+            <div class="card-inside">
+              <img class="card-img-top" src="/assets/login.jpg">
             </div>
 
-          </a>
-
-        </div>
-
-        <div class="card-inside">
-          <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
-        </div>
-        <ng-container *ngIf="party.creator.id === userId">
-          <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
-              class="bi bi-trash3-fill"></i></button>
-        </ng-container>
-
       </div>
-
-      <div class="divbutton d-flex flex-column align-items-center mt-3" *ngIf="filteredParties.length === 0">
-        <h2 style="text-align: center; margin-top: 5rem; margin-bottom: 2rem;">🚔🚨🚔 <br> Party police reporting: zero
-          parties detected. <br> Keep calm and <a style=" text-decoration: underline; cursor:pointer"
-            (click)="allParties()">join a party</a> or create one! 🎉</h2>
+      <div class="divbutton d-flex flex-column align-items-center mt-3">
+        <a class="btn btn-primary createparty" href="/createparty" role="button">Create party</a>
       </div>
-
     </div>
   </div>
 </div>

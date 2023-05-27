@@ -25,10 +25,8 @@
 a {
   color: var(--color-dark-grey);
 }
-.btn-add {
-  background-color: var(--color-pink);
-}
 .btn {
+  background-color: var(--color-pink);
   color: var(--color-white);
   font-weight: bold;
 }

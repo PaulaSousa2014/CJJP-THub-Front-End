@@ -1,14 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MessagesService } from 'src/app/services/messages.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-open-chat',
   templateUrl: './open-chat.component.html',
   styleUrls: ['./open-chat.component.css']
 })
-export class OpenChatComponent {
+export class OpenChatComponent  implements OnInit{
 
   private _usuarioSeleccionado: string = "";
   private _partySeleccionada: string = "";
+  messages: any[] = [];
+  user: any;
+
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService,private messagesService: MessagesService) { }
+
+  ngOnInit() {
+    this.user = this.tokenStorageService.getUser();
+    this.getMessages();
+  }
 
   @Input()
   set usuarioSeleccionado(value: string) {
@@ -37,19 +49,18 @@ export class OpenChatComponent {
     }
   }
 
-  messages: {id: number, sender: string, receiver:string, message: string, hour: string}[] = [];
-  constructor() {
-    this.messages = [
-      { id: 1, sender: 'Juan Pérez', receiver: 'me', message: "Hola!", hour: "11:00" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 2, sender: 'me', receiver: 'Juan Pérez', message: "Hi.", hour: "11:02" },
-      { id: 3, sender: 'me', receiver: 'María García', message: "TEST.", hour: "05:00"},
-    ];
+
+  getMessages() {
+    this.messagesService.getMessages().subscribe(
+      (messages: any[]) => {
+        this.messages = messages;
+      },
+      (error) => {
+        console.log('Error retrieving messages:', error);
+      }
+    );
   }
+
 
   public tieneMensajesDelUsuario(): boolean {
     return this.messages.some(message => message.sender === this.usuarioSeleccionado || message.receiver === this.usuarioSeleccionado);
