@@ -84,6 +84,60 @@ export class MainFeedComponent {
     }
   }
 
+  toggleLike(post: any) {
+    const userId = this.currentUser.id;
+    const isLiked = this.isPostLiked(post, userId);
+  
+    if (isLiked) {
+      // Si el post ya ha sido liked por el usuario, eliminar el like
+      this.deleteLike(post, userId);
+    } else {
+      // Si el post no ha sido liked por el usuario, agregar el like
+      this.addLike(post, userId);
+    }
+  }
+  isPostLiked(post: any, userId: number): boolean {
+    if (Array.isArray(post.likes)) {
+      return post.likes.find((like: any) => like.user_liked.id === userId) !== undefined;
+    }
+    return false;
+  }
+
+  addLike(post: any, userId: number) {
+    const newLike = {
+      user_liked: this.currentUser,
+      post_liked: post
+    };
+  
+    this.postService.addLike(userId, post.id, newLike).subscribe({
+      next: (response: any) => {
+        console.log(response); // Manejar la respuesta exitosa según sea necesario
+        post.likes.push(newLike); // Agregar el nuevo like al arreglo de likes del post
+      },
+      error: (error: any) => {
+        console.log("No se pudo agregar el like", error);
+      }
+    });
+  }
+  
+  deleteLike(post: any, userId: number) {
+    const like = post.likes.find((like: any) => like.user_liked.id === userId);
+    if (!like) {
+      return; // Si el like no existe, no hacer nada
+    }
+  
+    this.postService.deleteLike(like.id).subscribe({
+      next: (response: any) => {
+        console.log(response); // Manejar la respuesta exitosa según sea necesario
+        post.likes = post.likes.filter((like: any) => like.id !== response.id); // Eliminar el like del arreglo de likes del post
+      },
+      error: (error: any) => {
+        console.log("No se pudo eliminar el like", error);
+      }
+    });
+  }
+  
+
   // Function to get likes from service
   getLikes(id: number) {
     return this.postService.getPostLikes(id);
