@@ -20,6 +20,7 @@ import { ClickPartyComponent } from './components/click-party/click-party.compon
 import { AvatarsComponent } from './components/avatars/avatars.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 
+import { AuthGuard } from './_helpers/AuthGuard';
 
 const routes: Routes = [
   {
@@ -41,31 +42,38 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: MainFeedComponent
+    component: MainFeedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'parties',
-    component: PartiesComponent
+    component: PartiesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile/:showData',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'parties/id/:id',
-    component: ClickPartyComponent
+    component: ClickPartyComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'createparty',
-    component: CreatepartyComponent
+    component: CreatepartyComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'editprofile',
-    component: EditprofileComponent
+    component: EditprofileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'about',
@@ -85,15 +93,18 @@ const routes: Routes = [
   },
   {
     path: 'clickparty',
-    component: ClickPartyComponent
+    component: ClickPartyComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'avatars',
-    component: AvatarsComponent
+    component: AvatarsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'post/:id',
-    component: PostDetailsComponent
+    component: PostDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

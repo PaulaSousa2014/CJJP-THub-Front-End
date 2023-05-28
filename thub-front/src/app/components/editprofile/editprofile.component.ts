@@ -7,11 +7,6 @@ import { Route, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
-
-
-
-
-
 @Component({
   selector: 'app-editprofile',
   templateUrl: './editprofile.component.html',
@@ -59,7 +54,6 @@ export class EditprofileComponent {
       }
     });
   }
-
 
   //Get profile data from user db
   getUserProfile() {

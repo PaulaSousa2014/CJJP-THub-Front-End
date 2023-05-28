@@ -1,19 +1,17 @@
 <div id="general-container">
-<div><h2>Chat</h2></div>
-<div class="container bg-light mt-5 rounded p-0">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link fw-bold " (click)="selectedTab = 'private'" [class.active]="selectedTab === 'private'" style="cursor: pointer"><h4>Private message</h4></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link fw-bold" (click)="selectedTab = 'parties'" [class.active]="selectedTab === 'parties'" style="cursor: pointer"><h4>Parties</h4></a>
-    </li>
-  </ul>
+  <div class="container bg-light mt-5 rounded p-0">
+    <ul class="nav nav-tabs">
 
-  <div>
-    <!-- Contact Panel and chat -->
-    <app-contacts [contactos]="contactos" [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
+      <li class="nav-item">
+        <a class="nav-link fw-bold"  [class.active]="selectedTab === 'parties'" style="cursor: pointer">
+          <h4>Parties</h4>
+        </a>
+      </li>
+    </ul>
+
+    <div>
+      <!-- Contact Panel and chat -->
+      <app-contacts [parties]="parties" [selectedTab]="selectedTab"></app-contacts>
+    </div>
   </div>
 </div>
-</div>
-

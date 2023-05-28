@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // API user location
-const USER_API = "https://t-hub.up.railway.app/api/offices"
+const OFFICES_API = "https://t-hub.up.railway.app/api/offices"
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
@@ -18,7 +18,7 @@ export class OfficesService {
 
     //Get all jobs options
     getOffices(): Observable<any> {
-      return this.httpClient.get(USER_API,httpOptions);
+      return this.httpClient.get(OFFICES_API,httpOptions).pipe(catchError(this.handleError));
     }
   
     // Handle API errors
