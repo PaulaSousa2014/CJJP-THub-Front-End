@@ -48,7 +48,10 @@ joinParty(party_id: number, user_id:number, newJoin: any): Observable<any> {
   return this.httpClient.post(POST_API_JOIN + "/"+ party_id + "/" + user_id, newJoin);
 }
 
-//Function to leave party by
+//Function to get party_meember_id by party_id & user_id
+getPartyMemberID(party_id: number, user_id: number): Observable<any> {
+  return this.httpClient.get(POST_API_JOIN + "/id/" + party_id + "/" + user_id);
+}
 
 	// Delete Mappings by party_member_id
   exitParty(party_member_id: number): Observable<any> {
