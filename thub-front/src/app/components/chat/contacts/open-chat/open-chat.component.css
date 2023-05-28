@@ -1,7 +1,12 @@
 .btn {
   background-color: var(--color-pink);
 }
-
+.recive1{
+  margin-bottom: 0;
+  color: var(--color-pink);
+  text-transform: uppercase;
+  font-size: 12px;
+}
 .button-send{
   border-color: var(--color-pink);
 }
@@ -10,16 +15,23 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .message-input{
   margin-top: 1%;
-  
+
+}
+.message-sender {
+  color: blue;
+  background-color: gray;
+  text-align: right;
 }
 .recive {
   margin-left: 2%;
   background-color: var(--color-white);
   border:solid 1.5px var(--color-pink);
-  color: var(--color-pink);
+  color: black;
   height: auto;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -27,7 +39,9 @@
   padding-right: 3%;
   border-end-start-radius: -10px;
   display: inline-block;
+
 }
+
 .recive::before {
   content: "";
   position: absolute;
@@ -41,6 +55,7 @@
 
 .send {
   margin-right: 2%;
+  margin-bottom: 0;
   background-color: var(--color-pink) !important;
   color: var(--color-white);
   border:solid 1.5px var(--color-white);
@@ -66,12 +81,12 @@
 
 .hour-r {
   color: var(--color-dark-grey);
- 
+
 }
 
 .hour-s {
   color: var(--color-dark-grey);
-  
+
 }
 
 .message {
@@ -79,11 +94,29 @@
 }
 
 .msg {
-  margin-left: 5%;
+  margin-left: 1%;
   margin-right: 5%;
+  margin-bottom: 1px;
+  margin-bottom: 0;
+
 }
 
 .chat {
   height: 455px;
   overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+  /* Estilo de la barra de desplazamiento en navegadores WebKit (Chrome, Safari, etc.) */
+  width: 6px; /* Ajusta este valor según tus necesidades */
+}
+
+.container::-webkit-scrollbar-thumb {
+  /* Estilo del pulgar de la barra de desplazamiento */
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.container.scroll-bottom::-webkit-scrollbar-thumb {
+  /* Estilo del pulgar de la barra de desplazamiento cuando está en la parte inferior */
+  background: rgba(0, 0, 0, 0.4);
 }
