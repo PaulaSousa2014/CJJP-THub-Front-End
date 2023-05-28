@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Party, Creator, Game, Activity, Social } from 'src/app/models/PartyModels';
-import { CreatepartyService } from 'src/app/services/createparty.service';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-
 import { PartiesService } from 'src/app/services/parties.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import Swal from 'sweetalert2';
 
 
@@ -33,7 +31,7 @@ export class CreatepartyComponent {
 
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
-  constructor(private createPartyService: CreatepartyService, private router: Router, private tokenStorageService: TokenStorageService, private partyService: PartiesService) {
+  constructor(private router: Router, private tokenStorageService: TokenStorageService, private partyService: PartiesService) {
     // Initialize the form and its controls
     this.formulario = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -99,7 +97,7 @@ export class CreatepartyComponent {
   }
 
   getGames() {
-    this.createPartyService.getGames().subscribe({
+    this.partyService.getGames().subscribe({
       next: (data: any) => {
         this.games = data;
         console.log(data);
@@ -112,7 +110,7 @@ export class CreatepartyComponent {
   }
 
   getActivities() {
-    this.createPartyService.getActivities().subscribe({
+    this.partyService.getActivities().subscribe({
       next: (data: any) => {
         this.activities = data;
         console.log(data);
@@ -125,7 +123,7 @@ export class CreatepartyComponent {
   }
 
   getSocial() {
-    this.createPartyService.getSocial().subscribe({
+    this.partyService.getSocial().subscribe({
       next: (data: any) => {
         this.socials = data;
         console.log(data);
@@ -169,7 +167,7 @@ export class CreatepartyComponent {
 
     console.log(this.party);
 
-    this.createPartyService.postNewParty(this.party).subscribe({
+    this.partyService.postNewParty(this.party).subscribe({
       next: (data: any) => {
         console.log(data);
         console.log("Funciona");
