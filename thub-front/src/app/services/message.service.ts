@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Message } from '../models/MessageModels';
 
 // API auth location
@@ -22,16 +22,35 @@ export class MessagesService {
   // MESSAGES
   // Get all messsages
   getMessage(): Observable<any> {
-    return this.httpClient.get(MESSAGE_API, httpOptions);
+    return this.httpClient
+      .get(MESSAGE_API, httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   //Get message by party Id
   getMessageByPartyId(id: number): Observable<any> {
-    return this.httpClient.get(MESSAGE_API_PARTY + '/' + id, httpOptions);
+    return this.httpClient
+      .get(MESSAGE_API_PARTY + '/' + id, httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   // Create new message
   postMessage(newMessage: Message): Observable<any> {
-    return this.httpClient.post(MESSAGE_API, newMessage, httpOptions);
+    return this.httpClient
+      .post(MESSAGE_API, newMessage, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
+    }
+    return throwError(
+      () => new Error('Something bad happened; please try again later.')
+    );
   }
 }

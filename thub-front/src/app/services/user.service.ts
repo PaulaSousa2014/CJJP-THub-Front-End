@@ -36,7 +36,7 @@ export class UserService {
 
   // Update user information
   updateUser(id: number, newUser: any): Observable<any> {
-    return this.httpClient.put(USER_API + id, newUser, httpOptions);
+    return this.httpClient.put(USER_API + id, newUser, httpOptions).pipe(catchError(this.handleError));
   }
 
   // Handle API errors

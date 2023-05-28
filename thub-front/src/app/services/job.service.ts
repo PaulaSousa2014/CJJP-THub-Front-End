@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // API user location
-const JOBS_API = "https://t-hub.up.railway.app/api/jobs"
+const JOBS_API = 'https://t-hub.up.railway.app/api/jobs';
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobService {
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   //Get all jobs options
   getJobs(): Observable<any> {
-    return this.httpClient.get(JOBS_API,httpOptions).pipe(catchError(this.handleError));
+    return this.httpClient
+      .get(JOBS_API, httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   // Handle API errors
@@ -27,11 +32,9 @@ export class JobService {
       console.error('An error occurred:', error.error.message);
     } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
-
+    return throwError('Something bad happened; please try again later.');
+  }
 }

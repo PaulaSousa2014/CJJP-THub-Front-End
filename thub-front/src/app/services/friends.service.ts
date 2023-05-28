@@ -1,41 +1,42 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
-
 // API friends location
-const FRIENDS_API = "https://t-hub.up.railway.app/api/friends"
+const FRIENDS_API = 'https://t-hub.up.railway.app/api/friends';
 const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FriendsService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  /* GET firiends form backend */
+  /* GET All friends */
   getFriends() {
     return this.httpClient.get(FRIENDS_API, httpOptions);
   }
 
-  /* POST firiends to backend */
+  /* Add friend request: status pending */
   createFriend(data: any): Observable<any> {
-    return this.httpClient.post(FRIENDS_API, data).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient
+      .post(FRIENDS_API, data)
+      .pipe(catchError(this.handleError));
   }
 
-
-  /* PUT specific friend form backend */
+  /* Update friendRequest: Validar solicitud amitad status accepted */
   updateFriend(id: number, status: any): Observable<any> {
     const url = `${FRIENDS_API}/${id}`;
     return this.httpClient.put(url, status, httpOptions);
   }
 
-  /* DELETE specific friend from backend */
+  /* Rechazar solicitud de amistad */
   deleteFriend(id: number): Observable<any> {
     const url = `${FRIENDS_API}/${id}`;
     return this.httpClient.delete<any>(url, httpOptions);
@@ -45,7 +46,11 @@ export class FriendsService {
   getFriendsList(id: number, type: boolean, btn: boolean): Observable<any[]> {
     return this.getFriends().pipe(
       map((data: any) => {
-        const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id) && friend.status === type);
+        const friends = data.filter(
+          (friend: any) =>
+            (friend.userSender.id === id || friend.userReciever.id === id) &&
+            friend.status === type
+        );
         if (type) {
           return this.getMyFriends(friends, id);
         } else if (!type) {
@@ -60,7 +65,7 @@ export class FriendsService {
     );
   }
 
-  /* Get friends by id */
+  /* Get friends by user_id */
   getMyFriends(friends: any[], id: number): any[] {
     return friends.map((friend: any) => {
       if (friend.userSender.id === id) {
@@ -69,7 +74,7 @@ export class FriendsService {
         return {
           ...friend,
           userSender: { ...tempReceiver },
-          userReciever: { ...friend.userSender }
+          userReciever: { ...friend.userSender },
         };
       } else {
         return friend;
@@ -82,7 +87,7 @@ export class FriendsService {
     return friends.filter((friend: any) => friend.userSender.id !== id);
   }
 
-  /* Get only my friend request */
+  /* Get my friend request sended */
   getMyFriendsRequestSended(friends: any[], id: number): any[] {
     return friends.filter((friend: any) => friend.userReciever.id !== id);
   }
@@ -90,16 +95,20 @@ export class FriendsService {
   /* Get all my interacions */
   getFriendsListTest(id: number): Observable<any[]> {
     return this.getFriends().pipe(
-      map((data: any) => data.filter((friend: any) => friend.userSender.id === id))
+      map((data: any) =>
+        data.filter((friend: any) => friend.userSender.id === id)
+      )
     );
   }
-
 
   /* Get all my interacions */
   getFriendsListTestFormat(id: number, condition: boolean): Observable<any[]> {
     return this.getFriends().pipe(
       map((data: any) => {
-        const friends = data.filter((friend: any) => (friend.userSender.id === id || friend.userReciever.id === id));
+        const friends = data.filter(
+          (friend: any) =>
+            friend.userSender.id === id || friend.userReciever.id === id
+        );
         return this.getMyFriends(friends, id);
       })
     );
@@ -111,10 +120,9 @@ export class FriendsService {
       console.error('An error occurred:', error.error.message);
     } else {
       console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+      );
     }
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
+    return throwError('Something bad happened; please try again later.');
+  }
 }
