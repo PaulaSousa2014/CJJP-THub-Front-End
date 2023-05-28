@@ -37,12 +37,12 @@
           <div class="media">
             <div class="row">
               <div class="col-md-1 col-2">
-                <a class="my-auto" href="#"><img class="img-fluid post-user-pic" [src]="post.creator.profile_img"
+                <a class="my-auto" routerLink="/profile/{{post.creator.id}}"><img class="img-fluid post-user-pic" [src]="post.creator.profile_img"
                     alt=""></a>
               </div>
               <a (click)="goToPost(post.id)"><div class="col-md-11 col-10">
                 <div class="col-12 d-flex">
-                  <h5>{{post.creator.username}}</h5><strong><span class="m-1"> </span></strong><span
+                  <h5 routerLink="/profile/{{post.creator.id}}" style="cursor: pointer;">{{post.creator.username}}</h5><strong><span class="m-1"> </span></strong><span
                     class="username"></span>
                   <p class="ms-auto my-auto">{{ post.time_submitted }}</p>
                 </div>
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-evenly align-items-center mb-0">
-            <i class="bi bi-heart-fill" style="color: var(--color-pink);" (click)="toggleLike(post)">{{ post.likes }}</i>
+            <p><i class="bi bi-heart-fill" style="color: var(--color-pink);" (click)="toggleLike(post)"></i>{{ post.likes }}</p>
             <p><i class="bi bi-chat-left-text-fill" style="color: rgb(40, 124, 251);"></i> {{ post.comments }}</p>
             <p *ngIf="post.creator.id == currentUser.id"><i class="bi bi-trash3-fill" style="color: rgb(170, 5, 5);"
                 (click)="deletePost(post.id)"></i></p>

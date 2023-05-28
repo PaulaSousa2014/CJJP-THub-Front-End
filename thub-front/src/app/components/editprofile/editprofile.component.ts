@@ -7,11 +7,6 @@ import { Route, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
 
-
-
-
-
-
 @Component({
   selector: 'app-editprofile',
   templateUrl: './editprofile.component.html',
@@ -45,8 +40,20 @@ export class EditprofileComponent {
 
   //Cancel edit and go back to user profile page
   goBack() {
-    this.router.navigate(['/profile', this.user.id]);
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Changes will not be saved!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.location.back();
+      }
+    });
+  }
 
   //Get profile data from user db
   getUserProfile() {
@@ -94,7 +101,8 @@ export class EditprofileComponent {
 
   alert() {
     Swal.fire({
-      title: 'Changes saved!',
+      title: 'Saved data!',
+      text: 'Your profile has been updated!',
       icon: 'success'
     }).then(() => {
       window.location.href = '/profile/' + this.user.id;
