@@ -39,6 +39,7 @@ export class ClickPartyComponent {
 
     // Start chain function
     this.getPartyById();
+    console.log(this.party);
   }
 
   // Gets party by id
@@ -49,6 +50,7 @@ export class ClickPartyComponent {
         this.partyLoaded = true; // sets party Loaded to true
         this.getPartyMemberlist(); // Executes next function
         console.log('1');
+        console.log('party id' + this.party);
       },
       error: (error: any) => {},
     });

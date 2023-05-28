@@ -4,10 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Post } from '../models/PostModels';
-
-
 import { Comment } from '../models/CommentModels';
-
 
 
 // API auth location
