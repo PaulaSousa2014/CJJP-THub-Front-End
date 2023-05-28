@@ -60,14 +60,21 @@ export class PartiesService {
   //JOIN REQUESTS
 
   // Function to get all parties from user
-  getUserPartyList(id: number): Observable<any> {
-    return this.httpClient.get(POST_API_JOIN + '/user/' + id);
+  getUserPartyList(userId: number): Observable<any> {
+    return this.httpClient.get(POST_API_JOIN + '/user/' + userId);
   }
 
-    //Funcion to get partyMemberList by partyId
-    getPartyMembersListByPartyId(party_id: number): Observable<any> {
-      return this.httpClient.get(POST_API_JOIN + '/party/' + party_id);
-    }
+  //Funcion to get partyMemberList by partyId
+  getPartyMembersListByPartyId(party_id: number): Observable<any> {
+    return this.httpClient.get(POST_API_JOIN + '/party/' + party_id);
+  }
+
+  //Function to get party_member_id by party_id & user_id
+  getPartyMemberID(party_id: number, user_id: number): Observable<any> {
+    return this.httpClient.get(
+      POST_API_JOIN + '/id/' + party_id + '/' + user_id
+    );
+  }
 
   // Function to add user to a party by party_id & user_id
   joinParty(party_id: number, user_id: number, newJoin: any): Observable<any> {
@@ -77,17 +84,8 @@ export class PartiesService {
     );
   }
 
-  //Function to get party_meember_id by party_id & user_id
-  getPartyMemberID(party_id: number, user_id: number): Observable<any> {
-    return this.httpClient.get(
-      POST_API_JOIN + '/id/' + party_id + '/' + user_id
-    );
-  }
-
   // Delete Mappings by party_member_id
   exitParty(party_member_id: number): Observable<any> {
     return this.httpClient.delete(POST_API_JOIN + '/' + party_member_id);
   }
-
-
 }
