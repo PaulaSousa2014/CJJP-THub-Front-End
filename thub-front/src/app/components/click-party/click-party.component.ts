@@ -115,7 +115,7 @@ export class ClickPartyComponent {
   exit() {
 this.partiesService.exitParty(this.partyId).subscribe({
   next: () => {
-    this.goBack();
+    window.location.reload();
   },
   error: (error: any) => {
     console.log('Error deleting the party', error);
