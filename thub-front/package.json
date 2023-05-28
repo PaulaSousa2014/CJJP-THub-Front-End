@@ -18,7 +18,6 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "@auth0/angular-jwt": "^5.1.2",
     "@ctrl/ngx-emoji-mart": "^9.1.2",
     "emoji-button": "^2.2.2",
     "emoji-picker-element": "^1.17.0",
