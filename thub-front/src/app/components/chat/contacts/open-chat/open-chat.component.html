@@ -11,7 +11,7 @@
 
 
 
-    <div class="container">
+    <div class="container" #chatContainer>
       <div class="chat" >
         <div *ngIf="messages.length > 0; else emptyChat" style="padding-bottom: 16px">
           <div *ngFor="let message of messages" class="message">

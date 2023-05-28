@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message, Sender } from 'src/app/models/MessageModels';
 import { MessagesService } from 'src/app/services/message.service';
@@ -10,7 +10,9 @@ import { Party } from 'src/app/models/PartyModels';
   templateUrl: './open-chat.component.html',
   styleUrls: ['./open-chat.component.css']
 })
-export class OpenChatComponent {
+export class OpenChatComponent implements AfterViewChecked {
+
+  @ViewChild('chatContainer', { static: false }) chatContainerRef!: ElementRef;
 
   private _partySeleccionada: string = "";
   @Input() partyId: number = 0;
@@ -28,8 +30,6 @@ export class OpenChatComponent {
   get partySeleccionada(): string {
     return this._partySeleccionada;
   }
-
-
   private _status: number = 0;
   open() {
     this._partySeleccionada = "";
@@ -40,7 +40,7 @@ export class OpenChatComponent {
     private messagesService: MessagesService,
     private route: ActivatedRoute,
     private datePipe: DatePipe,
-    private tokenStorage: TokenStorageService) {
+    private tokenStorage: TokenStorageService, private elementRef: ElementRef) {
 
   }
 
@@ -174,6 +174,15 @@ export class OpenChatComponent {
         console.error('Error al cargar el historial de mensajes:', error);
       }
     );
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    const chatContainer = this.elementRef.nativeElement.querySelector('.container');
+    chatContainer.classList.add('scroll-bottom');
   }
 
 }

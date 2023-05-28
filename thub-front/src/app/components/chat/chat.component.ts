@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Party } from 'src/app/models/PartyModels';
 import { PartiesService } from 'src/app/services/parties.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
-
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -31,12 +30,9 @@ export class ChatComponent {
 
   //traer el id de parties, y mostrar el nombre en contactos
 
-  constructor(private partiesService: PartiesService, private tokenStorage: TokenStorageService, private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, private tokenStorage: TokenStorageService, private partiesService: PartiesService) {}
 
 
-  ) {
-
-  }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -47,12 +43,14 @@ export class ChatComponent {
     // Get party id from route
     this.route.params.subscribe((params) => {
       this.partyId = +params['id'];
+      // Recargar el componente después de obtener el ID de la fiesta
     });
 
     // Start chain function
     this.getAllParties();
 
   }
+
 
   // Get all parties
   getAllParties(filterByUser: boolean = false) {
@@ -79,7 +77,7 @@ export class ChatComponent {
     }
   }
 
-  
+
 
 
 }

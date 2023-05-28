@@ -15,6 +15,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .message-input{
   margin-top: 1%;
@@ -102,4 +104,19 @@
 .chat {
   height: 455px;
   overflow-y: scroll;
+}
+
+.container::-webkit-scrollbar {
+  /* Estilo de la barra de desplazamiento en navegadores WebKit (Chrome, Safari, etc.) */
+  width: 6px; /* Ajusta este valor según tus necesidades */
+}
+
+.container::-webkit-scrollbar-thumb {
+  /* Estilo del pulgar de la barra de desplazamiento */
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.container.scroll-bottom::-webkit-scrollbar-thumb {
+  /* Estilo del pulgar de la barra de desplazamiento cuando está en la parte inferior */
+  background: rgba(0, 0, 0, 0.4);
 }
