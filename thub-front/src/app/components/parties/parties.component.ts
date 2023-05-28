@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-parties',
   templateUrl: './parties.component.html',
-  styleUrls: ['./parties.component.css']
+  styleUrls: ['./parties.component.css'],
 })
 export class PartiesComponent {
   id: number = 0;
@@ -26,7 +26,6 @@ export class PartiesComponent {
   partyList: any; // Store user party list
   userInParty: boolean = false;
 
-
   constructor(
     private partiesService: PartiesService,
     private route: ActivatedRoute,
@@ -39,38 +38,37 @@ export class PartiesComponent {
     this.getAllParties();
   }
 
-// Get all parties
-getAllParties(filterByUser: boolean = false) {
-  this.partiesService.getParties().subscribe({
-    next: (data: any) => {
-      this.parties = data;
-      this.filteredParties = [...this.parties]; // Copy all parties to filteredParties without applying the creator filter
-      console.log(this.parties);
+  // Get all parties
+  getAllParties(filterByUser: boolean = false) {
+    this.partiesService.getParties().subscribe({
+      next: (data: any) => {
+        this.parties = data;
+        this.filteredParties = [...this.parties]; // Copy all parties to filteredParties without applying the creator filter
+        console.log(this.parties);
 
-      // Initialize the partyMemberCounts array with zeros for each party
-      this.partyMemberCounts = new Array(this.filteredParties.length).fill(0);
+        // Initialize the partyMemberCounts array with zeros for each party
+        this.partyMemberCounts = new Array(this.filteredParties.length).fill(0);
 
-      // Call getPartyMembersCount() for each party after retrieving all parties
-      this.filteredParties.forEach((party, index) => {
-        this.getPartyMembersCount(party.id, index);
-      });
+        // Call getPartyMembersCount() for each party after retrieving all parties
+        this.filteredParties.forEach((party, index) => {
+          this.getPartyMembersCount(party.id, index);
+        });
 
-      // Get user's party list
-      this.partiesService.getUserPartyList(this.userId).subscribe({
-        next: (data: any) => {
-          this.partyList = data;
-        },
-        error: (error: any) => {
-          console.log("Cannot get user's party list", error);
-        }
-      });
-    },
-    error: (error: any) => {
-      console.log("Cannot get all parties", error);
-    }
-  });
-}
-
+        // Get user's party list
+        this.partiesService.getUserPartyList(this.userId).subscribe({
+          next: (data: any) => {
+            this.partyList = data;
+          },
+          error: (error: any) => {
+            console.log("Cannot get user's party list", error);
+          },
+        });
+      },
+      error: (error: any) => {
+        console.log('Cannot get all parties', error);
+      },
+    });
+  }
 
   // Filter parties based on search term
   filterParties() {
@@ -78,7 +76,7 @@ getAllParties(filterByUser: boolean = false) {
       this.filteredParties = this.parties;
     } else {
       const lowercaseSearchTerm = this.searchTerm.toLowerCase();
-      this.filteredParties = this.parties.filter(party => {
+      this.filteredParties = this.parties.filter((party) => {
         return party.title.toLowerCase().includes(lowercaseSearchTerm);
       });
     }
@@ -98,7 +96,7 @@ getAllParties(filterByUser: boolean = false) {
       this.filteredParties = this.parties;
     } else {
       this.filteredParties = this.parties.filter(
-        party => party[partyType] !== null
+        (party) => party[partyType] !== null
       );
     }
   }
@@ -106,7 +104,7 @@ getAllParties(filterByUser: boolean = false) {
   //Filter my parties (parties that i created/ join)
   filterMyParties() {
     this.filteredParties = this.parties.filter(
-      party => party.creator.id === this.userId || this.isUserInParty(party)
+      (party) => party.creator.id === this.userId || this.isUserInParty(party)
     );
   }
 
@@ -133,7 +131,7 @@ getAllParties(filterByUser: boolean = false) {
   // Delete a party
   deleteParty(id: number, name: string) {
     const message: string =
-      "Are you sure you want to delete the character " + name + "?";
+      'Are you sure you want to delete the character ' + name + '?';
 
     Swal.fire({
       title: 'Are you sure?',
@@ -142,23 +140,19 @@ getAllParties(filterByUser: boolean = false) {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'I know, delete it!'
+      confirmButtonText: 'I know, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your party has been deleted.',
-          'success'
-        );
+        Swal.fire('Deleted!', 'Your party has been deleted.', 'success');
 
         this.partiesService.deleteParty(id).subscribe({
-          next: response => {
+          next: (response) => {
             // Refresh parties
             this.getAllParties();
           },
-          error: error => {
-            console.log("Something went wrong:", error);
-          }
+          error: (error) => {
+            console.log('Something went wrong:', error);
+          },
         });
       }
     });
@@ -169,13 +163,13 @@ getAllParties(filterByUser: boolean = false) {
     // Logic to determine the image URL based on the party
 
     if (party.activity) {
-      return "../../../assets/activities.jpg";
+      return '../../../assets/activities.jpg';
     } else if (party.game) {
-      return "../../../assets/games.jpg";
+      return '../../../assets/games.jpg';
     } else if (party.social) {
-      return "../../../assets/carousel1.jpg";
+      return '../../../assets/carousel1.jpg';
     } else {
-      return "../../../assets/card1.png";
+      return '../../../assets/card1.png';
     }
   }
 
@@ -195,8 +189,8 @@ getAllParties(filterByUser: boolean = false) {
         }
       },
       error: (error: any) => {
-        console.log("Cannot get party members", error);
-      }
+        console.log('Cannot get party members', error);
+      },
     });
   }
 }
