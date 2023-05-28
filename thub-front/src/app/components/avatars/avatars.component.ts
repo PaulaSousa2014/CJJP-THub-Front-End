@@ -84,7 +84,7 @@ export class AvatarsComponent {
           // Mostrar SweetAlert de éxito
           Swal.fire({
             icon: 'success',
-            title: 'Character updated successfully!',
+            title: 'Avatar updated successfully!',
             showConfirmButton: false,
             timer: 1500
           }).then(() => {
