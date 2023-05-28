@@ -14,8 +14,8 @@ export class ClickPartyComponent {
   party: Party = {} as Party; // Store current party
   currentUser: any; // Store user
   partyList: any; // Store user party list
-  partyId: number = 0; // Store party 
-  partyMemberId: number =0; // Store partyMemberId
+  partyId: number = 0; // Store party
+  partyMemberId: number = 0; // Store partyMemberId
 
   // Variables to check
   userInParty: boolean = false;
@@ -116,21 +116,20 @@ export class ClickPartyComponent {
 
   //exit this party
   exit() {
-
-this.partiesService.getPartyMemberID(this.partyId, this.currentUser.id)      .subscribe({
-  next: (data: any) => {
-    this.partyMemberId = data;
-    this.deleteParty();
-      
-    },
-    error: (error: any) => {
-      console.log('Error joining the party', error);
-    },
-  });
-
+    this.partiesService
+      .getPartyMemberID(this.partyId, this.currentUser.id)
+      .subscribe({
+        next: (data: any) => {
+          this.partyMemberId = data;
+          this.deleteParty();
+        },
+        error: (error: any) => {
+          console.log('Error joining the party', error);
+        },
+      });
   }
 
-  deleteParty(){
+  deleteParty() {
     this.partiesService.exitParty(this.partyMemberId).subscribe({
       next: () => {
         window.location.reload();

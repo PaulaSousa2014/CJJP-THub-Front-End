@@ -23,6 +23,9 @@ export class PartiesComponent {
   user: any = this.tokenStorageService.getUser();
   userId = this.user.id;
   partyMemberCounts: number[] = [];
+  partyList: any; // Store user party list
+  userInParty: boolean = false;
+
 
   constructor(
     private partiesService: PartiesService,
@@ -36,27 +39,38 @@ export class PartiesComponent {
     this.getAllParties();
   }
 
-  // Get all parties
-  getAllParties(filterByUser: boolean = false) {
-    this.partiesService.getParties().subscribe({
-      next: (data: any) => {
-        this.parties = data;
-        this.filteredParties = [...this.parties]; // Copy all parties to filteredParties without applying the creator filter
-        console.log(this.parties);
+// Get all parties
+getAllParties(filterByUser: boolean = false) {
+  this.partiesService.getParties().subscribe({
+    next: (data: any) => {
+      this.parties = data;
+      this.filteredParties = [...this.parties]; // Copy all parties to filteredParties without applying the creator filter
+      console.log(this.parties);
 
-        // Initialize the partyMemberCounts array with zeros for each party
-        this.partyMemberCounts = new Array(this.filteredParties.length).fill(0);
+      // Initialize the partyMemberCounts array with zeros for each party
+      this.partyMemberCounts = new Array(this.filteredParties.length).fill(0);
 
-        // Call getPartyMembersCount() for each party after retrieving all parties
-        this.filteredParties.forEach((party, index) => {
-          this.getPartyMembersCount(party.id, index);
-        });
-      },
-      error: (error: any) => {
-        console.log("Cannot get all parties", error);
-      }
-    });
-  }
+      // Call getPartyMembersCount() for each party after retrieving all parties
+      this.filteredParties.forEach((party, index) => {
+        this.getPartyMembersCount(party.id, index);
+      });
+
+      // Get user's party list
+      this.partiesService.getUserPartyList(this.userId).subscribe({
+        next: (data: any) => {
+          this.partyList = data;
+        },
+        error: (error: any) => {
+          console.log("Cannot get user's party list", error);
+        }
+      });
+    },
+    error: (error: any) => {
+      console.log("Cannot get all parties", error);
+    }
+  });
+}
+
 
   // Filter parties based on search term
   filterParties() {
@@ -89,11 +103,26 @@ export class PartiesComponent {
     }
   }
 
-  // Filter parties based on the current user
+  //Filter my parties (parties that i created/ join)
   filterMyParties() {
     this.filteredParties = this.parties.filter(
-      party => party.creator.id === this.userId
+      party => party.creator.id === this.userId || this.isUserInParty(party)
     );
+  }
+
+  //check if user is joining a party
+  isUserInParty(party: any): boolean {
+    const userFound = this.partyList.some(
+      (element: any) => element.party.id === party.id
+    );
+
+    if (userFound) {
+      this.userInParty = true;
+    } else {
+      this.userInParty = false;
+    }
+
+    return this.userInParty;
   }
 
   // Show all parties
