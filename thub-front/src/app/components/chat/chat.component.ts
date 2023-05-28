@@ -53,12 +53,14 @@ export class ChatComponent {
 
 
   // Get all parties
-  getAllParties(filterByUser: boolean = false) {
+  getAllParties(filterByUser: boolean = true) {
     if (filterByUser) {
       this.partiesService.getUserPartyList(this.currentUser.id).subscribe({
         next: (data: any) => {
-          this.parties = data;
-          console.log(this.parties);
+          // Get parties item from the partylist object
+          const parties = data.map((item: any) => item.party);
+          // Assign to parties
+          this.parties = parties;
         },
         error: (error: any) => {
           console.log("Cannot get user's parties", error);

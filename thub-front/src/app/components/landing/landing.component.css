@@ -143,3 +143,8 @@
     display: none;
   }
 }
+
+.carousel-button {
+  position: relative;
+  z-index: 1000;
+}

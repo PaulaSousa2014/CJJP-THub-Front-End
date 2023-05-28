@@ -40,7 +40,7 @@
       <div class="componentcard d-flex"  *ngFor="let party of filteredParties">
 
         <div class="text-component" (click)="readMore(party.id)">
-          <a style="color: black;">
+          <a>
             <div class="card-body">
               <div class="superiorcomponents d-flex justify-content-between">
                 <div class="activitytype" style="margin-left: 2%;">
@@ -55,7 +55,7 @@
                 </div>
               </div>
               <h5 class="card-title">{{party.title}}</h5>
-              <p>{{party.description}}.</p>
+              <p class="text-break">{{party.description}}.</p>
             </div>
 
           </a>
