@@ -1,7 +1,12 @@
 .btn {
   background-color: var(--color-pink);
 }
-
+.recive1{
+  margin-bottom: 0;
+  color: var(--color-pink);
+  text-transform: uppercase;
+  font-size: 12px;
+}
 .button-send{
   border-color: var(--color-pink);
 }
@@ -13,13 +18,18 @@
 }
 .message-input{
   margin-top: 1%;
-  
+
+}
+.message-sender {
+  color: blue;
+  background-color: gray;
+  text-align: right;
 }
 .recive {
   margin-left: 2%;
   background-color: var(--color-white);
   border:solid 1.5px var(--color-pink);
-  color: var(--color-pink);
+  color: black;
   height: auto;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -27,7 +37,9 @@
   padding-right: 3%;
   border-end-start-radius: -10px;
   display: inline-block;
+
 }
+
 .recive::before {
   content: "";
   position: absolute;
@@ -41,6 +53,7 @@
 
 .send {
   margin-right: 2%;
+  margin-bottom: 0;
   background-color: var(--color-pink) !important;
   color: var(--color-white);
   border:solid 1.5px var(--color-white);
@@ -66,12 +79,12 @@
 
 .hour-r {
   color: var(--color-dark-grey);
- 
+
 }
 
 .hour-s {
   color: var(--color-dark-grey);
-  
+
 }
 
 .message {
@@ -79,8 +92,11 @@
 }
 
 .msg {
-  margin-left: 5%;
+  margin-left: 1%;
   margin-right: 5%;
+  margin-bottom: 1px;
+  margin-bottom: 0;
+
 }
 
 .chat {

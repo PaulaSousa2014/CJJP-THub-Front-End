@@ -97,6 +97,9 @@ export class OpenChatComponent {
 
         console.log('Datadentrosubmit' + data);
         location.reload(); // Reload the page after successfully submitting the post
+
+        this.getPartyIdMessages();
+
       },
       error: (error: any) => {
         console.log(this.message);

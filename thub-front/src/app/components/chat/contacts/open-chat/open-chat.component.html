@@ -9,29 +9,35 @@
       <!-- Agrega aquí cualquier información adicional del usuario -->
     </div>
 
+
+
     <div class="container">
-      <div class="chat">
-        <div *ngIf="messages.length > 0; else emptyChat">
+      <div class="chat" >
+        <div *ngIf="messages.length > 0; else emptyChat" style="padding-bottom: 16px">
           <div *ngFor="let message of messages" class="message">
-            <div *ngIf="message.party.id === partyId" class="message">
-              <div *ngIf="message.sender === 'Me'; else otherUser">
-                <div class="sender">
+            <div *ngIf="message.party.id === partyId" class="message w-100">
+              <div class="message w-100 d-flex flex-row-reverse" *ngIf="message.sender.id === currentUser.id; else otherUser" >
+                <div   class="send alert d-inline-block">
                   <p>{{ message.content }}</p>
-                  <span class="timestamp">{{ message.timestamp }}</span>
+                  <div class="hour-s font-weight-light d-block mt-1 text-end">
+                    <small>{{message.time_submitted }}</small>
+                  </div>
                 </div>
+
               </div>
               <ng-template #otherUser>
-                <div class="other-user">
+                <div class="recive alert alert-dark d-inline-block">
+                  <p class="recive1" >{{ message.sender.username }}</p>
+
                   <p>{{ message.content }}</p>
-                  <span class="timestamp">{{ message.timestamp }}</span>
+                  <span class="timestamp">{{message.time_submitted}}</span>
                 </div>
               </ng-template>
             </div>
-
           </div>
         </div>
         <ng-template #emptyChat>
-          <p class="empty-chat">El chat está vacío.</p>
+          <p class="text-center">El chat está vacío.</p>
         </ng-template>
       </div>
     </div>
@@ -46,9 +52,10 @@
         aria-describedby="button-addon2"
       />
 
-      <button type="button" class="btn mt-3" (click)="submitMessage()">
+      <button type="button" class="btn" (click)="submitMessage()">
         <i class="bi bi-send" style="color: #f9fafa"></i>
       </button>
     </div>
   </div>
 </ng-container>
+
