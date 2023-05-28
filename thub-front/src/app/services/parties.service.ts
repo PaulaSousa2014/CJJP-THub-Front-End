@@ -84,7 +84,7 @@ export class PartiesService {
     );
   }
 
-  // Delete Mappings by party_member_id
+  // Exit a party by party_member_id
   exitParty(party_member_id: number): Observable<any> {
     return this.httpClient.delete(POST_API_JOIN + '/' + party_member_id);
   }
