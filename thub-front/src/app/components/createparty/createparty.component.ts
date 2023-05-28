@@ -177,8 +177,6 @@ export class CreatepartyComponent {
         // Add creator as party member
         this.partyService.joinParty(data.id, this.creator.id, data).subscribe({
           next: () => {
-            window.alert("El formulario es correcto.");
-            window.location.href = "/parties";
           },
           error: (error: any) => {
             console.log("No se pudo unir al usuario a la fiesta", error);
@@ -190,7 +188,7 @@ export class CreatepartyComponent {
           icon: 'success',
           title: 'Your party has been created!',
           showConfirmButton: false,
-          timer: 2000
+          timer: 1900
         }).then(() => {
           this.router.navigate(['/parties']); // Redirect to the parties page
         });

@@ -32,8 +32,10 @@ export class ContactsComponent {
 
 
   ngOnInit() {
+    
     this.loadLastSelectedParty();
     this.reloadComponent();
+
   }
   reloadComponent() {
     this.cdr.detach(); // Desconectar el componente del árbol de vistas
