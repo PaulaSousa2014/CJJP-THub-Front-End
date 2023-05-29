@@ -71,7 +71,6 @@ export class OpenChatComponent implements AfterViewChecked {
         this.messages = data; //here ir where the message array is.
         console.log( this.messages);
 
-        this.sortPostsByTimestamp(); // Sort the posts by timestamp
       },
       error: (error: any) => {
         console.log('Cannot get posts', error);
@@ -121,7 +120,6 @@ export class OpenChatComponent implements AfterViewChecked {
         console.log('party id: ' + this.partyId);
         console.log('messages: ', this.messages);
 
-        this.sortPostsByTimestamp();
       },
       error: (error: any) => {
         console.log('Cannot get posts', error);
@@ -132,39 +130,6 @@ export class OpenChatComponent implements AfterViewChecked {
   onPartySelected(partyId: number) {
     this.partyId = partyId; // Obtener el ID de la fiesta seleccionada
     // Realizar las acciones necesarias con el nuevo partyId
-  }
-
-  // Function to format the timestamp of a post
-  formatTimestamp(serverTimestamp: string): string {
-    const serverTime = new Date(serverTimestamp + 'Z'); // Add 'Z' for UTC time zone offset
-    const localTime = new Date(); // Local datetime
-
-    const timeDiff = Math.floor(
-      (localTime.getTime() - serverTime.getTime()) / 1000
-    ); // Time difference in seconds
-
-    if (timeDiff < 60) {
-      return `< 1 minute ago`;
-    } else if (timeDiff < 3600) {
-      const minutes = Math.floor(timeDiff / 60);
-      return `${minutes} minutes ago`;
-    } else if (timeDiff < 86400) {
-      const hours = Math.floor(timeDiff / 3600);
-      return `${hours} hours ago`;
-    } else {
-      // Format the date and time in the user's local time
-      const formattedDate = serverTime.toLocaleString();
-      return formattedDate;
-    }
-  }
-
-  // Function to sort posts by timestamp
-  sortPostsByTimestamp() {
-    this.messages.sort((a, b) => {
-      const timestampA = new Date(a.time_submitted);
-      const timestampB = new Date(b.time_submitted);
-      return timestampB.getTime() - timestampA.getTime();
-    });
   }
 
   loadMessageHistory(): void {
