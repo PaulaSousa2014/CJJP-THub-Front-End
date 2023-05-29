@@ -22,6 +22,8 @@ export class EditprofileComponent {
   selectedOffice: any = 0;
   image: any;
 
+  dataLoaded: boolean = false;
+
   constructor(
     private tokenStorageService: TokenStorageService,
     private userService: UserService,
@@ -67,6 +69,7 @@ export class EditprofileComponent {
         this.userProfile = profile;
         this.getJobOptions(); // Get job data
         this.getOfficeOptions(); //Get office data
+        this.dataLoaded = true;
       },
       error: (error) => {
 
