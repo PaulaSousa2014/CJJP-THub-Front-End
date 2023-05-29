@@ -29,7 +29,7 @@
                   <!-- Request send -->
                   <button *ngIf="button == 3" class="btn btn-primary custom-width-btn" disabled><i class="bi bi-person-fill-add"></i> Pending</button>
                   <!-- Request received -->
-                  <button *ngIf="button == 2" class="btn btn-success custom-width-btn"><i class="bi bi-person-fill-add"></i> Accept</button>
+                  <button *ngIf="button == 2" class="btn btn-success custom-width-btn" (click)="acceptFriend()"><i class="bi bi-person-fill-add"></i> Accept</button>
                   <!-- Friends -->
                   <button *ngIf="button == 1" class="btn btn-info custom-width-btn" disabled><i class="bi bi-person-check-fill"></i> Friends</button>
                 </ng-container>

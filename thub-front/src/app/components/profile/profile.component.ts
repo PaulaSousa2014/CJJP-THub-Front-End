@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   friends:   any[] = [];  // To GET all my friend interaction
   friendsRS: any[] = [];  // To GET all my friend request sent
   friendsRR: any[] = [];  // To GET all my friend request received
+  acceptFB:  any[] = [];  // To GET specific friend request
 
   // Button
   button = 0;             // Value to change button friend profile
@@ -31,6 +32,11 @@ export class ProfileComponent implements OnInit {
   friendRt: FriendRequest = {} as FriendRequest;  // Model with sender and reciever
   userSRt: UserSender = {} as UserSender;         // Model with id sender
   userRRt: UserReciever = {} as UserReciever;     // Model with id reciever
+
+  accept: Accept = {} as Accept;                // Accept friend model
+  acceptRS: UserSender = {} as UserSender;      // Model to user sender
+  acceptRR: UserReciever = {} as UserReciever;  // Model to user reciever
+
 
   // Contructor
   constructor(
@@ -160,5 +166,44 @@ export class ProfileComponent implements OnInit {
         });
       },
     );
+  }
+
+  acceptFriend() {
+    const idSender = this.showData;
+    const idReceiver = this.tokenStorage.getUser().id;
+
+    this.friendsService.getFriendsRequestToAccept(idSender, idReceiver).subscribe(
+      (friends: any[]) => {
+        this.acceptFB = friends;
+        // FR id
+        this.accept.id = this.acceptFB[0].id;
+        // Id sender
+        this.acceptRS.id = idSender;
+        this.accept.userSender = this.acceptRS;
+        // Id reciever
+        this.acceptRR.id = idReceiver;
+        this.accept.userReciever = this.acceptRR;
+        // Status
+        this.accept.status = true;
+
+        // Send PUT
+        this.friendsService.updateFriend(this.acceptFB[0].id, this.accept).subscribe(() => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Friend request accepted',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.button = 1;
+          });
+        });
+      },
+      (error: any) => {
+        console.log("Error retrieving friends list", error);
+      }
+    );
+
+
   }
 }

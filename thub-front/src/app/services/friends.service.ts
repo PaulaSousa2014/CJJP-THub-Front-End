@@ -4,7 +4,9 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 // API friends location
 const FRIENDS_API = 'https://t-hub.up.railway.app/api/friends';
@@ -124,5 +126,18 @@ export class FriendsService {
       );
     }
     return throwError('Something bad happened; please try again later.');
+  }
+
+  // Get friend request to accept
+  getFriendsRequestToAccept(idSender: number, idReceiver: number): Observable<any> {
+    return this.getFriends().pipe(
+      map((data: any) => {
+        const friends = data.filter(
+          (friend: any) =>
+            friend.userSender.id === idSender && friend.userReciever.id === idReceiver
+        );
+        return friends;
+      })
+    );
   }
 }
