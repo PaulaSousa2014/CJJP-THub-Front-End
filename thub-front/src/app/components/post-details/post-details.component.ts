@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { Location } from '@angular/common';
 import { Post, User, Comment } from 'src/app/models/CommentModels';
@@ -12,7 +12,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class PostDetailsComponent {
 
-  constructor(private route: ActivatedRoute, private postService: PostService, private location: Location, private tokenStorage: TokenStorageService) {}
+  constructor(private route: ActivatedRoute, private postService: PostService, private location: Location, private tokenStorage: TokenStorageService,
+    private router: Router) {}
 
   // Boolean checks
   postFound: boolean = false;
@@ -142,6 +143,20 @@ export class PostDetailsComponent {
         console.log("Couldn't post comment", error);
       }
     })
+  }
+
+  //Function to delete post
+  deletePost(postId: number) {
+    console.log(postId);
+    this.postService.deletePost(postId).subscribe({
+      next: (response: any) => {
+        console.log(response + 'Post deleted'); // Handle the successful response as needed
+        this.router.navigate(['home']);
+      },
+      error: (error: any) => {
+        console.log('Failed to delete post', error);
+      },
+    });
   }
 
 }
