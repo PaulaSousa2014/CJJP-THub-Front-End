@@ -139,8 +139,9 @@ export class EditprofileComponent {
 
   //Save changed info
   save(): void {
-    this.userProfile.job.id = this.selectedJob.id;
-    this.userProfile.office.id = this.selectedOffice.id;
+    console.log(this.userProfile);
+    this.userProfile.job = {id: this.selectedJob.id};
+    this.userProfile.office = {id: this.selectedOffice.id};
 
     // Save changes into DB
     this.userService.updateUser(this.user.id, this.userProfile).subscribe({
