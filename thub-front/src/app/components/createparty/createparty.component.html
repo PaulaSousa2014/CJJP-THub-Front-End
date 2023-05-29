@@ -8,9 +8,11 @@
         <div class="mb-3">
           <label class="form-label">Title</label>
           <input class="form-control" formControlName="title" id="titleInput">
-          <div *ngIf="formulario.get('title')?.invalid && formulario.get('title')?.touched">
+
+          <div class="invalido" *ngIf="formulario.get('title')?.invalid && formulario.get('title')?.touched">
+
             <div *ngIf="formulario.get('title')?.errors?.['required']">Title is required.</div>
-            <div *ngIf="formulario.get('title')?.errors?.['maxlength']">Title should not exceed 100 characters.</div>
+            <div *ngIf="formulario.get('title')?.errors?.['maxlength']">Title should not exceed 25 characters.</div>
           </div>
         </div>
         <div class="mb-3">
@@ -19,7 +21,7 @@
             style="resize: none;"></textarea>
           <div *ngIf="formulario.get('description')?.invalid && formulario.get('description')?.touched">
             <div *ngIf="formulario.get('description')?.errors?.['required']">Description is required.</div>
-            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 255
+            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 40
               characters.</div>
           </div>
         </div>
@@ -73,7 +75,7 @@
 
       </form>
 
-      
+
     </div>
   </div>
 </div>

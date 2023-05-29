@@ -34,8 +34,8 @@ export class CreatepartyComponent {
   constructor(private router: Router, private tokenStorageService: TokenStorageService, private partyService: PartiesService) {
     // Initialize the form and its controls
     this.formulario = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(255)]),
+      title: new FormControl('', [Validators.required, Validators.maxLength(25)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(40)]),
       partyType: new FormControl('', Validators.required),
       game: new FormControl(null),
       social: new FormControl(null),
