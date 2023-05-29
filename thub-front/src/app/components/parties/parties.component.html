@@ -40,9 +40,9 @@
 
 
 
-      <div class="componentcard d-flex hover-shadow"  *ngFor="let party of filteredParties">
+      <div class="componentcard d-flex hover-shadow " *ngFor="let party of filteredParties">
 
-        <div class="text-component pointer-cursor" (click)="readMore(party.id)">
+        <div class="text-component pointer-cursor " (click)="readMore(party.id)">
           <a>
             <div class="card-body">
               <div class="superiorcomponents d-flex justify-content-between">
@@ -66,7 +66,7 @@
         </div>
 
         <div class="card-inside">
-          <img class="card-img-top" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
+          <img class="card-img-top d-none d-md-block" [src]="getPartyImage(party)" [alt]="party.title" width="100%" height="100%">
         </div>
         <ng-container *ngIf="party.creator?.id === userId">
           <button class="btn btn-link" (click)="deleteParty(party.id, party.title)"> <i
