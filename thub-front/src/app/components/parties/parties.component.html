@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row my-2">
     <div class="col-md-3 mt-md-5 mt-2 mb-3 col-12 text-center d-flex flex-column align-items-center">
+
+      <div class="divbutton d-flex flex-column align-items-center mt-1 mb-4">
+        <a type="button" class="btn btn-primary btn1 me-md-5" href="/createparty" role="button">Create
+          party</a>
+      </div>
+
       <div class="row">
         <a type="button" class="btn btn-primary btn1 me-md-5" (click)="allParties()"> All Parties</a>
       </div>
@@ -31,10 +37,7 @@
           <button class="btn btn-primary inside-btn" type="submit">Search</button>
         </div>
       </form>
-      <div class="divbutton d-flex flex-column align-items-center mt-1">
-        <a class="btn btn-primary createparty" style="margin-bottom: 5px;" href="/createparty" role="button">Create
-          party</a>
-      </div>
+
 
 
       <div class="componentcard d-flex hover-shadow"  *ngFor="let party of filteredParties">
