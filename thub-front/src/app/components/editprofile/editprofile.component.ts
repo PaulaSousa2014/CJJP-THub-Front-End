@@ -139,7 +139,6 @@ export class EditprofileComponent {
 
   //Save changed info
   save(): void {
-
     this.userProfile.job.id = this.selectedJob.id;
     this.userProfile.office.id = this.selectedOffice.id;
 
