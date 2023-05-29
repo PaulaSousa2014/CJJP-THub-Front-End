@@ -105,6 +105,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  
+
   reloadPage(): void {
     this.router.navigate(['landingpage']);
   }

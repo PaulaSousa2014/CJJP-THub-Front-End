@@ -21,7 +21,7 @@
             style="resize: none;"></textarea>
           <div *ngIf="formulario.get('description')?.invalid && formulario.get('description')?.touched">
             <div *ngIf="formulario.get('description')?.errors?.['required']">Description is required.</div>
-            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 40
+            <div *ngIf="formulario.get('description')?.errors?.['maxlength']">Description should not exceed 130
               characters.</div>
           </div>
         </div>

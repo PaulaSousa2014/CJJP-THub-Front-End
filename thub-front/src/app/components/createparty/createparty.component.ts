@@ -35,7 +35,7 @@ export class CreatepartyComponent {
     // Initialize the form and its controls
     this.formulario = new FormGroup({
       title: new FormControl('', [Validators.required, Validators.maxLength(25)]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(130)]),
       partyType: new FormControl('', Validators.required),
       game: new FormControl(null),
       social: new FormControl(null),

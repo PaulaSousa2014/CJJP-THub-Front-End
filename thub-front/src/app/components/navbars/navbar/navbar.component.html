@@ -19,7 +19,7 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" routerLink="/parties"><i class="bi bi-people-fill"></i>Your parties</a>
+            <a class="dropdown-item" (click)="yourParties()"><i class="bi bi-people-fill"></i>Your parties</a>
             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getList()"><i class="bi bi-person-heart"></i>Friends</a>
             <a class="dropdown-item" (click)="goToYourProfile()"><i class="bi bi-person-fill"></i>View profile</a>
             <div class="dropdown-divider"></div>
