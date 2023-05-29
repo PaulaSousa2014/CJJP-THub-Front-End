@@ -34,11 +34,19 @@ a{
   text-align: center;
   /*añair padding*/
 }
+.hover-shadow:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.754);
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
 
 .componentcard {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   background-color: #d9d9d9;
   border-radius: 6px;
+
 }
 
 .text-component {
