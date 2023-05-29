@@ -3,7 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ActivatedRoute } from '@angular/router';
 import { FriendsService } from 'src/app/services/friends.service';
-import { FriendRequest, UserReciever, UserSender } from 'src/app/models/FriendsModels';
+import { Accept, FriendRequest, UserReciever, UserSender } from 'src/app/models/FriendsModels';
 import Swal from 'sweetalert2';
 
 @Component({
