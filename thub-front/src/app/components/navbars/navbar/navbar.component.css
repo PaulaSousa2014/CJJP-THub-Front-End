@@ -67,6 +67,10 @@ nav a:not(.dropdown-item) {
   .navbar-nav.me-auto.mb-2.mb-lg-0 {
     justify-content: center;
   }
+  .icon {
+    font-size: 35px; /* Tamaño del icono */
+    align-items: center;
+  }
   .navbar-nav.ms-auto.align-items-center {
     text-align: center;
   }
