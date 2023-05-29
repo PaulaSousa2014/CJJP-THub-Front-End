@@ -132,11 +132,11 @@ export class PostDetailsComponent {
     }
   }
 
+  // Function to post comment
   postComment() {
     this.postService.postComment(this.newComment).subscribe({
       next: (data: any) => {
         this.getCommentsByPostId();
-        window.alert("Success!");
         this.newComment.content='';
       },
       error: (error: any) => {
@@ -157,6 +157,10 @@ export class PostDetailsComponent {
         console.log('Failed to delete post', error);
       },
     });
+  }
+
+  deleteComment(commentId: number) {
+
   }
 
 }
