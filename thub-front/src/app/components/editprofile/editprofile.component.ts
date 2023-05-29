@@ -40,6 +40,7 @@ export class EditprofileComponent {
     this.getUserProfile();
   }
 
+
   //Cancel edit and go back to user profile page
   goBack() {
     Swal.fire({
@@ -52,7 +53,7 @@ export class EditprofileComponent {
       confirmButtonText: 'Yes'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.location.back();
+        window.location.href = '/profile/' + this.user.id;
       }
     });
   }
@@ -77,6 +78,7 @@ export class EditprofileComponent {
       },
     });
   }
+
 
   getJobOptions() {
 
