@@ -36,7 +36,7 @@
           <div class="media">
             <div class="row">
               <div class="col-md-1 col-2">
-                <a class="my-auto" routerLink="/profile/{{post.creator.id}}"><img class="img-fluid post-user-pic" [src]="post.creator.profile_img"
+                <a class="my-auto" routerLink="/profile/{{post.creator.id}}"><img class="img-fluid post-user-pic  userimg" [src]="post.creator.profile_img"
                     alt=""></a>
               </div>
               <a (click)="goToPost(post.id)"><div class="col-md-11 col-10">

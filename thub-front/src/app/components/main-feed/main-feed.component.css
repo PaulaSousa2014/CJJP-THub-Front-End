@@ -1,5 +1,6 @@
 .card {
   background-color: var(--color-light-grey);
+  cursor: pointer;
 }
 
 .input-group {
@@ -10,7 +11,10 @@
   background-color: var(--color-pink);
   color: var(--color-white);
 }
+.userimg:hover{
+  box-shadow: 0 0 5px var(--color-dark-grey);
 
+}
 .smile {
   margin-right: 2%;
   color: var(--color-dark-grey);
