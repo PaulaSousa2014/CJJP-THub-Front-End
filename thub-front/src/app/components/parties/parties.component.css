@@ -26,8 +26,8 @@ a{
   color: white;
 }
 
-.search input {
-  border: var(--color-pink) inset 1px;
+.search:hover input {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.549);
 }
 
 .card-body {
