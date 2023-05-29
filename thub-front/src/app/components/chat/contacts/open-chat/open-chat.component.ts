@@ -95,7 +95,7 @@ export class OpenChatComponent implements AfterViewChecked {
     this.messagesService.postMessage(this.message).subscribe({
       next: (data: any) => {
         console.log('Datadentrosubmit' + data);
-
+        this.message.content = '';
         // Autorefresh después de enviar el mensaje
       this.getPartyIdMessages();
 
