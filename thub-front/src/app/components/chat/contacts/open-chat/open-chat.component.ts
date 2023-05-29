@@ -94,13 +94,16 @@ export class OpenChatComponent implements AfterViewChecked {
 
     this.messagesService.postMessage(this.message).subscribe({
       next: (data: any) => {
-
         console.log('Datadentrosubmit' + data);
-        location.reload(); // Reload the page after successfully submitting the post
 
+        // Autorefresh después de enviar el mensaje
+      this.getPartyIdMessages();
+
+      // Autorefresh después de 30 segundos
+      setTimeout(() => {
         this.getPartyIdMessages();
-
-      },
+      }, 30000);
+    },
       error: (error: any) => {
         console.log(this.message);
         console.log('Cannot post message', error);
