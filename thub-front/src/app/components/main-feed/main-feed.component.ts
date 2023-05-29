@@ -208,7 +208,7 @@ export class MainFeedComponent {
     this.postService.postNewPost(this.post).subscribe({
       next: (data: any) => {
         console.log(data);
-        location.reload(); // Reload the page after successfully submitting the post
+        this.getAllPosts();
       },
       error: (error: any) => {
         console.log('Cannot post Post', error);
@@ -255,7 +255,7 @@ export class MainFeedComponent {
     console.log(postId);
     this.postService.deletePost(postId).subscribe({
       next: (response: any) => {
-        location.reload();
+        this.getAllPosts();
         console.log(response + 'Post delected'); // Handle the successful response as needed
       },
       error: (error: any) => {
