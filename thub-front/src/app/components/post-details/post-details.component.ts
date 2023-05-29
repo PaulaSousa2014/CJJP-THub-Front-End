@@ -159,8 +159,16 @@ export class PostDetailsComponent {
     });
   }
 
+  // Function to delete comment
   deleteComment(commentId: number) {
-
+    this.postService.deletePostComment(commentId).subscribe({
+      next: (response: any) => {
+        this.getCommentsByPostId();
+      },
+      error: (error: any) => {
+        console.log("Failed to delete comment", error);
+      }
+    });
   }
 
 }

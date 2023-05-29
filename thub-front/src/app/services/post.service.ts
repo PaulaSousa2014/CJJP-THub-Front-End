@@ -106,6 +106,15 @@ export class PostService {
       .pipe(catchError(this.handleError));
   }
 
+  // Delete comment
+  deletePostComment(id: number): Observable<any> {
+    return this.httpClient
+      .delete(COMMENT_API + '/' + id, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  // ERROR HANDLING
+
   // Handle API errors
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
