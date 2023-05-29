@@ -30,3 +30,6 @@ h5 {
 p i:hover {
   cursor: pointer;
 }
+.icons:hover {
+  transform: scale(1.2);
+}
