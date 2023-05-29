@@ -143,8 +143,13 @@ export class PartiesComponent {
       confirmButtonText: 'I know, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Deleted!', 'Your party has been deleted.', 'success');
-
+        Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your party has been deleted!',
+        showConfirmButton: false,
+        timer: 1200
+      }).then(() => {
         this.partiesService.deleteParty(id).subscribe({
           next: (response) => {
             // Refresh parties
@@ -154,6 +159,8 @@ export class PartiesComponent {
             console.log('Something went wrong:', error);
           },
         });
+      });
+
       }
     });
   }
