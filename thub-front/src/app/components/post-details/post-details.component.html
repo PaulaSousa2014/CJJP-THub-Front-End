@@ -59,6 +59,10 @@
           <div class="col-12">
             <p class="ms-2 mt-2">{{comment.content}}</p>
           </div>
+          <div class="col-12 pe-3 pb-1"  *ngIf="comment.comment_by.id == commentUser.id" (click)="deletePost(post.id)">
+            <p class="my-auto text-end"> <i class="bi bi-trash3-fill ms-5"
+              style="color: rgb(170, 5, 5);"></i></p>
+          </div>
         </div>
       </div>
     </div>
