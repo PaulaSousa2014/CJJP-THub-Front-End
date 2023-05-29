@@ -22,7 +22,6 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginNavbarComponent } from './components/navbars/login-navbar/login-navbar.component';
 import { CreatepartyComponent } from './components/createparty/createparty.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { OtherprofileComponent } from './components/otherprofile/otherprofile.component';
 import { Error404Component } from './components/error404/error404.component';
 import { ClickPartyComponent } from './components/click-party/click-party.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
@@ -56,7 +55,6 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
     LoginNavbarComponent,
     CreatepartyComponent,
     ProfileComponent,
-    OtherprofileComponent,
     Error404Component,
     ClickPartyComponent,
     EditprofileComponent,
