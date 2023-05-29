@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Back button -->
-  <div class="row mt-1">
+  <div class="row mt-3">
     <div class="col-12">
       <button class="btn btn-primary px-3" (click)="goBack()">&#60;</button>
     </div>
@@ -11,8 +11,9 @@
     <div class="col-12">
       <div class="row">
         <div class="col-12 d-flex">
+          <span routerLink="/profile/{{post.creator.id}}" style="cursor: pointer;">
           <img class="my-auto" [src]="post.creator.profile_img" class="post-user-pic" alt="post creator image">
-          <span class="ms-2 my-auto">{{post.creator.username}}</span>
+          <span class="ms-2 my-auto">{{post.creator.username}}</span></span>
           <span class="ms-auto my-auto">{{formatTimestamp(post.time_submitted)}}</span>
         </div>
       </div>
@@ -21,7 +22,11 @@
           <p class="ms-2 mt-2">{{post.content}}</p>
         </div>
         <div class="col-12 text-center">
-          <p *ngIf="likesFound" class="my-auto"><i class="bi bi-heart-fill" style="color: var(--color-pink);"></i> {{ likeNum }}</p>
+          <p *ngIf="likesFound" class="my-auto">
+            <i class="bi bi-heart-fill" style="color: var(--color-pink);"></i> {{likeNum }}
+            <i *ngIf="post.creator.id == commentUser.id" (click)="deletePost(post.id)" class="bi bi-trash3-fill ms-5"
+              style="color: rgb(170, 5, 5);"></i>
+          </p>
         </div>
       </div>
     </div>
@@ -43,21 +48,26 @@
   <!-- Comment list -->
   <div class="container" *ngIf="postCommentsFound">
     <div class="row justify-content-center mb-3 mx-2" *ngFor="let comment of postComments">
-    <div class="col-md-11 col-12 pt-3 px-md-3 px-2 card commentCard">
-      <div class="row">
-        <div class="col-12 d-flex">
-          <img class="my-auto" [src]="comment.comment_by.profile_img" class="post-user-pic" alt="post creator image">
-          <span class="ms-2 my-auto">{{comment.comment_by.username}}</span>
-          <span class="ms-auto my-auto">{{formatTimestamp(comment.time_submitted)}}</span>
+      <div class="col-md-11 col-12 pt-3 px-md-3 px-2 card commentCard">
+        <div class="row">
+          <div class="col-12 d-flex">
+            <span routerLink="/profile/{{comment.comment_by.id}}" style="cursor: pointer;">
+            <img class="my-auto" [src]="comment.comment_by.profile_img" class="post-user-pic" alt="post creator image">
+            <span class="ms-2 my-auto">{{comment.comment_by.username}}</span></span>
+            <span class="ms-auto my-auto">{{formatTimestamp(comment.time_submitted)}}</span>
+          </div>
         </div>
-      </div>
-      <div class="row my-2">
-        <div class="col-12">
-          <p class="ms-2 mt-2">{{comment.content}}</p>
+        <div class="row my-2">
+          <div class="col-12">
+            <p class="ms-2 mt-2">{{comment.content}}</p>
+          </div>
+          <div class="col-12 pe-3 pb-1"  *ngIf="comment.comment_by.id == commentUser.id" (click)="deleteComment(comment.id)">
+            <p class="my-auto text-end"> <i class="bi bi-trash3-fill ms-5"
+              style="color: rgb(170, 5, 5);"></i></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
 

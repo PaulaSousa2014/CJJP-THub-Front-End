@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent {
+  private autoRefreshInterval: any;
 
   selectedPartyId: number = 0;
 
@@ -32,17 +33,24 @@ export class ContactsComponent {
 
 
   ngOnInit() {
-    
+
     this.loadLastSelectedParty();
     this.reloadComponent();
+    
 
   }
   reloadComponent() {
     this.cdr.detach(); // Desconectar el componente del árbol de vistas
     this.cdr.reattach(); // Volver a adjuntar el componente al árbol de vistas
+
   }
 
-
+  startAutoRefresh(): void {
+    // Intervalo de actualización cada 5 segundos (5000 milisegundos)
+    this.autoRefreshInterval = setInterval(() => {
+      // Lógica de actualización aquí
+    }, 100);
+  }
   partySeleccionada!: string;
   seleccionarParty(party: string, id: number) {
     this.partySeleccionada = party;
