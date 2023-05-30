@@ -101,7 +101,7 @@ export class OpenChatComponent implements AfterViewChecked {
       // Autorefresh después de 30 segundos
       setTimeout(() => {
         this.getPartyIdMessages();
-      }, 15000);
+      }, 13000);
     },
       error: (error: any) => {
         console.log(this.message);
