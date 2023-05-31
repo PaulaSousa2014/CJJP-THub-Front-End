@@ -7,7 +7,7 @@
 
 Front-end Repository for the Final Work of the FullStack Java T-Systems Bootcamp developed by the team 4GatoSoft.
 
-![Badge en Desarollo](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
+![Badge finished](https://img.shields.io/badge/STATUS-FINISHED-green)
 ![Release Data](https://img.shields.io/badge/Release%20Data-may%2031-green)
 
 
